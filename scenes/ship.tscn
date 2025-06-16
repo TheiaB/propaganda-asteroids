@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://boprrp0xswaga"]
+
+[ext_resource type="Script" uid="uid://hkqj0skdm5x6" path="res://scenes/ship_controller.gd" id="1_q631a"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_03b2l"]
+size = Vector3(1.71802, 0.456177, 1)
+
+[node name="Ship" type="Node3D"]
+
+[node name="CSGBox3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00168991, -0.10611, 0)
+script = ExtResource("1_q631a")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0124817, 0.039126, 0)
+shape = SubResource("BoxShape3D_03b2l")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00708008, 0, 0)
+size = Vector3(1.71826, 1, 1)
+
+[node name="Camera3D" type="Camera3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 4, 0)
