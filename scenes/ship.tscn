@@ -2,26 +2,32 @@
 
 [ext_resource type="Script" uid="uid://bbduxt1lb18ne" path="res://scripts/ship.gd" id="1_2gnfn"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q631a"]
-height = 1.11408
+[sub_resource type="BoxShape3D" id="BoxShape3D_q631a"]
+size = Vector3(0.707977, 1, 0.704758)
 
 [node name="Ship" type="CharacterBody3D"]
+collision_layer = 2
 script = ExtResource("1_2gnfn")
+ACCELERATION = 3.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, -0.999665, -0.025863, -4.36968e-08, 0.025863, -0.999665, 1.13051e-09, 0, 0, 0)
-shape = SubResource("CapsuleShape3D_q631a")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.246113)
+shape = SubResource("BoxShape3D_q631a")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -0.000933482, 0, -0.367492)
+shape = SubResource("BoxShape3D_q631a")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-size = Vector3(1.71826, 1, 1)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.411865, 0)
+size = Vector3(1.71826, 0.17627, 1)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D2"]
-transform = Transform3D(-0.501206, 0, 0.865322, 0, 1, 0, -0.865322, 0, -0.501206, 1.09124, 0, 0.478989)
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D2"]
+transform = Transform3D(0.707105, 0, 0.707105, 0, 1, 0, -0.707105, 0, 0.707105, 0.76285, 0, -0.810236)
 operation = 2
 size = Vector3(1, 1, 1.75757)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D2"]
-transform = Transform3D(0.707105, 0, 0.707105, 0, 1, 0, -0.707105, 0, 0.707105, 0.76285, 0, -0.695863)
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D2"]
+transform = Transform3D(0.707105, 0, -0.707105, 0, 1, 0, 0.707105, 0, 0.707105, 0.763, 0, 0.81)
 operation = 2
 size = Vector3(1, 1, 1.75757)

@@ -4,10 +4,14 @@ extends CharacterBody3D
 @export var DECELERATION := 0.0
 @export var MAX_SPEED := 5.0
 @export var ROTATION_SPEED := 1.5
+@export var MIN_SPEED_THRESHOLD := 0.1
+@export var DECELERATION_AFTER_THRESHOLD := 0.1
 
-#TODO: Variablesa
-# MIN_SPEED_THRESHOLD
+signal player_hit
 
+func on_collsion(collision:KinematicCollision3D):
+	emit_signal("player_hit")
+	
 func _physics_process(delta):
 	if Input.is_action_pressed("left"):
 		rotate_y(ROTATION_SPEED * delta)
@@ -21,6 +25,12 @@ func _physics_process(delta):
 		var direction = (global_transform.basis * input_vector)
 		velocity = velocity.move_toward(direction * MAX_SPEED, ACCELERATION * delta)
 	else:
-		velocity = velocity.move_toward(Vector3.ZERO, DECELERATION * delta)
+		if velocity.x <= MIN_SPEED_THRESHOLD and velocity.z <= MIN_SPEED_THRESHOLD:
+			velocity = velocity.move_toward(Vector3.ZERO, DECELERATION_AFTER_THRESHOLD * delta)
+		else:
+			velocity = velocity.move_toward(Vector3.ZERO, DECELERATION * delta)
 
 	move_and_slide()
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		on_collsion(collision)
