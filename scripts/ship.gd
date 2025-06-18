@@ -8,9 +8,25 @@ extends CharacterBody3D
 @export var DECELERATION_AFTER_THRESHOLD := 0.1
 
 signal player_hit
+signal laser_shot
+
+@onready var muzzle := $Muzzle
+
+var laser_scene = preload("res://scenes/laser.tscn")
 
 func on_collsion(collision:KinematicCollision3D):
 	emit_signal("player_hit")
+	
+func _process(delta):
+	if Input.is_action_just_pressed("shoot"):
+		shoot_laser()
+		
+func shoot_laser():
+	var laser := laser_scene.instantiate()
+	get_parent().add_child(laser)
+	laser.global_position = muzzle.global_position
+	laser.rotation = rotation
+	emit_signal("laser_shot", laser)
 	
 func _physics_process(delta):
 	if Input.is_action_pressed("left"):

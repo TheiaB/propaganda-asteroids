@@ -31,3 +31,6 @@ size = Vector3(1, 1, 1.75757)
 transform = Transform3D(0.707105, 0, -0.707105, 0, 1, 0, 0.707105, 0, 0.707105, 0.763, 0, 0.81)
 operation = 2
 size = Vector3(1, 1, 1.75757)
+
+[node name="Muzzle" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.982466)
