@@ -6,6 +6,8 @@
 
 [node name="laser" type="Area3D"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+collision_layer = 8
+collision_mask = 4
 script = ExtResource("1_xmihv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

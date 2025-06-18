@@ -7,15 +7,17 @@ extends CharacterBody3D
 @export var MIN_SPEED_THRESHOLD := 0.1
 @export var DECELERATION_AFTER_THRESHOLD := 0.1
 
-signal player_hit
+signal player_hit_static_body
 signal laser_shot
+
+@export var weapon_damage := 2
 
 @onready var muzzle := $Muzzle
 
 var laser_scene = preload("res://scenes/laser.tscn")
 
-func on_collsion(collision:KinematicCollision3D):
-	emit_signal("player_hit")
+func on_collide_with_static_body(collision:KinematicCollision3D):
+	emit_signal("player_hit_static_body")
 	
 func _process(delta):
 	if Input.is_action_just_pressed("shoot"):
@@ -49,4 +51,4 @@ func _physics_process(delta):
 	move_and_slide()
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
-		on_collsion(collision)
+		on_collide_with_static_body(collision)

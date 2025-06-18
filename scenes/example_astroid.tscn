@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4yiwtl77ahvj"]
+
+[ext_resource type="Script" uid="uid://bddgaqomuqn2r" path="res://scripts/example_astroid.gd" id="1_q6l3o"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dttsx"]
+
+[node name="Node3D" type="Area3D"]
+collision_layer = 4
+collision_mask = 10
+script = ExtResource("1_q6l3o")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_dttsx")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

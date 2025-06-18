@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cnotxnjbhrj4a"]
+[gd_scene load_steps=9 format=3 uid="uid://cnotxnjbhrj4a"]
 
 [ext_resource type="Script" uid="uid://dxicgx2v6rcda" path="res://scripts/game.gd" id="1_lnu2h"]
 [ext_resource type="Script" uid="uid://c3nebth5qx3wg" path="res://scripts/camera_3d.gd" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://boprrp0xswaga" path="res://scenes/ship.tscn" id="2_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://c4yiwtl77ahvj" path="res://scenes/example_astroid.tscn" id="4_lbhrr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_80nbo"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -93,3 +94,6 @@ collision_mask = 3
 shape = SubResource("BoxShape3D_e2o6t")
 
 [node name="Lasers" type="Node" parent="."]
+
+[node name="Astroid" parent="." instance=ExtResource("4_lbhrr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2656, 0, 0)
