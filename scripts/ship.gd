@@ -10,7 +10,7 @@ extends CharacterBody3D
 signal player_hit_static_body
 signal laser_shot
 
-@export var weapon_damage := 2
+@export var weapon_damage := 1
 
 @onready var muzzle := $Muzzle
 
