@@ -1,8 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://cnotxnjbhrj4a"]
+[gd_scene load_steps=18 format=3 uid="uid://cnotxnjbhrj4a"]
 
 [ext_resource type="Script" uid="uid://dxicgx2v6rcda" path="res://scripts/game.gd" id="1_lnu2h"]
 [ext_resource type="Script" uid="uid://c3nebth5qx3wg" path="res://scripts/camera_3d.gd" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://boprrp0xswaga" path="res://scenes/ship.tscn" id="2_lnu2h"]
+[ext_resource type="ArrayMesh" uid="uid://ntp7v0mg3pja" path="res://assets/models/arrow.obj" id="3_0tnpc"]
+[ext_resource type="Script" uid="uid://hp28h00nhtj6" path="res://scripts/arrow.gd" id="4_vtaks"]
 [ext_resource type="PackedScene" uid="uid://ccdafq5nlkpgj" path="res://scenes/basic_weapon.tscn" id="5_iywne"]
 [ext_resource type="PackedScene" uid="uid://cyg2e5xslvje3" path="res://scenes/asteroid_manager.tscn" id="5_p57ef"]
 [ext_resource type="Script" uid="uid://cle63b14ouwvl" path="res://scripts/item.gd" id="5_u5sy4"]
@@ -12,6 +14,11 @@
 [ext_resource type="Script" uid="uid://xdix5r7xku7d" path="res://scripts/basic_start_stats.gd" id="10_vtaks"]
 [ext_resource type="PackedScene" uid="uid://bvyjbe5rb50yn" path="res://scenes/zone_home.tscn" id="7_gee14"]
 [ext_resource type="PackedScene" uid="uid://dlotxfarbs74i" path="res://scenes/zone_planet.tscn" id="8_0tnpc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vtaks"]
+transparency = 1
+depth_draw_mode = 1
+albedo_color = Color(0.329412, 1, 0.564706, 0.290196)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_80nbo"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -44,6 +51,15 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5, 
 script = ExtResource("1_yqjtg")
 follow_target = NodePath("../Ship")
 smooth_speed = 3.5
+
+[node name="Arrow" type="MeshInstance3D" parent="Camera3D"]
+process_mode = 4
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.025, -1, 0.55, -1)
+visible = false
+mesh = ExtResource("3_0tnpc")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_vtaks")
+script = ExtResource("4_vtaks")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 2.12011, 5.03893, -4.67931)

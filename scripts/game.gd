@@ -9,6 +9,9 @@ extends Node3D
 enum DeliveryStates {EMPTY,DELIVERING}
 var current_delivery_state: DeliveryStates = DeliveryStates.EMPTY
 
+var destination_planet:ZonePlanet
+@onready var arrow: Arrow3D = $Camera3D/Arrow
+
 func _ready():
 	zone_home.player_entered.connect(player_entered_home_zone)
 	for zone_planet:ZonePlanet in zone_planets:
@@ -18,7 +21,6 @@ func _ready():
 func _on_player_laser_shot(laser):
 	lasers.add_child(laser)
 
-var destination_planet:ZonePlanet
 
 func player_entered_home_zone(zone):
 	if(current_delivery_state == DeliveryStates.EMPTY):
@@ -26,17 +28,22 @@ func player_entered_home_zone(zone):
 		current_delivery_state = DeliveryStates.DELIVERING
 		ship.equip_cargo()
 		destination_planet = zone_planets.pick_random()
+		arrow.destination_position = destination_planet.global_position
+		arrow.process_mode = Node.PROCESS_MODE_INHERIT
+		arrow.show()
 
 func player_entered_planet_zone(zone:ZonePlanet):
 	print('game: player entered planet', zone.name)
 	if(current_delivery_state == DeliveryStates.DELIVERING):
 		if(zone == destination_planet):
 			print('game: player delivered')
+			current_delivery_state = DeliveryStates.EMPTY
 			ship.unequip_cargo()
+			destination_planet = null
+			arrow.hide()
+			arrow.process_mode = Node.PROCESS_MODE_DISABLED
 		else:
 			print('game: wrong planet')
 			pass
 	pass
-
-func _process(delta: float) -> void:
-	pass
+	
