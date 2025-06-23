@@ -1,7 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://dlotxfarbs74i"]
+[gd_scene load_steps=4 format=3 uid="uid://dlotxfarbs74i"]
 
 [ext_resource type="PackedScene" uid="uid://bx2bqpsqh04ct" path="res://scenes/zone.tscn" id="1_7bg85"]
 [ext_resource type="Script" uid="uid://dylkadxmy8i1x" path="res://scripts/zone_planet.gd" id="2_02r6e"]
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_02r6e"]
+height = 4.0
+radius = 2.0
+
 [node name="ZonePlanet" instance=ExtResource("1_7bg85")]
 script = ExtResource("2_02r6e")
+
+[node name="CollisionShape3D" parent="ZoneArea" index="0"]
+shape = SubResource("CylinderShape3D_02r6e")
+
+[node name="ZoneMesh" parent="." index="1"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, -4, 0)

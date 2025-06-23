@@ -1,7 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://bvyjbe5rb50yn"]
+[gd_scene load_steps=6 format=3 uid="uid://bvyjbe5rb50yn"]
 
 [ext_resource type="PackedScene" uid="uid://bx2bqpsqh04ct" path="res://scenes/zone.tscn" id="1_gnnva"]
 [ext_resource type="Script" uid="uid://bjhqng1205g2k" path="res://scripts/zone_home.gd" id="2_ponqu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ponqu"]
+size = Vector3(2, 8, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kgsj4"]
+size = Vector3(2, 1, 2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ponqu"]
 albedo_color = Color(0.859399, 0.650552, 0.793057, 1)
@@ -9,5 +15,9 @@ albedo_color = Color(0.859399, 0.650552, 0.793057, 1)
 [node name="ZoneHome" instance=ExtResource("1_gnnva")]
 script = ExtResource("2_ponqu")
 
+[node name="CollisionShape3D" parent="ZoneArea" index="0"]
+shape = SubResource("BoxShape3D_ponqu")
+
 [node name="ZoneMesh" parent="." index="1"]
+mesh = SubResource("BoxMesh_kgsj4")
 surface_material_override/0 = SubResource("StandardMaterial3D_ponqu")
