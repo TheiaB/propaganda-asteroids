@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cnotxnjbhrj4a"]
+[gd_scene load_steps=17 format=3 uid="uid://cnotxnjbhrj4a"]
 
 [ext_resource type="Script" uid="uid://dxicgx2v6rcda" path="res://scripts/game.gd" id="1_lnu2h"]
 [ext_resource type="Script" uid="uid://c3nebth5qx3wg" path="res://scripts/camera_3d.gd" id="1_yqjtg"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dfri2flh1jp1g" path="res://scenes/basic_shield.tscn" id="7_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://b3gptuxi7o4ay" path="res://scenes/passive_speed_boost.tscn" id="8_gee14"]
 [ext_resource type="Script" uid="uid://cioq7tti47u63" path="res://scripts/character_stat_controller.gd" id="9_0tnpc"]
+[ext_resource type="Script" uid="uid://xdix5r7xku7d" path="res://scripts/basic_start_stats.gd" id="10_vtaks"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_80nbo"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -133,6 +134,7 @@ script = ExtResource("5_u5sy4")
 [node name="passive_speed_boost" parent="Items/Generic_Items" instance=ExtResource("8_gee14")]
 
 [node name="CharacterStats" type="Node" parent="."]
+script = ExtResource("9_0tnpc")
 
 [node name="BasicStartStats" type="Node" parent="CharacterStats"]
-script = ExtResource("9_0tnpc")
+script = ExtResource("10_vtaks")

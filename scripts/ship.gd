@@ -16,8 +16,10 @@ signal laser_shot
 var laser_scene = preload("res://scenes/laser.tscn")
 
 func load_item_attributes():
+	stats.load_attributes(self)
+	
 	for item in items:
-		item.load_attributes(self)	
+		item.load_attributes(self)
 
 func _ready() -> void:
 	load_item_attributes()

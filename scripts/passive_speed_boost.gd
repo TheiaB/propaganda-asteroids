@@ -1,7 +1,6 @@
 extends Generic_Item
 
-func _ready() -> void:
-	pass # Replace with function body.
+@export var MAX_SPEED := 100
 	
 func load_attributes(ship: Ship):
-	pass
+	ship.stats.MAX_SPEED = MAX_SPEED
