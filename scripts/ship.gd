@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+class_name Ship
+
 @export var ACCELERATION := 2.0
 @export var DECELERATION := 0.0
 @export var MAX_SPEED := 5.0
@@ -18,6 +20,9 @@ var laser_scene = preload("res://scenes/laser.tscn")
 
 func on_collide_with_static_body(collision:KinematicCollision3D):
 	emit_signal("player_hit_static_body")
+	
+func on_collision_with_asteroid():
+	print("collisoin with asteroid")
 	
 func _process(delta):
 	if Input.is_action_just_pressed("shoot"):

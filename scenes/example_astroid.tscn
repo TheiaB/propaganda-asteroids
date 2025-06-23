@@ -1,13 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://c4yiwtl77ahvj"]
+[gd_scene load_steps=3 format=3 uid="uid://bq7rnm72gyxpw"]
 
-[ext_resource type="Script" uid="uid://bddgaqomuqn2r" path="res://scripts/example_astroid.gd" id="1_q6l3o"]
+[sub_resource type="GDScript" id="GDScript_dttsx"]
+script/source = "extends Area3D
+
+signal ship_hits_astroid
+@onready var ship: CharacterBody3D = %Ship
+@export var health = 3
+
+func _on_area_entered(bullet: Area3D) -> void:
+	health -= ship.weapon_damage
+	bullet.queue_free()
+	if health <= 0:
+		queue_free()
+		
+
+func _on_body_entered(body: Node3D) -> void:
+	ship_hits_astroid.emit()
+	
+	
+"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dttsx"]
 
 [node name="Node3D" type="Area3D"]
 collision_layer = 4
 collision_mask = 10
-script = ExtResource("1_q6l3o")
+script = SubResource("GDScript_dttsx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_dttsx")
