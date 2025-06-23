@@ -13,18 +13,26 @@ signal player_hit_static_body
 signal laser_shot
 
 @export var weapon: Weapon
-@export var health := 5
+@export var shield: Shield
+@export var items: Array[Generic_Item]
 
 @onready var muzzle := $Muzzle
 
 var laser_scene = preload("res://scenes/laser.tscn")
 
+func load_item_attributes():
+	for item in items:
+		item.load_attributes(self)	
+
+func _ready() -> void:
+	load_item_attributes()
+
 func on_collide_with_static_body(collision:KinematicCollision3D):
 	emit_signal("player_hit_static_body")
 	
 func on_collision_with_asteroid(damage):
-	health -= damage
-	if health <= 0:
+	shield.health -= damage
+	if shield.health <= 0:
 		queue_free()
 	
 func _process(delta):

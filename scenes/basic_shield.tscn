@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccnircavlsand"]
+
+[ext_resource type="Script" uid="uid://b2jwtio5e2xm" path="res://scripts/basic_shield.gd" id="1_7uk2p"]
+
+[node name="basic_shield" type="Node"]
+script = ExtResource("1_7uk2p")

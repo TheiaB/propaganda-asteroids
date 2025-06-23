@@ -1,3 +1,4 @@
 extends Weapon
 
-@export var weapon_damage := 1
+func _ready() -> void:
+	weapon_damage = 1

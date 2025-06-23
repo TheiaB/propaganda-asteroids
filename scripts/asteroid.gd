@@ -22,5 +22,5 @@ func _on_area_3d_area_entered(bullet: Area3D) -> void:
 
 
 func _on_area_3d_body_entered(ship: Ship) -> void:
-	ship.on_collision_with_asteroid(damage)
+	ship.on_collision_with_asteroid(ship.weapon.weapon_damage)
 	queue_free()

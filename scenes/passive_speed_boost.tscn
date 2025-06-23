@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpdqixphjaa3d"]
+
+[ext_resource type="Script" uid="uid://bdsn3msak3gh1" path="res://scripts/passive_speed_boost.gd" id="1_r467o"]
+
+[node name="passive_speed_boost" type="Node"]
+script = ExtResource("1_r467o")
+metadata/_custom_type_script = "uid://c3pv4m1xhxmy5"

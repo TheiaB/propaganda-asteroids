@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cnotxnjbhrj4a"]
+[gd_scene load_steps=15 format=3 uid="uid://cnotxnjbhrj4a"]
 
 [ext_resource type="Script" uid="uid://dxicgx2v6rcda" path="res://scripts/game.gd" id="1_lnu2h"]
 [ext_resource type="Script" uid="uid://c3nebth5qx3wg" path="res://scripts/camera_3d.gd" id="1_yqjtg"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://ccdafq5nlkpgj" path="res://scenes/basic_weapon.tscn" id="5_iywne"]
 [ext_resource type="PackedScene" uid="uid://cyg2e5xslvje3" path="res://scenes/asteroid_manager.tscn" id="5_p57ef"]
 [ext_resource type="Script" uid="uid://cle63b14ouwvl" path="res://scripts/item.gd" id="5_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://ccnircavlsand" path="res://scenes/basic_shield.tscn" id="7_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://cpdqixphjaa3d" path="res://scenes/passive_speed_boost.tscn" id="8_gee14"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_80nbo"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -46,10 +48,12 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_feb5d")
 
-[node name="Ship" parent="." node_paths=PackedStringArray("weapon") instance=ExtResource("2_lnu2h")]
+[node name="Ship" parent="." node_paths=PackedStringArray("weapon", "shield", "items") instance=ExtResource("2_lnu2h")]
 unique_name_in_owner = true
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 weapon = NodePath("../Items/Weapons/basic_weapon")
+shield = NodePath("../Items/Shields/basic_shield")
+items = [NodePath("../Items/Generic_Items/passive_speed_boost")]
 
 [node name="ForScale" type="Node" parent="."]
 
@@ -117,3 +121,11 @@ script = ExtResource("5_u5sy4")
 [node name="Weapons" type="Node" parent="Items"]
 
 [node name="basic_weapon" parent="Items/Weapons" instance=ExtResource("5_iywne")]
+
+[node name="Shields" type="Node" parent="Items"]
+
+[node name="basic_shield" parent="Items/Shields" instance=ExtResource("7_u5sy4")]
+
+[node name="Generic_Items" type="Node" parent="Items"]
+
+[node name="passive_speed_boost" parent="Items/Generic_Items" instance=ExtResource("8_gee14")]
