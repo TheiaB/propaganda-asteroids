@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cnotxnjbhrj4a"]
+[gd_scene load_steps=23 format=3 uid="uid://cnotxnjbhrj4a"]
 
 [ext_resource type="Script" uid="uid://dxicgx2v6rcda" path="res://scripts/game.gd" id="1_lnu2h"]
 [ext_resource type="Script" uid="uid://c3nebth5qx3wg" path="res://scripts/camera_3d.gd" id="1_yqjtg"]
@@ -8,12 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://ccdafq5nlkpgj" path="res://scenes/basic_weapon.tscn" id="5_iywne"]
 [ext_resource type="PackedScene" uid="uid://cyg2e5xslvje3" path="res://scenes/asteroid_manager.tscn" id="5_p57ef"]
 [ext_resource type="Script" uid="uid://cle63b14ouwvl" path="res://scripts/item.gd" id="5_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://bvyjbe5rb50yn" path="res://scenes/zone_home.tscn" id="7_gee14"]
 [ext_resource type="PackedScene" uid="uid://dfri2flh1jp1g" path="res://scenes/basic_shield.tscn" id="7_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://dlotxfarbs74i" path="res://scenes/zone_planet.tscn" id="8_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://b3gptuxi7o4ay" path="res://scenes/passive_speed_boost.tscn" id="8_gee14"]
+[ext_resource type="Script" uid="uid://cmd6uvcht5xc5" path="res://scripts/weapon.gd" id="8_ir15t"]
 [ext_resource type="Script" uid="uid://cioq7tti47u63" path="res://scripts/character_stat_controller.gd" id="9_0tnpc"]
 [ext_resource type="Script" uid="uid://xdix5r7xku7d" path="res://scripts/basic_start_stats.gd" id="10_vtaks"]
-[ext_resource type="PackedScene" uid="uid://bvyjbe5rb50yn" path="res://scenes/zone_home.tscn" id="7_gee14"]
-[ext_resource type="PackedScene" uid="uid://dlotxfarbs74i" path="res://scenes/zone_planet.tscn" id="8_0tnpc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vtaks"]
 transparency = 1
@@ -68,13 +69,12 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_feb5d")
 
-[node name="Ship" parent="." node_paths=PackedStringArray("stats", "weapon", "shield", "items") instance=ExtResource("2_lnu2h")]
+[node name="Ship" parent="." node_paths=PackedStringArray("stats", "weapon", "shield") instance=ExtResource("2_lnu2h")]
 unique_name_in_owner = true
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 stats = NodePath("../CharacterStats/BasicStartStats")
 weapon = NodePath("../Items/Weapons/basic_weapon")
 shield = NodePath("../Items/Shields/basic_shield")
-items = [NodePath("../Items/Generic_Items/passive_speed_boost")]
 
 [node name="ForScale" type="Node" parent="."]
 
@@ -131,7 +131,8 @@ collision_mask = 3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ForScale/StaticBody3D"]
 shape = SubResource("BoxShape3D_e2o6t")
 
-[node name="Lasers" type="Node" parent="."]
+[node name="Projectiles" type="Node" parent="."]
+unique_name_in_owner = true
 
 [node name="AsteroidManager" parent="." instance=ExtResource("5_p57ef")]
 target_path = NodePath("../Ship")
@@ -140,6 +141,7 @@ target_path = NodePath("../Ship")
 script = ExtResource("5_u5sy4")
 
 [node name="Weapons" type="Node" parent="Items"]
+script = ExtResource("8_ir15t")
 
 [node name="basic_weapon" parent="Items/Weapons" instance=ExtResource("5_iywne")]
 
@@ -156,6 +158,7 @@ script = ExtResource("9_0tnpc")
 
 [node name="BasicStartStats" type="Node" parent="CharacterStats"]
 script = ExtResource("10_vtaks")
+
 [node name="Mission" type="Node" parent="."]
 
 [node name="ZoneHome" parent="Mission" instance=ExtResource("7_gee14")]

@@ -1,4 +1,6 @@
 extends Shield
 
+@export var health := 1
+
 func _ready() -> void:
-	health = 1
+	sield_health = health

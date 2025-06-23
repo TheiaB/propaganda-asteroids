@@ -5,7 +5,7 @@ class_name Ship
 @export var stats : CharacterStats
 
 signal player_hit_static_body
-signal laser_shot
+
 
 @export var weapon: Weapon
 @export var shield: Shield
@@ -13,7 +13,7 @@ signal laser_shot
 
 @onready var muzzle := $Muzzle
 
-var laser_scene = preload("res://scenes/laser.tscn")
+var restricted_rotation_multiplier = -1
 
 func load_item_attributes():
 	stats.load_attributes(self)
@@ -24,31 +24,35 @@ func load_item_attributes():
 func _ready() -> void:
 	load_item_attributes()
 
-func on_collide_with_static_body(collision:KinematicCollision3D):
+func on_collide_with_static_body(_collision:KinematicCollision3D):
 	emit_signal("player_hit_static_body")
 	
 func on_collision_with_asteroid(damage):
-	shield.health -= damage
-	if shield.health <= 0:
+	shield.sield_health -= damage
+	if shield.sield_health <= 0:
 		queue_free()
 	
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("shoot"):
-		shoot_laser()
+		weapon.shoot_projectile(self)
 		
-func shoot_laser():
-	var laser := laser_scene.instantiate()
-	get_parent().add_child(laser)
-	laser.global_position = muzzle.global_position
-	laser.rotation = rotation
-	laser.damage = weapon.weapon_damage
-	emit_signal("laser_shot", laser)
+func start_restrict_rotation(restricted_rotation_multiplier):
+	self.restricted_rotation_multiplier = restricted_rotation_multiplier
+
+func stop_restrict_rotation():
+	self.restricted_rotation_multiplier = -1
+
 	
 func _physics_process(delta):
+	
+	var calculated_rotation_speed = stats.ROTATION_SPEED
+	
+	if restricted_rotation_multiplier != -1:
+		calculated_rotation_speed = calculated_rotation_speed * restricted_rotation_multiplier
 	if Input.is_action_pressed("left"):
-		rotate_y(stats.ROTATION_SPEED * delta)
+		rotate_y(calculated_rotation_speed * delta)
 	if Input.is_action_pressed("right"):
-		rotate_y(-stats.ROTATION_SPEED * delta)
+		rotate_y(-calculated_rotation_speed * delta)
 
 	var input_vector = Vector3(0, 0, -Input.get_axis("break", "gas"))
 

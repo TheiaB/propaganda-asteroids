@@ -9,5 +9,5 @@ var ROTATION_SPEED := 1.5
 var MIN_SPEED_THRESHOLD := 0.1
 var DECELERATION_AFTER_THRESHOLD := 0.1
 
-func load_attributes(ship: Ship):
+func load_attributes(_ship: Ship):
 	pass

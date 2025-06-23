@@ -14,7 +14,7 @@ func _ready() -> void:
 func _on_visible_on_screen_notifier_3d_screen_exited() -> void:
 	queue_free()
 	
-func _on_area_3d_area_entered(bullet: Area3D) -> void:
+func _on_area_3d_area_entered(bullet: Projectile) -> void:
 	health -= bullet.damage
 	bullet.queue_free()
 	if health <= 0:

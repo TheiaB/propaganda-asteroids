@@ -7,7 +7,7 @@ extends CharacterStats
 @export var min_speed_threshold := 5.0
 @export var decc_after_threshold := 0.1
 
-func load_attributes(ship: Ship):
+func load_attributes(_ship: Ship):
 	ACCELERATION = acc
 	DECELERATION = decc
 	MAX_SPEED = max_speed

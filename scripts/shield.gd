@@ -2,4 +2,4 @@ extends Item
 
 class_name Shield
 
-@export var health := 1
+@export var sield_health := 1
