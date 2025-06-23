@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cnotxnjbhrj4a"]
+[gd_scene load_steps=11 format=3 uid="uid://cnotxnjbhrj4a"]
 
 [ext_resource type="Script" uid="uid://dxicgx2v6rcda" path="res://scripts/game.gd" id="1_lnu2h"]
 [ext_resource type="Script" uid="uid://c3nebth5qx3wg" path="res://scripts/camera_3d.gd" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://boprrp0xswaga" path="res://scenes/ship.tscn" id="2_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://c4yiwtl77ahvj" path="res://scenes/example_astroid.tscn" id="4_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://cyg2e5xslvje3" path="res://scenes/asteroid_manager.tscn" id="5_p57ef"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_80nbo"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -18,7 +19,15 @@ sky = SubResource("Sky_e2o6t")
 tonemap_mode = 2
 glow_enabled = true
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lbhrr"]
+friction = 0.0
+bounce = 1.0
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_e2o6t"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_iywne"]
+friction = 0.5
+bounce = 1.0
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_lnu2h")
@@ -45,6 +54,7 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 [node name="StaticBody3D4" type="StaticBody3D" parent="ForScale"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.9383, 0, -2.10728)
 collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_lbhrr")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="ForScale/StaticBody3D4"]
 
@@ -53,6 +63,7 @@ shape = SubResource("BoxShape3D_e2o6t")
 
 [node name="StaticBody3D5" type="StaticBody3D" parent="ForScale"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6606, 0, -2.07802)
+physics_material_override = SubResource("PhysicsMaterial_iywne")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="ForScale/StaticBody3D5"]
 
@@ -97,3 +108,5 @@ shape = SubResource("BoxShape3D_e2o6t")
 
 [node name="Astroid" parent="." instance=ExtResource("4_lbhrr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2656, 0, 0)
+[node name="AsteroidManager" parent="." instance=ExtResource("5_p57ef")]
+target_path = NodePath("../Ship")
