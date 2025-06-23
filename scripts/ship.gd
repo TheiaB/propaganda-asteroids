@@ -12,7 +12,8 @@ class_name Ship
 signal player_hit_static_body
 signal laser_shot
 
-@export var weapon_damage := 1
+@export var weapon: Weapon
+@export var health := 5
 
 @onready var muzzle := $Muzzle
 
@@ -21,8 +22,10 @@ var laser_scene = preload("res://scenes/laser.tscn")
 func on_collide_with_static_body(collision:KinematicCollision3D):
 	emit_signal("player_hit_static_body")
 	
-func on_collision_with_asteroid():
-	print("collisoin with asteroid")
+func on_collision_with_asteroid(damage):
+	health -= damage
+	if health <= 0:
+		queue_free()
 	
 func _process(delta):
 	if Input.is_action_just_pressed("shoot"):
@@ -33,6 +36,7 @@ func shoot_laser():
 	get_parent().add_child(laser)
 	laser.global_position = muzzle.global_position
 	laser.rotation = rotation
+	laser.damage = weapon.weapon_damage
 	emit_signal("laser_shot", laser)
 	
 func _physics_process(delta):

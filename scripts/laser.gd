@@ -1,6 +1,7 @@
 extends Area3D
 
 @export var speed := 50
+@export var damage := 1
 
 func _physics_process(delta: float) -> void:
 	global_position -= transform.basis.z * speed * delta

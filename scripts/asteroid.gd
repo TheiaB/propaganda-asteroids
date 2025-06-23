@@ -5,25 +5,22 @@ var speed = 100
 var ACCELERATION = 3.0
 
 @export var health = 3
+@export var damage = 3
 
 func _ready() -> void:
 	linear_velocity = move_dir
-
-func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
-	#linear_velocity = move_dir
-	pass
-
 
 
 func _on_visible_on_screen_notifier_3d_screen_exited() -> void:
 	queue_free()
 	
 func _on_area_3d_area_entered(bullet: Area3D) -> void:
-	health -= 2
+	health -= bullet.damage
 	bullet.queue_free()
 	if health <= 0:
 		queue_free()
 
 
 func _on_area_3d_body_entered(ship: Ship) -> void:
-	ship.on_collision_with_asteroid()
+	ship.on_collision_with_asteroid(damage)
+	queue_free()

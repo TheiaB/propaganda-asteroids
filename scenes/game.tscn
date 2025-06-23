@@ -1,9 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://cnotxnjbhrj4a"]
+[gd_scene load_steps=13 format=3 uid="uid://cnotxnjbhrj4a"]
 
 [ext_resource type="Script" uid="uid://dxicgx2v6rcda" path="res://scripts/game.gd" id="1_lnu2h"]
 [ext_resource type="Script" uid="uid://c3nebth5qx3wg" path="res://scripts/camera_3d.gd" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://boprrp0xswaga" path="res://scenes/ship.tscn" id="2_lnu2h"]
-[ext_resource type="PackedScene" path="res://scenes/asteroid_manager.tscn" id="5_p57ef"]
+[ext_resource type="PackedScene" uid="uid://ccdafq5nlkpgj" path="res://scenes/basic_weapon.tscn" id="5_iywne"]
+[ext_resource type="PackedScene" uid="uid://cyg2e5xslvje3" path="res://scenes/asteroid_manager.tscn" id="5_p57ef"]
+[ext_resource type="Script" uid="uid://cle63b14ouwvl" path="res://scripts/item.gd" id="5_u5sy4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_80nbo"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -44,9 +46,10 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_feb5d")
 
-[node name="Ship" parent="." instance=ExtResource("2_lnu2h")]
+[node name="Ship" parent="." node_paths=PackedStringArray("weapon") instance=ExtResource("2_lnu2h")]
 unique_name_in_owner = true
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+weapon = NodePath("../Items/Weapons/basic_weapon")
 
 [node name="ForScale" type="Node" parent="."]
 
@@ -107,3 +110,10 @@ shape = SubResource("BoxShape3D_e2o6t")
 
 [node name="AsteroidManager" parent="." instance=ExtResource("5_p57ef")]
 target_path = NodePath("../Ship")
+
+[node name="Items" type="Node" parent="."]
+script = ExtResource("5_u5sy4")
+
+[node name="Weapons" type="Node" parent="Items"]
+
+[node name="basic_weapon" parent="Items/Weapons" instance=ExtResource("5_iywne")]
