@@ -44,7 +44,6 @@ func stop_restrict_rotation():
 
 	
 func _physics_process(delta):
-	
 	var calculated_rotation_speed = stats.ROTATION_SPEED
 	
 	if restricted_rotation_multiplier != -1:

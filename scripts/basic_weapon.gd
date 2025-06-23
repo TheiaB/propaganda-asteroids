@@ -3,9 +3,9 @@ extends Weapon
 @onready var projectiles: Node = %Projectiles
 @export var damage = 1
 @export var speed = 50
-@export var amount = 4
-@export var delay_between = 0.05
-@export var restricted_roation_multiplier = 0
+@export var amount = 1
+@export var delay_between = 0.0
+@export var restricted_roation_multiplier = -1
 
 func _ready() -> void:
 	projectile_scene = preload("res://scenes/laser.tscn")
