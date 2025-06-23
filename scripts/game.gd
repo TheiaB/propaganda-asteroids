@@ -4,7 +4,7 @@ extends Node3D
 @onready var ship: Ship = $Ship
 
 @onready var zone_home: ZoneHome = $Mission/ZoneHome
-@onready var zone_planets: Array[ZonePlanet] = [$Mission/ZonePlanet, $Mission/ZonePlanet2]
+@onready var zone_planets: Array[ZonePlanet] = [$Mission/ZonePlanet, $Mission/ZonePlanet2, $Mission/ZonePlanet3]
 
 enum DeliveryStates {EMPTY,DELIVERING}
 var current_delivery_state: DeliveryStates = DeliveryStates.EMPTY
