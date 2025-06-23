@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bx2bqpsqh04ct"]
+
+[ext_resource type="Script" uid="uid://duo0608a14l5p" path="res://scripts/zone.gd" id="1_g7a44"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ho42u"]
+size = Vector3(1, 11, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ho42u"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g7a44"]
+albedo_color = Color(0.492785, 0.772921, 0.865512, 1)
+
+[node name="Zone" type="Node3D"]
+script = ExtResource("1_g7a44")
+
+[node name="ZoneArea" type="Area3D" parent="."]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ZoneArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+shape = SubResource("BoxShape3D_ho42u")
+
+[node name="ZoneMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+mesh = SubResource("SphereMesh_ho42u")
+surface_material_override/0 = SubResource("StandardMaterial3D_g7a44")
+
+[connection signal="body_entered" from="ZoneArea" to="." method="_on_player_enter_zone"]

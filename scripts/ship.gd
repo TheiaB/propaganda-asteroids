@@ -66,3 +66,12 @@ func _physics_process(delta):
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		on_collide_with_static_body(collision)
+
+@onready var cargo: MeshInstance3D = $Cargo
+func equip_cargo():
+	cargo.show()
+	pass
+
+func unequip_cargo():
+	cargo.hide()
+	pass

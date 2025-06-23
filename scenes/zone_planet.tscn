@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlotxfarbs74i"]
+
+[ext_resource type="PackedScene" uid="uid://bx2bqpsqh04ct" path="res://scenes/zone.tscn" id="1_7bg85"]
+[ext_resource type="Script" uid="uid://dylkadxmy8i1x" path="res://scripts/zone_planet.gd" id="2_02r6e"]
+
+[node name="ZonePlanet" instance=ExtResource("1_7bg85")]
+script = ExtResource("2_02r6e")

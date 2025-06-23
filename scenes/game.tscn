@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://b3gptuxi7o4ay" path="res://scenes/passive_speed_boost.tscn" id="8_gee14"]
 [ext_resource type="Script" uid="uid://cioq7tti47u63" path="res://scripts/character_stat_controller.gd" id="9_0tnpc"]
 [ext_resource type="Script" uid="uid://xdix5r7xku7d" path="res://scripts/basic_start_stats.gd" id="10_vtaks"]
+[ext_resource type="PackedScene" uid="uid://bvyjbe5rb50yn" path="res://scenes/zone_home.tscn" id="7_gee14"]
+[ext_resource type="PackedScene" uid="uid://dlotxfarbs74i" path="res://scenes/zone_planet.tscn" id="8_0tnpc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_80nbo"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -138,3 +140,13 @@ script = ExtResource("9_0tnpc")
 
 [node name="BasicStartStats" type="Node" parent="CharacterStats"]
 script = ExtResource("10_vtaks")
+[node name="Mission" type="Node" parent="."]
+
+[node name="ZoneHome" parent="Mission" instance=ExtResource("7_gee14")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+
+[node name="ZonePlanet" parent="Mission" instance=ExtResource("8_0tnpc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1)
+
+[node name="ZonePlanet2" parent="Mission" instance=ExtResource("8_0tnpc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1)
