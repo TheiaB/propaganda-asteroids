@@ -2,12 +2,7 @@ extends CharacterBody3D
 
 class_name Ship
 
-@export var ACCELERATION := 2.0
-@export var DECELERATION := 0.0
-@export var MAX_SPEED := 5.0
-@export var ROTATION_SPEED := 1.5
-@export var MIN_SPEED_THRESHOLD := 0.1
-@export var DECELERATION_AFTER_THRESHOLD := 0.1
+@export var stats : CharacterStats
 
 signal player_hit_static_body
 signal laser_shot
@@ -49,21 +44,21 @@ func shoot_laser():
 	
 func _physics_process(delta):
 	if Input.is_action_pressed("left"):
-		rotate_y(ROTATION_SPEED * delta)
+		rotate_y(stats.ROTATION_SPEED * delta)
 	if Input.is_action_pressed("right"):
-		rotate_y(-ROTATION_SPEED * delta)
+		rotate_y(-stats.ROTATION_SPEED * delta)
 
 	var input_vector = Vector3(0, 0, -Input.get_axis("break", "gas"))
 
 	if input_vector != Vector3.ZERO:
 		input_vector = input_vector.normalized()
 		var direction = (global_transform.basis * input_vector)
-		velocity = velocity.move_toward(direction * MAX_SPEED, ACCELERATION * delta)
+		velocity = velocity.move_toward(direction * stats.MAX_SPEED, stats.ACCELERATION * delta)
 	else:
-		if velocity.x <= MIN_SPEED_THRESHOLD and velocity.z <= MIN_SPEED_THRESHOLD:
-			velocity = velocity.move_toward(Vector3.ZERO, DECELERATION_AFTER_THRESHOLD * delta)
+		if velocity.x <= stats.MIN_SPEED_THRESHOLD and velocity.z <= stats.MIN_SPEED_THRESHOLD:
+			velocity = velocity.move_toward(Vector3.ZERO, stats.DECELERATION_AFTER_THRESHOLD * delta)
 		else:
-			velocity = velocity.move_toward(Vector3.ZERO, DECELERATION * delta)
+			velocity = velocity.move_toward(Vector3.ZERO, stats.DECELERATION * delta)
 
 	move_and_slide()
 	for i in get_slide_collision_count():
