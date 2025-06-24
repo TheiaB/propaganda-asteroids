@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://c3nebth5qx3wg" path="res://scripts/camera_3d.gd" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://boprrp0xswaga" path="res://scenes/ship.tscn" id="2_lnu2h"]
 [ext_resource type="ArrayMesh" uid="uid://ntp7v0mg3pja" path="res://assets/models/arrow.obj" id="3_0tnpc"]
-[ext_resource type="Script" uid="uid://hp28h00nhtj6" path="res://scripts/arrow.gd" id="4_vtaks"]
+[ext_resource type="Script" path="res://scripts/arrow.gd" id="4_vtaks"]
 [ext_resource type="PackedScene" uid="uid://ccdafq5nlkpgj" path="res://scenes/basic_weapon.tscn" id="5_iywne"]
 [ext_resource type="PackedScene" uid="uid://cyg2e5xslvje3" path="res://scenes/asteroid_manager.tscn" id="5_p57ef"]
 [ext_resource type="Script" uid="uid://cle63b14ouwvl" path="res://scripts/item.gd" id="5_u5sy4"]
@@ -73,7 +73,7 @@ environment = SubResource("Environment_feb5d")
 unique_name_in_owner = true
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 stats = NodePath("../CharacterStats/BasicStartStats")
-weapon = NodePath("../Items/Weapons/basic_machine_gun")
+weapon = NodePath("../Items/Weapons/basic_weapon")
 shield = NodePath("../Items/Shields/basic_shield")
 
 [node name="ForScale" type="Node" parent="."]

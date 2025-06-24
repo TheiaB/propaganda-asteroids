@@ -4,11 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c36g7ywqssr32"
-valid=false
+path="res://.godot/imported/arrow.blend-5b6e48f436513ef22d196a98a7d6431c.scn"
 
 [deps]
 
 source_file="res://src/arrow.blend"
+dest_files=["res://.godot/imported/arrow.blend-5b6e48f436513ef22d196a98a7d6431c.scn"]
 
 [params]
 
