@@ -52,7 +52,6 @@ shoot={
 3d_physics/layer_2="Ship"
 3d_physics/layer_3="Astroid"
 3d_physics/layer_4="Bullet"
-3d_physics/layer_5="Zones"
 
 [physics]
 
