@@ -1,14 +1,32 @@
 extends RigidBody3D
 
 var move_dir : Vector3 = Vector3.ZERO
-var speed = 100
-var ACCELERATION = 3.0
+var screen_size = DisplayServer.screen_get_size()
 
+@export var speed = 100
 @export var health = 3
-@export var damage = 3
+@export var damage = 1
 
 func _ready() -> void:
 	linear_velocity = move_dir
+	screen_size = get_viewport().get_visible_rect().size
+
+
+func set_move_dir(bound_force : float, target : Node) -> void:
+	var offset : Vector3 = (target.position - position).normalized()
+	move_dir = (offset * bound_force + get_random_screen_offset_point() * (1 - bound_force)).normalized() * speed
+
+
+func get_random_screen_offset_point() -> Vector3:
+	var screen_center = screen_size / 2
+	var max_offset_x = screen_center.x
+	var max_offset_y = screen_center.y
+	var offset = Vector3(
+ 		randf_range(-max_offset_x, max_offset_x),
+		0,
+		randf_range(-max_offset_y, max_offset_y)
+	)
+	return Vector3(screen_center.x,0,screen_center.y) + offset
 
 
 func _on_visible_on_screen_notifier_3d_screen_exited() -> void:

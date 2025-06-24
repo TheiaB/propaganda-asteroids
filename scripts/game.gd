@@ -3,6 +3,7 @@ extends Node3D
 
 @onready var zone_home: ZoneHome = $Mission/ZoneHome
 @onready var zone_planets: Array[ZonePlanet] = [$Mission/ZonePlanet, $Mission/ZonePlanet2, $Mission/ZonePlanet3]
+@onready var as_timer : Node = $AsteroidTimer
 
 enum DeliveryStates {EMPTY,DELIVERING}
 var current_delivery_state: DeliveryStates = DeliveryStates.EMPTY
@@ -14,7 +15,7 @@ func _ready():
 	zone_home.player_entered.connect(player_entered_home_zone)
 	for zone_planet:ZonePlanet in zone_planets:
 		zone_planet.player_entered.connect(player_entered_planet_zone)
-	pass
+	as_timer.start()
 	
 
 

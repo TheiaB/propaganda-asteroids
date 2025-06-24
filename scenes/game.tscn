@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://cmd6uvcht5xc5" path="res://scripts/weapon.gd" id="8_ir15t"]
 [ext_resource type="Script" uid="uid://cioq7tti47u63" path="res://scripts/character_stat_controller.gd" id="9_0tnpc"]
 [ext_resource type="Script" uid="uid://xdix5r7xku7d" path="res://scripts/basic_start_stats.gd" id="10_vtaks"]
+[ext_resource type="Script" uid="uid://cyphvjgoc4o6" path="res://scenes/asteroid_timer.gd" id="11_kvpfn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vtaks"]
 transparency = 1
@@ -137,6 +138,10 @@ unique_name_in_owner = true
 [node name="AsteroidManager" parent="." instance=ExtResource("5_p57ef")]
 target_path = NodePath("../Ship")
 
+[node name="AsteroidTimer" type="Timer" parent="."]
+wait_time = 0.5
+script = ExtResource("11_kvpfn")
+
 [node name="Items" type="Node" parent="."]
 script = ExtResource("5_u5sy4")
 
@@ -177,3 +182,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
 
 [node name="ZonePlanet3" parent="Mission" instance=ExtResource("8_0tnpc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -2)
+[connection signal="timeout" from="AsteroidTimer" to="AsteroidManager" method="_on_asteroid_timer_timeout"]
