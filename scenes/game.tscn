@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cnotxnjbhrj4a"]
+[gd_scene load_steps=24 format=3 uid="uid://cnotxnjbhrj4a"]
 
 [ext_resource type="Script" uid="uid://dxicgx2v6rcda" path="res://scripts/game.gd" id="1_lnu2h"]
 [ext_resource type="Script" uid="uid://c3nebth5qx3wg" path="res://scripts/camera_3d.gd" id="1_yqjtg"]
@@ -184,7 +184,7 @@ delay_between = 0.1
 restricted_roation_multiplier = 0.1
 
 [node name="penalty weapon" parent="Items/Weapons" instance=ExtResource("5_iywne")]
-speed = 20
+speed = 5
 delay_between = 1.0
 restricted_roation_multiplier = 1.0
 
@@ -194,6 +194,7 @@ speed = 2
 amount = 20
 delay_between = 0.1
 restricted_roation_multiplier = 3.0
+restricted_movement_multiplier = 0.0
 
 [node name="void pulse" parent="Items/Weapons" instance=ExtResource("5_iywne")]
 damage = 30000
@@ -228,4 +229,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
 
 [node name="ZonePlanet3" parent="Mission" instance=ExtResource("8_0tnpc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -2)
+
 [connection signal="timeout" from="AsteroidTimer" to="AsteroidManager" method="_on_asteroid_timer_timeout"]

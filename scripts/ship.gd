@@ -14,6 +14,7 @@ signal player_hit_static_body
 @onready var muzzle := $Muzzle
 
 var restricted_rotation_multiplier = -1
+var restricted_movement_multiplier = -1
 
 func load_item_attributes():
 	stats.load_attributes(self)
@@ -41,6 +42,12 @@ func start_restrict_rotation(restricted_rotation_multiplier):
 
 func stop_restrict_rotation():
 	self.restricted_rotation_multiplier = -1
+	
+func start_restrict_movement(restricted_movement_multiplier):
+	self.restricted_movement_multiplier = restricted_movement_multiplier
+	
+func stop_restricted_movement():
+	self.restricted_movement_multiplier = -1
 
 	
 func _physics_process(delta):
@@ -48,17 +55,23 @@ func _physics_process(delta):
 	
 	if restricted_rotation_multiplier >= 0.0:
 		calculated_rotation_speed = calculated_rotation_speed * restricted_rotation_multiplier
+		
+	
 	if Input.is_action_pressed("left"):
 		rotate_y(calculated_rotation_speed * delta)
 	if Input.is_action_pressed("right"):
 		rotate_y(-calculated_rotation_speed * delta)
 
 	var input_vector = Vector3(0, 0, -Input.get_axis("break", "gas"))
+	
+	var calculated_max_speed = stats.MAX_SPEED
+	if restricted_movement_multiplier >= 0.0:
+		calculated_max_speed = calculated_max_speed * restricted_movement_multiplier
 
 	if input_vector != Vector3.ZERO:
 		input_vector = input_vector.normalized()
 		var direction = (global_transform.basis * input_vector)
-		velocity = velocity.move_toward(direction * stats.MAX_SPEED, stats.ACCELERATION * delta)
+		velocity = velocity.move_toward(direction * calculated_max_speed, stats.ACCELERATION * delta)
 	else:
 		if velocity.x <= stats.MIN_SPEED_THRESHOLD and velocity.z <= stats.MIN_SPEED_THRESHOLD:
 			velocity = velocity.move_toward(Vector3.ZERO, stats.DECELERATION_AFTER_THRESHOLD * delta)
