@@ -5,7 +5,7 @@ extends Weapon
 @export var speed = 50
 @export var amount = 1
 @export var delay_between = 0.0
-@export var restricted_roation_multiplier = -1
+@export var restricted_roation_multiplier = -1.0
 
 func _ready() -> void:
 	projectile_scene = preload("res://scenes/laser.tscn")
@@ -16,6 +16,7 @@ func shoot_projectile(ship: Ship):
 	for _i in range(amount):
 		if ship:
 			var projectile:Projectile = projectile_scene.instantiate()
+			projectile.ship = ship
 			projectiles.add_child(projectile)
 			projectile.speed = speed
 			projectile.global_position = ship.muzzle.global_position

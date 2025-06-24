@@ -46,7 +46,7 @@ func stop_restrict_rotation():
 func _physics_process(delta):
 	var calculated_rotation_speed = stats.ROTATION_SPEED
 	
-	if restricted_rotation_multiplier != -1:
+	if restricted_rotation_multiplier >= 0.0:
 		calculated_rotation_speed = calculated_rotation_speed * restricted_rotation_multiplier
 	if Input.is_action_pressed("left"):
 		rotate_y(calculated_rotation_speed * delta)
