@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cx8pxw3qcrnim"
-path="res://.godot/imported/space_ship.fbx-34a1efcfd24f9dff9b2bb36e6eac2b46.scn"
+uid="uid://dhubj25omlkk6"
+path="res://.godot/imported/sapce_ship.fbx-8249f3923bec2e5a0cc0df6d479bf5b5.scn"
 
 [deps]
 
-source_file="res://assets/ship/space_ship.fbx"
-dest_files=["res://.godot/imported/space_ship.fbx-34a1efcfd24f9dff9b2bb36e6eac2b46.scn"]
+source_file="res://assets/ship/sapce_ship.fbx"
+dest_files=["res://.godot/imported/sapce_ship.fbx-8249f3923bec2e5a0cc0df6d479bf5b5.scn"]
 
 [params]
 
