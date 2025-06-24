@@ -25,3 +25,6 @@ func shoot_projectile(ship: Ship):
 			await get_tree().create_timer(delay_between).timeout
 	if ship:
 		ship.stop_restrict_rotation()
+
+var MAX_SPEED := 70
+var ROTATION_SPEED := 15

@@ -7,7 +7,7 @@ var spawn_rate_left : float = 0
 var target : Node = null
 
 var asteroid_scene : PackedScene = preload("res://scenes/asteroid.tscn")
-var asteroid_speed : float = 5
+var asteroid_speed : float = 10
 var spawn_distance_offset : float = 20
 
 func _ready() -> void:

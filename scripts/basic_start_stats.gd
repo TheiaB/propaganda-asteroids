@@ -1,9 +1,9 @@
 extends CharacterStats
 
-@export var acc := 4.0
-@export var decc := 0.3
-@export var max_speed := 13.0
-@export var rotation_speed := 5.9
+@export var acc := 5.0
+@export var decc := 0.5
+@export var max_speed := 10.0
+@export var rotation_speed := 7.0
 @export var min_speed_threshold := 5.0
 @export var decc_after_threshold := 0.1
 
