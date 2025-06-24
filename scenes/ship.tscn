@@ -1,14 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://boprrp0xswaga"]
+[gd_scene load_steps=8 format=3 uid="uid://boprrp0xswaga"]
 
 [ext_resource type="Script" uid="uid://bbduxt1lb18ne" path="res://scripts/ship.gd" id="1_2gnfn"]
+[ext_resource type="PackedScene" uid="uid://cx8pxw3qcrnim" path="res://assets/ship/space_ship.fbx" id="2_2gnfn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q631a"]
-size = Vector3(0.707977, 1, 0.704758)
+size = Vector3(2.68066, 1, 0.182983)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_q631a"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2gnfn"]
 albedo_color = Color(0.927587, 0.615252, 0.340187, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2gnfn"]
+size = Vector3(0.480713, 1, 0.591675)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4tobq"]
+size = Vector3(0.411011, 1, 0.728027)
 
 [node name="Ship" type="CharacterBody3D"]
 collision_layer = 2
@@ -16,26 +23,8 @@ collision_mask = 21
 script = ExtResource("1_2gnfn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.246113)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.100112)
 shape = SubResource("BoxShape3D_q631a")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -0.000933482, 0, -0.367492)
-shape = SubResource("BoxShape3D_q631a")
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.411865, 0)
-size = Vector3(1.71826, 0.17627, 1)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D2"]
-transform = Transform3D(0.707105, 0, 0.707105, 0, 1, 0, -0.707105, 0, 0.707105, 0.76285, 0, -0.810236)
-operation = 2
-size = Vector3(1, 1, 1.75757)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D2"]
-transform = Transform3D(0.707105, 0, -0.707105, 0, 1, 0, 0.707105, 0, 0.707105, 0.763, 0, 0.81)
-operation = 2
-size = Vector3(1, 1, 1.75757)
 
 [node name="Muzzle" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.982466)
@@ -45,3 +34,18 @@ transform = Transform3D(0.5, 0, 0, 0, 0.25, 0, 0, 0, 0.5, 0, -0.5, 1)
 visible = false
 mesh = SubResource("CylinderMesh_q631a")
 surface_material_override/0 = SubResource("StandardMaterial3D_2gnfn")
+
+[node name="space_ship" parent="." instance=ExtResource("2_2gnfn")]
+transform = Transform3D(-0.3, 0, -2.62268e-08, 0, 0.3, 0, 2.62268e-08, 0, -0.3, 0, 0, 0)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0470698)
+shape = SubResource("BoxShape3D_2gnfn")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1468, 0, 0.215924)
+shape = SubResource("BoxShape3D_4tobq")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.147, 0, 0.216)
+shape = SubResource("BoxShape3D_4tobq")
