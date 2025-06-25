@@ -19,6 +19,10 @@ var destination_planet:ZonePlanet
 @onready var start_scene: Node2D = $UI/start_scene
 @onready var camera_3d: Player_Camera = %Camera3D
 
+@export_group("💸 PLAYER RESOURCES")
+@export_range(0, 100, 1) var resource_money:int = 50
+@export_range(0, 100, 1) var resource_fuel:int = 50
+
 func _ready():
 	zone_home.player_entered.connect(player_entered_home_zone)
 	for zone_planet:ZonePlanet in zone_planets:
@@ -77,3 +81,10 @@ func _on_start_run_start_run() -> void:
 	
 func _on_asteroid_timer_timeout() -> void:
 	asteroid_manager.create_asteroid(ship)
+	
+@onready var label_money_amount: Label = $UI/IngameInterface/LabelMoneyAmount
+
+func change_money_by(value:int):
+	resource_money += value
+	label_money_amount.text = str(resource_money)
+	pass

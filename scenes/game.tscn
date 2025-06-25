@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cnotxnjbhrj4a"]
+[gd_scene load_steps=23 format=3 uid="uid://cnotxnjbhrj4a"]
 
 [ext_resource type="Script" uid="uid://dxicgx2v6rcda" path="res://scripts/game.gd" id="1_lnu2h"]
 [ext_resource type="Script" uid="uid://c3nebth5qx3wg" path="res://scripts/camera_3d.gd" id="1_yqjtg"]
@@ -12,6 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://b3gptuxi7o4ay" path="res://scenes/items/generic_items/passive_speed_boost.tscn" id="8_gee14"]
 [ext_resource type="Script" uid="uid://cyphvjgoc4o6" path="res://scenes/asteroid_timer.gd" id="11_kvpfn"]
 [ext_resource type="Script" uid="uid://d2nyiaa7kskvf" path="res://scripts/ItemManager.gd" id="16_ca42v"]
+[ext_resource type="Texture2D" uid="uid://bfnedgbgrilvy" path="res://assets/ui/T_shop.png" id="16_rysoc"]
+[ext_resource type="PackedScene" uid="uid://hcmibft8yacr" path="res://scenes/ui/item_panel.tscn" id="17_264po"]
+[ext_resource type="Texture2D" uid="uid://b30g40cinouoo" path="res://assets/ui/T_mission.png" id="17_ssvqc"]
 [ext_resource type="PackedScene" uid="uid://c16pnf7ty4o08" path="res://scenes/start_run.tscn" id="18_ssvqc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vtaks"]
@@ -97,6 +100,144 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -2)
 [node name="ItemManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("16_ca42v")
+[node name="IngameInterface" type="CanvasLayer" parent="UI"]
+layer = 2
+
+[node name="ColorRect" type="ColorRect" parent="UI/IngameInterface"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -256.0
+offset_bottom = 80.0
+grow_horizontal = 0
+color = Color(0, 0, 0, 0.25098)
+
+[node name="LabelFuel" type="Label" parent="UI/IngameInterface"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -241.0
+offset_top = 40.0
+offset_right = -188.0
+offset_bottom = 63.0
+grow_horizontal = 0
+text = "Fuel"
+
+[node name="HSliderFuelAmount" type="HSlider" parent="UI/IngameInterface"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -157.0
+offset_top = 40.0
+offset_right = -29.0
+offset_bottom = 56.0
+grow_horizontal = 0
+value = 50.0
+editable = false
+scrollable = false
+
+[node name="LabelMoney" type="Label" parent="UI/IngameInterface"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -241.0
+offset_top = 10.0
+offset_right = -188.0
+offset_bottom = 33.0
+grow_horizontal = 0
+text = "Money"
+
+[node name="LabelMoneyAmount" type="Label" parent="UI/IngameInterface"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -155.0
+offset_top = 10.0
+offset_right = -102.0
+offset_bottom = 33.0
+grow_horizontal = 0
+text = "$$$"
+
+[node name="ShopMissionInterfaces" type="CanvasLayer" parent="UI"]
+
+[node name="TabContainer" type="TabContainer" parent="UI/ShopMissionInterfaces"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tab_alignment = 1
+current_tab = 0
+
+[node name="Shop" type="TabBar" parent="UI/ShopMissionInterfaces/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Wallpaper" type="TextureRect" parent="UI/ShopMissionInterfaces/TabContainer/Shop"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("16_rysoc")
+expand_mode = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/ShopMissionInterfaces/TabContainer/Shop"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -392.0
+offset_right = 392.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="UI/ShopMissionInterfaces/TabContainer/Shop/ScrollContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="ItemPanel" parent="UI/ShopMissionInterfaces/TabContainer/Shop/ScrollContainer/GridContainer" instance=ExtResource("17_264po")]
+layout_mode = 2
+
+[node name="ItemPanel2" parent="UI/ShopMissionInterfaces/TabContainer/Shop/ScrollContainer/GridContainer" instance=ExtResource("17_264po")]
+layout_mode = 2
+
+[node name="ItemPanel3" parent="UI/ShopMissionInterfaces/TabContainer/Shop/ScrollContainer/GridContainer" instance=ExtResource("17_264po")]
+layout_mode = 2
+
+[node name="ItemPanel4" parent="UI/ShopMissionInterfaces/TabContainer/Shop/ScrollContainer/GridContainer" instance=ExtResource("17_264po")]
+layout_mode = 2
+
+[node name="ItemPanel5" parent="UI/ShopMissionInterfaces/TabContainer/Shop/ScrollContainer/GridContainer" instance=ExtResource("17_264po")]
+layout_mode = 2
+
+[node name="ItemPanel6" parent="UI/ShopMissionInterfaces/TabContainer/Shop/ScrollContainer/GridContainer" instance=ExtResource("17_264po")]
+layout_mode = 2
+
+[node name="ItemPanel7" parent="UI/ShopMissionInterfaces/TabContainer/Shop/ScrollContainer/GridContainer" instance=ExtResource("17_264po")]
+layout_mode = 2
+
+[node name="ItemPanel8" parent="UI/ShopMissionInterfaces/TabContainer/Shop/ScrollContainer/GridContainer" instance=ExtResource("17_264po")]
+layout_mode = 2
+
+[node name="Mission" type="TabBar" parent="UI/ShopMissionInterfaces/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Wallpaper2" type="TextureRect" parent="UI/ShopMissionInterfaces/TabContainer/Mission"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("17_ssvqc")
+expand_mode = 1
 
 [connection signal="timeout" from="AsteroidTimer" to="." method="_on_asteroid_timer_timeout"]
 [connection signal="timeout" from="AsteroidTimer" to="AsteroidManager" method="_on_asteroid_timer_timeout"]
