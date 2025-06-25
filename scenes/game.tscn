@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cnotxnjbhrj4a"]
+[gd_scene load_steps=20 format=3 uid="uid://cnotxnjbhrj4a"]
 
 [ext_resource type="Script" uid="uid://dxicgx2v6rcda" path="res://scripts/game.gd" id="1_lnu2h"]
 [ext_resource type="Script" uid="uid://c3nebth5qx3wg" path="res://scripts/camera_3d.gd" id="1_yqjtg"]
@@ -37,11 +37,10 @@ glow_enabled = true
 [node name="Game" type="Node3D"]
 script = ExtResource("1_lnu2h")
 
-[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("follow_target")]
+[node name="Camera3D" type="Camera3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5, 0)
 script = ExtResource("1_yqjtg")
-follow_target = NodePath("")
 smooth_speed = 3.5
 
 [node name="Arrow" type="MeshInstance3D" parent="Camera3D"]
@@ -59,13 +58,6 @@ shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_feb5d")
-
-[node name="Ship" parent="." node_paths=PackedStringArray("stats", "weapon", "shield") instance=ExtResource("2_lnu2h")]
-unique_name_in_owner = true
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
-stats = NodePath("../CharacterStats/BasicStartStats")
-weapon = NodePath("../Items/Weapons/penalty weapon")
-shield = NodePath("../Items/Shields/basic_shield")
 
 [node name="Projectiles" type="Node" parent="."]
 unique_name_in_owner = true
@@ -159,8 +151,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
 [node name="ZonePlanet3" parent="Mission" instance=ExtResource("8_0tnpc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -2)
 
-[connection signal="timeout" from="AsteroidTimer" to="AsteroidManager" method="_on_asteroid_timer_timeout"]
-
 [node name="UI" type="Node" parent="."]
 
 [node name="death_scene" parent="UI" instance=ExtResource("5_ca42v")]
@@ -168,5 +158,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -2)
 [node name="start_scene" parent="UI" instance=ExtResource("18_ssvqc")]
 
 [connection signal="timeout" from="AsteroidTimer" to="." method="_on_asteroid_timer_timeout"]
+[connection signal="timeout" from="AsteroidTimer" to="AsteroidManager" method="_on_asteroid_timer_timeout"]
 [connection signal="next_run" from="UI/death_scene" to="." method="_on_death_scene_next_run"]
 [connection signal="start_run" from="UI/start_scene" to="." method="_on_start_run_start_run"]
