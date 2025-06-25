@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cnotxnjbhrj4a"]
+[gd_scene load_steps=24 format=3 uid="uid://cnotxnjbhrj4a"]
 
 [ext_resource type="Script" uid="uid://dxicgx2v6rcda" path="res://scripts/game.gd" id="1_lnu2h"]
 [ext_resource type="Script" uid="uid://c3nebth5qx3wg" path="res://scripts/camera_3d.gd" id="1_yqjtg"]
@@ -66,7 +66,7 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 
 [node name="AsteroidTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.1
 script = ExtResource("11_kvpfn")
 
 [node name="Items" type="Node" parent="."]
@@ -132,6 +132,7 @@ restricted_roation_multiplier = 0.2
 [node name="Shields" type="Node" parent="Items"]
 
 [node name="basic_shield" parent="Items/Shields" instance=ExtResource("7_u5sy4")]
+health = 20
 
 [node name="Generic_Items" type="Node" parent="Items"]
 
