@@ -2,9 +2,11 @@
 
 [ext_resource type="Script" uid="uid://d81mlak124np" path="res://scripts/start_run.gd" id="1_7pvjo"]
 
-[node name="start_run" type="Node2D"]
+[node name="start_scene" type="Node2D"]
 script = ExtResource("1_7pvjo")
 
 [node name="Button" type="Button" parent="."]
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 469.0
+offset_top = 467.0
+offset_right = 670.0
+offset_bottom = 516.0

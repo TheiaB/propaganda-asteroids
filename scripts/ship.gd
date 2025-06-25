@@ -14,12 +14,28 @@ signal ship_died
 
 @onready var muzzle := $Muzzle
 
+func create(camera: Player_Camera):
+	var ship: Ship = preload("res://scenes/ship.tscn").instantiate()
+	ship.weapon = preload("res://scenes/basic_weapon.tscn").instantiate()
+	ship.add_child(ship.weapon)	
+	ship.shield = preload("res://scenes/basic_shield.tscn").instantiate()
+	ship.add_child(ship.shield)	
+	ship.stats = preload("res://scenes/basic_start_stats.tscn").instantiate()
+	ship.add_child(ship.stats)
+	ship.transform = ship.transform.scaled(Vector3(0.5, 0.5, 0.5))
+	camera.follow_target = ship
+	
+	return ship
+
 var restricted_rotation_multiplier = -1
 var restricted_movement_multiplier = -1
 
 func load_item_attributes():
-	stats.load_attributes(self)
+	stats = preload("res://scenes/basic_start_stats.tscn").instantiate()
 	
+	print(global_position)
+	stats.load_attributes(self)
+		
 	for item in items:
 		item.load_attributes(self)
 

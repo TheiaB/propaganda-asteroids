@@ -2,13 +2,13 @@ extends MeshInstance3D
 class_name Arrow3D
 
 var destination_position:Vector3
-@onready var ship: Ship = %Ship
+
+var ship: Ship
 
 var direction:Vector2
 var angle:float
 
 func _process(_delta: float) -> void:
-	
 	if ship:
 		direction = Vector2(destination_position[0],destination_position[2]) - Vector2(ship.position[0],ship.position[2])
 	else:

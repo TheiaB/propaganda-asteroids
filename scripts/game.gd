@@ -1,17 +1,21 @@
 extends Node3D
-@onready var ship: Ship = $Ship
+
 
 @onready var zone_home: ZoneHome = $Mission/ZoneHome
 @onready var zone_planets: Array[ZonePlanet] = [$Mission/ZonePlanet, $Mission/ZonePlanet2, $Mission/ZonePlanet3]
 @onready var as_timer : Node = $AsteroidTimer
+@onready var asteroid_manager: asteroid_manager = %AsteroidManager
+
+var ship: Ship
 
 enum DeliveryStates {EMPTY,DELIVERING}
 var current_delivery_state: DeliveryStates = DeliveryStates.EMPTY
 
 var destination_planet:ZonePlanet
 @onready var arrow: Arrow3D = $Camera3D/Arrow
-@onready var camera_3d: Camera3D = $Camera3D
 @onready var death_scene: Node2D = $UI/death_scene
+@onready var start_scene: Node2D = $UI/start_scene
+@onready var camera_3d: Player_Camera = %Camera3D
 
 func _ready():
 	zone_home.player_entered.connect(player_entered_home_zone)
@@ -28,6 +32,7 @@ func player_entered_home_zone(_zone):
 		current_delivery_state = DeliveryStates.DELIVERING
 		ship.equip_cargo()
 		destination_planet = zone_planets.pick_random()
+		arrow.ship = ship
 		arrow.destination_position = destination_planet.global_position
 		arrow.process_mode = Node.PROCESS_MODE_INHERIT
 		arrow.show()
@@ -49,9 +54,20 @@ func player_entered_planet_zone(zone:ZonePlanet):
 
 func _on_ship_ship_died() -> void:
 	death_scene.visible = true
-	
+
 func start_run() -> void:
-	print("sui")	
+	if ship != null:
+		ship.queue_free()
+	ship = Ship.new().create(camera_3d)
+	add_child(ship)
+	death_scene.visible = false
+	start_scene.visible = false
 
 func _on_death_scene_next_run() -> void:
 	start_run()
+
+func _on_start_run_start_run() -> void:
+	start_run()
+	
+func _on_asteroid_timer_timeout() -> void:
+	asteroid_manager.create_asteroid(ship)

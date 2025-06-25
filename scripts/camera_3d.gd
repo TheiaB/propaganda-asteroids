@@ -1,4 +1,5 @@
 extends Camera3D
+class_name Player_Camera
 
 @export var follow_target: Node3D
 
@@ -10,5 +11,3 @@ func _process(delta: float) -> void:
 		var target_pos = follow_target.global_transform.origin + offset
 		var current_pos = global_transform.origin
 		global_transform.origin = current_pos.lerp(target_pos, smooth_speed * delta)
-	#position.z = ship.position.z	
-	#position.x = ship.position.x

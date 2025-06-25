@@ -11,9 +11,6 @@ var spawn_distance_offset : float = 20
 func _ready() -> void:
 	target = get_node_or_null(target_path)
 
-func _process(delta : float) -> void:
-	pass
-
 func get_new_asteroid_position() -> Vector3:
 	var rand_ang: float = randf_range(0, 2 * PI)
 	# Use cosine and sine to get direction on the XZ-plane
@@ -37,8 +34,9 @@ func spawn_asteroid(bound_force : float, hp : float, max_speed : float, amount :
 
 		add_sibling(asteroid)
 
-
-func _on_asteroid_timer_timeout() -> void:
-	if target == null:
+func create_asteroid(ship):
+	if target == null and ship != null:
+		target = ship
+	elif target == null and ship == null:
 		return
 	spawn_asteroid(0.5, 1, 7, 1)

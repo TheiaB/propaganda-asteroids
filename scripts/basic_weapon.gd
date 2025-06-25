@@ -1,6 +1,5 @@
 extends Weapon
 
-@onready var projectiles: Node = %Projectiles
 @export var damage = 1
 @export var speed = 130
 @export var amount = 1
@@ -19,7 +18,7 @@ func shoot_projectile(ship: Ship):
 		if ship:
 			var projectile:Projectile = projectile_scene.instantiate()
 			projectile.ship = ship
-			projectiles.add_child(projectile)
+			ship.add_child(projectile)
 			projectile.speed = speed
 			projectile.global_position = ship.muzzle.global_position
 			projectile.rotation = ship.rotation

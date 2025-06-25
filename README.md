@@ -1,6 +1,10 @@
 # propaganda-asteroids
 
 
+
+# Problem:
+- [ ] fix basic weapon -> projectiles
+
 # TODOs
 - [ ] Items
 - [ ] Missions + Planets
