@@ -29,11 +29,13 @@ func get_random_screen_offset_point() -> Vector3:
 	return Vector3(screen_center.x,0,screen_center.y) + offset
 
 	
-func _on_area_3d_area_entered(bullet: Projectile) -> void:
-	health -= bullet.damage
-	bullet.queue_free()
-	if health <= 0:
-		queue_free()
+func _on_area_3d_area_entered(area : Area3D) -> void:
+	if area is Projectile:
+		var bullet := area as Projectile
+		health -= bullet.damage
+		bullet.queue_free()
+		if health <= 0:
+			queue_free()
 
 
 func _on_area_3d_body_entered(ship: Ship) -> void:

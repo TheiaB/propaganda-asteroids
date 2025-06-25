@@ -6,7 +6,7 @@ class_name asteroid_manager
 var target : Node = null
 
 var asteroid_scene : PackedScene = preload("res://scenes/asteroid.tscn")
-var spawn_distance_offset : float = 20
+var spawn_distance_offset : float = 10
 var asteroid_types = [
 	preload("res://scenes/asteroid.tscn"),
 	preload("res://scenes/small_asteroid.tscn"),
@@ -71,3 +71,8 @@ func spawn_random_asteroid(bound_force : float):
 #TODO
 func spawn_planet_asteroid():
 	pass
+
+
+func _on_area_3d_body_exited(body: Node3D) -> void:
+	if body.is_in_group("Asteroids"):
+		queue_free()

@@ -4,11 +4,11 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_akfqu"]
 friction = 0.5
-bounce = 0.2
+bounce = 0.4
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0md28"]
 
-[node name="Asteroid" type="RigidBody3D"]
+[node name="Asteroid" type="RigidBody3D" groups=["Asteroids"]]
 collision_layer = 4
 collision_mask = 14
 mass = 71.966

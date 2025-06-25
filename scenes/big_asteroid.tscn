@@ -3,6 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://dxb46wibjrce3" path="res://scenes/asteroid.tscn" id="1_r0lib"]
 
 [node name="Asteroid" instance=ExtResource("1_r0lib")]
+mass = 220.212
+speed = 5
+damage = 2
 
 [node name="CSGSphere3D" parent="." index="0"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
