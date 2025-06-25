@@ -1,7 +1,7 @@
 extends Weapon
 
 @export var damage = 1
-@export var speed = 130
+@export var speed = 10
 @export var amount = 1
 @export var delay_between = 0.0
 @export var restricted_roation_multiplier = -1.0
