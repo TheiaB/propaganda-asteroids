@@ -6,6 +6,7 @@ extends Node3D
 @onready var as_timer : Node = $AsteroidTimer
 @onready var asteroid_manager: asteroid_manager = %AsteroidManager
 @onready var projectiles: Node = %Projectiles
+@onready var item_manager: ItemManager = %ItemManager
 
 var ship: Ship
 
@@ -23,6 +24,9 @@ func _ready():
 	for zone_planet:ZonePlanet in zone_planets:
 		zone_planet.player_entered.connect(player_entered_planet_zone)
 	as_timer.start()
+	
+	print(item_manager.get_all_items())
+	
 
 
 func player_entered_home_zone(_zone):

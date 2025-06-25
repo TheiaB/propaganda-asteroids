@@ -15,8 +15,8 @@ var projectiles_node: Node
 @onready var muzzle := $Muzzle
 
 func createBasic(camera: Player_Camera, projectiles_node: Node):
-	var _weapon = preload("res://scenes/basic_weapon.tscn").instantiate()
-	var _shield = preload("res://scenes/basic_shield.tscn").instantiate()
+	var _weapon = preload("res://scenes/items/weapons/basic_weapon.tscn").instantiate()
+	var _shield = preload("res://scenes/items/shields/basic_shield.tscn").instantiate()
 	var _stats = preload("res://scenes/basic_start_stats.tscn").instantiate()
 	return create(camera, projectiles_node, _weapon, _shield, _stats)
 
