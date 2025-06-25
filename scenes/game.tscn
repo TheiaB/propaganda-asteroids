@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cnotxnjbhrj4a"]
+[gd_scene load_steps=22 format=3 uid="uid://cnotxnjbhrj4a"]
 
 [ext_resource type="Script" uid="uid://dxicgx2v6rcda" path="res://scripts/game.gd" id="1_lnu2h"]
 [ext_resource type="Script" uid="uid://c3nebth5qx3wg" path="res://scripts/camera_3d.gd" id="1_yqjtg"]
@@ -6,13 +6,9 @@
 [ext_resource type="Script" uid="uid://hp28h00nhtj6" path="res://scripts/arrow.gd" id="4_vtaks"]
 [ext_resource type="PackedScene" uid="uid://bc51efbyjg2sg" path="res://scenes/death_scene.tscn" id="5_ca42v"]
 [ext_resource type="PackedScene" uid="uid://cyg2e5xslvje3" path="res://scenes/asteroids/asteroid_manager.tscn" id="5_p57ef"]
-[ext_resource type="Script" uid="uid://cle63b14ouwvl" path="res://scripts/item.gd" id="5_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://bvyjbe5rb50yn" path="res://scenes/zones/zone_home.tscn" id="7_gee14"]
 [ext_resource type="PackedScene" uid="uid://dlotxfarbs74i" path="res://scenes/zones/zone_planet.tscn" id="8_0tnpc"]
-[ext_resource type="PackedScene" uid="uid://b3gptuxi7o4ay" path="res://scenes/items/generic_items/passive_speed_boost.tscn" id="8_gee14"]
 [ext_resource type="Script" uid="uid://cyphvjgoc4o6" path="res://scripts/asteroids/asteroid_timer.gd" id="11_kvpfn"]
-[ext_resource type="Script" uid="uid://d2nyiaa7kskvf" path="res://scripts/ItemManager.gd" id="16_ca42v"]
-[ext_resource type="Script" uid="uid://cyphvjgoc4o6" path="res://scenes/asteroid_timer.gd" id="11_kvpfn"]
 [ext_resource type="Script" uid="uid://clblkwtktv1u7" path="res://scripts/ui/item_grid_container.gd" id="14_264po"]
 [ext_resource type="Texture2D" uid="uid://bfnedgbgrilvy" path="res://assets/ui/T_shop.png" id="16_rysoc"]
 [ext_resource type="Texture2D" uid="uid://b30g40cinouoo" path="res://assets/ui/T_mission.png" id="17_ssvqc"]
@@ -40,13 +36,11 @@ glow_enabled = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_5newe"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_rysoc"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ir15t"]
 viewport_path = NodePath(".")
 
 [node name="Game" type="Node"]
 script = ExtResource("1_lnu2h")
-resource_money = null
-resource_fuel = null
 
 [node name="Camera3D" type="Camera3D" parent="."]
 unique_name_in_owner = true
@@ -80,13 +74,6 @@ unique_name_in_owner = true
 [node name="AsteroidTimer" type="Timer" parent="."]
 wait_time = 0.1
 script = ExtResource("11_kvpfn")
-
-[node name="Items" type="Node" parent="."]
-script = ExtResource("5_u5sy4")
-
-[node name="Generic_Items" type="Node" parent="Items"]
-
-[node name="passive_speed_boost" parent="Items/Generic_Items" instance=ExtResource("8_gee14")]
 
 [node name="Mission" type="Node" parent="."]
 
@@ -167,6 +154,7 @@ grow_horizontal = 0
 text = "$$$"
 
 [node name="ShopMissionInterfaces" type="CanvasLayer" parent="UI"]
+visible = false
 
 [node name="TabContainer" type="TabContainer" parent="UI/ShopMissionInterfaces"]
 anchors_preset = 15
@@ -287,7 +275,7 @@ alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="UI/ShopMissionInterfaces/TabContainer/Shop/PurchaseInterface/HBoxContainer/ItemPreview"]
 layout_mode = 2
-texture = SubResource("ViewportTexture_rysoc")
+texture = SubResource("ViewportTexture_ir15t")
 stretch_mode = 3
 
 [node name="ItemTitle" type="Label" parent="UI/ShopMissionInterfaces/TabContainer/Shop/PurchaseInterface/HBoxContainer/ItemPreview"]
@@ -338,13 +326,7 @@ texture = ExtResource("17_ssvqc")
 expand_mode = 1
 
 [connection signal="timeout" from="AsteroidTimer" to="." method="_on_asteroid_timer_timeout"]
-[connection signal="timeout" from="AsteroidTimer" to="AsteroidManager" method="_on_asteroid_timer_timeout"]
 [connection signal="next_run" from="UI/death_scene" to="." method="_on_death_scene_next_run"]
 [connection signal="start_run" from="UI/start_scene" to="." method="_on_start_run_start_run"]
-[connection signal="gui_input" from="UI/ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer/GridContainer/ItemPanel" to="UI/ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer/GridContainer/ItemPanel" method="_on_gui_input"]
-[connection signal="gui_input" from="UI/ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer/GridContainer/@Panel@29726" to="UI/ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer/GridContainer/@Panel@29726" method="_on_gui_input"]
-[connection signal="gui_input" from="UI/ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer/GridContainer/@Panel@29727" to="UI/ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer/GridContainer/@Panel@29727" method="_on_gui_input"]
-[connection signal="gui_input" from="UI/ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer/GridContainer/@Panel@29728" to="UI/ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer/GridContainer/@Panel@29728" method="_on_gui_input"]
-[connection signal="gui_input" from="UI/ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer/GridContainer/@Panel@29729" to="UI/ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer/GridContainer/@Panel@29729" method="_on_gui_input"]
 
 [editable path="UI/ShopMissionInterfaces/TabContainer/Shop/PurchaseInterface/HBoxContainer/ItemPreview/ItemSubViewport"]

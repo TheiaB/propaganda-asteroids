@@ -14,13 +14,13 @@ var projectiles_node: Node
 
 @onready var muzzle := $Muzzle
 
-func createBasic(camera: Player_Camera, projectiles_node: Node):
+func createBasic(camera: Player_Camera, _projectiles_node: Node):
 	var _weapon = preload("res://scenes/items/weapons/basic_weapon.tscn").instantiate()
 	var _shield = preload("res://scenes/items/shields/basic_shield.tscn").instantiate()
 	var _stats = preload("res://scenes/basic_start_stats.tscn").instantiate()
-	return create(camera, projectiles_node, _weapon, _shield, _stats)
+	return create(camera, _projectiles_node, _weapon, _shield, _stats)
 
-func create(camera: Player_Camera, projectiles_node: Node, _weapon: Weapon, _shield: Shield, _stats: CharacterStats):
+func create(camera: Player_Camera, _projectiles_node: Node, _weapon: Weapon, _shield: Shield, _stats: CharacterStats):
 	var ship: Ship = preload("res://scenes/ship.tscn").instantiate()
 	ship.weapon = _weapon
 	ship.add_child(ship.weapon)	
@@ -29,7 +29,7 @@ func create(camera: Player_Camera, projectiles_node: Node, _weapon: Weapon, _shi
 	ship.stats = _stats
 	ship.add_child(ship.stats)
 	ship.transform = ship.transform.scaled(Vector3(0.5, 0.5, 0.5))
-	ship.projectiles_node = projectiles_node
+	ship.projectiles_node = _projectiles_node
 	camera.follow_target = ship
 	
 	return ship
@@ -60,14 +60,14 @@ func _process(_delta):
 	if Input.is_action_just_pressed("shoot"):
 		weapon.shoot_projectile(self)
 		
-func start_restrict_rotation(restricted_rotation_multiplier):
-	self.restricted_rotation_multiplier = restricted_rotation_multiplier
+func start_restrict_rotation(_restricted_rotation_multiplier):
+	self.restricted_rotation_multiplier = _restricted_rotation_multiplier
 
 func stop_restrict_rotation():
 	self.restricted_rotation_multiplier = -1
 	
-func start_restrict_movement(restricted_movement_multiplier):
-	self.restricted_movement_multiplier = restricted_movement_multiplier
+func start_restrict_movement(_restricted_movement_multiplier):
+	self.restricted_movement_multiplier = _restricted_movement_multiplier
 	
 func stop_restricted_movement():
 	self.restricted_movement_multiplier = -1
@@ -102,8 +102,6 @@ func _physics_process(delta):
 			velocity = velocity.move_toward(Vector3.ZERO, stats.DECELERATION * delta)
 
 	move_and_slide()
-	for i in get_slide_collision_count():
-		var collision = get_slide_collision(i)
 
 @onready var cargo: MeshInstance3D = $Cargo
 func equip_cargo():

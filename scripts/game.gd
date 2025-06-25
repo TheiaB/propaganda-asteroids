@@ -4,9 +4,8 @@ extends Node
 @onready var zone_home: ZoneHome = $Mission/ZoneHome
 @onready var zone_planets: Array[ZonePlanet] = [$Mission/ZonePlanet, $Mission/ZonePlanet2, $Mission/ZonePlanet3]
 @onready var as_timer : Node = $AsteroidTimer
-@onready var asteroid_manager: asteroid_manager = %AsteroidManager
+@onready var asteroid_manager: AsteroidManager = %AsteroidManager
 @onready var projectiles: Node = %Projectiles
-#@onready var item_manager: ItemManager = %ItemManager
 
 var ship: Ship
 var proximity_planet : ZonePlanet
@@ -95,10 +94,7 @@ func _on_start_run_start_run() -> void:
 	spawn_ship()
 	
 func _on_asteroid_timer_timeout() -> void:
-	if proximity_planet :
-		asteroid_manager.create_asteroid(ship, proximity_planet)
-	else:
-		asteroid_manager.create_asteroid(ship, proximity_planet)
+	asteroid_manager.create_asteroid(ship, proximity_planet)
 
 func change_money_by(value:int):
 	resource_money += value

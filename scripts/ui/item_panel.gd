@@ -27,10 +27,10 @@ func update_item():
 		label_price.text = str(price)
 	
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not Engine.is_editor_hint():
 		pass
 
 
-func _on_gui_input(event: InputEvent) -> void:
+func _on_gui_input(_event: InputEvent) -> void:
 	pass # Replace with function body.

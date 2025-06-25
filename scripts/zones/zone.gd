@@ -15,5 +15,5 @@ func _on_zone_proximity_body_entered(_body: Node3D) -> void:
 	proximity_entered.emit(self)
 
 
-func _on_zone_proximity_body_exited(body: Node3D) -> void:
+func _on_zone_proximity_body_exited(_body: Node3D) -> void:
 	proximity_exited.emit()

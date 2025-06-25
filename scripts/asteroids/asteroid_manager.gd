@@ -1,6 +1,6 @@
 extends Node3D
 
-class_name asteroid_manager
+class_name AsteroidManager
 
 @export var target_path : NodePath = ""
 var target : Node = null
