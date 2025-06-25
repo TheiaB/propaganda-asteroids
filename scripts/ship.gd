@@ -4,7 +4,6 @@ class_name Ship
 
 @export var stats : CharacterStats
 
-signal player_hit_static_body
 signal ship_died
 
 
@@ -50,8 +49,6 @@ func load_item_attributes():
 func _ready() -> void:
 	load_item_attributes()
 
-func on_collide_with_static_body(_collision:KinematicCollision3D):
-	emit_signal("player_hit_static_body")
 	
 func on_collision_with_asteroid(damage):
 	shield.sield_health -= damage
@@ -107,7 +104,6 @@ func _physics_process(delta):
 	move_and_slide()
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
-		on_collide_with_static_body(collision)
 
 @onready var cargo: MeshInstance3D = $Cargo
 func equip_cargo():
