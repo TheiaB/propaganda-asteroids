@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://j20qjbheuprs"]
+
+[ext_resource type="Script" uid="uid://yit734t8t3ho" path="res://scripts/items/weapons/basic_weapon.gd" id="1_8pg1c"]
+
+[node name="basic_machine_gun" type="Node"]
+script = ExtResource("1_8pg1c")
+amount = 3
+delay_between = 0.05
+restricted_roation_multiplier = 0.3
+metadata/_custom_type_script = "uid://cmd6uvcht5xc5"

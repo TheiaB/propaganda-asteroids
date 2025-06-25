@@ -1,19 +1,17 @@
-[gd_scene load_steps=20 format=3 uid="uid://cnotxnjbhrj4a"]
+[gd_scene load_steps=18 format=3 uid="uid://cnotxnjbhrj4a"]
 
 [ext_resource type="Script" uid="uid://dxicgx2v6rcda" path="res://scripts/game.gd" id="1_lnu2h"]
 [ext_resource type="Script" uid="uid://c3nebth5qx3wg" path="res://scripts/camera_3d.gd" id="1_yqjtg"]
 [ext_resource type="ArrayMesh" uid="uid://ntp7v0mg3pja" path="res://assets/models/arrow.obj" id="3_0tnpc"]
 [ext_resource type="Script" uid="uid://hp28h00nhtj6" path="res://scripts/arrow.gd" id="4_vtaks"]
 [ext_resource type="PackedScene" uid="uid://bc51efbyjg2sg" path="res://scenes/death_scene.tscn" id="5_ca42v"]
-[ext_resource type="PackedScene" uid="uid://ccdafq5nlkpgj" path="res://scenes/basic_weapon.tscn" id="5_iywne"]
 [ext_resource type="PackedScene" uid="uid://cyg2e5xslvje3" path="res://scenes/asteroid_manager.tscn" id="5_p57ef"]
 [ext_resource type="Script" uid="uid://cle63b14ouwvl" path="res://scripts/item.gd" id="5_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://bvyjbe5rb50yn" path="res://scenes/zone_home.tscn" id="7_gee14"]
-[ext_resource type="PackedScene" uid="uid://dfri2flh1jp1g" path="res://scenes/basic_shield.tscn" id="7_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://dlotxfarbs74i" path="res://scenes/zone_planet.tscn" id="8_0tnpc"]
-[ext_resource type="PackedScene" uid="uid://b3gptuxi7o4ay" path="res://scenes/passive_speed_boost.tscn" id="8_gee14"]
-[ext_resource type="Script" uid="uid://cmd6uvcht5xc5" path="res://scripts/weapon.gd" id="8_ir15t"]
+[ext_resource type="PackedScene" uid="uid://b3gptuxi7o4ay" path="res://scenes/items/generic_items/passive_speed_boost.tscn" id="8_gee14"]
 [ext_resource type="Script" uid="uid://cyphvjgoc4o6" path="res://scenes/asteroid_timer.gd" id="11_kvpfn"]
+[ext_resource type="Script" uid="uid://d2nyiaa7kskvf" path="res://scripts/ItemManager.gd" id="16_ca42v"]
 [ext_resource type="PackedScene" uid="uid://c16pnf7ty4o08" path="res://scenes/start_run.tscn" id="18_ssvqc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vtaks"]
@@ -72,68 +70,6 @@ script = ExtResource("11_kvpfn")
 [node name="Items" type="Node" parent="."]
 script = ExtResource("5_u5sy4")
 
-[node name="Weapons" type="Node" parent="Items"]
-script = ExtResource("8_ir15t")
-
-[node name="basic_weapon" parent="Items/Weapons" instance=ExtResource("5_iywne")]
-damage = 50
-
-[node name="basic_machine_gun" parent="Items/Weapons" instance=ExtResource("5_iywne")]
-amount = 3
-delay_between = 0.05
-restricted_roation_multiplier = 0.3
-
-[node name="test" parent="Items/Weapons" instance=ExtResource("5_iywne")]
-damage = 200
-amount = 2
-delay_between = 0.2
-restricted_roation_multiplier = 0.3
-
-[node name="another weapon" parent="Items/Weapons" instance=ExtResource("5_iywne")]
-damage = 100
-speed = 100
-amount = 2
-delay_between = 0.3
-restricted_roation_multiplier = 0.3
-
-[node name="and another one" parent="Items/Weapons" instance=ExtResource("5_iywne")]
-damage = 500
-speed = 300
-amount = 2
-delay_between = 0.5
-restricted_roation_multiplier = 0.5
-
-[node name="more weapons" parent="Items/Weapons" instance=ExtResource("5_iywne")]
-damage = 100
-speed = 150
-amount = 2
-delay_between = 0.1
-restricted_roation_multiplier = 0.1
-
-[node name="penalty weapon" parent="Items/Weapons" instance=ExtResource("5_iywne")]
-speed = 5
-delay_between = 1.0
-restricted_roation_multiplier = 1.0
-
-[node name="sheild weapon" parent="Items/Weapons" instance=ExtResource("5_iywne")]
-damage = 500
-speed = 2
-amount = 20
-delay_between = 0.1
-restricted_roation_multiplier = 3.0
-restricted_movement_multiplier = 0.0
-
-[node name="void pulse" parent="Items/Weapons" instance=ExtResource("5_iywne")]
-damage = 30000
-speed = 50
-delay_between = 0.1
-restricted_roation_multiplier = 0.2
-
-[node name="Shields" type="Node" parent="Items"]
-
-[node name="basic_shield" parent="Items/Shields" instance=ExtResource("7_u5sy4")]
-health = 20
-
 [node name="Generic_Items" type="Node" parent="Items"]
 
 [node name="passive_speed_boost" parent="Items/Generic_Items" instance=ExtResource("8_gee14")]
@@ -157,6 +93,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -2)
 [node name="death_scene" parent="UI" instance=ExtResource("5_ca42v")]
 
 [node name="start_scene" parent="UI" instance=ExtResource("18_ssvqc")]
+
+[node name="ItemManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("16_ca42v")
 
 [connection signal="timeout" from="AsteroidTimer" to="." method="_on_asteroid_timer_timeout"]
 [connection signal="timeout" from="AsteroidTimer" to="AsteroidManager" method="_on_asteroid_timer_timeout"]

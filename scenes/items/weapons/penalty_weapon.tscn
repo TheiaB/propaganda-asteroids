@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnwsljinrui4o"]
+
+[ext_resource type="Script" uid="uid://yit734t8t3ho" path="res://scripts/items/weapons/basic_weapon.gd" id="1_mg88y"]
+
+[node name="penalty_weapon" type="Node"]
+script = ExtResource("1_mg88y")
+speed = 5
+delay_between = 1.0
+restricted_roation_multiplier = 1.0
+metadata/_custom_type_script = "uid://cmd6uvcht5xc5"
