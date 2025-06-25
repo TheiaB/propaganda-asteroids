@@ -167,7 +167,6 @@ grow_horizontal = 0
 text = "$$$"
 
 [node name="ShopMissionInterfaces" type="CanvasLayer" parent="UI"]
-visible = false
 
 [node name="TabContainer" type="TabContainer" parent="UI/ShopMissionInterfaces"]
 anchors_preset = 15
