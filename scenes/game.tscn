@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cnotxnjbhrj4a"]
+[gd_scene load_steps=16 format=3 uid="uid://cnotxnjbhrj4a"]
 
 [ext_resource type="Script" uid="uid://dxicgx2v6rcda" path="res://scripts/game.gd" id="1_lnu2h"]
 [ext_resource type="Script" uid="uid://c3nebth5qx3wg" path="res://scripts/camera_3d.gd" id="1_yqjtg"]
@@ -6,10 +6,8 @@
 [ext_resource type="Script" uid="uid://hp28h00nhtj6" path="res://scripts/arrow.gd" id="4_vtaks"]
 [ext_resource type="PackedScene" uid="uid://bc51efbyjg2sg" path="res://scenes/death_scene.tscn" id="5_ca42v"]
 [ext_resource type="PackedScene" uid="uid://cyg2e5xslvje3" path="res://scenes/asteroid_manager.tscn" id="5_p57ef"]
-[ext_resource type="Script" uid="uid://cle63b14ouwvl" path="res://scripts/item.gd" id="5_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://bvyjbe5rb50yn" path="res://scenes/zone_home.tscn" id="7_gee14"]
 [ext_resource type="PackedScene" uid="uid://dlotxfarbs74i" path="res://scenes/zone_planet.tscn" id="8_0tnpc"]
-[ext_resource type="PackedScene" uid="uid://b3gptuxi7o4ay" path="res://scenes/items/generic_items/passive_speed_boost.tscn" id="8_gee14"]
 [ext_resource type="Script" uid="uid://cyphvjgoc4o6" path="res://scenes/asteroid_timer.gd" id="11_kvpfn"]
 [ext_resource type="Script" uid="uid://d2nyiaa7kskvf" path="res://scripts/ItemManager.gd" id="16_ca42v"]
 [ext_resource type="PackedScene" uid="uid://c16pnf7ty4o08" path="res://scenes/start_run.tscn" id="18_ssvqc"]
@@ -66,13 +64,6 @@ unique_name_in_owner = true
 [node name="AsteroidTimer" type="Timer" parent="."]
 wait_time = 0.1
 script = ExtResource("11_kvpfn")
-
-[node name="Items" type="Node" parent="."]
-script = ExtResource("5_u5sy4")
-
-[node name="Generic_Items" type="Node" parent="Items"]
-
-[node name="passive_speed_boost" parent="Items/Generic_Items" instance=ExtResource("8_gee14")]
 
 [node name="Mission" type="Node" parent="."]
 
