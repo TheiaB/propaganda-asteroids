@@ -11,18 +11,26 @@ signal ship_died
 @export var weapon: Weapon
 @export var shield: Shield
 @export var items: Array[Generic_Item]
+var projectiles_node: Node
 
 @onready var muzzle := $Muzzle
 
-func create(camera: Player_Camera):
+func createBasic(camera: Player_Camera, projectiles_node: Node):
+	var _weapon = preload("res://scenes/basic_weapon.tscn").instantiate()
+	var _shield = preload("res://scenes/basic_shield.tscn").instantiate()
+	var _stats = preload("res://scenes/basic_start_stats.tscn").instantiate()
+	return create(camera, projectiles_node, _weapon, _shield, _stats)
+
+func create(camera: Player_Camera, projectiles_node: Node, _weapon: Weapon, _shield: Shield, _stats: CharacterStats):
 	var ship: Ship = preload("res://scenes/ship.tscn").instantiate()
-	ship.weapon = preload("res://scenes/basic_weapon.tscn").instantiate()
+	ship.weapon = _weapon
 	ship.add_child(ship.weapon)	
-	ship.shield = preload("res://scenes/basic_shield.tscn").instantiate()
+	ship.shield = _shield
 	ship.add_child(ship.shield)	
-	ship.stats = preload("res://scenes/basic_start_stats.tscn").instantiate()
+	ship.stats = _stats
 	ship.add_child(ship.stats)
 	ship.transform = ship.transform.scaled(Vector3(0.5, 0.5, 0.5))
+	ship.projectiles_node = projectiles_node
 	camera.follow_target = ship
 	
 	return ship

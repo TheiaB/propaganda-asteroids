@@ -5,6 +5,7 @@ extends Node3D
 @onready var zone_planets: Array[ZonePlanet] = [$Mission/ZonePlanet, $Mission/ZonePlanet2, $Mission/ZonePlanet3]
 @onready var as_timer : Node = $AsteroidTimer
 @onready var asteroid_manager: asteroid_manager = %AsteroidManager
+@onready var projectiles: Node = %Projectiles
 
 var ship: Ship
 
@@ -22,8 +23,6 @@ func _ready():
 	for zone_planet:ZonePlanet in zone_planets:
 		zone_planet.player_entered.connect(player_entered_planet_zone)
 	as_timer.start()
-	
-
 
 
 func player_entered_home_zone(_zone):
@@ -52,22 +51,23 @@ func player_entered_planet_zone(zone:ZonePlanet):
 			pass
 	pass
 
-func _on_ship_ship_died() -> void:
+func _on_ship_died():
 	death_scene.visible = true
 
-func start_run() -> void:
+func spawn_ship() -> void:
 	if ship != null:
 		ship.queue_free()
-	ship = Ship.new().create(camera_3d)
+	ship = Ship.new().createBasic(camera_3d, projectiles)
 	add_child(ship)
+	ship.connect("ship_died", _on_ship_died)
 	death_scene.visible = false
 	start_scene.visible = false
 
 func _on_death_scene_next_run() -> void:
-	start_run()
+	spawn_ship()
 
 func _on_start_run_start_run() -> void:
-	start_run()
+	spawn_ship()
 	
 func _on_asteroid_timer_timeout() -> void:
 	asteroid_manager.create_asteroid(ship)

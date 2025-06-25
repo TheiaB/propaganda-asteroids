@@ -18,7 +18,7 @@ func shoot_projectile(ship: Ship):
 		if ship:
 			var projectile:Projectile = projectile_scene.instantiate()
 			projectile.ship = ship
-			ship.add_child(projectile)
+			ship.projectiles_node.add_child(projectile)
 			projectile.speed = speed
 			projectile.global_position = ship.muzzle.global_position
 			projectile.rotation = ship.rotation
