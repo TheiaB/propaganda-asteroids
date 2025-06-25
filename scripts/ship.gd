@@ -5,6 +5,7 @@ class_name Ship
 @export var stats : CharacterStats
 
 signal player_hit_static_body
+signal ship_died
 
 
 @export var weapon: Weapon
@@ -31,6 +32,7 @@ func on_collide_with_static_body(_collision:KinematicCollision3D):
 func on_collision_with_asteroid(damage):
 	shield.sield_health -= damage
 	if shield.sield_health <= 0:
+		emit_signal("ship_died")
 		queue_free()
 	
 func _process(_delta):

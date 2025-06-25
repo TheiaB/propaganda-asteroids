@@ -10,6 +10,8 @@ var current_delivery_state: DeliveryStates = DeliveryStates.EMPTY
 
 var destination_planet:ZonePlanet
 @onready var arrow: Arrow3D = $Camera3D/Arrow
+@onready var camera_3d: Camera3D = $Camera3D
+@onready var death_scene: Node2D = $UI/death_scene
 
 func _ready():
 	zone_home.player_entered.connect(player_entered_home_zone)
@@ -44,3 +46,12 @@ func player_entered_planet_zone(zone:ZonePlanet):
 			print('game: wrong planet')
 			pass
 	pass
+
+func _on_ship_ship_died() -> void:
+	death_scene.visible = true
+	
+func start_run() -> void:
+	
+
+func _on_death_scene_next_run() -> void:
+	start_run()

@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://boprrp0xswaga" path="res://scenes/ship.tscn" id="2_lnu2h"]
 [ext_resource type="ArrayMesh" uid="uid://ntp7v0mg3pja" path="res://assets/models/arrow.obj" id="3_0tnpc"]
 [ext_resource type="Script" uid="uid://hp28h00nhtj6" path="res://scripts/arrow.gd" id="4_vtaks"]
+[ext_resource type="PackedScene" uid="uid://bc51efbyjg2sg" path="res://scenes/death_scene.tscn" id="5_ca42v"]
 [ext_resource type="PackedScene" uid="uid://ccdafq5nlkpgj" path="res://scenes/basic_weapon.tscn" id="5_iywne"]
 [ext_resource type="PackedScene" uid="uid://cyg2e5xslvje3" path="res://scenes/asteroid_manager.tscn" id="5_p57ef"]
 [ext_resource type="Script" uid="uid://cle63b14ouwvl" path="res://scripts/item.gd" id="5_u5sy4"]
@@ -34,16 +35,6 @@ background_mode = 2
 sky = SubResource("Sky_e2o6t")
 tonemap_mode = 2
 glow_enabled = true
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lbhrr"]
-friction = 0.0
-bounce = 1.0
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_e2o6t"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_iywne"]
-friction = 0.5
-bounce = 1.0
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_lnu2h")
@@ -76,61 +67,6 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 stats = NodePath("../CharacterStats/BasicStartStats")
 weapon = NodePath("../Items/Weapons/penalty weapon")
 shield = NodePath("../Items/Shields/basic_shield")
-
-[node name="ForScale" type="Node" parent="."]
-
-[node name="StaticBody3D4" type="StaticBody3D" parent="ForScale"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.9383, 0, -2.10728)
-collision_mask = 3
-physics_material_override = SubResource("PhysicsMaterial_lbhrr")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="ForScale/StaticBody3D4"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ForScale/StaticBody3D4"]
-shape = SubResource("BoxShape3D_e2o6t")
-
-[node name="StaticBody3D5" type="StaticBody3D" parent="ForScale"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6606, 0, -2.07802)
-physics_material_override = SubResource("PhysicsMaterial_iywne")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="ForScale/StaticBody3D5"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ForScale/StaticBody3D5"]
-shape = SubResource("BoxShape3D_e2o6t")
-
-[node name="StaticBody3D6" type="StaticBody3D" parent="ForScale"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.97652, 0, -2.04319)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="ForScale/StaticBody3D6"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ForScale/StaticBody3D6"]
-shape = SubResource("BoxShape3D_e2o6t")
-
-[node name="StaticBody3D3" type="StaticBody3D" parent="ForScale"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.72924, 0, -2.05972)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="ForScale/StaticBody3D3"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ForScale/StaticBody3D3"]
-shape = SubResource("BoxShape3D_e2o6t")
-
-[node name="StaticBody3D2" type="StaticBody3D" parent="ForScale"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.45147, 0, -2.03045)
-collision_layer = 4
-
-[node name="CSGBox3D" type="CSGBox3D" parent="ForScale/StaticBody3D2"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ForScale/StaticBody3D2"]
-shape = SubResource("BoxShape3D_e2o6t")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="ForScale"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.23259, 0, -1.99563)
-collision_mask = 3
-
-[node name="CSGBox3D" type="CSGBox3D" parent="ForScale/StaticBody3D"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ForScale/StaticBody3D"]
-shape = SubResource("BoxShape3D_e2o6t")
 
 [node name="Projectiles" type="Node" parent="."]
 unique_name_in_owner = true
@@ -231,3 +167,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -2)
 
 [connection signal="timeout" from="AsteroidTimer" to="AsteroidManager" method="_on_asteroid_timer_timeout"]
+
+[node name="UI" type="Node" parent="."]
+
+[node name="death_scene" parent="UI" instance=ExtResource("5_ca42v")]
+
+[connection signal="ship_died" from="Ship" to="." method="_on_ship_ship_died"]
+[connection signal="next_run" from="UI/death_scene" to="." method="_on_death_scene_next_run"]

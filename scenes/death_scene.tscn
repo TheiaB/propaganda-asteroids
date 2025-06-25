@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bc51efbyjg2sg"]
+
+[ext_resource type="Script" uid="uid://cgy7mbnkbdtng" path="res://scripts/death_screen.gd" id="1_3idvb"]
+
+[node name="death_scene" type="Node2D"]
+visible = false
+script = ExtResource("1_3idvb")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 464.0
+offset_top = 352.0
+offset_right = 692.0
+offset_bottom = 497.0
+text = "Reset
+"
