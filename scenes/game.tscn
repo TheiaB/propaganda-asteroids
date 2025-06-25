@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cnotxnjbhrj4a"]
+[gd_scene load_steps=26 format=3 uid="uid://cnotxnjbhrj4a"]
 
 [ext_resource type="Script" uid="uid://dxicgx2v6rcda" path="res://scripts/game.gd" id="1_lnu2h"]
 [ext_resource type="Script" uid="uid://c3nebth5qx3wg" path="res://scripts/camera_3d.gd" id="1_yqjtg"]
@@ -40,7 +40,7 @@ glow_enabled = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_5newe"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_1kice"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_264po"]
 viewport_path = NodePath(".")
 
 [node name="Game" type="Node"]
@@ -106,9 +106,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -2)
 
 [node name="start_scene" parent="UI" instance=ExtResource("18_ssvqc")]
 
-[node name="ItemManager" type="Node" parent="."]
-unique_name_in_owner = true
-script = ExtResource("16_ca42v")
 [node name="IngameInterface" type="CanvasLayer" parent="UI"]
 layer = 2
 
@@ -168,6 +165,7 @@ grow_horizontal = 0
 text = "$$$"
 
 [node name="ShopMissionInterfaces" type="CanvasLayer" parent="UI"]
+visible = false
 
 [node name="TabContainer" type="TabContainer" parent="UI/ShopMissionInterfaces"]
 anchors_preset = 15
@@ -176,9 +174,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 tab_alignment = 1
-current_tab = 0
+current_tab = 1
 
 [node name="Shop" type="TabBar" parent="UI/ShopMissionInterfaces/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -301,17 +300,20 @@ alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="UI/ShopMissionInterfaces/TabContainer/Shop/PurchaseInterface/HBoxContainer/ItemPreview"]
 layout_mode = 2
-texture = SubResource("ViewportTexture_1kice")
+texture = SubResource("ViewportTexture_264po")
 stretch_mode = 3
 
 [node name="ItemTitle" type="Label" parent="UI/ShopMissionInterfaces/TabContainer/Shop/PurchaseInterface/HBoxContainer/ItemPreview"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "ITEM TITLE"
+text = "Cubium"
 horizontal_alignment = 1
 
 [node name="ItemSubViewport" parent="UI/ShopMissionInterfaces/TabContainer/Shop/PurchaseInterface/HBoxContainer/ItemPreview" instance=ExtResource("19_1kice")]
 own_world_3d = true
+
+[node name="MeshInstance3D" parent="UI/ShopMissionInterfaces/TabContainer/Shop/PurchaseInterface/HBoxContainer/ItemPreview/ItemSubViewport/Pivot" index="0"]
+mesh = SubResource("BoxMesh_5newe")
 
 [node name="ItemDetails" type="VBoxContainer" parent="UI/ShopMissionInterfaces/TabContainer/Shop/PurchaseInterface/HBoxContainer"]
 layout_mode = 2
@@ -321,17 +323,11 @@ alignment = 1
 [node name="RichTextLabel" type="RichTextLabel" parent="UI/ShopMissionInterfaces/TabContainer/Shop/PurchaseInterface/HBoxContainer/ItemDetails"]
 custom_minimum_size = Vector2(0, 256)
 layout_mode = 2
-text = "The standard interstellar cruiser is a marvel of modular engineering, designed to accommodate a wide range of missions across the galaxy. Its streamlined hull is constructed from reinforced duranium alloys, providing exceptional resistance to micrometeoroids and hostile energy weapons. The ship’s primary propulsion system employs a fusion-powered plasma drive, capable of sustained acceleration and efficient travel between star systems. Secondary maneuvering thrusters, positioned at key points along the fuselage, allow for precise control during docking procedures and combat engagements.
-
-Inside, the vessel features a spacious command bridge with panoramic viewscreens, a fully equipped engineering bay, and modular cargo holds that can be reconfigured for scientific exploration, trade, or military operations. Crew quarters are ergonomically designed to maximize comfort during long voyages, with advanced life support systems ensuring a stable environment regardless of external conditions. The onboard artificial intelligence manages routine operations, navigation, and emergency protocols, freeing the crew to focus on mission objectives.
-
-Armament options include forward-mounted pulse cannons, retractable missile launchers, and defensive shield generators. The ship’s sensor suite is capable of detecting anomalies at great distances, while encrypted communications arrays ensure secure contact with allied forces. Customizable upgrade slots allow players to tailor the ship’s capabilities to their playstyle, whether as a nimble scout, a heavily armed gunship, or a versatile explorer.
-
-This generic spaceship serves as the backbone of any fleet, adaptable to the ever-changing challenges of deep space. Its robust design and advanced technology make it a reliable companion for both novice pilots and seasoned veterans, ready to embark on the next great adventure among the stars."
+text = "The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. "
 
 [node name="Button" type="Button" parent="UI/ShopMissionInterfaces/TabContainer/Shop/PurchaseInterface/HBoxContainer/ItemDetails"]
 layout_mode = 2
-text = "PURCHASE FOR $$$"
+text = "BUY FOR 75$"
 
 [node name="Label" type="Label" parent="UI/ShopMissionInterfaces/TabContainer/Shop/PurchaseInterface/HBoxContainer/ItemDetails"]
 visible = false
@@ -340,7 +336,6 @@ theme_override_font_sizes/font_size = 10
 text = "(read through the full product description)"
 
 [node name="Mission" type="TabBar" parent="UI/ShopMissionInterfaces/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
@@ -353,6 +348,10 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("17_ssvqc")
 expand_mode = 1
+
+[node name="ItemManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("16_ca42v")
 
 [connection signal="timeout" from="AsteroidTimer" to="." method="_on_asteroid_timer_timeout"]
 [connection signal="timeout" from="AsteroidTimer" to="AsteroidManager" method="_on_asteroid_timer_timeout"]
