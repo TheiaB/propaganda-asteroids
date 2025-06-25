@@ -8,6 +8,7 @@ custom_minimum_size = Vector2(256, 288)
 offset_right = 256.0
 offset_bottom = 288.0
 script = ExtResource("1_0k6an")
+description = null
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
@@ -29,10 +30,9 @@ layout_mode = 2
 
 [node name="LabelTitle" type="Label" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "ITEM TITLE"
 
 [node name="LabelPrice" type="Label" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "$$$ PRICE"
+text = "0"
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]

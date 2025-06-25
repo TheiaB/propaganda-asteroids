@@ -4,4 +4,5 @@
 
 [node name="passive_speed_boost" type="Node"]
 script = ExtResource("1_r467o")
+title = "Passive Speed Boost"
 metadata/_custom_type_script = "uid://c3pv4m1xhxmy5"

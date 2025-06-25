@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cnotxnjbhrj4a"]
+[gd_scene load_steps=24 format=3 uid="uid://cnotxnjbhrj4a"]
 
 [ext_resource type="Script" uid="uid://dxicgx2v6rcda" path="res://scripts/game.gd" id="1_lnu2h"]
 [ext_resource type="Script" uid="uid://c3nebth5qx3wg" path="res://scripts/camera_3d.gd" id="1_yqjtg"]
@@ -12,10 +12,10 @@
 [ext_resource type="PackedScene" uid="uid://b3gptuxi7o4ay" path="res://scenes/items/generic_items/passive_speed_boost.tscn" id="8_gee14"]
 [ext_resource type="Script" uid="uid://cyphvjgoc4o6" path="res://scripts/asteroids/asteroid_timer.gd" id="11_kvpfn"]
 [ext_resource type="Script" uid="uid://d2nyiaa7kskvf" path="res://scripts/ItemManager.gd" id="16_ca42v"]
+[ext_resource type="Script" uid="uid://cyphvjgoc4o6" path="res://scenes/asteroid_timer.gd" id="11_kvpfn"]
+[ext_resource type="Script" uid="uid://clblkwtktv1u7" path="res://scripts/ui/item_grid_container.gd" id="14_264po"]
 [ext_resource type="Texture2D" uid="uid://bfnedgbgrilvy" path="res://assets/ui/T_shop.png" id="16_rysoc"]
-[ext_resource type="PackedScene" uid="uid://hcmibft8yacr" path="res://scenes/ui/item_panel.tscn" id="17_264po"]
 [ext_resource type="Texture2D" uid="uid://b30g40cinouoo" path="res://assets/ui/T_mission.png" id="17_ssvqc"]
-[ext_resource type="Texture2D" uid="uid://dngefovq68vbi" path="res://assets/ui/T_item_placeholder2.png" id="18_264po"]
 [ext_resource type="PackedScene" uid="uid://c16pnf7ty4o08" path="res://scenes/start_run.tscn" id="18_ssvqc"]
 [ext_resource type="PackedScene" uid="uid://w4nlxci4ykha" path="res://scenes/ui/item_sub_viewport.tscn" id="19_1kice"]
 [ext_resource type="Script" uid="uid://1w7kefe1b4ai" path="res://scripts/ui/item_purchase_interface.gd" id="19_5newe"]
@@ -40,11 +40,13 @@ glow_enabled = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_5newe"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_264po"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_rysoc"]
 viewport_path = NodePath(".")
 
 [node name="Game" type="Node"]
 script = ExtResource("1_lnu2h")
+resource_money = null
+resource_fuel = null
 
 [node name="Camera3D" type="Camera3D" parent="."]
 unique_name_in_owner = true
@@ -174,10 +176,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 tab_alignment = 1
-current_tab = 1
+current_tab = 0
 
 [node name="Shop" type="TabBar" parent="UI/ShopMissionInterfaces/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -238,23 +239,10 @@ vertical_scroll_mode = 2
 [node name="GridContainer" type="GridContainer" parent="UI/ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer"]
 layout_mode = 2
 columns = 3
-
-[node name="ItemPanel" parent="UI/ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer/GridContainer" instance=ExtResource("17_264po")]
-layout_mode = 2
-visual = ExtResource("18_264po")
-title = "Blue Item"
-price = 50
-
-[node name="ItemPanel2" parent="UI/ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer/GridContainer" instance=ExtResource("17_264po")]
-layout_mode = 2
-
-[node name="ItemPanel3" parent="UI/ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer/GridContainer" instance=ExtResource("17_264po")]
-layout_mode = 2
-
-[node name="ItemPanel4" parent="UI/ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer/GridContainer" instance=ExtResource("17_264po")]
-layout_mode = 2
+script = ExtResource("14_264po")
 
 [node name="PurchaseInterface" type="Control" parent="UI/ShopMissionInterfaces/TabContainer/Shop"]
+visible = false
 custom_minimum_size = Vector2(800, 420)
 layout_mode = 1
 anchors_preset = 8
@@ -300,7 +288,7 @@ alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="UI/ShopMissionInterfaces/TabContainer/Shop/PurchaseInterface/HBoxContainer/ItemPreview"]
 layout_mode = 2
-texture = SubResource("ViewportTexture_264po")
+texture = SubResource("ViewportTexture_rysoc")
 stretch_mode = 3
 
 [node name="ItemTitle" type="Label" parent="UI/ShopMissionInterfaces/TabContainer/Shop/PurchaseInterface/HBoxContainer/ItemPreview"]
@@ -336,6 +324,7 @@ theme_override_font_sizes/font_size = 10
 text = "(read through the full product description)"
 
 [node name="Mission" type="TabBar" parent="UI/ShopMissionInterfaces/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
@@ -349,13 +338,14 @@ grow_vertical = 2
 texture = ExtResource("17_ssvqc")
 expand_mode = 1
 
-[node name="ItemManager" type="Node" parent="."]
-unique_name_in_owner = true
-script = ExtResource("16_ca42v")
-
 [connection signal="timeout" from="AsteroidTimer" to="." method="_on_asteroid_timer_timeout"]
 [connection signal="timeout" from="AsteroidTimer" to="AsteroidManager" method="_on_asteroid_timer_timeout"]
 [connection signal="next_run" from="UI/death_scene" to="." method="_on_death_scene_next_run"]
 [connection signal="start_run" from="UI/start_scene" to="." method="_on_start_run_start_run"]
+[connection signal="gui_input" from="UI/ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer/GridContainer/ItemPanel" to="UI/ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer/GridContainer/ItemPanel" method="_on_gui_input"]
+[connection signal="gui_input" from="UI/ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer/GridContainer/@Panel@29726" to="UI/ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer/GridContainer/@Panel@29726" method="_on_gui_input"]
+[connection signal="gui_input" from="UI/ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer/GridContainer/@Panel@29727" to="UI/ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer/GridContainer/@Panel@29727" method="_on_gui_input"]
+[connection signal="gui_input" from="UI/ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer/GridContainer/@Panel@29728" to="UI/ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer/GridContainer/@Panel@29728" method="_on_gui_input"]
+[connection signal="gui_input" from="UI/ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer/GridContainer/@Panel@29729" to="UI/ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer/GridContainer/@Panel@29729" method="_on_gui_input"]
 
 [editable path="UI/ShopMissionInterfaces/TabContainer/Shop/PurchaseInterface/HBoxContainer/ItemPreview/ItemSubViewport"]

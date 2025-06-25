@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://dfri2flh1jp1g"]
+[gd_scene load_steps=4 format=3 uid="uid://dfri2flh1jp1g"]
 
 [ext_resource type="Script" uid="uid://b2jwtio5e2xm" path="res://scripts/items/shields/basic_shield.gd" id="1_7uk2p"]
+[ext_resource type="Texture2D" uid="uid://cfbgnn5317wo0" path="res://assets/ui/T_item_placeholder3.png" id="2_wjqgk"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_e1hgv"]
 
 [node name="basic_shield" type="Node"]
 script = ExtResource("1_7uk2p")
+title = "Schild-Schild"
+price = 5
+visual = ExtResource("2_wjqgk")
+visual3D = SubResource("PrismMesh_e1hgv")
+description = "Schildet dich."

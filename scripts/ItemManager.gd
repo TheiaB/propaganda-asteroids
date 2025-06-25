@@ -1,3 +1,4 @@
+@tool
 extends Node
 
 class_name ItemManager
@@ -32,4 +33,11 @@ func get_all_shields() -> Array[Shield]:
 
 func get_all_generic_items()-> Array[Generic_Item]:
 	return generic_items
-	
+
+func get_all_items()-> Array[Item]:
+	var all_items:Array[Item]
+	all_items.append_array(shields)
+	all_items.append_array(weapons)
+	all_items.append_array(generic_items)
+	#maybe sort by price???
+	return all_items

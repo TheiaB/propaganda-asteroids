@@ -6,7 +6,7 @@ extends Node
 @onready var as_timer : Node = $AsteroidTimer
 @onready var asteroid_manager: asteroid_manager = %AsteroidManager
 @onready var projectiles: Node = %Projectiles
-@onready var item_manager: ItemManager = %ItemManager
+#@onready var item_manager: ItemManager = %ItemManager
 
 var ship: Ship
 var proximity_planet : ZonePlanet
@@ -34,7 +34,7 @@ func _ready():
 		zone_planet.proximity_exited.connect(player_exited_planet_proximity)
 	as_timer.start()
 	
-	for w in item_manager.get_all_weapons():
+	for w in GlobalItemManager.get_all_weapons():
 		print(w.weapon_price)
 	
 

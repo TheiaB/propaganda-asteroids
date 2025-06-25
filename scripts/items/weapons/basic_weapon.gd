@@ -7,7 +7,7 @@ extends Weapon
 @export var restricted_roation_multiplier = -1.0
 @export var restricted_movement_multiplier = -1.0
 
-@export var price : int
+#@export var price : int
 
 func _ready() -> void:
 	projectile_scene = preload("res://scenes/laser.tscn")

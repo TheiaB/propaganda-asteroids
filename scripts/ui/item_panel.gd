@@ -6,6 +6,7 @@ class_name ItemPanel
 @export var visual3D:Mesh
 @export var title:String
 @export var price:int
+@export var description:String
 
 @onready var texture_item: TextureRect = $VBoxContainer/TextureRect
 
