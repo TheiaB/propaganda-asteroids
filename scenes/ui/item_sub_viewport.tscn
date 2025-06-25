@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://w4nlxci4ykha"]
+
+[ext_resource type="Script" uid="uid://dql8it0tmlthh" path="res://scripts/ui/item_sub_viewport.gd" id="1_i37lc"]
+[ext_resource type="Texture2D" uid="uid://cdqmk41wrhslm" path="res://icon.svg" id="2_6aweb"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_wjv03"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xt85g"]
+albedo_texture = ExtResource("2_6aweb")
+
+[sub_resource type="Environment" id="Environment_i37lc"]
+ambient_light_source = 2
+ambient_light_color = Color(0, 0.27451, 0.223529, 1)
+
+[node name="ItemSubViewport" type="SubViewport"]
+transparent_bg = true
+size = Vector2i(256, 256)
+script = ExtResource("1_i37lc")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+current = true
+fov = 60.0
+
+[node name="Pivot" type="Marker3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 0.258819, -0.965926, 0, 0.965926, 0.258819, 0, 0, 0)
+mesh = SubResource("TorusMesh_wjv03")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_xt85g")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866025, -0.12941, -0.482963, 0.5, 0.224144, 0.836516, 0, -0.965926, 0.258819, -1, 1, 1)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_i37lc")

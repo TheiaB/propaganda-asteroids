@@ -1,11 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://hcmibft8yacr"]
+[gd_scene load_steps=3 format=3 uid="uid://hcmibft8yacr"]
 
+[ext_resource type="Script" uid="uid://ci0anbyggpyh7" path="res://scripts/ui/item_panel.gd" id="1_0k6an"]
 [ext_resource type="Texture2D" uid="uid://ckad6s5jnpht1" path="res://assets/ui/T_item_placeholder.png" id="1_oqpv0"]
 
 [node name="ItemPanel" type="Panel"]
 custom_minimum_size = Vector2(256, 288)
 offset_right = 256.0
 offset_bottom = 288.0
+script = ExtResource("1_0k6an")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
@@ -25,10 +27,12 @@ texture = ExtResource("1_oqpv0")
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+[node name="LabelTitle" type="Label" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "ITEM TITLE"
 
-[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer"]
+[node name="LabelPrice" type="Label" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "$$$ PRICE"
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

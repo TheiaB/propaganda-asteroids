@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cnotxnjbhrj4a"]
+[gd_scene load_steps=28 format=3 uid="uid://cnotxnjbhrj4a"]
 
 [ext_resource type="Script" uid="uid://dxicgx2v6rcda" path="res://scripts/game.gd" id="1_lnu2h"]
 [ext_resource type="Script" uid="uid://c3nebth5qx3wg" path="res://scripts/camera_3d.gd" id="1_yqjtg"]
@@ -15,7 +15,10 @@
 [ext_resource type="Texture2D" uid="uid://bfnedgbgrilvy" path="res://assets/ui/T_shop.png" id="16_rysoc"]
 [ext_resource type="PackedScene" uid="uid://hcmibft8yacr" path="res://scenes/ui/item_panel.tscn" id="17_264po"]
 [ext_resource type="Texture2D" uid="uid://b30g40cinouoo" path="res://assets/ui/T_mission.png" id="17_ssvqc"]
+[ext_resource type="Texture2D" uid="uid://dngefovq68vbi" path="res://assets/ui/T_item_placeholder2.png" id="18_264po"]
 [ext_resource type="PackedScene" uid="uid://c16pnf7ty4o08" path="res://scenes/start_run.tscn" id="18_ssvqc"]
+[ext_resource type="PackedScene" uid="uid://w4nlxci4ykha" path="res://scenes/ui/item_sub_viewport.tscn" id="19_1kice"]
+[ext_resource type="Script" uid="uid://1w7kefe1b4ai" path="res://scripts/ui/item_purchase_interface.gd" id="19_5newe"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vtaks"]
 transparency = 1
@@ -35,12 +38,18 @@ sky = SubResource("Sky_e2o6t")
 tonemap_mode = 2
 glow_enabled = true
 
-[node name="Game" type="Node3D"]
+[sub_resource type="BoxMesh" id="BoxMesh_5newe"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_1kice"]
+viewport_path = NodePath(".")
+
+[node name="Game" type="Node"]
 script = ExtResource("1_lnu2h")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5, 0)
+current = true
 script = ExtResource("1_yqjtg")
 smooth_speed = 3.5
 
@@ -183,46 +192,152 @@ grow_vertical = 2
 texture = ExtResource("16_rysoc")
 expand_mode = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="UI/ShopMissionInterfaces/TabContainer/Shop"]
+[node name="ShopInterface" type="Control" parent="UI/ShopMissionInterfaces/TabContainer/Shop"]
+custom_minimum_size = Vector2(800, 420)
 layout_mode = 1
-anchors_preset = 13
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -210.0
+offset_right = 400.0
+offset_bottom = 210.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="UI/ShopMissionInterfaces/TabContainer/Shop/ShopInterface"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -392.0
-offset_right = 392.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0862745, 0.203922, 0.2, 0.752941)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/ShopMissionInterfaces/TabContainer/Shop/ShopInterface"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -210.0
+offset_right = 400.0
+offset_bottom = 210.0
 grow_horizontal = 2
 grow_vertical = 2
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="UI/ShopMissionInterfaces/TabContainer/Shop/ScrollContainer"]
+[node name="GridContainer" type="GridContainer" parent="UI/ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer"]
 layout_mode = 2
 columns = 3
 
-[node name="ItemPanel" parent="UI/ShopMissionInterfaces/TabContainer/Shop/ScrollContainer/GridContainer" instance=ExtResource("17_264po")]
+[node name="ItemPanel" parent="UI/ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer/GridContainer" instance=ExtResource("17_264po")]
+layout_mode = 2
+visual = ExtResource("18_264po")
+title = "Blue Item"
+price = 50
+
+[node name="ItemPanel2" parent="UI/ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer/GridContainer" instance=ExtResource("17_264po")]
 layout_mode = 2
 
-[node name="ItemPanel2" parent="UI/ShopMissionInterfaces/TabContainer/Shop/ScrollContainer/GridContainer" instance=ExtResource("17_264po")]
+[node name="ItemPanel3" parent="UI/ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer/GridContainer" instance=ExtResource("17_264po")]
 layout_mode = 2
 
-[node name="ItemPanel3" parent="UI/ShopMissionInterfaces/TabContainer/Shop/ScrollContainer/GridContainer" instance=ExtResource("17_264po")]
+[node name="ItemPanel4" parent="UI/ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer/GridContainer" instance=ExtResource("17_264po")]
 layout_mode = 2
 
-[node name="ItemPanel4" parent="UI/ShopMissionInterfaces/TabContainer/Shop/ScrollContainer/GridContainer" instance=ExtResource("17_264po")]
-layout_mode = 2
+[node name="PurchaseInterface" type="Control" parent="UI/ShopMissionInterfaces/TabContainer/Shop"]
+custom_minimum_size = Vector2(800, 420)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_right = 400.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("19_5newe")
+visual3D = SubResource("BoxMesh_5newe")
+title = "Cubium"
+price = 75
+description = "The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. The Cubium be Cubing. "
 
-[node name="ItemPanel5" parent="UI/ShopMissionInterfaces/TabContainer/Shop/ScrollContainer/GridContainer" instance=ExtResource("17_264po")]
-layout_mode = 2
+[node name="ColorRect" type="ColorRect" parent="UI/ShopMissionInterfaces/TabContainer/Shop/PurchaseInterface"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0862745, 0.203922, 0.2, 0.752941)
 
-[node name="ItemPanel6" parent="UI/ShopMissionInterfaces/TabContainer/Shop/ScrollContainer/GridContainer" instance=ExtResource("17_264po")]
-layout_mode = 2
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/ShopMissionInterfaces/TabContainer/Shop/PurchaseInterface"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="ItemPanel7" parent="UI/ShopMissionInterfaces/TabContainer/Shop/ScrollContainer/GridContainer" instance=ExtResource("17_264po")]
+[node name="ItemPreview" type="VBoxContainer" parent="UI/ShopMissionInterfaces/TabContainer/Shop/PurchaseInterface/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
 
-[node name="ItemPanel8" parent="UI/ShopMissionInterfaces/TabContainer/Shop/ScrollContainer/GridContainer" instance=ExtResource("17_264po")]
+[node name="TextureRect" type="TextureRect" parent="UI/ShopMissionInterfaces/TabContainer/Shop/PurchaseInterface/HBoxContainer/ItemPreview"]
 layout_mode = 2
+texture = SubResource("ViewportTexture_1kice")
+stretch_mode = 3
+
+[node name="ItemTitle" type="Label" parent="UI/ShopMissionInterfaces/TabContainer/Shop/PurchaseInterface/HBoxContainer/ItemPreview"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "ITEM TITLE"
+horizontal_alignment = 1
+
+[node name="ItemSubViewport" parent="UI/ShopMissionInterfaces/TabContainer/Shop/PurchaseInterface/HBoxContainer/ItemPreview" instance=ExtResource("19_1kice")]
+own_world_3d = true
+
+[node name="ItemDetails" type="VBoxContainer" parent="UI/ShopMissionInterfaces/TabContainer/Shop/PurchaseInterface/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/ShopMissionInterfaces/TabContainer/Shop/PurchaseInterface/HBoxContainer/ItemDetails"]
+custom_minimum_size = Vector2(0, 256)
+layout_mode = 2
+text = "The standard interstellar cruiser is a marvel of modular engineering, designed to accommodate a wide range of missions across the galaxy. Its streamlined hull is constructed from reinforced duranium alloys, providing exceptional resistance to micrometeoroids and hostile energy weapons. The ship’s primary propulsion system employs a fusion-powered plasma drive, capable of sustained acceleration and efficient travel between star systems. Secondary maneuvering thrusters, positioned at key points along the fuselage, allow for precise control during docking procedures and combat engagements.
+
+Inside, the vessel features a spacious command bridge with panoramic viewscreens, a fully equipped engineering bay, and modular cargo holds that can be reconfigured for scientific exploration, trade, or military operations. Crew quarters are ergonomically designed to maximize comfort during long voyages, with advanced life support systems ensuring a stable environment regardless of external conditions. The onboard artificial intelligence manages routine operations, navigation, and emergency protocols, freeing the crew to focus on mission objectives.
+
+Armament options include forward-mounted pulse cannons, retractable missile launchers, and defensive shield generators. The ship’s sensor suite is capable of detecting anomalies at great distances, while encrypted communications arrays ensure secure contact with allied forces. Customizable upgrade slots allow players to tailor the ship’s capabilities to their playstyle, whether as a nimble scout, a heavily armed gunship, or a versatile explorer.
+
+This generic spaceship serves as the backbone of any fleet, adaptable to the ever-changing challenges of deep space. Its robust design and advanced technology make it a reliable companion for both novice pilots and seasoned veterans, ready to embark on the next great adventure among the stars."
+
+[node name="Button" type="Button" parent="UI/ShopMissionInterfaces/TabContainer/Shop/PurchaseInterface/HBoxContainer/ItemDetails"]
+layout_mode = 2
+text = "PURCHASE FOR $$$"
+
+[node name="Label" type="Label" parent="UI/ShopMissionInterfaces/TabContainer/Shop/PurchaseInterface/HBoxContainer/ItemDetails"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "(read through the full product description)"
 
 [node name="Mission" type="TabBar" parent="UI/ShopMissionInterfaces/TabContainer"]
 visible = false
@@ -243,3 +358,5 @@ expand_mode = 1
 [connection signal="timeout" from="AsteroidTimer" to="AsteroidManager" method="_on_asteroid_timer_timeout"]
 [connection signal="next_run" from="UI/death_scene" to="." method="_on_death_scene_next_run"]
 [connection signal="start_run" from="UI/start_scene" to="." method="_on_start_run_start_run"]
+
+[editable path="UI/ShopMissionInterfaces/TabContainer/Shop/PurchaseInterface/HBoxContainer/ItemPreview/ItemSubViewport"]
