@@ -1,24 +1,24 @@
 # propaganda-asteroids
 
 
-
-# Problem:
-- [ ] fix basic weapon -> projectiles
-
 # TODOs
-- [ ] Items
-- [ ] Missions + Planets
-- [ ] UI (Missions + Shop)
-- [ ] UI Energy
 - [ ] UI narative
 
-# necessary for asteroids
+# Wants for good game logic:
 
-- [ ] controls
-- [ ] functions:
-    - [ ] spawn x asteroids
-    - [ ] frequency / time between / range between
-    - [ ] included types
-    - [ ] mim/max hp
-    - [ ] Bound force
+## MissionManager
+- [ ] onMissionStart
+- [ ] onMissionSuccess
+- [ ] onMissionFailure?
 
+## AsteroidManager
+- [ ] startAsteroidShower(parameters)
+- [ ] stopAsteroidShower
+- [ ] Multiple Planet support?
+
+## ItemManager
+- [ ] getAllItems
+- [ ] sort
+
+## Maybe UI State Manager
+- [ ] state machine?

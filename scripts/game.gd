@@ -1,7 +1,8 @@
 extends Node
 
+class_name Game
 
-@onready var as_timer : Node = $AsteroidTimer
+#@onready var as_timer : Node = $AsteroidTimer
 @onready var asteroid_manager: AsteroidManager = %AsteroidManager
 @onready var projectiles: Node = %Projectiles
 
@@ -14,16 +15,22 @@ var ship: Ship
 
 @export_group("💸 PLAYER RESOURCES")
 @export_range(0, 100, 1) var resource_money:int = 50
-@export_range(0, 100, 1) var resource_fuel:int = 50
+@export_range(0, 100, 1) var resource_fuel:int = 100
 
 @onready var label_money_amount: Label = $UI/IngameInterface/LabelMoneyAmount
 
 @onready var mission_manager: MissionManager = %MissionManager
+@onready var timer_manager: TimerManager = $TimerManager
+
+
 
 func _ready():
 	mission_manager.init(self, arrow)
-	as_timer.start()
-
+	timer_manager.startAll()
+	
+func _on_fuel_timer_timeout() -> void:
+	resource_fuel -= 10
+	
 func _on_ship_died():
 	death_scene.visible = true
 
