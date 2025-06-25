@@ -37,6 +37,7 @@ config/icon="res://icon.svg"
 
 GlobalItemManager="*res://scenes/managers/global_item_manager.tscn"
 FmodManager="*res://addons/fmod/FmodManager.gd"
+BankLoaderMain="*res://bank_loader_main.gd"
 
 [editor_plugins]
 

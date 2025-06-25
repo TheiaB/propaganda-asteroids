@@ -14,7 +14,9 @@ func _ready() -> void:
 	weapon_damage = damage
 	weapon_price = price
 	
+		
 func shoot_projectile(ship: Ship):
+	$LaserBasic.play_one_shot()
 	ship.start_restrict_rotation(restricted_roation_multiplier)
 	ship.start_restrict_movement(restricted_movement_multiplier)
 	for _i in range(amount):

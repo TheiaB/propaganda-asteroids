@@ -55,3 +55,24 @@ wait_time = 3.0
 one_shot = true
 
 [connection signal="timeout" from="InvincibilityTimer" to="." method="_on_invincibility_timer_timeout"]
+[node name="AsteroidHit" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/Asteroids&Trash/AsteroidHit"
+event_guid = "{58cdd67a-81e7-4e49-beea-f5de1ca0aed3}"
+
+[node name="AsteroidDestroyed" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/Asteroids&Trash/AsteroidDestroy"
+event_guid = "{d4d918f7-ddcd-429e-aa4c-851559723c14}"
+
+[node name="SpaceAmbience" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/SpaceAmbience"
+event_guid = "{63cd800a-72e6-464c-af83-5f815daaf8ab}"
+autoplay = true
+fmod_parameters/PauseScreen/id = 2809566595379070199
+fmod_parameters/PauseScreen = 0.0
+fmod_parameters/PauseScreen/variant_type = 3
+
+[node name="ThrusterStart" type="FmodEventEmitter3D" parent="."]
+
+[node name="ThrusterLoop" type="FmodEventEmitter3D" parent="."]
+
+[node name="ThrusterStop" type="FmodEventEmitter3D" parent="."]
