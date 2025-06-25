@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="ParameterPreset" id="{66b4b6b3-da40-495c-9950-4236adadb449}">
+		<property name="name">
+			<value>Space Decay</value>
+		</property>
+		<relationship name="folder">
+			<destination>{4c4c2460-ced7-4940-a361-5bb5aba7bcf0}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{da15745a-8430-499d-bf04-76b19653dc54}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{da15745a-8430-499d-bf04-76b19653dc54}">
+		<property name="maximum">
+			<value>4</value>
+		</property>
+		<property name="isGlobal">
+			<value>true</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+		<property name="isExposedRecursively">
+			<value>false</value>
+		</property>
+	</object>
+</objects>
