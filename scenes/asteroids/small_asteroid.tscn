@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://bysvkoylakvmh"]
 
-[ext_resource type="PackedScene" uid="uid://dxb46wibjrce3" path="res://scenes/asteroid.tscn" id="1_j6bfp"]
+[ext_resource type="PackedScene" uid="uid://dxb46wibjrce3" path="res://scenes/asteroids/asteroid.tscn" id="1_ckhff"]
 
-[node name="Asteroid" instance=ExtResource("1_j6bfp")]
+[node name="Asteroid" instance=ExtResource("1_ckhff")]
 mass = 30.598
 speed = 9
 health = 1

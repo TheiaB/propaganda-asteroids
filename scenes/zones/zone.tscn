@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bx2bqpsqh04ct"]
+[gd_scene load_steps=6 format=3 uid="uid://bx2bqpsqh04ct"]
 
-[ext_resource type="Script" uid="uid://duo0608a14l5p" path="res://scripts/zone.gd" id="1_g7a44"]
+[ext_resource type="Script" uid="uid://duo0608a14l5p" path="res://scripts/zones/zone.gd" id="1_g7a44"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ho42u"]
 size = Vector3(1, 11, 1)
@@ -9,6 +9,9 @@ size = Vector3(1, 11, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g7a44"]
 albedo_color = Color(0.492785, 0.772921, 0.865512, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0htjo"]
+radius = 3.0
 
 [node name="Zone" type="Node3D"]
 script = ExtResource("1_g7a44")
@@ -26,4 +29,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 mesh = SubResource("SphereMesh_ho42u")
 surface_material_override/0 = SubResource("StandardMaterial3D_g7a44")
 
+[node name="ZoneProximity" type="Area3D" parent="."]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ZoneProximity"]
+shape = SubResource("SphereShape3D_0htjo")
+
 [connection signal="body_entered" from="ZoneArea" to="." method="_on_player_enter_zone"]
+[connection signal="body_entered" from="ZoneProximity" to="." method="_on_zone_proximity_body_entered"]
+[connection signal="body_exited" from="ZoneProximity" to="." method="_on_zone_proximity_body_exited"]

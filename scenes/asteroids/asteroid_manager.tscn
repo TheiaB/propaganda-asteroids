@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cyg2e5xslvje3"]
 
-[ext_resource type="Script" uid="uid://dtr1g4qyerv4l" path="res://scripts/asteroid_manager.gd" id="1_grk4n"]
-[ext_resource type="Script" uid="uid://dsvx12ts8aqr3" path="res://scenes/despawn_area.gd" id="2_gxc2q"]
+[ext_resource type="Script" uid="uid://dtr1g4qyerv4l" path="res://scripts/asteroids/asteroid_manager.gd" id="1_grk4n"]
+[ext_resource type="Script" uid="uid://dsvx12ts8aqr3" path="res://scripts/despawn_area.gd" id="2_gxc2q"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_kywil"]
 radius = 12.0
@@ -10,10 +10,11 @@ radius = 12.0
 script = ExtResource("1_grk4n")
 
 [node name="DespawnArea" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 14
 script = ExtResource("2_gxc2q")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DespawnArea"]
-visible = false
 shape = SubResource("SphereShape3D_kywil")
 
 [connection signal="body_exited" from="DespawnArea" to="." method="_on_area_3d_body_exited"]

@@ -9,6 +9,7 @@ extends Node
 @onready var item_manager: ItemManager = %ItemManager
 
 var ship: Ship
+var proximity_planet : ZonePlanet
 
 enum DeliveryStates {EMPTY,DELIVERING}
 var current_delivery_state: DeliveryStates = DeliveryStates.EMPTY
@@ -23,10 +24,14 @@ var destination_planet:ZonePlanet
 @export_range(0, 100, 1) var resource_money:int = 50
 @export_range(0, 100, 1) var resource_fuel:int = 50
 
+@onready var label_money_amount: Label = $UI/IngameInterface/LabelMoneyAmount
+
 func _ready():
 	zone_home.player_entered.connect(player_entered_home_zone)
 	for zone_planet:ZonePlanet in zone_planets:
 		zone_planet.player_entered.connect(player_entered_planet_zone)
+		zone_planet.proximity_entered.connect(player_entered_planet_proximity)
+		zone_planet.proximity_exited.connect(player_exited_planet_proximity)
 	as_timer.start()
 	
 	for w in item_manager.get_all_weapons():
@@ -44,6 +49,16 @@ func player_entered_home_zone(_zone):
 		arrow.destination_position = destination_planet.global_position
 		arrow.process_mode = Node.PROCESS_MODE_INHERIT
 		arrow.show()
+		
+func player_entered_planet_proximity(zone : ZonePlanet):
+	print('game: player entered planet proximity')
+	if zone.health <= 1 : 
+		proximity_planet = zone
+	#get planet specifics and change music?
+
+func player_exited_planet_proximity():
+	proximity_planet = null
+	print('game: left planet proximity')
 
 func player_entered_planet_zone(zone:ZonePlanet):
 	print('game: player entered planet', zone.name)
@@ -80,9 +95,10 @@ func _on_start_run_start_run() -> void:
 	spawn_ship()
 	
 func _on_asteroid_timer_timeout() -> void:
-	asteroid_manager.create_asteroid(ship)
-	
-@onready var label_money_amount: Label = $UI/IngameInterface/LabelMoneyAmount
+	if proximity_planet :
+		asteroid_manager.create_asteroid(ship, proximity_planet)
+	else:
+		asteroid_manager.create_asteroid(ship, proximity_planet)
 
 func change_money_by(value:int):
 	resource_money += value

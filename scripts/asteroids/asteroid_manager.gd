@@ -5,12 +5,12 @@ class_name asteroid_manager
 @export var target_path : NodePath = ""
 var target : Node = null
 
-var asteroid_scene : PackedScene = preload("res://scenes/asteroid.tscn")
+var asteroid_scene : PackedScene = preload("res://scenes/asteroids/asteroid.tscn")
 var spawn_distance_offset : float = 10
 var asteroid_types = [
-	preload("res://scenes/asteroid.tscn"),
-	preload("res://scenes/small_asteroid.tscn"),
-	preload("res://scenes/big_asteroid.tscn")
+	preload("res://scenes/asteroids/asteroid.tscn"),
+	preload("res://scenes/asteroids/small_asteroid.tscn"),
+	preload("res://scenes/asteroids/big_asteroid.tscn")
 ]
 
 func _ready() -> void:
@@ -31,10 +31,9 @@ func set_rand_asteroid_position() -> Vector3:
 	var spawn_location: Vector3 = Vector3(center.x,0,center.z) + spawn_offset
 	return spawn_location
 	
-#TODO
-func set_planet_asteroid_position():
-	#Get position of planetfactory -> return this spawn_location
-	pass
+func set_planet_asteroid_position(planet : ZonePlanet):
+	#TODO get precise factory locations
+	return Vector3(planet.global_position.x,0,planet.global_position.z)
 
 func spawn_asteroid(bound_force : float, hp : float, max_speed : float, amount : float) -> void:
 	if target == null:
@@ -47,16 +46,14 @@ func spawn_asteroid(bound_force : float, hp : float, max_speed : float, amount :
 		asteroid.set_move_dir(bound_force, target)
 		add_sibling(asteroid)
 
-func create_asteroid(ship):
+func create_asteroid(ship, planet : ZonePlanet):
 	if target == null and ship != null:
 		target = ship
 	elif target == null and ship == null:
 		return
 	var bound_force = randf_range(0.5,1)
 	spawn_random_asteroid(bound_force)
-	#if in proximity of asteroid spawning planet
-	#then spawn those
-	#spawn_planet_asteroid
+	if planet : spawn_planet_asteroid(bound_force, planet)
 	
 
 func spawn_random_asteroid(bound_force : float):
@@ -68,11 +65,17 @@ func spawn_random_asteroid(bound_force : float):
 	asteroid_instance.set_move_dir(bound_force, target)
 	add_sibling(asteroid_instance)
 	
-#TODO
-func spawn_planet_asteroid():
-	pass
+#TODO should use a different move_dir
+func spawn_planet_asteroid(bound_force : float, planet : ZonePlanet):
+	if target == null:
+		return
+	var AsteroidScene = asteroid_types[randi() % asteroid_types.size()]
+	var asteroid_instance = AsteroidScene.instantiate()
+	asteroid_instance.position = set_planet_asteroid_position(planet)
+	asteroid_instance.set_move_dir(bound_force, target)
+	add_sibling(asteroid_instance)
 
 
 func _on_area_3d_body_exited(body: Node3D) -> void:
 	if body.is_in_group("Asteroids"):
-		queue_free()
+		body.queue_free()

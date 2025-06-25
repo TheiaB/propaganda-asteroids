@@ -42,6 +42,3 @@ func _on_area_3d_body_entered(ship: Ship) -> void:
 	ship.on_collision_with_asteroid(ship.weapon.weapon_damage)
 	queue_free()
 	
-#TODO better despawning, also despawning if it doesnt enter camera
-func _on_visible_on_screen_notifier_3d_screen_exited() -> void:
-	queue_free()
