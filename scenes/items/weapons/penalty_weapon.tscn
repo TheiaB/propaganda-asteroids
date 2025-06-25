@@ -7,4 +7,5 @@ script = ExtResource("1_mg88y")
 speed = 5
 delay_between = 1.0
 restricted_roation_multiplier = 1.0
+price = 1
 metadata/_custom_type_script = "uid://cmd6uvcht5xc5"

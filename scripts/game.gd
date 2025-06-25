@@ -25,7 +25,8 @@ func _ready():
 		zone_planet.player_entered.connect(player_entered_planet_zone)
 	as_timer.start()
 	
-	print(item_manager.get_all_weapons())
+	for w in item_manager.get_all_weapons():
+		print(w.weapon_price)
 	
 
 
