@@ -51,7 +51,7 @@ func _on_ship_ship_died() -> void:
 	death_scene.visible = true
 	
 func start_run() -> void:
-	
+	print("sui")	
 
 func _on_death_scene_next_run() -> void:
 	start_run()

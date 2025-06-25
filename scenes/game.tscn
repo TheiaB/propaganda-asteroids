@@ -173,4 +173,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -2)
 [node name="death_scene" parent="UI" instance=ExtResource("5_ca42v")]
 
 [connection signal="ship_died" from="Ship" to="." method="_on_ship_ship_died"]
+[connection signal="timeout" from="AsteroidTimer" to="AsteroidManager" method="_on_asteroid_timer_timeout"]
 [connection signal="next_run" from="UI/death_scene" to="." method="_on_death_scene_next_run"]
