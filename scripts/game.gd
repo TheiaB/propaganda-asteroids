@@ -58,6 +58,7 @@ func spawn_ship() -> void:
 	if ship != null:
 		ship.queue_free()
 	ship = Ship.new().createBasic(camera_3d, projectiles)
+	arrow.ship = ship
 	add_child(ship)
 	ship.connect("ship_died", _on_ship_died)
 	death_scene.visible = false

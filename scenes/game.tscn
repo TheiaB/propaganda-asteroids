@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cnotxnjbhrj4a"]
+[gd_scene load_steps=20 format=3 uid="uid://cnotxnjbhrj4a"]
 
 [ext_resource type="Script" uid="uid://dxicgx2v6rcda" path="res://scripts/game.gd" id="1_lnu2h"]
 [ext_resource type="Script" uid="uid://c3nebth5qx3wg" path="res://scripts/camera_3d.gd" id="1_yqjtg"]
