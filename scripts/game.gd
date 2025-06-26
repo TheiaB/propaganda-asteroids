@@ -78,4 +78,3 @@ func _on_mission_manager_start_mission() -> void:
 
 func _on_mission_manager_finish_mission() -> void:
 	pass # Replace with function body.
-

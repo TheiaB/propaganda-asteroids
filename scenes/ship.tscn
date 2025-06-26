@@ -54,7 +54,6 @@ transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 wait_time = 3.0
 one_shot = true
 
-[connection signal="timeout" from="InvincibilityTimer" to="." method="_on_invincibility_timer_timeout"]
 [node name="AsteroidHit" type="FmodEventEmitter3D" parent="."]
 event_name = "event:/Asteroids&Trash/AsteroidHit"
 event_guid = "{58cdd67a-81e7-4e49-beea-f5de1ca0aed3}"
@@ -82,3 +81,5 @@ event_guid = "{2e8c47f4-6883-4e3c-b28d-07128cc4722a}"
 [node name="ThrusterStop" type="FmodEventEmitter3D" parent="."]
 event_name = "event:/SpaceShipSFX/ShipThrusterStop"
 event_guid = "{a1e76d5d-b242-49a7-b728-0a4dc9298bc1}"
+
+[connection signal="timeout" from="InvincibilityTimer" to="." method="_on_invincibility_timer_timeout"]
