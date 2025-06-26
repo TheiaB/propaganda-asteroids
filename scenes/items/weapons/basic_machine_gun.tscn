@@ -6,6 +6,5 @@
 script = ExtResource("1_8pg1c")
 amount = 3
 delay_between = 0.05
-restricted_roation_multiplier = 0.3
 price = 100
 metadata/_custom_type_script = "uid://cmd6uvcht5xc5"

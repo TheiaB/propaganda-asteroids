@@ -14,7 +14,7 @@
 
 [sub_resource type="BoxMesh" id="BoxMesh_5newe"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_mpd4i"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_id3g5"]
 viewport_path = NodePath(".")
 
 [node name="UIManager" type="Node"]
@@ -210,7 +210,7 @@ alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="ShopMissionInterfaces/TabContainer/Shop/PurchaseInterface/HBoxContainer/ItemPreview"]
 layout_mode = 2
-texture = SubResource("ViewportTexture_mpd4i")
+texture = SubResource("ViewportTexture_id3g5")
 stretch_mode = 3
 
 [node name="ItemTitle" type="Label" parent="ShopMissionInterfaces/TabContainer/Shop/PurchaseInterface/HBoxContainer/ItemPreview"]
