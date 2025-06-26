@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://c16pnf7ty4o08" path="res://scenes/start_run.tscn" id="18_ssvqc"]
 [ext_resource type="PackedScene" uid="uid://w4nlxci4ykha" path="res://scenes/ui/item_sub_viewport.tscn" id="19_1kice"]
 [ext_resource type="Script" uid="uid://1w7kefe1b4ai" path="res://scripts/ui/item_purchase_interface.gd" id="19_5newe"]
+[ext_resource type="PackedScene" uid="uid://b2w72cu2g8cky" path="res://scenes/managers/character_manager.tscn" id="19_264po"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vtaks"]
 transparency = 1
@@ -43,10 +44,9 @@ glow_enabled = true
 [sub_resource type="ViewportTexture" id="ViewportTexture_264po"]
 viewport_path = NodePath(".")
 
-[node name="Game" type="Node" node_paths=PackedStringArray("zoneHome", "zonePlanets")]
+[node name="Game" type="Node" node_paths=PackedStringArray("zoneHome")]
 script = ExtResource("1_lnu2h")
 zoneHome = NodePath("Zones/ZoneHome")
-zonePlanets = [NodePath("Zones/ZonePlanet1"), NodePath("Zones/ZonePlanet2"), NodePath("Zones/ZonePlanet3")]
 
 [node name="Camera3D" type="Camera3D" parent="."]
 unique_name_in_owner = true
@@ -380,6 +380,8 @@ editor_description = ""
 script = null
 
 [node name="SoundManager5000" parent="." instance=ExtResource("14_trtic")]
+[node name="ShipManager" parent="." instance=ExtResource("19_264po")]
+unique_name_in_owner = true
 
 [connection signal="timeout" from="TimerManager/FuelTimer" to="." method="_on_fuel_timer_timeout"]
 [connection signal="next_run" from="UI/death_scene" to="." method="_on_death_scene_next_run"]
