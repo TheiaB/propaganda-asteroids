@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://clblkwtktv1u7" path="res://scripts/ui/item_grid_container.gd" id="14_264po"]
 [ext_resource type="PackedScene" uid="uid://bn6hjlre2x7cy" path="res://scenes/managers/mission_manager.tscn" id="14_trtic"]
 [ext_resource type="Texture2D" uid="uid://bfnedgbgrilvy" path="res://assets/ui/T_shop.png" id="16_rysoc"]
+[ext_resource type="PackedScene" uid="uid://bvyjbe5rb50yn" path="res://scenes/zones/zone_home.tscn" id="17_rysoc"]
 [ext_resource type="Texture2D" uid="uid://b30g40cinouoo" path="res://assets/ui/T_mission.png" id="17_ssvqc"]
 [ext_resource type="PackedScene" uid="uid://c16pnf7ty4o08" path="res://scenes/start_run.tscn" id="18_ssvqc"]
 [ext_resource type="PackedScene" uid="uid://w4nlxci4ykha" path="res://scenes/ui/item_sub_viewport.tscn" id="19_1kice"]
@@ -41,8 +42,10 @@ glow_enabled = true
 [sub_resource type="ViewportTexture" id="ViewportTexture_rysoc"]
 viewport_path = NodePath(".")
 
-[node name="Game" type="Node"]
+[node name="Game" type="Node" node_paths=PackedStringArray("zoneHome", "zonePlanets")]
 script = ExtResource("1_lnu2h")
+zoneHome = NodePath("Zones/ZoneHome")
+zonePlanets = [NodePath("Zones/ZonePlanet1"), NodePath("Zones/ZonePlanet2"), NodePath("Zones/ZonePlanet3")]
 
 [node name="Camera3D" type="Camera3D" parent="."]
 unique_name_in_owner = true
@@ -337,20 +340,20 @@ text = "START MISSION"
 
 [node name="MissionManager" parent="." node_paths=PackedStringArray("basePosition", "zonePlanets") instance=ExtResource("14_trtic")]
 unique_name_in_owner = true
-basePosition = NodePath("BasePosition")
-zonePlanets = [NodePath("ZonePlanet1"), NodePath("ZonePlanet2"), NodePath("ZonePlanet3")]
 
-[node name="BasePosition" type="Node3D" parent="MissionManager"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.30392)
+[node name="Zones" type="Node" parent="."]
 
-[node name="ZonePlanet1" parent="MissionManager" instance=ExtResource("8_0tnpc")]
+[node name="ZonePlanet1" parent="Zones" instance=ExtResource("8_0tnpc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.92632, 0, 0)
 
-[node name="ZonePlanet2" parent="MissionManager" instance=ExtResource("8_0tnpc")]
+[node name="ZonePlanet2" parent="Zones" instance=ExtResource("8_0tnpc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.8301)
 
-[node name="ZonePlanet3" parent="MissionManager" instance=ExtResource("8_0tnpc")]
+[node name="ZonePlanet3" parent="Zones" instance=ExtResource("8_0tnpc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.97382, 0, 0)
+
+[node name="ZoneHome" parent="Zones" instance=ExtResource("17_rysoc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.74538)
 
 [connection signal="timeout" from="TimerManager/AsteroidTimer" to="." method="_on_asteroid_timer_timeout"]
 [connection signal="timeout" from="TimerManager/FuelTimer" to="." method="_on_fuel_timer_timeout"]

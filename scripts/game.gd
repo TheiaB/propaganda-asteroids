@@ -23,9 +23,12 @@ var ship: Ship
 @onready var timer_manager: TimerManager = $TimerManager
 @onready var shop_mission_interface: ShopMissionInterface = %ShopMissionInterfaces
 
+@export var zoneHome: ZoneHome
+@export var zonePlanets: Array[ZonePlanet]
+
 
 func _ready():
-	mission_manager.init(self, arrow)
+	mission_manager.init(arrow, zoneHome, zonePlanets)
 	timer_manager.startAll()
 	
 func _on_fuel_timer_timeout() -> void:
