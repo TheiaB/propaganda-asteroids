@@ -3,12 +3,11 @@
 [ext_resource type="Script" uid="uid://ci0anbyggpyh7" path="res://scripts/ui/item_panel.gd" id="1_0k6an"]
 [ext_resource type="Texture2D" uid="uid://ckad6s5jnpht1" path="res://assets/ui/T_item_placeholder.png" id="1_oqpv0"]
 
-[node name="ItemPanel" type="Panel"]
+[node name="ItemPanel" type="Button"]
 custom_minimum_size = Vector2(256, 288)
 offset_right = 256.0
 offset_bottom = 288.0
 script = ExtResource("1_0k6an")
-description = null
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
@@ -36,3 +35,4 @@ layout_mode = 2
 text = "0"
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

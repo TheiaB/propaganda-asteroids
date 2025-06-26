@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://b3gptuxi7o4ay"]
+[gd_scene load_steps=3 format=3 uid="uid://b3gptuxi7o4ay"]
 
 [ext_resource type="Script" uid="uid://bdsn3msak3gh1" path="res://scripts/items/generic_items/passive_speed_boost.gd" id="1_r467o"]
+[ext_resource type="Texture2D" uid="uid://dngefovq68vbi" path="res://assets/ui/T_item_placeholder2.png" id="2_luwvo"]
 
 [node name="passive_speed_boost" type="Node"]
 script = ExtResource("1_r467o")
 title = "Passive Speed Boost"
+visual = ExtResource("2_luwvo")
+description = "Passively makes you faster etc. meow meow goober"
 metadata/_custom_type_script = "uid://c3pv4m1xhxmy5"

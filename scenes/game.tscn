@@ -11,8 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://dlotxfarbs74i" path="res://scenes/zones/zone_planet.tscn" id="8_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://b3gptuxi7o4ay" path="res://scenes/items/generic_items/passive_speed_boost.tscn" id="8_gee14"]
 [ext_resource type="Script" uid="uid://cyphvjgoc4o6" path="res://scripts/asteroids/asteroid_timer.gd" id="11_kvpfn"]
-[ext_resource type="Script" uid="uid://d2nyiaa7kskvf" path="res://scripts/ItemManager.gd" id="16_ca42v"]
-[ext_resource type="Script" uid="uid://cyphvjgoc4o6" path="res://scenes/asteroid_timer.gd" id="11_kvpfn"]
 [ext_resource type="Script" uid="uid://clblkwtktv1u7" path="res://scripts/ui/item_grid_container.gd" id="14_264po"]
 [ext_resource type="Texture2D" uid="uid://bfnedgbgrilvy" path="res://assets/ui/T_shop.png" id="16_rysoc"]
 [ext_resource type="Texture2D" uid="uid://b30g40cinouoo" path="res://assets/ui/T_mission.png" id="17_ssvqc"]
@@ -167,6 +165,7 @@ grow_horizontal = 0
 text = "$$$"
 
 [node name="ShopMissionInterfaces" type="CanvasLayer" parent="UI"]
+visible = false
 
 [node name="TabContainer" type="TabContainer" parent="UI/ShopMissionInterfaces"]
 anchors_preset = 15
@@ -175,9 +174,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 tab_alignment = 1
-current_tab = 0
+current_tab = 1
 
 [node name="Shop" type="TabBar" parent="UI/ShopMissionInterfaces/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -241,7 +241,6 @@ columns = 3
 script = ExtResource("14_264po")
 
 [node name="PurchaseInterface" type="Control" parent="UI/ShopMissionInterfaces/TabContainer/Shop"]
-visible = false
 custom_minimum_size = Vector2(800, 420)
 layout_mode = 1
 anchors_preset = 8
@@ -323,7 +322,6 @@ theme_override_font_sizes/font_size = 10
 text = "(read through the full product description)"
 
 [node name="Mission" type="TabBar" parent="UI/ShopMissionInterfaces/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
@@ -337,14 +335,25 @@ grow_vertical = 2
 texture = ExtResource("17_ssvqc")
 expand_mode = 1
 
+[node name="Button" type="Button" parent="UI/ShopMissionInterfaces/TabContainer/Mission"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "PICK UP FOR DELIVERY"
+
 [connection signal="timeout" from="AsteroidTimer" to="." method="_on_asteroid_timer_timeout"]
 [connection signal="timeout" from="AsteroidTimer" to="AsteroidManager" method="_on_asteroid_timer_timeout"]
 [connection signal="next_run" from="UI/death_scene" to="." method="_on_death_scene_next_run"]
 [connection signal="start_run" from="UI/start_scene" to="." method="_on_start_run_start_run"]
-[connection signal="gui_input" from="UI/ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer/GridContainer/ItemPanel" to="UI/ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer/GridContainer/ItemPanel" method="_on_gui_input"]
-[connection signal="gui_input" from="UI/ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer/GridContainer/@Panel@29726" to="UI/ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer/GridContainer/@Panel@29726" method="_on_gui_input"]
-[connection signal="gui_input" from="UI/ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer/GridContainer/@Panel@29727" to="UI/ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer/GridContainer/@Panel@29727" method="_on_gui_input"]
-[connection signal="gui_input" from="UI/ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer/GridContainer/@Panel@29728" to="UI/ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer/GridContainer/@Panel@29728" method="_on_gui_input"]
-[connection signal="gui_input" from="UI/ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer/GridContainer/@Panel@29729" to="UI/ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer/GridContainer/@Panel@29729" method="_on_gui_input"]
 
 [editable path="UI/ShopMissionInterfaces/TabContainer/Shop/PurchaseInterface/HBoxContainer/ItemPreview/ItemSubViewport"]

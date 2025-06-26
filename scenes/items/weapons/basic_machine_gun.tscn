@@ -1,11 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://j20qjbheuprs"]
+[gd_scene load_steps=4 format=3 uid="uid://j20qjbheuprs"]
 
 [ext_resource type="Script" uid="uid://yit734t8t3ho" path="res://scripts/items/weapons/basic_weapon.gd" id="1_8pg1c"]
+[ext_resource type="Texture2D" uid="uid://cdqmk41wrhslm" path="res://icon.svg" id="2_xx1un"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_xx1un"]
 
 [node name="basic_machine_gun" type="Node"]
 script = ExtResource("1_8pg1c")
 amount = 3
 delay_between = 0.05
 restricted_roation_multiplier = 0.3
-price = 100
+title = "Basic Machine Gun"
+price = 13
+visual = ExtResource("2_xx1un")
+visual3D = SubResource("CapsuleMesh_xx1un")
+description = "Macht Pew Pew"
 metadata/_custom_type_script = "uid://cmd6uvcht5xc5"

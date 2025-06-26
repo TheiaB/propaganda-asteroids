@@ -1,7 +1,8 @@
 @tool
-extends Panel
+extends Button
 class_name ItemPanel
 
+@export var item:Item
 @export var visual:Texture2D
 @export var visual3D:Mesh
 @export var title:String
@@ -34,3 +35,7 @@ func _process(delta: float) -> void:
 
 func _on_gui_input(event: InputEvent) -> void:
 	pass # Replace with function body.
+
+signal open_item(item:Item)
+func _on_pressed() -> void:
+	open_item.emit(item)

@@ -15,6 +15,7 @@ func init_grid():
 	for item in all_items:
 		var item_instance = ITEM_PANEL.instantiate()
 		
+		item_instance.item = item
 		item_instance.visual 		= item.visual
 		item_instance.visual3D 		= item.visual3D
 		item_instance.title 		= item.title
