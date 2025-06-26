@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cnotxnjbhrj4a"]
+[gd_scene load_steps=27 format=3 uid="uid://cnotxnjbhrj4a"]
 
 [ext_resource type="Script" uid="uid://dxicgx2v6rcda" path="res://scripts/game.gd" id="1_lnu2h"]
 [ext_resource type="Script" uid="uid://c3nebth5qx3wg" path="res://scripts/camera_3d.gd" id="1_yqjtg"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bc51efbyjg2sg" path="res://scenes/death_scene.tscn" id="5_ca42v"]
 [ext_resource type="PackedScene" uid="uid://cyg2e5xslvje3" path="res://scenes/asteroids/asteroid_manager.tscn" id="5_p57ef"]
 [ext_resource type="Script" uid="uid://dti8u68m46th2" path="res://scripts/timer_manager.gd" id="6_ca42v"]
+[ext_resource type="Script" uid="uid://v3yhkitng47m" path="res://scripts/managers/UIManager.gd" id="7_1kice"]
 [ext_resource type="PackedScene" uid="uid://dlotxfarbs74i" path="res://scenes/zones/zone_planet.tscn" id="8_0tnpc"]
 [ext_resource type="Script" uid="uid://dg2rbolnjklge" path="res://scripts/fuel.gd" id="9_ca42v"]
 [ext_resource type="Script" uid="uid://bhrq1l2ba8qeu" path="res://scripts/ui/shop_mission_interfaces.gd" id="10_rysoc"]
@@ -40,12 +41,13 @@ glow_enabled = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_5newe"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_264po"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_1kice"]
 viewport_path = NodePath(".")
 
-[node name="Game" type="Node" node_paths=PackedStringArray("zoneHome")]
+[node name="Game" type="Node" node_paths=PackedStringArray("zoneHome", "zonePlanets")]
 script = ExtResource("1_lnu2h")
 zoneHome = NodePath("Zones/ZoneHome")
+zonePlanets = [NodePath("Zones/ZonePlanet1"), NodePath("Zones/ZonePlanet2"), NodePath("Zones/ZonePlanet3")]
 
 [node name="Camera3D" type="Camera3D" parent="."]
 unique_name_in_owner = true
@@ -68,9 +70,6 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_feb5d")
 
-[node name="Projectiles" type="Node" parent="."]
-unique_name_in_owner = true
-
 [node name="AsteroidManager" parent="." instance=ExtResource("5_p57ef")]
 unique_name_in_owner = true
 
@@ -80,6 +79,7 @@ script = ExtResource("6_ca42v")
 [node name="FuelTimer" type="Timer" parent="TimerManager"]
 
 [node name="UI" type="Node" parent="."]
+script = ExtResource("7_1kice")
 
 [node name="death_scene" parent="UI" instance=ExtResource("5_ca42v")]
 
@@ -269,7 +269,7 @@ alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="UI/ShopMissionInterfaces/TabContainer/Shop/PurchaseInterface/HBoxContainer/ItemPreview"]
 layout_mode = 2
-texture = SubResource("ViewportTexture_264po")
+texture = SubResource("ViewportTexture_1kice")
 stretch_mode = 3
 
 [node name="ItemTitle" type="Label" parent="UI/ShopMissionInterfaces/TabContainer/Shop/PurchaseInterface/HBoxContainer/ItemPreview"]

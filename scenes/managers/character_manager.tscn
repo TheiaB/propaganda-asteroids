@@ -4,3 +4,5 @@
 
 [node name="ShipManager" type="Node"]
 script = ExtResource("1_nxafy")
+
+[node name="Projectiles" type="Node" parent="."]

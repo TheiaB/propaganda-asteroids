@@ -4,8 +4,8 @@ class_name Game
 
 #@onready var as_timer : Node = $AsteroidTimer
 @onready var asteroid_manager: AsteroidManager = %AsteroidManager
-@onready var projectiles: Node = %Projectiles
 @onready var ship_manager: ShipManager = %ShipManager
+@onready var ui_manager: UIManager = $UI
 
 var ship: Ship
 
@@ -31,6 +31,7 @@ func _ready():
 	mission_manager.init(arrow, zoneHome, zonePlanets)
 	timer_manager.startAll()
 	asteroid_manager.init(zonePlanets)
+	ship_manager.init(camera_3d, arrow, self)
 
 
 func _on_fuel_timer_timeout() -> void:
@@ -41,9 +42,14 @@ func _on_ship_died():
 
 func _on_death_scene_next_run() -> void:
 	ship_manager.spawn_ship()
+	mission_manager._finish_mission()
+	ui_manager.setUI("")
+
 
 func _on_start_run_start_run() -> void:
 	ship_manager.spawn_ship()
+	mission_manager._finish_mission()
+	ui_manager.setUI("")
 	
 func change_money_by(value:int):
 	resource_money += value
@@ -65,3 +71,8 @@ func _on_mission_manager_start_mission() -> void:
 
 func _on_mission_manager_finish_mission() -> void:
 	pass # Replace with function body.
+
+func updateShip():
+	asteroid_manager.ship = ship
+	mission_manager.ship = ship
+	ship_manager.ship = ship
