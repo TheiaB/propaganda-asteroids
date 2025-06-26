@@ -33,7 +33,8 @@ func _on_area_3d_area_entered(area : Area3D) -> void:
 	if area is Projectile:
 		var bullet := area as Projectile
 		health -= bullet.damage
-		bullet.queue_free()
+		if bullet.destroyable:
+			bullet.queue_free()
 		if health <= 0:
 			queue_free()
 

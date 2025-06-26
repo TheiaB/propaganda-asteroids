@@ -11,6 +11,7 @@ signal ship_died
 @export var items: Array[Generic_Item]
 var isInvinsible: bool = false
 var projectiles_node: Node
+var charge_start_time : float = 0.0
 
 @onready var muzzle := $Muzzle
 @onready var invincibility_timer: Timer = $InvincibilityTimer
@@ -88,8 +89,23 @@ func on_collision_with_asteroid(damage):
 			queue_free()
 	
 func _process(_delta):
-	if Input.is_action_just_pressed("shoot"):
-		weapon.shoot_projectile(self)
+	if weapon.chargeable:
+		if Input.is_action_pressed("shoot") and weapon.charging == false:
+			weapon.charging = true
+			charge_start_time = Time.get_ticks_msec()
+			start_restrict_rotation(0)
+			start_restrict_movement(0)
+		if Input.is_action_just_released("shoot"):
+			weapon.charging = false
+			stop_restricted_movement()
+			stop_restrict_rotation()
+			var charge_duration = Time.get_ticks_msec() - charge_start_time
+			print(charge_duration)
+			if weapon.charge_timer <= charge_duration:
+				weapon.shoot_projectile(self)
+	else:
+		if Input.is_action_just_pressed("shoot"):
+			weapon.shoot_projectile(self)
 
 	if Input.is_action_pressed("gas"):
 		if not thruster_state_on:

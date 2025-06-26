@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvfnlpcbd4v07"]
+
+[ext_resource type="Script" uid="uid://7etrgc1yilu8" path="res://scripts/items/weapons/basic_railgun.gd" id="1_achn0"]
+
+[node name="basic_railgun" type="Node"]
+script = ExtResource("1_achn0")

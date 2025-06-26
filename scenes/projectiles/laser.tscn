@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://deabg8erk2drj"]
 
-[ext_resource type="Script" uid="uid://b43qkgfrr5ui6" path="res://scripts/laser.gd" id="1_xmihv"]
+[ext_resource type="Script" uid="uid://b43qkgfrr5ui6" path="res://scripts/projectiles/laser.gd" id="1_rlgyd"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5no5p"]
 
@@ -8,7 +8,7 @@
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 collision_layer = 8
 collision_mask = 4
-script = ExtResource("1_xmihv")
+script = ExtResource("1_rlgyd")
 metadata/_custom_type_script = "uid://dmi1bmq3cyxve"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

@@ -1,28 +1,23 @@
 extends Weapon
 
-@export var damage = 1
-@export var speed = 10
+@export var damage = 5
+@export var speed = 100
 @export var amount = 1
-@export var delay_between = 0.0
+@export var delay_between = 50
+@export var charge_timer = 1000
 @export var restricted_rotation_multiplier = -1.0
 @export var restricted_movement_multiplier = -1.0
 
 #@export var price : int
 
 func _ready() -> void:
-	projectile_scene = preload("res://scenes/projectiles/laser.tscn")
+	projectile_scene = preload("res://scenes/projectiles/beam.tscn")
 	weapon_damage = damage
 	weapon_price = price
+	chargeable = true
 	
-		
 func shoot_projectile(ship: Ship):
-<<<<<<< HEAD
-	#$LaserBasic.play_one_shot()
-	SoundManager5000.play_sound(SoundManager5000.get_child(0))
-	ship.start_restrict_rotation(restricted_roation_multiplier)
-=======
 	ship.start_restrict_rotation(restricted_rotation_multiplier)
->>>>>>> 3ea9908 (Laserbeam weapon)
 	ship.start_restrict_movement(restricted_movement_multiplier)
 	for _i in range(amount):
 		if ship:
