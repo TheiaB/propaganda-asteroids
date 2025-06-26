@@ -8,6 +8,8 @@ var camera_3d : Camera3D
 var arrow : Arrow3D
 var game : Game
 
+signal ship_died
+
 func init(_camera_3d: Camera3D, _arrow: Arrow3D, _game: Game) -> void:
 	camera_3d = _camera_3d
 	arrow = _arrow
@@ -19,6 +21,9 @@ func spawn_ship() -> void:
 	ship = Ship.new().createBasic(camera_3d, projectiles)
 	arrow.ship = ship
 	game.add_child(ship)
-	ship.connect("ship_died", game._on_ship_died)
+	ship.connect("ship_died", send_ship_died)
 	game.ship = ship
 	game.updateShip()
+
+func send_ship_died():
+	emit_signal("ship_died")
