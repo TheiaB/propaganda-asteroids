@@ -49,3 +49,9 @@ shape = SubResource("BoxShape3D_4tobq")
 
 [node name="sapce_ship" parent="." instance=ExtResource("2_2gnfn")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+
+[node name="InvincibilityTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="InvincibilityTimer" to="." method="_on_invincibility_timer_timeout"]
