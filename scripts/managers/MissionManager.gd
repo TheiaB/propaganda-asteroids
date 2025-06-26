@@ -16,6 +16,9 @@ var arrow: Arrow3D
 @export var zonePlanets: Array[ZonePlanet]
 @onready var game: Game
 
+signal start_mission
+signal finish_mission
+
 func _ready() -> void:
 	game = get_tree().get_root().get_node("Game")
 	zone_home = preload("res://scenes/zones/zone_home.tscn").instantiate()
@@ -37,15 +40,17 @@ func init(gameScene: Node, _arrow:Arrow3D) -> void:
 func on_home_zone_player_entered(_zone):
 	if(current_delivery_state == DeliveryStates.EMPTY):
 		print('mission: player entered home and picked up cargo')
-		game.open_missions.emit()
-		#start_mission()
+		#game.open_missions.emit()
+		_start_mission()
+		emit_signal("start_mission")
 		
 func player_entered_planet_zone(zone:ZonePlanet):
 	print('mission: player entered planet', zone.name)
 	if(current_delivery_state == DeliveryStates.DELIVERING):
 		if(zone == destination_planet):
 			print('mission: player delivered')
-			finish_mission()
+			_finish_mission()
+			emit_signal("finish_mission")
 		else:
 			print('mission: wrong planet')
 			pass
@@ -64,9 +69,10 @@ func player_exited_planet_proximity():
 func asteroid_timer(asteroid_manager : AsteroidManager):
 	asteroid_manager.create_asteroid(ship, proximity_planet)
 
-func finish_mission():
+func _finish_mission():
 	current_delivery_state = DeliveryStates.EMPTY
-	ship.unequip_cargo()
+	if(ship != null):
+		ship.unequip_cargo()
 	#destination_planet = null
 	#arrow.hide()
 	#arrow.process_mode = Node.PROCESS_MODE_DISABLED
@@ -77,9 +83,10 @@ func finish_mission():
 	#arrow.process_mode = Node.PROCESS_MODE_INHERIT
 	#arrow.show()
 
-func _on_game_start_mission() -> void:
+func _start_mission() -> void:
 	current_delivery_state = DeliveryStates.DELIVERING
-	ship.equip_cargo()
+	if(ship != null):
+		ship.equip_cargo()
 	
 	# Guide to planet
 	destination_planet = zonePlanets.pick_random()

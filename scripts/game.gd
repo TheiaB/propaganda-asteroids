@@ -21,12 +21,7 @@ var ship: Ship
 
 @onready var mission_manager: MissionManager = %MissionManager
 @onready var timer_manager: TimerManager = $TimerManager
-
-signal start_mission()
-signal open_shop()
-signal open_missions()
-signal close_shop_missions()
-signal finish_mission()
+@onready var shop_mission_interface: ShopMissionInterface = %ShopMissionInterfaces
 
 
 func _ready():
@@ -46,7 +41,7 @@ func spawn_ship() -> void:
 	arrow.ship = ship
 	add_child(ship)
 	ship.connect("ship_died", _on_ship_died)
-	ship.connect("ship_died", mission_manager.finish_mission)
+	mission_manager._finish_mission()
 	death_scene.visible = false
 	start_scene.visible = false
 	mission_manager.ship = ship
@@ -64,3 +59,17 @@ func change_money_by(value:int):
 	resource_money += value
 	label_money_amount.text = str(resource_money)
 	pass
+
+
+func _on_mission_button_start() -> void:
+	mission_manager._start_mission()
+	pass # Replace with function body.
+
+
+func _on_mission_manager_start_mission() -> void:
+	shop_mission_interface.close_all()
+	pass # Replace with function body.
+
+
+func _on_mission_manager_finish_mission() -> void:
+	pass # Replace with function body.

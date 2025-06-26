@@ -38,7 +38,7 @@ glow_enabled = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_5newe"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ca42v"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_rysoc"]
 viewport_path = NodePath(".")
 
 [node name="Game" type="Node"]
@@ -146,6 +146,7 @@ grow_horizontal = 0
 text = "$$$"
 
 [node name="ShopMissionInterfaces" type="CanvasLayer" parent="UI"]
+unique_name_in_owner = true
 visible = false
 script = ExtResource("10_rysoc")
 
@@ -268,7 +269,7 @@ alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="UI/ShopMissionInterfaces/TabContainer/Shop/PurchaseInterface/HBoxContainer/ItemPreview"]
 layout_mode = 2
-texture = SubResource("ViewportTexture_ca42v")
+texture = SubResource("ViewportTexture_rysoc")
 stretch_mode = 3
 
 [node name="ItemTitle" type="Label" parent="UI/ShopMissionInterfaces/TabContainer/Shop/PurchaseInterface/HBoxContainer/ItemPreview"]
@@ -351,14 +352,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.8301)
 [node name="ZonePlanet3" parent="MissionManager" instance=ExtResource("8_0tnpc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.97382, 0, 0)
 
-[connection signal="close_shop_missions" from="." to="UI/ShopMissionInterfaces" method="_on_game_close_shop_missions"]
-[connection signal="open_missions" from="." to="UI/ShopMissionInterfaces" method="_on_game_open_missions"]
-[connection signal="open_shop" from="." to="UI/ShopMissionInterfaces" method="_on_game_open_shop"]
-[connection signal="start_mission" from="." to="MissionManager" method="_on_game_start_mission"]
 [connection signal="timeout" from="TimerManager/AsteroidTimer" to="." method="_on_asteroid_timer_timeout"]
 [connection signal="timeout" from="TimerManager/FuelTimer" to="." method="_on_fuel_timer_timeout"]
 [connection signal="next_run" from="UI/death_scene" to="." method="_on_death_scene_next_run"]
 [connection signal="start_run" from="UI/start_scene" to="." method="_on_start_run_start_run"]
+[connection signal="start_mission" from="UI/ShopMissionInterfaces" to="." method="_on_mission_button_start"]
 [connection signal="pressed" from="UI/ShopMissionInterfaces/TabContainer/Mission/Button" to="UI/ShopMissionInterfaces" method="_on_mission_start_button_pressed"]
+[connection signal="finish_mission" from="MissionManager" to="." method="_on_mission_manager_finish_mission"]
+[connection signal="start_mission" from="MissionManager" to="." method="_on_mission_manager_start_mission"]
 
 [editable path="UI/ShopMissionInterfaces/TabContainer/Shop/PurchaseInterface/HBoxContainer/ItemPreview/ItemSubViewport"]
