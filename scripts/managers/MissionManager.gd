@@ -25,6 +25,9 @@ func init(gameScene: Node, _arrow:Arrow3D) -> void:
 	gameScene.add_child(zone_home)
 	zone_home.global_position = basePosition.global_position
 	zone_home.player_entered.connect(on_home_zone_player_entered)
+	# guide to home at first
+	arrow.ship = ship
+	arrow.destination_position = zone_home.global_position
 	
 	for zone_planet in zonePlanets:
 		zone_planet.player_entered.connect(player_entered_planet_zone)
@@ -64,15 +67,23 @@ func asteroid_timer(asteroid_manager : AsteroidManager):
 func finish_mission():
 	current_delivery_state = DeliveryStates.EMPTY
 	ship.unequip_cargo()
-	destination_planet = null
-	arrow.hide()
-	arrow.process_mode = Node.PROCESS_MODE_DISABLED
+	#destination_planet = null
+	#arrow.hide()
+	#arrow.process_mode = Node.PROCESS_MODE_DISABLED
+	
+	# Guide back home
+	#arrow.ship = ship
+	arrow.destination_position = zone_home.global_position
+	#arrow.process_mode = Node.PROCESS_MODE_INHERIT
+	#arrow.show()
 
 func _on_game_start_mission() -> void:
 	current_delivery_state = DeliveryStates.DELIVERING
 	ship.equip_cargo()
+	
+	# Guide to planet
 	destination_planet = zonePlanets.pick_random()
-	arrow.ship = ship
+	#arrow.ship = ship
 	arrow.destination_position = destination_planet.global_position
-	arrow.process_mode = Node.PROCESS_MODE_INHERIT
-	arrow.show()
+	#arrow.process_mode = Node.PROCESS_MODE_INHERIT
+	#arrow.show()

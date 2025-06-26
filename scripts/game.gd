@@ -46,6 +46,7 @@ func spawn_ship() -> void:
 	arrow.ship = ship
 	add_child(ship)
 	ship.connect("ship_died", _on_ship_died)
+	ship.connect("ship_died", mission_manager.finish_mission)
 	death_scene.visible = false
 	start_scene.visible = false
 	mission_manager.ship = ship
