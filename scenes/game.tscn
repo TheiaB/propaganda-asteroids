@@ -6,10 +6,10 @@
 [ext_resource type="Script" uid="uid://hp28h00nhtj6" path="res://scripts/arrow.gd" id="4_vtaks"]
 [ext_resource type="PackedScene" uid="uid://bc51efbyjg2sg" path="res://scenes/death_scene.tscn" id="5_ca42v"]
 [ext_resource type="PackedScene" uid="uid://cyg2e5xslvje3" path="res://scenes/asteroids/asteroid_manager.tscn" id="5_p57ef"]
-[ext_resource type="Script" uid="uid://dti8u68m46th2" path="res://scripts/timer_manager.gd" id="6_ca42v"]
+[ext_resource type="Script" path="res://scripts/timer_manager.gd" id="6_ca42v"]
 [ext_resource type="PackedScene" uid="uid://dlotxfarbs74i" path="res://scenes/zones/zone_planet.tscn" id="8_0tnpc"]
-[ext_resource type="Script" uid="uid://dg2rbolnjklge" path="res://scripts/fuel.gd" id="9_ca42v"]
-[ext_resource type="Script" uid="uid://bhrq1l2ba8qeu" path="res://scripts/ui/shop_mission_interfaces.gd" id="10_rysoc"]
+[ext_resource type="Script" path="res://scripts/fuel.gd" id="9_ca42v"]
+[ext_resource type="Script" path="res://scripts/ui/shop_mission_interfaces.gd" id="10_rysoc"]
 [ext_resource type="Script" uid="uid://clblkwtktv1u7" path="res://scripts/ui/item_grid_container.gd" id="14_264po"]
 [ext_resource type="PackedScene" uid="uid://cqin4vmafyfa7" path="res://scenes/sound_manager_5000.tscn" id="14_trtic"]
 [ext_resource type="Texture2D" uid="uid://bfnedgbgrilvy" path="res://assets/ui/T_shop.png" id="16_rysoc"]
@@ -40,7 +40,7 @@ glow_enabled = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_5newe"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_1kice"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_264po"]
 viewport_path = NodePath(".")
 
 [node name="Game" type="Node" node_paths=PackedStringArray("zoneHome", "zonePlanets")]
@@ -270,7 +270,7 @@ alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="UI/ShopMissionInterfaces/TabContainer/Shop/PurchaseInterface/HBoxContainer/ItemPreview"]
 layout_mode = 2
-texture = SubResource("ViewportTexture_1kice")
+texture = SubResource("ViewportTexture_264po")
 stretch_mode = 3
 
 [node name="ItemTitle" type="Label" parent="UI/ShopMissionInterfaces/TabContainer/Shop/PurchaseInterface/HBoxContainer/ItemPreview"]
@@ -366,5 +366,7 @@ bank_paths = ["res://PropGames/Build/Desktop/Master.strings.bank", "res://PropGa
 [connection signal="start_run" from="UI/start_scene" to="." method="_on_start_run_start_run"]
 [connection signal="start_mission" from="UI/ShopMissionInterfaces" to="." method="_on_mission_button_start"]
 [connection signal="pressed" from="UI/ShopMissionInterfaces/TabContainer/Mission/Button" to="UI/ShopMissionInterfaces" method="_on_mission_start_button_pressed"]
+[connection signal="finish_mission" from="MissionManager" to="." method="_on_mission_manager_finish_mission"]
+[connection signal="start_mission" from="MissionManager" to="." method="_on_mission_manager_start_mission"]
 
 [editable path="UI/ShopMissionInterfaces/TabContainer/Shop/PurchaseInterface/HBoxContainer/ItemPreview/ItemSubViewport"]

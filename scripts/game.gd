@@ -73,6 +73,7 @@ func _on_mission_button_start() -> void:
 func _on_mission_manager_start_mission() -> void:
 	if ship:
 		ship.activate_docking_behaviour()
+	print('helo')
 	shop_mission_interface.open_missions()
 
 
