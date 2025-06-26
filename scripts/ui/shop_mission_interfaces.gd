@@ -1,15 +1,11 @@
 extends CanvasLayer
 class_name ShopMissionInterface
 
-@onready var game: Game = %Game
 @onready var shop: TabBar = $TabContainer/Shop
 @onready var missions: TabBar = $TabContainer/Mission
 
 
 signal start_mission
-
-func _ready():
-	game = get_tree().get_root().get_node("Game")
 
 func open_missions() -> void:
 	self.show()

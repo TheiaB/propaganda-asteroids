@@ -15,11 +15,22 @@ var projectiles_node: Node
 @onready var muzzle := $Muzzle
 @onready var invincibility_timer: Timer = $InvincibilityTimer
 
+var is_on_port: bool = false
+
+func activate_docking_behaviour():
+	is_on_port = true
+	setInvinsibility(true)
+
+func activate_set_sail_behaviour(_delay):
+	is_on_port = false
+	delayedInvinsibilityReset(_delay)
+	
+
 func setInvinsibility(_isInvinsible:bool):
 	isInvinsible = _isInvinsible
 	for child in get_children():
 		if child is CollisionShape3D:
-			child.disabled = isInvinsible
+			child.set_deferred("disabled", isInvinsible) 
 
 func delayedInvinsibilityReset(_delay:float):
 	invincibility_timer.wait_time = _delay
@@ -89,22 +100,23 @@ func stop_restricted_movement():
 	self.restricted_movement_multiplier = -1
 
 
-func reset_velocity():
-	velocity = Vector3.ZERO
+
 
 func _physics_process(delta):
 	var calculated_rotation_speed = stats.ROTATION_SPEED
 	
 	if restricted_rotation_multiplier >= 0.0:
 		calculated_rotation_speed = calculated_rotation_speed * restricted_rotation_multiplier
-		
-	
-	if Input.is_action_pressed("left"):
+
+	if Input.is_action_pressed("left") and not is_on_port:
 		rotate_y(calculated_rotation_speed * delta)
-	if Input.is_action_pressed("right"):
+	if Input.is_action_pressed("right") and not is_on_port:
 		rotate_y(-calculated_rotation_speed * delta)
 
 	var input_vector = Vector3(0, 0, -Input.get_axis("break", "gas"))
+	if is_on_port:
+		input_vector = Vector3.ZERO
+		velocity = Vector3.ZERO
 	
 	var calculated_max_speed = stats.MAX_SPEED
 	if restricted_movement_multiplier >= 0.0:

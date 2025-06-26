@@ -50,7 +50,7 @@ func spawn_ship() -> void:
 	start_scene.visible = false
 	mission_manager.ship = ship
 	asteroid_manager.ship = ship
-
+	
 func _on_death_scene_next_run() -> void:
 	spawn_ship()
 
@@ -60,24 +60,19 @@ func _on_start_run_start_run() -> void:
 func change_money_by(value:int):
 	resource_money += value
 	label_money_amount.text = str(resource_money)
-	pass
 
 
 func _on_mission_button_start() -> void:
 	mission_manager._start_mission()
 	shop_mission_interface.close_all()
-	#ship.setInvinsibility(false)
-	ship.delayedInvinsibilityReset(2.0)
-	ship.reset_velocity()
-	pass # Replace with function body.
+	if ship:
+		ship.activate_set_sail_behaviour(2.0)
 
 
 func _on_mission_manager_start_mission() -> void:
-	# Entered home
-	ship.setInvinsibility(true)
-	#shop_mission_interface.close_all()
+	if ship:
+		ship.activate_docking_behaviour()
 	shop_mission_interface.open_missions()
-	pass # Replace with function body.
 
 
 func _on_mission_manager_finish_mission() -> void:
