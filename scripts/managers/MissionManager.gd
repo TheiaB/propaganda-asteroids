@@ -41,7 +41,7 @@ func on_home_zone_player_entered(_zone):
 	if(current_delivery_state == DeliveryStates.EMPTY):
 		print('mission: player entered home and picked up cargo')
 		#game.open_missions.emit()
-		_start_mission()
+		#_start_mission()
 		emit_signal("start_mission")
 		
 func player_entered_planet_zone(zone:ZonePlanet):

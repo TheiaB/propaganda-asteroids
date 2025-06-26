@@ -63,11 +63,16 @@ func change_money_by(value:int):
 
 func _on_mission_button_start() -> void:
 	mission_manager._start_mission()
+	shop_mission_interface.close_all()
+	ship.setInvinsibility(false)
 	pass # Replace with function body.
 
 
 func _on_mission_manager_start_mission() -> void:
-	shop_mission_interface.close_all()
+	# Entered home
+	ship.setInvinsibility(true)
+	#shop_mission_interface.close_all()
+	shop_mission_interface.open_missions()
 	pass # Replace with function body.
 
 
