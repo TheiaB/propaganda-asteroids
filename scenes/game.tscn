@@ -94,9 +94,6 @@ bank_paths = ["res://PropGames/Build/Desktop/Master.strings.bank", "res://PropGa
 
 [node name="SoundManager5000" parent="." instance=ExtResource("14_trtic")]
 
-[node name="ShipManager2" parent="." instance=ExtResource("19_264po")]
-unique_name_in_owner = true
-
 [connection signal="timeout" from="TimerManager/FuelTimer" to="." method="_on_fuel_timer_timeout"]
 [connection signal="on_death_scene_next_run" from="UIManager" to="." method="_on_ui_manager_on_death_scene_next_run"]
 [connection signal="on_shop_mission_interfaces_start_mission" from="UIManager" to="." method="_on_ui_manager_on_shop_mission_interfaces_start_mission"]

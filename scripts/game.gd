@@ -19,8 +19,9 @@ var ship: Ship
 
 
 
-@onready var mission_manager: MissionManager = %MissionManager
+
 @onready var timer_manager: TimerManager = $TimerManager
+@onready var mission_manager: MissionManager = %MissionManager
 
 
 @export var zoneHome: ZoneHome
