@@ -13,13 +13,20 @@ var isInvinsible: bool = false
 var projectiles_node: Node
 
 @onready var muzzle := $Muzzle
+@onready var invincibility_timer: Timer = $InvincibilityTimer
 
 func setInvinsibility(_isInvinsible:bool):
 	isInvinsible = _isInvinsible
 	for child in get_children():
 		if child is CollisionShape3D:
 			child.disabled = isInvinsible
-		
+
+func delayedInvinsibilityReset(_delay:float):
+	invincibility_timer.wait_time = _delay
+	invincibility_timer.start()
+
+func _on_invincibility_timer_timeout() -> void:
+	setInvinsibility(false)
 
 func createBasic(camera: Player_Camera, _projectiles_node: Node):
 	var _weapon = preload("res://scenes/items/weapons/basic_weapon.tscn").instantiate()
@@ -81,7 +88,10 @@ func start_restrict_movement(_restricted_movement_multiplier):
 func stop_restricted_movement():
 	self.restricted_movement_multiplier = -1
 
-	
+
+func reset_velocity():
+	velocity = Vector3.ZERO
+
 func _physics_process(delta):
 	var calculated_rotation_speed = stats.ROTATION_SPEED
 	

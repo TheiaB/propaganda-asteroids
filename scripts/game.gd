@@ -45,6 +45,10 @@ func spawn_ship() -> void:
 	death_scene.visible = false
 	start_scene.visible = false
 	mission_manager.ship = ship
+	
+	# please be kind to players respawning :sobbing_emoji:
+	ship.setInvinsibility(true)
+	ship.delayedInvinsibilityReset(3.0)
 
 func _on_death_scene_next_run() -> void:
 	spawn_ship()
@@ -64,7 +68,9 @@ func change_money_by(value:int):
 func _on_mission_button_start() -> void:
 	mission_manager._start_mission()
 	shop_mission_interface.close_all()
-	ship.setInvinsibility(false)
+	#ship.setInvinsibility(false)
+	ship.delayedInvinsibilityReset(2.0)
+	ship.reset_velocity()
 	pass # Replace with function body.
 
 
