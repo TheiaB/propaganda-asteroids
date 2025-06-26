@@ -22,6 +22,11 @@ var ship: Ship
 @onready var mission_manager: MissionManager = %MissionManager
 @onready var timer_manager: TimerManager = $TimerManager
 
+signal start_mission()
+signal open_shop()
+signal open_missions()
+signal close_shop_missions()
+signal finish_mission()
 
 
 func _ready():
