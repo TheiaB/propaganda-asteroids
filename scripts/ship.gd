@@ -6,19 +6,27 @@ class_name Ship
 
 signal ship_died
 
-
 @export var weapon: Weapon
 @export var shield: Shield
 @export var items: Array[Generic_Item]
+var isInvinsible: bool = false
 var projectiles_node: Node
 
 @onready var muzzle := $Muzzle
+
+func setInvinsibility(_isInvinsible:bool):
+	isInvinsible = _isInvinsible
+	for child in get_children():
+		if child is CollisionShape3D:
+			child.disabled = isInvinsible
+		
 
 func createBasic(camera: Player_Camera, _projectiles_node: Node):
 	var _weapon = preload("res://scenes/items/weapons/basic_weapon.tscn").instantiate()
 	var _shield = preload("res://scenes/items/shields/basic_shield.tscn").instantiate()
 	var _stats = preload("res://scenes/basic_start_stats.tscn").instantiate()
 	return create(camera, _projectiles_node, _weapon, _shield, _stats)
+
 
 func create(camera: Player_Camera, _projectiles_node: Node, _weapon: Weapon, _shield: Shield, _stats: CharacterStats):
 	var ship: Ship = preload("res://scenes/ship.tscn").instantiate()
@@ -51,10 +59,11 @@ func _ready() -> void:
 
 	
 func on_collision_with_asteroid(damage):
-	shield.sield_health -= damage
-	if shield.sield_health <= 0:
-		emit_signal("ship_died")
-		queue_free()
+	if !isInvinsible:
+		shield.sield_health -= damage
+		if shield.sield_health <= 0:
+			emit_signal("ship_died")
+			queue_free()
 	
 func _process(_delta):
 	if Input.is_action_just_pressed("shoot"):
