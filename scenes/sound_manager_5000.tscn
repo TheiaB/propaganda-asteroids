@@ -6,5 +6,5 @@
 script = ExtResource("1_5npi2")
 
 [node name="LaserBasic" type="FmodEventEmitter3D" parent="."]
-event_name = "event:/SpaceShipSFX/Weapons/GunShotBasic"
+event_name = "event:/Items/Weapons/GunShotBasic"
 event_guid = "{72b2c958-1e7b-4819-9105-45d647d9ff23}"

@@ -110,9 +110,6 @@
 		<property name="volume">
 			<value>-4.5</value>
 		</property>
-		<property name="playlistMode">
-			<value>1</value>
-		</property>
 		<relationship name="sounds">
 			<destination>{a3a71321-b5b7-493a-ae0e-e8308f9d5ae0}</destination>
 			<destination>{dd6f9d7d-eca8-40cb-8ba4-afab18624c65}</destination>

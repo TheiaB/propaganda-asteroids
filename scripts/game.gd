@@ -57,6 +57,7 @@ func _on_death_scene_next_run() -> void:
 func _on_start_run_start_run() -> void:
 	spawn_ship()
 	
+
 func change_money_by(value:int):
 	resource_money += value
 	label_money_amount.text = str(resource_money)
@@ -77,3 +78,4 @@ func _on_mission_manager_start_mission() -> void:
 
 func _on_mission_manager_finish_mission() -> void:
 	pass # Replace with function body.
+

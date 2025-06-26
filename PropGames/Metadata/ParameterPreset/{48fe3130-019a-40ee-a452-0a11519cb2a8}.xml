@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="ParameterPreset" id="{48fe3130-019a-40ee-a452-0a11519cb2a8}">
 		<property name="name">
-			<value>OceenDecay</value>
+			<value>OceanDecay</value>
 		</property>
 		<relationship name="folder">
 			<destination>{4c4c2460-ced7-4940-a361-5bb5aba7bcf0}</destination>

@@ -15,6 +15,10 @@ var projectiles_node: Node
 @onready var muzzle := $Muzzle
 @onready var invincibility_timer: Timer = $InvincibilityTimer
 
+@onready var thruster: FmodEventEmitter3D = $ThrusterLoop
+var thruster_state_on := false
+
+
 var is_on_port: bool = false
 
 func activate_docking_behaviour():
@@ -86,9 +90,24 @@ func on_collision_with_asteroid(damage):
 func _process(_delta):
 	if Input.is_action_just_pressed("shoot"):
 		weapon.shoot_projectile(self)
+
+	if Input.is_action_pressed("gas"):
+		if not thruster_state_on:
+			print("start rocket")
+			$ThrusterStart.play_one_shot()
+			$ThrusterLoop.play()
+			thruster_state_on = true
+	else:
+		if thruster_state_on:
+			print("stop rocket")
+			$ThrusterLoop.stop()
+			$ThrusterStop.play_one_shot()
+			thruster_state_on = false
 		
+
 func start_restrict_rotation(_restricted_rotation_multiplier):
 	self.restricted_rotation_multiplier = _restricted_rotation_multiplier
+
 
 func stop_restrict_rotation():
 	self.restricted_rotation_multiplier = -1
@@ -142,3 +161,4 @@ func equip_cargo():
 func unequip_cargo():
 	cargo.hide()
 	pass
+	
