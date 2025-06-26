@@ -30,6 +30,7 @@ var ship: Ship
 func _ready():
 	mission_manager.init(arrow, zoneHome, zonePlanets)
 	timer_manager.startAll()
+	asteroid_manager.init(zonePlanets)
 	
 func _on_fuel_timer_timeout() -> void:
 	resource_fuel -= 10
@@ -48,6 +49,7 @@ func spawn_ship() -> void:
 	death_scene.visible = false
 	start_scene.visible = false
 	mission_manager.ship = ship
+	asteroid_manager.ship = ship
 
 func _on_death_scene_next_run() -> void:
 	spawn_ship()
@@ -55,9 +57,6 @@ func _on_death_scene_next_run() -> void:
 func _on_start_run_start_run() -> void:
 	spawn_ship()
 	
-func _on_asteroid_timer_timeout() -> void:
-	mission_manager.asteroid_timer(asteroid_manager)
-
 func change_money_by(value:int):
 	resource_money += value
 	label_money_amount.text = str(resource_money)

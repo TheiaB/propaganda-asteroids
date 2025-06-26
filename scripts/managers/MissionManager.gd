@@ -9,7 +9,6 @@ var current_delivery_state: DeliveryStates = DeliveryStates.EMPTY
 
 var destination_planet:ZonePlanet
 
-var proximity_planet : ZonePlanet
 var ship : Ship
 var arrow: Arrow3D
 
@@ -17,7 +16,6 @@ signal start_mission
 signal finish_mission
 
 func _ready() -> void:
-	game = get_tree().get_root().get_node("Game")
 	zone_home = preload("res://scenes/zones/zone_home.tscn").instantiate()
 	
 func init(_arrow:Arrow3D, _zone_home:ZoneHome, _zone_planets:Array[ZonePlanet]) -> void:
@@ -31,13 +29,10 @@ func init(_arrow:Arrow3D, _zone_home:ZoneHome, _zone_planets:Array[ZonePlanet]) 
 	
 	for zone_planet in zone_planets:
 		zone_planet.player_entered.connect(player_entered_planet_zone)
-		zone_planet.proximity_entered.connect(player_entered_planet_proximity)
-		zone_planet.proximity_exited.connect(player_exited_planet_proximity)
 	
 func on_home_zone_player_entered(_zone):
 	if(current_delivery_state == DeliveryStates.EMPTY):
 		print('mission: player entered home and picked up cargo')
-		#game.open_missions.emit()
 		#_start_mission()
 		emit_signal("start_mission")
 		print('game: player entered home and picked up cargo')
@@ -61,19 +56,6 @@ func player_entered_planet_zone(zone:ZonePlanet):
 			pass
 	pass
 	
-func player_entered_planet_proximity(zone : ZonePlanet):
-	print('mission: player entered planet proximity')
-	if zone.health <= 1 : 
-		proximity_planet = zone
-	#get planet specifics and change music?
-
-func player_exited_planet_proximity():
-	proximity_planet = null
-	print('mission: left planet proximity')
-	
-func asteroid_timer(asteroid_manager : AsteroidManager):
-	asteroid_manager.create_asteroid(ship, proximity_planet)
-
 func _finish_mission():
 	current_delivery_state = DeliveryStates.EMPTY
 	if(ship != null):
@@ -94,7 +76,7 @@ func _start_mission() -> void:
 		ship.equip_cargo()
 	
 	# Guide to planet
-	destination_planet = zonePlanets.pick_random()
+	destination_planet = zone_planets.pick_random()
 	#arrow.ship = ship
 	arrow.destination_position = destination_planet.global_position
 	#arrow.process_mode = Node.PROCESS_MODE_INHERIT

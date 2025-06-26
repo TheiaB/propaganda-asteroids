@@ -4,6 +4,7 @@ class_name AsteroidManager
 
 @export var target_path : NodePath = ""
 var target : Node = null
+@onready var asteroid_timer: Timer = $AsteroidTimer
 
 var asteroid_scene : PackedScene = preload("res://scenes/asteroids/asteroid.tscn")
 var spawn_distance_offset : float = 10
@@ -13,8 +14,30 @@ var asteroid_types = [
 	preload("res://scenes/asteroids/big_asteroid.tscn")
 ]
 
+var ship : Ship
+
+var proximity_planet : ZonePlanet
+
 func _ready() -> void:
 	target = get_node_or_null(target_path)
+
+func init(zone_planets: Array[ZonePlanet]) -> void:
+	for zone_planet in zone_planets:
+		zone_planet.proximity_entered.connect(player_entered_planet_proximity)
+		zone_planet.proximity_exited.connect(player_exited_planet_proximity)
+	asteroid_timer.start()
+
+
+func player_entered_planet_proximity(zone : ZonePlanet):
+	print('game: player entered planet proximity')
+	if zone.health <= 1 : 
+		proximity_planet = zone
+	#get planet specifics and change music?
+
+func player_exited_planet_proximity():
+	proximity_planet = null
+	print('game: left planet proximity')
+	
 
 
 func set_rand_asteroid_position() -> Vector3:
@@ -46,10 +69,10 @@ func spawn_asteroid(bound_force : float, hp : float, max_speed : float, amount :
 		asteroid.set_move_dir(bound_force, target)
 		add_sibling(asteroid)
 
-func create_asteroid(ship, planet : ZonePlanet):
-	if target == null and ship != null:
-		target = ship
-	elif target == null and ship == null:
+func create_asteroid(_ship, planet : ZonePlanet):
+	if target == null and _ship != null:
+		target = _ship
+	elif target == null and _ship == null:
 		return
 	var bound_force = randf_range(0.5,1)
 	spawn_random_asteroid(bound_force)
@@ -79,3 +102,7 @@ func spawn_planet_asteroid(bound_force : float, planet : ZonePlanet):
 func _on_area_3d_body_exited(body: Node3D) -> void:
 	if body.is_in_group("Asteroids"):
 		body.queue_free()
+
+
+func _on_asteroid_timer_timeout() -> void:
+	create_asteroid(ship, proximity_planet)

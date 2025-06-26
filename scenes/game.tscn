@@ -73,12 +73,10 @@ unique_name_in_owner = true
 
 [node name="AsteroidManager" parent="." instance=ExtResource("5_p57ef")]
 unique_name_in_owner = true
+target_path = NodePath("")
 
 [node name="TimerManager" type="Node" parent="."]
 script = ExtResource("6_ca42v")
-
-[node name="AsteroidTimer" type="Timer" parent="TimerManager"]
-wait_time = 0.1
 
 [node name="FuelTimer" type="Timer" parent="TimerManager"]
 
@@ -355,7 +353,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.97382, 0, 0)
 [node name="ZoneHome" parent="Zones" instance=ExtResource("17_rysoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.74538)
 
-[connection signal="timeout" from="TimerManager/AsteroidTimer" to="." method="_on_asteroid_timer_timeout"]
 [connection signal="timeout" from="TimerManager/FuelTimer" to="." method="_on_fuel_timer_timeout"]
 [connection signal="next_run" from="UI/death_scene" to="." method="_on_death_scene_next_run"]
 [connection signal="start_run" from="UI/start_scene" to="." method="_on_start_run_start_run"]
