@@ -1,10 +1,12 @@
 [gd_scene load_steps=24 format=3 uid="uid://cnotxnjbhrj4a"]
 
+
 [ext_resource type="Script" uid="uid://dxicgx2v6rcda" path="res://scripts/game.gd" id="1_lnu2h"]
 [ext_resource type="Script" uid="uid://c3nebth5qx3wg" path="res://scripts/camera_3d.gd" id="1_yqjtg"]
 [ext_resource type="ArrayMesh" uid="uid://ntp7v0mg3pja" path="res://assets/models/arrow.obj" id="3_0tnpc"]
 [ext_resource type="Script" uid="uid://hp28h00nhtj6" path="res://scripts/arrow.gd" id="4_vtaks"]
 [ext_resource type="PackedScene" uid="uid://bc51efbyjg2sg" path="res://scenes/death_scene.tscn" id="5_ca42v"]
+
 [ext_resource type="PackedScene" uid="uid://cyg2e5xslvje3" path="res://scenes/asteroids/asteroid_manager.tscn" id="5_p57ef"]
 [ext_resource type="Script" uid="uid://dti8u68m46th2" path="res://scripts/timer_manager.gd" id="6_ca42v"]
 [ext_resource type="PackedScene" uid="uid://dlotxfarbs74i" path="res://scenes/zones/zone_planet.tscn" id="8_0tnpc"]
@@ -15,6 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://bfnedgbgrilvy" path="res://assets/ui/T_shop.png" id="16_rysoc"]
 [ext_resource type="PackedScene" uid="uid://bvyjbe5rb50yn" path="res://scenes/zones/zone_home.tscn" id="17_rysoc"]
 [ext_resource type="Texture2D" uid="uid://b30g40cinouoo" path="res://assets/ui/T_mission.png" id="17_ssvqc"]
+[ext_resource type="PackedScene" uid="uid://cqin4vmafyfa7" path="res://scenes/sound_manager_5000.tscn" id="14_trtic"]
+
 [ext_resource type="PackedScene" uid="uid://c16pnf7ty4o08" path="res://scenes/start_run.tscn" id="18_ssvqc"]
 [ext_resource type="PackedScene" uid="uid://w4nlxci4ykha" path="res://scenes/ui/item_sub_viewport.tscn" id="19_1kice"]
 [ext_resource type="Script" uid="uid://1w7kefe1b4ai" path="res://scripts/ui/item_purchase_interface.gd" id="19_5newe"]
@@ -358,6 +362,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.74538)
 bank_paths = ["res://PropGames/Build/Desktop/Master.strings.bank", "res://PropGames/Build/Desktop/Master.bank", "res://PropGames/Build/Desktop/UI+Station_SFX.bank", "res://PropGames/Build/Desktop/ShipSFX.bank", "res://PropGames/Build/Desktop/MusicMain.bank"]
 
 [node name="ShipListener" type="FmodListener3D" parent="."]
+
+[node name="SoundManager5000" parent="." instance=ExtResource("14_trtic")]
 
 [connection signal="timeout" from="AsteroidTimer" to="." method="_on_asteroid_timer_timeout"]
 [connection signal="timeout" from="AsteroidTimer" to="AsteroidManager" method="_on_asteroid_timer_timeout"]
