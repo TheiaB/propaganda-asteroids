@@ -43,13 +43,13 @@ func _on_ship_died():
 func _on_death_scene_next_run() -> void:
 	ship_manager.spawn_ship()
 	mission_manager._finish_mission()
-	ui_manager.setUI("")
+	ui_manager.setUI()
 
 
 func _on_start_run_start_run() -> void:
 	ship_manager.spawn_ship()
 	mission_manager._finish_mission()
-	ui_manager.setUI("")
+	ui_manager.setUI()
 	
 
 func change_money_by(value:int):
