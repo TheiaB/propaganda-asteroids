@@ -1,20 +1,21 @@
-[gd_scene load_steps=14 format=3 uid="uid://cdbqn35l6oxha"]
+[gd_scene load_steps=15 format=3 uid="uid://cdbqn35l6oxha"]
 
 [ext_resource type="Script" uid="uid://v3yhkitng47m" path="res://scripts/managers/UIManager.gd" id="1_mpd4i"]
 [ext_resource type="PackedScene" uid="uid://bc51efbyjg2sg" path="res://scenes/death_scene.tscn" id="2_id3g5"]
 [ext_resource type="PackedScene" uid="uid://c16pnf7ty4o08" path="res://scenes/start_run.tscn" id="3_nxfho"]
-[ext_resource type="Script" uid="uid://dg2rbolnjklge" path="res://scripts/fuel.gd" id="4_a7j1f"]
+[ext_resource type="Script" path="res://scripts/fuel.gd" id="4_a7j1f"]
 [ext_resource type="Script" uid="uid://bhrq1l2ba8qeu" path="res://scripts/ui/shop_mission_interfaces.gd" id="5_dgnm4"]
 [ext_resource type="Script" uid="uid://dthu1u871n6xu" path="res://scripts/label_money_amount.gd" id="5_id3g5"]
 [ext_resource type="Texture2D" uid="uid://bfnedgbgrilvy" path="res://assets/ui/T_shop.png" id="6_ytsje"]
 [ext_resource type="Script" uid="uid://clblkwtktv1u7" path="res://scripts/ui/item_grid_container.gd" id="7_m2gsp"]
 [ext_resource type="Script" uid="uid://1w7kefe1b4ai" path="res://scripts/ui/item_purchase_interface.gd" id="8_tu02a"]
 [ext_resource type="PackedScene" uid="uid://w4nlxci4ykha" path="res://scenes/ui/item_sub_viewport.tscn" id="9_2whxp"]
+[ext_resource type="PackedScene" uid="uid://hcmibft8yacr" path="res://scenes/ui/item_panel.tscn" id="9_nxfho"]
 [ext_resource type="Texture2D" uid="uid://b30g40cinouoo" path="res://assets/ui/T_mission.png" id="10_0d6jp"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_5newe"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_id3g5"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_nxfho"]
 viewport_path = NodePath(".")
 
 [node name="UIManager" type="Node"]
@@ -163,6 +164,17 @@ layout_mode = 2
 columns = 3
 script = ExtResource("7_m2gsp")
 
+[node name="ItemPanel" parent="ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer/GridContainer" instance=ExtResource("9_nxfho")]
+layout_mode = 2
+
+[node name="BuyButton" type="Button" parent="ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer/GridContainer/ItemPanel"]
+layout_mode = 0
+offset_left = 73.0
+offset_top = 220.0
+offset_right = 183.0
+offset_bottom = 251.0
+text = "Buy"
+
 [node name="PurchaseInterface" type="Control" parent="ShopMissionInterfaces/TabContainer/Shop"]
 visible = false
 custom_minimum_size = Vector2(800, 420)
@@ -210,7 +222,7 @@ alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="ShopMissionInterfaces/TabContainer/Shop/PurchaseInterface/HBoxContainer/ItemPreview"]
 layout_mode = 2
-texture = SubResource("ViewportTexture_id3g5")
+texture = SubResource("ViewportTexture_nxfho")
 stretch_mode = 3
 
 [node name="ItemTitle" type="Label" parent="ShopMissionInterfaces/TabContainer/Shop/PurchaseInterface/HBoxContainer/ItemPreview"]
@@ -279,6 +291,8 @@ text = "START MISSION"
 [connection signal="next_run" from="death_scene" to="." method="_on_death_scene_next_run"]
 [connection signal="start_run" from="start_scene" to="." method="_on_start_run"]
 [connection signal="start_mission" from="ShopMissionInterfaces" to="." method="_on_shop_mission_interfaces_start_mission"]
+[connection signal="buy_button_pressed" from="ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer/GridContainer/ItemPanel" to="." method="_on_item_panel_buy_button_pressed"]
+[connection signal="pressed" from="ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer/GridContainer/ItemPanel/BuyButton" to="." method="_on_buy_button_pressed"]
 [connection signal="pressed" from="ShopMissionInterfaces/TabContainer/Mission/Button" to="ShopMissionInterfaces" method="_on_mission_start_button_pressed"]
 
 [editable path="ShopMissionInterfaces/TabContainer/Shop/PurchaseInterface/HBoxContainer/ItemPreview/ItemSubViewport"]

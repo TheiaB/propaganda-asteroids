@@ -24,6 +24,14 @@ func spawn_ship() -> void:
 	ship.connect("ship_died", send_ship_died)
 	game.ship = ship
 	game.updateShip()
+	
+func update_loadout(item : Item) -> void:
+	if item is Weapon:
+		ship.weapon = item
+	elif item is Shield:
+		ship.shield = item
+	else:
+		ship.items.append(item)
 
 func send_ship_died():
 	emit_signal("ship_died")

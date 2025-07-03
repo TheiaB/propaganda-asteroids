@@ -30,10 +30,9 @@ sky = SubResource("Sky_e2o6t")
 tonemap_mode = 2
 glow_enabled = true
 
-[node name="Game" type="Node" node_paths=PackedStringArray("zoneHome", "zonePlanets")]
+[node name="Game" type="Node" node_paths=PackedStringArray("zoneHome")]
 script = ExtResource("1_lnu2h")
 zoneHome = NodePath("Zones/ZoneHome")
-zonePlanets = [NodePath("Zones/ZonePlanet1"), NodePath("Zones/ZonePlanet2"), NodePath("Zones/ZonePlanet3")]
 
 [node name="Camera3D" type="Camera3D" parent="."]
 unique_name_in_owner = true
@@ -99,6 +98,7 @@ bank_paths = ["res://PropGames/Build/Desktop/Master.strings.bank", "res://PropGa
 [connection signal="on_death_scene_next_run" from="UIManager" to="." method="_on_ui_manager_on_death_scene_next_run"]
 [connection signal="on_shop_mission_interfaces_start_mission" from="UIManager" to="." method="_on_ui_manager_on_shop_mission_interfaces_start_mission"]
 [connection signal="on_start_run" from="UIManager" to="." method="_on_ui_manager_on_start_run"]
+[connection signal="purchased_item" from="UIManager" to="." method="_on_ui_manager_purchased_item"]
 [connection signal="ship_died" from="ShipManager" to="." method="_on_ship_manager_ship_died"]
 [connection signal="finish_mission" from="MissionManager" to="." method="_on_mission_manager_finish_mission"]
 [connection signal="start_mission" from="MissionManager" to="." method="_on_mission_manager_start_mission"]

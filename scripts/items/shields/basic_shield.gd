@@ -4,3 +4,4 @@ extends Shield
 
 func _ready() -> void:
 	shield_health = health
+	title = "Shield"

@@ -20,10 +20,10 @@ extends Control
 
 func _ready() -> void:
 	update_item()
-	pass
 
 
 func update_item():
+	print('updating item')
 	if(visual3D != null):
 		item_mesh.mesh = visual3D
 		item_display_texture.texture = item_sub_viewport.get_texture()

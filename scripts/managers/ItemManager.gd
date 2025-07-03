@@ -41,3 +41,10 @@ func get_all_items()-> Array[Item]:
 	all_items.append_array(generic_items)
 	#maybe sort by price???
 	return all_items
+	
+func get_item(title : String):
+	for item in get_all_items():
+		if item.title == title:
+			return item
+	push_error("Item not found!")
+	

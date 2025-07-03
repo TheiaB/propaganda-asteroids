@@ -13,6 +13,7 @@ class_name UIManager
 signal on_start_run
 signal on_death_scene_next_run
 signal on_shop_mission_interfaces_start_mission
+signal purchased_item(item_title : String)
 
 
 func init(_game: Game):
@@ -46,3 +47,13 @@ func _on_death_scene_next_run() -> void:
 
 func _on_shop_mission_interfaces_start_mission() -> void:
 	emit_signal("on_shop_mission_interfaces_start_mission")
+
+
+#func _on_buy_button_pressed() -> void:
+	#print(self.get_node(''))
+	#print(self.get_parent())
+	##emit_signal("purchased_item", self.get_parent().title)
+
+
+func _on_item_panel_buy_button_pressed() -> void:
+	pass # Replace with function body.

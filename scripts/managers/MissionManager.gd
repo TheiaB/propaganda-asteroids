@@ -40,7 +40,7 @@ func on_home_zone_player_entered(_zone):
 		ship.equip_cargo()
 		destination_planet = zone_planets.pick_random()
 		arrow.ship = ship
-		arrow.destination_position = destination_planet.global_position
+		#arrow.destination_position = destination_planet.global_position
 		arrow.process_mode = Node.PROCESS_MODE_INHERIT
 		arrow.show()
 		

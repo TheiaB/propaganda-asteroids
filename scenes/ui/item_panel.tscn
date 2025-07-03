@@ -4,21 +4,21 @@
 [ext_resource type="Texture2D" uid="uid://ckad6s5jnpht1" path="res://assets/ui/T_item_placeholder.png" id="1_oqpv0"]
 
 [node name="ItemPanel" type="Panel"]
-custom_minimum_size = Vector2(256, 288)
+custom_minimum_size = Vector2(256, 285)
 offset_right = 256.0
-offset_bottom = 288.0
+offset_bottom = 285.0
 script = ExtResource("1_0k6an")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
 offset_right = 254.0
-offset_bottom = 288.0
+offset_bottom = 256.0
 color = Color(0, 0, 0, 0.752941)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 256.0
+offset_bottom = 290.0
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
 layout_mode = 2
@@ -33,5 +33,6 @@ layout_mode = 2
 [node name="LabelPrice" type="Label" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "0"
+horizontal_alignment = 2
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
