@@ -13,7 +13,7 @@ class_name ItemPanel
 @onready var label_title: Label = $VBoxContainer/HBoxContainer/LabelTitle
 @onready var label_price: Label = $VBoxContainer/HBoxContainer/LabelPrice
 
-signal buy_button_pressed
+signal buy_button_pressed(node : Node)
 
 func _ready() -> void:
 	update_item()
@@ -24,7 +24,7 @@ func update_item():
 	if(title != null):
 		label_title.text = title
 	if(price != null):
-		label_price.text = str(price)
+		label_price.text = str(price) + " $"
 	
 
 func _process(_delta: float) -> void:
@@ -36,9 +36,6 @@ func _on_gui_input(_event: InputEvent) -> void:
 	pass # Replace with function body.
 
 
-#func _on_buy_button_pressed() -> void:
-	#buy_button_pressed.emit(self)
-
-
 func _on_buy_button_pressed() -> void:
-	pass # Replace with function body.
+	print('called') # Replace with function body.
+	emit_signal("buy_button_pressed", self)

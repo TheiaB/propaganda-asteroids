@@ -293,6 +293,7 @@ text = "START MISSION"
 [connection signal="start_mission" from="ShopMissionInterfaces" to="." method="_on_shop_mission_interfaces_start_mission"]
 [connection signal="buy_button_pressed" from="ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer/GridContainer/ItemPanel" to="." method="_on_item_panel_buy_button_pressed"]
 [connection signal="pressed" from="ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer/GridContainer/ItemPanel/BuyButton" to="." method="_on_buy_button_pressed"]
+[connection signal="pressed" from="ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer/GridContainer/ItemPanel/BuyButton" to="ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer/GridContainer/ItemPanel" method="_on_buy_button_pressed"]
 [connection signal="pressed" from="ShopMissionInterfaces/TabContainer/Mission/Button" to="ShopMissionInterfaces" method="_on_mission_start_button_pressed"]
 
 [editable path="ShopMissionInterfaces/TabContainer/Shop/PurchaseInterface/HBoxContainer/ItemPreview/ItemSubViewport"]

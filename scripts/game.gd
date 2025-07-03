@@ -7,6 +7,7 @@ class_name Game
 @onready var ui_manager: UIManager = %UIManager
 @onready var timer_manager: TimerManager = $TimerManager
 @onready var mission_manager: MissionManager = %MissionManager
+@onready var item_manager : ItemManager = $"/root/GlobalItemManager"
 
 
 var ship: Ship
@@ -69,6 +70,10 @@ func _on_mission_manager_finish_mission() -> void:
 	pass # Replace with function body.
 
 
-func _on_ui_manager_purchased_item() -> void:
-	#check if enough money
-	pass
+
+
+
+func _on_ui_manager_purchased_item(item_title: String) -> void:
+	var item = item_manager.get_item(item_title)
+	ship_manager.update_loadout(item)
+	print(item.title)

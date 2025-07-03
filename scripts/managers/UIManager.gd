@@ -55,5 +55,13 @@ func _on_shop_mission_interfaces_start_mission() -> void:
 	##emit_signal("purchased_item", self.get_parent().title)
 
 
-func _on_item_panel_buy_button_pressed() -> void:
+
+
+func _on_buy_button_pressed() -> void:
+	print('pressssed')
 	pass # Replace with function body.
+
+
+func _on_item_panel_buy_button_pressed(node: Node) -> void:
+	print('upstream signal')
+	emit_signal('purchased_item', node.title)
