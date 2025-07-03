@@ -13,9 +13,19 @@ func _ready() -> void:
 
 
 func set_move_dir(bound_force : float, target : Node) -> void:
-	var offset : Vector3 = (target.position - position).normalized()
-	move_dir = (offset * bound_force + get_random_screen_offset_point() * (1 - bound_force)).normalized() * speed
+	if bound_force >= 0 :
+		var offset : Vector3 = (target.position - position).normalized()
+		move_dir = (offset * bound_force + get_random_screen_offset_point() * (1 - bound_force)).normalized() * speed
+	else :
+		move_dir = get_random_direction_away_from(position, target.position)
 
+func get_random_direction_away_from(spawn_position: Vector3, current_position : Vector3) -> Vector3:
+	var base_direction = (current_position - spawn_position).normalized()
+	var angle_offset = deg_to_rad(randf_range(-30, 30))
+	#Rotate the direction by the random angle
+	var random_direction = base_direction.rotate(angle_offset)
+	#var random_direction = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
+	return random_direction * speed
 
 func get_random_screen_offset_point() -> Vector3:
 	var screen_center = screen_size / 2

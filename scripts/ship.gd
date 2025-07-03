@@ -83,8 +83,8 @@ func _ready() -> void:
 	
 func on_collision_with_asteroid(damage):
 	if !isInvinsible:
-		shield.sield_health -= damage
-		if shield.sield_health <= 0:
+		shield.shield_health -= damage
+		if shield.shield_health <= 0:
 			emit_signal("ship_died")
 			queue_free()
 	

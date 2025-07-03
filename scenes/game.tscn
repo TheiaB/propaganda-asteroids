@@ -5,7 +5,7 @@
 [ext_resource type="ArrayMesh" uid="uid://ntp7v0mg3pja" path="res://assets/models/arrow.obj" id="3_0tnpc"]
 [ext_resource type="Script" uid="uid://hp28h00nhtj6" path="res://scripts/arrow.gd" id="4_vtaks"]
 [ext_resource type="PackedScene" uid="uid://cyg2e5xslvje3" path="res://scenes/asteroids/asteroid_manager.tscn" id="5_p57ef"]
-[ext_resource type="Script" uid="uid://dti8u68m46th2" path="res://scripts/timer_manager.gd" id="6_ca42v"]
+[ext_resource type="Script" uid="uid://dti8u68m46th2" path="res://scripts/managers/timer_manager.gd" id="6_ca42v"]
 [ext_resource type="PackedScene" uid="uid://cdbqn35l6oxha" path="res://scenes/managers/ui_manager.tscn" id="7_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://dlotxfarbs74i" path="res://scenes/zones/zone_planet.tscn" id="8_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://bn6hjlre2x7cy" path="res://scenes/managers/mission_manager.tscn" id="14_trtic"]
@@ -63,6 +63,7 @@ unique_name_in_owner = true
 script = ExtResource("6_ca42v")
 
 [node name="FuelTimer" type="Timer" parent="TimerManager"]
+wait_time = 300.0
 
 [node name="UIManager" parent="." instance=ExtResource("7_kvpfn")]
 unique_name_in_owner = true

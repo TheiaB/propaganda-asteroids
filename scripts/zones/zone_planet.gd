@@ -1,4 +1,4 @@
 extends Zone
 class_name ZonePlanet
 
-var health = 3
+@export var health = 3

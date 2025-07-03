@@ -9,9 +9,12 @@ radius = 2.0
 
 [node name="ZonePlanet" instance=ExtResource("1_7bg85")]
 script = ExtResource("2_02r6e")
+health = 3
 
 [node name="CollisionShape3D" parent="ZoneArea" index="0"]
 shape = SubResource("CylinderShape3D_02r6e")
 
 [node name="ZoneMesh" parent="." index="1"]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, -4, 0)
+
+[connection signal="body_exited" from="ZoneArea" to="." method="_on_zone_area_body_exited"]

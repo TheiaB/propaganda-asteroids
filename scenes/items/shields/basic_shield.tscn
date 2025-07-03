@@ -8,6 +8,7 @@
 [node name="basic_shield" type="Node"]
 script = ExtResource("1_7uk2p")
 health = 1
+sield_health = null
 title = "Schild-Schild"
 price = 5
 visual = ExtResource("2_wjqgk")

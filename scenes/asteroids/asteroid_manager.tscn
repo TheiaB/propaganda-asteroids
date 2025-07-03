@@ -20,5 +20,9 @@ shape = SubResource("SphereShape3D_kywil")
 [node name="AsteroidTimer" type="Timer" parent="."]
 wait_time = 0.1
 
+[node name="PlanetTimer" type="Timer" parent="."]
+wait_time = 0.5
+
 [connection signal="body_exited" from="DespawnArea" to="." method="_on_area_3d_body_exited"]
 [connection signal="timeout" from="AsteroidTimer" to="." method="_on_asteroid_timer_timeout"]
+[connection signal="timeout" from="PlanetTimer" to="." method="_on_planet_timer_timeout"]
