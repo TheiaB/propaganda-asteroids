@@ -30,9 +30,10 @@ sky = SubResource("Sky_e2o6t")
 tonemap_mode = 2
 glow_enabled = true
 
-[node name="Game" type="Node" node_paths=PackedStringArray("zoneHome")]
+[node name="Game" type="Node" node_paths=PackedStringArray("zoneHome", "zonePlanets")]
 script = ExtResource("1_lnu2h")
 zoneHome = NodePath("Zones/ZoneHome")
+zonePlanets = [NodePath("Zones/ZonePlanet1"), NodePath("Zones/ZonePlanet2"), NodePath("Zones/ZonePlanet3")]
 
 [node name="Camera3D" type="Camera3D" parent="."]
 unique_name_in_owner = true

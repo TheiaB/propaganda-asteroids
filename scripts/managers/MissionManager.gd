@@ -38,7 +38,7 @@ func on_home_zone_player_entered(_zone):
 		print('game: player entered home and picked up cargo')
 		current_delivery_state = DeliveryStates.DELIVERING
 		ship.equip_cargo()
-		#destination_planet = zone_planets.pick_random()
+		destination_planet = zone_planets.pick_random()
 		arrow.ship = ship
 		#arrow.destination_position = destination_planet.global_position
 		arrow.process_mode = Node.PROCESS_MODE_INHERIT
@@ -80,7 +80,7 @@ func _start_mission() -> void:
 	#arrow.ship = ship
 	
 	#this should be in, but broke for some reason :(
-	#arrow.destination_position = destination_planet.global_position
+	arrow.destination_position = destination_planet.global_position
 	
 	#arrow.process_mode = Node.PROCESS_MODE_INHERIT
 	#arrow.show()
