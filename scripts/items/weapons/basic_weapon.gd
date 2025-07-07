@@ -1,9 +1,9 @@
 extends Weapon
 
 @export var damage = 1
-@export var speed = 10
+@export var speed = 20
 @export var amount = 1
-@export var delay_between = 0.0
+@export var delay_between = 0.00
 @export var restricted_roation_multiplier = -1.0
 @export var restricted_movement_multiplier = -1.0
 
@@ -17,7 +17,7 @@ func _ready() -> void:
 		
 func shoot_projectile(ship: Ship):
 	#$LaserBasic.play_one_shot()
-	SoundManager5000.play_sound(SoundManager5000.get_child(0))
+	SoundManager5000.laser_basic_sfx.play_one_shot()
 	ship.start_restrict_rotation(restricted_roation_multiplier)
 	ship.start_restrict_movement(restricted_movement_multiplier)
 	for _i in range(amount):

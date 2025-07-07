@@ -7,4 +7,5 @@ func _ready():
 	button.pressed.connect(_button_pressed)
 
 func _button_pressed():
+	
 	emit_signal("next_run")

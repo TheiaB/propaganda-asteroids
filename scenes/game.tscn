@@ -40,7 +40,7 @@ glow_enabled = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_5newe"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_1kice"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_264po"]
 viewport_path = NodePath(".")
 
 [node name="Game" type="Node" node_paths=PackedStringArray("zoneHome", "zonePlanets")]
@@ -83,8 +83,6 @@ script = ExtResource("6_ca42v")
 [node name="UI" type="Node" parent="."]
 
 [node name="death_scene" parent="UI" instance=ExtResource("5_ca42v")]
-
-[node name="start_scene" parent="UI" instance=ExtResource("18_ssvqc")]
 
 [node name="IngameInterface" type="CanvasLayer" parent="UI"]
 layer = 2
@@ -270,7 +268,7 @@ alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="UI/ShopMissionInterfaces/TabContainer/Shop/PurchaseInterface/HBoxContainer/ItemPreview"]
 layout_mode = 2
-texture = SubResource("ViewportTexture_1kice")
+texture = SubResource("ViewportTexture_264po")
 stretch_mode = 3
 
 [node name="ItemTitle" type="Label" parent="UI/ShopMissionInterfaces/TabContainer/Shop/PurchaseInterface/HBoxContainer/ItemPreview"]
@@ -336,6 +334,8 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 48
 text = "START MISSION"
 
+[node name="start_scene" parent="UI" instance=ExtResource("18_ssvqc")]
+
 [node name="MissionManager" parent="." instance=ExtResource("14_trtic")]
 unique_name_in_owner = true
 script = ExtResource("17_264po")
@@ -363,8 +363,8 @@ bank_paths = ["res://PropGames/Build/Desktop/Master.strings.bank", "res://PropGa
 
 [connection signal="timeout" from="TimerManager/FuelTimer" to="." method="_on_fuel_timer_timeout"]
 [connection signal="next_run" from="UI/death_scene" to="." method="_on_death_scene_next_run"]
-[connection signal="start_run" from="UI/start_scene" to="." method="_on_start_run_start_run"]
 [connection signal="start_mission" from="UI/ShopMissionInterfaces" to="." method="_on_mission_button_start"]
 [connection signal="pressed" from="UI/ShopMissionInterfaces/TabContainer/Mission/Button" to="UI/ShopMissionInterfaces" method="_on_mission_start_button_pressed"]
+[connection signal="start_run" from="UI/start_scene" to="." method="_on_start_run_start_run"]
 
 [editable path="UI/ShopMissionInterfaces/TabContainer/Shop/PurchaseInterface/HBoxContainer/ItemPreview/ItemSubViewport"]
