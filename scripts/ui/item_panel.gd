@@ -24,7 +24,7 @@ func update_item():
 	if(title != null):
 		label_title.text = title
 	if(price != null):
-		label_price.text = str(price) + " $"
+		label_price.text = "		" + str(price) + " $"
 	
 
 func _process(_delta: float) -> void:

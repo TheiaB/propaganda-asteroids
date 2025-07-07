@@ -71,9 +71,7 @@ func _on_mission_manager_finish_mission() -> void:
 
 
 
-
-
 func _on_ui_manager_purchased_item(item_title: String) -> void:
 	var item = item_manager.get_item(item_title)
+	#check money and then if able to buy pull up description, then if able to buy buy
 	ship_manager.update_loadout(item)
-	print(item.title)
