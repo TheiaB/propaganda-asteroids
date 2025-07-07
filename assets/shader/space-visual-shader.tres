@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=16 format=3 uid="uid://diyt4cx0hnlnl"]
+[gd_resource type="VisualShader" load_steps=15 format=3 uid="uid://diyt4cx0hnlnl"]
 
 [sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_b8jt7"]
 constant = 1.0
@@ -16,9 +16,6 @@ op_type = 0
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_ocra4"]
 source = 5
-
-[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_kstrl"]
-input_name = "uv"
 
 [sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_kstrl"]
 parameter_name = "FloatParameter"
@@ -130,7 +127,7 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-519.854, 33.8302)
+graph_offset = Vector2(-385.512, -75.1118)
 modes/blend = 1
 varyings/WorldPos = "0,4"
 nodes/vertex/2/node = SubResource("VisualShaderNodeInput_uyc38")
@@ -142,26 +139,25 @@ nodes/vertex/4/position = Vector2(-619.544, 4.03484)
 nodes/vertex/5/node = SubResource("VisualShaderNodeVaryingSetter_moc6i")
 nodes/vertex/5/position = Vector2(-357.921, 104.161)
 nodes/vertex/connections = PackedInt32Array(2, 0, 4, 0, 3, 0, 4, 1, 4, 0, 5, 0)
+nodes/fragment/0/position = Vector2(500, 300)
 nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_ocra4")
-nodes/fragment/2/position = Vector2(40, 100)
-nodes/fragment/3/node = SubResource("VisualShaderNodeInput_kstrl")
-nodes/fragment/3/position = Vector2(-560, 260)
+nodes/fragment/2/position = Vector2(0, 300)
 nodes/fragment/5/node = SubResource("VisualShaderNodeFloatParameter_kstrl")
-nodes/fragment/5/position = Vector2(-540, 400)
+nodes/fragment/5/position = Vector2(-800, 300)
 nodes/fragment/6/node = SubResource("VisualShaderNodeVectorOp_ocra4")
-nodes/fragment/6/position = Vector2(-180, 160)
+nodes/fragment/6/position = Vector2(-400, 200)
 nodes/fragment/8/node = SubResource("VisualShaderNodeTexture2DParameter_b8jt7")
-nodes/fragment/8/position = Vector2(-260, 520)
+nodes/fragment/8/position = Vector2(-400, 500)
 nodes/fragment/9/node = SubResource("VisualShaderNodeFloatConstant_ocra4")
-nodes/fragment/9/position = Vector2(140, 360)
+nodes/fragment/9/position = Vector2(0, 600)
 nodes/fragment/10/node = SubResource("VisualShaderNodeFloatConstant_b8jt7")
-nodes/fragment/10/position = Vector2(140, 460)
+nodes/fragment/10/position = Vector2(0, 700)
 nodes/fragment/11/node = SubResource("VisualShaderNodeFloatConstant_kstrl")
-nodes/fragment/11/position = Vector2(140, 560)
+nodes/fragment/11/position = Vector2(0, 800)
 nodes/fragment/12/node = SubResource("VisualShaderNodeVaryingGetter_b8jt7")
-nodes/fragment/12/position = Vector2(-780, 40)
+nodes/fragment/12/position = Vector2(-1200, 0)
 nodes/fragment/13/node = SubResource("VisualShaderNodeVectorDecompose_kstrl")
-nodes/fragment/13/position = Vector2(-580, 0)
+nodes/fragment/13/position = Vector2(-1000, 0)
 nodes/fragment/14/node = SubResource("VisualShaderNodeVectorCompose_ocra4")
-nodes/fragment/14/position = Vector2(-360, 20)
+nodes/fragment/14/position = Vector2(-800, 0)
 nodes/fragment/connections = PackedInt32Array(5, 0, 6, 1, 6, 0, 2, 0, 8, 0, 2, 2, 9, 0, 0, 2, 10, 0, 0, 3, 11, 0, 0, 4, 2, 0, 0, 0, 12, 0, 13, 0, 14, 0, 6, 0, 13, 0, 14, 0, 13, 2, 14, 1)
