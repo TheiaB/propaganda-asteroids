@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cnotxnjbhrj4a"]
+[gd_scene load_steps=26 format=3 uid="uid://cnotxnjbhrj4a"]
 
 [ext_resource type="Script" uid="uid://dxicgx2v6rcda" path="res://scripts/game.gd" id="1_lnu2h"]
 [ext_resource type="Script" uid="uid://c3nebth5qx3wg" path="res://scripts/camera_3d.gd" id="1_yqjtg"]
@@ -8,7 +8,12 @@
 [ext_resource type="Script" uid="uid://dti8u68m46th2" path="res://scripts/managers/timer_manager.gd" id="6_ca42v"]
 [ext_resource type="PackedScene" uid="uid://cdbqn35l6oxha" path="res://scenes/managers/ui_manager.tscn" id="7_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://dlotxfarbs74i" path="res://scenes/zones/zone_planet.tscn" id="8_0tnpc"]
+[ext_resource type="PackedScene" uid="uid://dolmjcndh7xbw" path="res://assets/planets/planet_ocean_surface_water.gltf" id="11_dinhu"]
+[ext_resource type="Shader" uid="uid://diyt4cx0hnlnl" path="res://assets/shader/space-visual-shader.tres" id="13_kvuet"]
+[ext_resource type="Texture2D" uid="uid://x563xgobc7qq" path="res://assets/space/t-space-01.png" id="14_ir15t"]
 [ext_resource type="PackedScene" uid="uid://bn6hjlre2x7cy" path="res://scenes/managers/mission_manager.tscn" id="14_trtic"]
+[ext_resource type="Texture2D" uid="uid://2kf05jtnku8b" path="res://assets/space/t-space-03.png" id="15_ca42v"]
+[ext_resource type="Texture2D" uid="uid://bprqkumf86jbq" path="res://assets/space/t-space-02.png" id="15_ir15t"]
 [ext_resource type="PackedScene" uid="uid://bvyjbe5rb50yn" path="res://scenes/zones/zone_home.tscn" id="17_rysoc"]
 [ext_resource type="PackedScene" uid="uid://b2w72cu2g8cky" path="res://scenes/managers/ship_manager.tscn" id="19_264po"]
 
@@ -19,6 +24,7 @@ albedo_color = Color(0.329412, 1, 0.564706, 0.290196)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_80nbo"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
 ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
 
 [sub_resource type="Sky" id="Sky_e2o6t"]
@@ -29,6 +35,28 @@ background_mode = 2
 sky = SubResource("Sky_e2o6t")
 tonemap_mode = 2
 glow_enabled = true
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_dinhu"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_dinhu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_trtic"]
+render_priority = 0
+shader = ExtResource("13_kvuet")
+shader_parameter/FloatParameter = 512.0
+shader_parameter/Texture2DParameter2 = ExtResource("14_ir15t")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rysoc"]
+render_priority = 0
+shader = ExtResource("13_kvuet")
+shader_parameter/FloatParameter = 256.0
+shader_parameter/Texture2DParameter2 = ExtResource("15_ca42v")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ca42v"]
+render_priority = 0
+shader = ExtResource("13_kvuet")
+shader_parameter/FloatParameter = 128.0
+shader_parameter/Texture2DParameter2 = ExtResource("15_ir15t")
 
 [node name="Game" type="Node" node_paths=PackedStringArray("zoneHome", "zonePlanets")]
 script = ExtResource("1_lnu2h")
@@ -83,7 +111,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.92632, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.8301)
 
 [node name="ZonePlanet3" parent="Zones" instance=ExtResource("8_0tnpc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.97382, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9738, 0, -6)
+
+[node name="CollisionShape3D" parent="Zones/ZonePlanet3/ZoneArea" index="0"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, -1, 0)
+
+[node name="planet_ocean_surface_water2" parent="Zones/ZonePlanet3" instance=ExtResource("11_dinhu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
+
+[node name="CollisionShape3D" parent="Zones/ZonePlanet3/ZoneProximity" index="0"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Zones/ZonePlanet3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Zones/ZonePlanet3/StaticBody3D"]
+transform = Transform3D(14, 0, 0, 0, 14, 0, 0, 0, 14, 0, 0, 0)
+shape = SubResource("CylinderShape3D_dinhu")
 
 [node name="ZoneHome" parent="Zones" instance=ExtResource("17_rysoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.74538)
@@ -95,6 +138,21 @@ bank_paths = ["res://PropGames/Build/Desktop/Master.strings.bank", "res://PropGa
 
 [node name="SoundManager5000" parent="." instance=ExtResource("14_trtic")]
 
+[node name="SpaceLowest" type="MeshInstance3D" parent="."]
+transform = Transform3D(2048, 0, 0, 0, 2048, 0, 0, 0, 2048, 0, -256, 0)
+mesh = SubResource("PlaneMesh_dinhu")
+surface_material_override/0 = SubResource("ShaderMaterial_trtic")
+
+[node name="SpaceMiddle" type="MeshInstance3D" parent="."]
+transform = Transform3D(2048, 0, 0, 0, 2048, 0, 0, 0, 2048, 0, -96, 0)
+mesh = SubResource("PlaneMesh_dinhu")
+surface_material_override/0 = SubResource("ShaderMaterial_rysoc")
+
+[node name="SpaceUpper" type="MeshInstance3D" parent="."]
+transform = Transform3D(2048, 0, 0, 0, 2048, 0, 0, 0, 2048, 0, -48, 0)
+mesh = SubResource("PlaneMesh_dinhu")
+surface_material_override/0 = SubResource("ShaderMaterial_ca42v")
+
 [connection signal="timeout" from="TimerManager/FuelTimer" to="." method="_on_fuel_timer_timeout"]
 [connection signal="on_death_scene_next_run" from="UIManager" to="." method="_on_ui_manager_on_death_scene_next_run"]
 [connection signal="on_shop_mission_interfaces_start_mission" from="UIManager" to="." method="_on_ui_manager_on_shop_mission_interfaces_start_mission"]
@@ -103,3 +161,5 @@ bank_paths = ["res://PropGames/Build/Desktop/Master.strings.bank", "res://PropGa
 [connection signal="ship_died" from="ShipManager" to="." method="_on_ship_manager_ship_died"]
 [connection signal="finish_mission" from="MissionManager" to="." method="_on_mission_manager_finish_mission"]
 [connection signal="start_mission" from="MissionManager" to="." method="_on_mission_manager_start_mission"]
+
+[editable path="Zones/ZonePlanet3"]
