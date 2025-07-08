@@ -47,6 +47,7 @@ func _on_ui_manager_on_death_scene_next_run() -> void:
 	ship_manager.spawn_ship()
 	mission_manager._finish_mission()
 	ui_manager.setUI()
+	self.resource_money = 50
 	
 func _on_ui_manager_on_shop_mission_interfaces_start_mission() -> void:
 	mission_manager._start_mission()
@@ -67,11 +68,18 @@ func _on_mission_manager_start_mission() -> void:
 
 
 func _on_mission_manager_finish_mission() -> void:
-	pass # Replace with function body.
+	pass # Replace with reward
 
 
 
 func _on_ui_manager_purchased_item(item_title: String) -> void:
 	var item = item_manager.get_item(item_title)
-	#check money and then if able to buy pull up description, then if able to buy buy
-	ship_manager.update_loadout(item)
+	if (item.price <= self.resource_money):
+		self.resource_money -= item.price
+		ship_manager.update_loadout(item)
+		item.buyable = false
+		#ugly
+		$UIManager/ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer/GridContainer.init_grid()
+	else:
+		print("You don't have enough money to acquire this item. Maybe you should work more ^")
+		#Display message "not enough money"

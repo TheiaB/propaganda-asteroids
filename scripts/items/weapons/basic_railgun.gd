@@ -15,7 +15,9 @@ func _ready() -> void:
 	weapon_damage = damage
 	weapon_price = price
 	chargeable = true
+	buyable = true
 	title = "Railgun"
+	#TODO desc
 	
 func shoot_projectile(ship: Ship):
 	ship.start_restrict_rotation(restricted_rotation_multiplier)

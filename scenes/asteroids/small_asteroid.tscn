@@ -4,7 +4,6 @@
 
 [node name="Asteroid" instance=ExtResource("1_ckhff")]
 mass = 30.598
-speed = 9
 health = 1
 
 [node name="CSGSphere3D" parent="." index="0"]

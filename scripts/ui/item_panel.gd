@@ -37,5 +37,7 @@ func _on_gui_input(_event: InputEvent) -> void:
 
 
 func _on_buy_button_pressed() -> void:
-	print('called') # Replace with function body.
 	emit_signal("buy_button_pressed", self)
+
+func _get_tooltip(_at_position: Vector2):
+	return "%s" % [description]

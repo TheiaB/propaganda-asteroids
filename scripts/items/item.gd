@@ -7,3 +7,4 @@ class_name Item
 @export var visual:Texture2D
 @export var visual3D:Mesh
 @export var description:String = "DEFAULT ITEM DESCRIPTION"
+@export var buyable:bool = false

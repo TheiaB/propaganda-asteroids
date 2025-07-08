@@ -49,19 +49,9 @@ func _on_shop_mission_interfaces_start_mission() -> void:
 	emit_signal("on_shop_mission_interfaces_start_mission")
 
 
-#func _on_buy_button_pressed() -> void:
-	#print(self.get_node(''))
-	#print(self.get_parent())
-	##emit_signal("purchased_item", self.get_parent().title)
-
-
-
-
-func _on_buy_button_pressed() -> void:
-	print('pressssed')
-	pass # Replace with function body.
-
-
 func _on_item_panel_buy_button_pressed(node: Node) -> void:
-	print('upstream signal')
-	emit_signal('purchased_item', node.title)
+	$ConfirmationPopup.show_popup(node)
+
+
+func _on_confirmation_popup_terms_accepted(item_title: String) -> void:
+	emit_signal('purchased_item', item_title)

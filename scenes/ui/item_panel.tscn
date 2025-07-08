@@ -32,7 +32,8 @@ layout_mode = 2
 
 [node name="LabelPrice" type="Label" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "0"
+text = "		0 $"
 horizontal_alignment = 2
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
