@@ -48,3 +48,6 @@ func get_item(title : String):
 			return item
 	push_error("Item not found!")
 	
+func get_rand_item() -> Item:
+	return get_all_items().pick_random()
+	

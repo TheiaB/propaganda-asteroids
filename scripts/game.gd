@@ -41,7 +41,11 @@ func _on_ship_manager_ship_died() -> void:
 	ui_manager.setUI("death_scene")
 
 func _on_fuel_timer_timeout() -> void:
-	ui_manager.setUI("death_scene")
+	if self.resource_fuel <= 0:
+		ui_manager.setUI("death_scene")
+	else:
+		self.resource_fuel -= 5
+	
 
 func _on_ui_manager_on_death_scene_next_run() -> void:
 	ui_manager.setUI("contract_scene")
@@ -52,6 +56,8 @@ func _on_ui_manager_on_contract_accept() -> void:
 	mission_manager._finish_mission()
 	ui_manager.setUI()
 	self.resource_money = 50
+	self.resource_fuel = 100
+	ship_manager.update_loadout(item_manager.get_rand_item())
 	
 func _on_ui_manager_on_shop_mission_interfaces_start_mission() -> void:
 	mission_manager._start_mission()

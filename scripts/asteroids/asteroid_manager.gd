@@ -85,13 +85,11 @@ func player_entered_planet_proximity(zone : ZonePlanet):
 	if zone.health <= 1 : 
 		proximity_planet = zone
 		planet_as_timer.start()
-	#get planet specifics and change music?
 
 func player_exited_planet_proximity():
 	proximity_planet = null
 	planet_as_timer.stop()
 	print('game: left planet proximity')
-	
 
 func set_rand_asteroid_position() -> Vector3:
 	var camera = get_node("../Camera3D") as Camera3D
@@ -105,7 +103,7 @@ func set_rand_asteroid_position() -> Vector3:
 	var center: Vector3 = camera.global_transform.origin
 	var spawn_location: Vector3 = Vector3(center.x,0,center.z) + spawn_offset
 	return spawn_location
-	
+
 func get_box_radius(area: Area3D) -> float:
 	var collision = area.get_node("CollisionShape3D")  # Adjust the path
 	var shape = collision.shape
@@ -128,12 +126,10 @@ func create_asteroid(_ship, bound_force : Vector2):
 	var bound_force_fin = randf_range(bound_force.x, bound_force.y)
 	spawn_random_asteroid(bound_force_fin)
 
-		
 func create_planet_asteroid(planet : ZonePlanet):
 	if planet :
 		spawn_planet_asteroid(planet)
 	
-
 func spawn_random_asteroid(bound_force : float):
 	if target == null:
 		return
@@ -146,14 +142,9 @@ func spawn_random_asteroid(bound_force : float):
 
 	var chosen = pick_weighted(valid_enemies, valid_weights)
 	var asteroid_instance = chosen.scene.instantiate()
-	#var AsteroidScene = asteroid_types[randi() % asteroid_types.size()]
-	#var asteroid_instance = AsteroidScene.scene.instantiate()
 	asteroid_instance.position = set_rand_asteroid_position()
 	asteroid_instance.set_move_dir(bound_force, target)
 	asteroid_instance.speed = randi_range(asteroid_speed.x, asteroid_speed.y)
-	print(bound_force)
-	print(asteroid_instance.speed)
-	print(chosen)
 	add_sibling(asteroid_instance)
 	
 func spawn_planet_asteroid(planet : ZonePlanet):
