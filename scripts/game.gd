@@ -22,6 +22,7 @@ var ship: Ship
 
 @export var zoneHome: ZoneHome
 @export var zonePlanets: Array[ZonePlanet]
+var firstTime : bool
 
 func _ready():
 	mission_manager.init(arrow, zoneHome, zonePlanets)
@@ -29,6 +30,7 @@ func _ready():
 	asteroid_manager.init(zonePlanets)
 	ship_manager.init(camera_3d, arrow, self)
 	ui_manager.init(self)
+	firstTime = true
 
 	
 func updateShip():
@@ -56,14 +58,14 @@ func _on_ui_manager_on_contract_accept() -> void:
 	mission_manager._finish_mission()
 	ui_manager.setUI()
 	self.resource_money = 50
-	self.resource_fuel = 100
-	ship_manager.update_loadout(item_manager.get_rand_item())
+	refuel()
+	if firstTime:
+		ship_manager.update_loadout(item_manager.get_rand_item())
+		firstTime = false
 	
 func _on_ui_manager_on_shop_mission_interfaces_start_mission() -> void:
 	mission_manager._start_mission()
 	ui_manager.setUI("close_all")
-	if ship:
-		ship.activate_set_sail_behaviour(2.0)
 
 
 func _on_ui_manager_on_start_run() -> void:
@@ -72,6 +74,8 @@ func _on_ui_manager_on_start_run() -> void:
 	ui_manager.setUI()
 
 func _on_mission_manager_start_mission() -> void:
+	refuel()
+	timer_manager.fuel_timer.stop()
 	if ship:
 		ship.activate_docking_behaviour()
 	ui_manager.setUI("open_missions")
@@ -80,7 +84,8 @@ func _on_mission_manager_start_mission() -> void:
 func _on_mission_manager_finish_mission() -> void:
 	pass # Replace with reward
 
-
+func refuel() -> void:
+	self.resource_fuel = 100
 
 func _on_ui_manager_purchased_item(item_title: String) -> void:
 	var item = item_manager.get_item(item_title)
@@ -93,3 +98,9 @@ func _on_ui_manager_purchased_item(item_title: String) -> void:
 	else:
 		print("You don't have enough money to acquire this item. Maybe you should work more ^")
 		#Display message "not enough money"
+
+
+func _on_ui_manager_ship_fly() -> void:
+	if ship:
+		ship.activate_set_sail_behaviour(2.0)
+		timer_manager.fuel_timer.start()

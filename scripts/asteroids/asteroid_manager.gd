@@ -14,8 +14,8 @@ var spawn_distance_offset : float = 9
 enum EnemyTier { COMMON, UNCOMMON, RARE, SPECIAL }
 var spawn_weights := []  
 var planet_asteroids = false
-var asteroid_speed : Vector2
-var bound_force : Vector2
+var asteroid_speed_range : Vector2
+var bound_force_range : Vector2
 var asteroid_types = [
 	{ "scene": preload("res://scenes/asteroids/small_asteroid.tscn"), "tier": EnemyTier.COMMON },
 	{ "scene": preload("res://scenes/asteroids/asteroid.tscn"), "tier": EnemyTier.UNCOMMON},
@@ -48,12 +48,12 @@ func set_difficulty(level: int):
 	var t = float(level - 1) / 9.0
 	asteroid_timer.wait_time = lerp(0.8, 0.1, t)
 	spawn_weights.clear()
-	bound_force.x = lerp(0.5, 1.0, t)
-	bound_force.y = lerp(0.7, 1.0, t)
-	asteroid_speed.x = lerp(3, 10, t)
-	asteroid_speed.y = lerp(5, 50, t)
+	bound_force_range.x = lerp(0.5, 1.0, t)
+	bound_force_range.y = lerp(0.7, 1.0, t)
+	asteroid_speed_range.x = lerp(3, 10, t)
+	asteroid_speed_range.y = lerp(5, 50, t)
 	print(asteroid_timer.wait_time)
-	print(bound_force)
+	print(bound_force_range)
 	for i in range(asteroid_types.size()):
 		var tier = asteroid_types[i].tier
 		match tier:
@@ -144,7 +144,7 @@ func spawn_random_asteroid(bound_force : float):
 	var asteroid_instance = chosen.scene.instantiate()
 	asteroid_instance.position = set_rand_asteroid_position()
 	asteroid_instance.set_move_dir(bound_force, target)
-	asteroid_instance.speed = randi_range(asteroid_speed.x, asteroid_speed.y)
+	asteroid_instance.speed = randf_range(asteroid_speed_range.x, asteroid_speed_range.y)
 	add_sibling(asteroid_instance)
 	
 func spawn_planet_asteroid(planet : ZonePlanet):
@@ -164,7 +164,7 @@ func _on_area_3d_body_exited(body: Node3D) -> void:
 
 
 func _on_asteroid_timer_timeout() -> void:
-	create_asteroid(ship, bound_force)
+	create_asteroid(ship, bound_force_range)
 
 
 func _on_planet_timer_timeout() -> void:

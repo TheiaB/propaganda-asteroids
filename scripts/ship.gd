@@ -172,9 +172,7 @@ func _physics_process(delta):
 @onready var cargo: MeshInstance3D = $Cargo
 func equip_cargo():
 	cargo.show()
-	pass
 
 func unequip_cargo():
 	cargo.hide()
-	pass
 	

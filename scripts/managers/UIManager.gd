@@ -17,6 +17,7 @@ signal on_death_scene_next_run
 signal on_shop_mission_interfaces_start_mission
 signal purchased_item(item_title : String)
 signal on_contract_accept
+signal ship_fly
 
 
 func init(_game: Game):
@@ -56,6 +57,7 @@ func _on_death_scene_next_run() -> void:
 
 func _on_shop_mission_interfaces_start_mission() -> void:
 	emit_signal("on_shop_mission_interfaces_start_mission")
+	emit_signal("ship_fly")
 
 
 func _on_confirmation_popup_terms_accepted(item_title: String) -> void:
@@ -67,3 +69,7 @@ func _on_contract_scene_accept_contract() -> void:
 	
 func _on_grid_container_panel_buy_pressed(item_data: Variant) -> void:
 	confirmation_popup.show_popup(item_data)
+
+
+func _on_shop_mission_interfaces_ship_fly() -> void:
+	emit_signal("ship_fly")

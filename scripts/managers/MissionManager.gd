@@ -53,8 +53,6 @@ func player_entered_planet_zone(zone:ZonePlanet):
 			emit_signal("finish_mission")
 		else:
 			print('mission: wrong planet')
-			pass
-	pass
 	
 func _finish_mission():
 	current_delivery_state = DeliveryStates.EMPTY
