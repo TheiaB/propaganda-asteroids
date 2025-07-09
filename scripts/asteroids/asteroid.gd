@@ -49,7 +49,10 @@ func _on_area_3d_area_entered(area : Area3D) -> void:
 			queue_free()
 
 
-func _on_area_3d_body_entered(ship: Ship) -> void:
-	ship.on_collision_with_asteroid(ship.weapon.weapon_damage)
-	queue_free()
+func _on_area_3d_body_entered(ship) -> void:
+	if ship is Ship:
+		ship.on_collision_with_asteroid(ship.weapon.weapon_damage)
+		queue_free()
+	else:
+		print("REEEEEEEE")
 	

@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://gj6deuu8x1o5"]
+
+[ext_resource type="PackedScene" uid="uid://dxb46wibjrce3" path="res://scenes/asteroids/asteroid.tscn" id="1_fx1wa"]
+
+[node name="Asteroid" instance=ExtResource("1_fx1wa")]
+mass = 220.212
+speed = 3
+damage = 2
+
+[node name="CSGSphere3D" parent="." index="0"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)

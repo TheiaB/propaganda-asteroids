@@ -7,7 +7,7 @@
 [node name="laser" type="Area3D"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 collision_layer = 8
-collision_mask = 4
+collision_mask = 32
 script = ExtResource("1_rlgyd")
 metadata/_custom_type_script = "uid://dmi1bmq3cyxve"
 
