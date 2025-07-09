@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="ParameterPreset" id="{69f31b00-e3a9-4114-a732-9336eeaf0ce9}">
+		<property name="name">
+			<value>CrystalDecay</value>
+		</property>
+		<relationship name="folder">
+			<destination>{4c4c2460-ced7-4940-a361-5bb5aba7bcf0}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{829921c7-6179-427e-aac9-6e3e2f2bf83e}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{829921c7-6179-427e-aac9-6e3e2f2bf83e}">
+		<property name="parameterType">
+			<value>1</value>
+		</property>
+		<property name="maximum">
+			<value>3</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
