@@ -96,8 +96,7 @@ func _on_ui_manager_purchased_item(item_title: String) -> void:
 		#ugly
 		$UIManager/ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer/GridContainer.init_grid()
 	else:
-		print("You don't have enough money to acquire this item. Maybe you should work more ^")
-		#Display message "not enough money"
+		ui_manager.no_money_popup.show_popup()
 
 
 func _on_ui_manager_ship_fly() -> void:

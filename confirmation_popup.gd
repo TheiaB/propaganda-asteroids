@@ -20,7 +20,6 @@ func show_popup(item):
 	#legal_text.scroll_to_line(0)
 	scroll_container.get_v_scroll_bar().value = 0
 	accept_button.disabled = true
-	visible = true
 	show()
 	popup_centered() 
 

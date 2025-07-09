@@ -11,6 +11,7 @@ class_name UIManager
 
 @onready var label_money_amount: Label = %LabelMoneyAmount
 @onready var confirmation_popup : PopupPanel = %ConfirmationPopup
+@onready var no_money_popup : PopupPanel = %NoMoneyPopup
 
 signal on_start_run
 signal on_death_scene_next_run
@@ -59,17 +60,14 @@ func _on_shop_mission_interfaces_start_mission() -> void:
 	emit_signal("on_shop_mission_interfaces_start_mission")
 	emit_signal("ship_fly")
 
-
 func _on_confirmation_popup_terms_accepted(item_title: String) -> void:
 	emit_signal('purchased_item', item_title)
-
 
 func _on_contract_scene_accept_contract() -> void:
 	emit_signal("on_contract_accept")
 	
 func _on_grid_container_panel_buy_pressed(item_data: Variant) -> void:
 	confirmation_popup.show_popup(item_data)
-
 
 func _on_shop_mission_interfaces_ship_fly() -> void:
 	emit_signal("ship_fly")
