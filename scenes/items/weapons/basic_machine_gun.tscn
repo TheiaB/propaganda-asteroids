@@ -6,5 +6,7 @@
 script = ExtResource("1_8pg1c")
 amount = 3
 delay_between = 0.05
+title = "Machine Gun"
 price = 100
+description = "Pewpewpew"
 metadata/_custom_type_script = "uid://cmd6uvcht5xc5"

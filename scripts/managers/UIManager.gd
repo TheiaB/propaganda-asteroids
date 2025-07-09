@@ -10,6 +10,7 @@ class_name UIManager
 @onready var fuel_amount_slider: HSlider = %fuel_amount_slider
 
 @onready var label_money_amount: Label = %LabelMoneyAmount
+@onready var confirmation_popup : PopupPanel = %ConfirmationPopup
 
 signal on_start_run
 signal on_death_scene_next_run
@@ -57,13 +58,12 @@ func _on_shop_mission_interfaces_start_mission() -> void:
 	emit_signal("on_shop_mission_interfaces_start_mission")
 
 
-func _on_item_panel_buy_button_pressed(node: Node) -> void:
-	$ConfirmationPopup.show_popup(node)
-
-
 func _on_confirmation_popup_terms_accepted(item_title: String) -> void:
 	emit_signal('purchased_item', item_title)
 
 
 func _on_contract_scene_accept_contract() -> void:
 	emit_signal("on_contract_accept")
+	
+func _on_grid_container_panel_buy_pressed(item_data: Variant) -> void:
+	confirmation_popup.show_popup(item_data)

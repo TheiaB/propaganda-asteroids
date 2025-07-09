@@ -18,7 +18,8 @@ func show_popup(item):
 	item_data = item
 	legal_text.text = _generate_legal_text()
 	legal_text.scroll_active = true
-	legal_text.scroll_to_line(0)
+	#legal_text.scroll_to_line(0)
+	scroll_container.get_v_scroll_bar().value = 0
 	accept_button.disabled = true
 	visible = true
 	show()

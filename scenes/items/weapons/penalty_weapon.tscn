@@ -6,5 +6,7 @@
 script = ExtResource("1_mg88y")
 speed = 5
 delay_between = 1.0
+title = "Penalty Weapon"
 price = 1
+description = "Big penalty"
 metadata/_custom_type_script = "uid://cmd6uvcht5xc5"

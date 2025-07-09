@@ -14,7 +14,7 @@ func _ready() -> void:
 	weapon_damage = damage
 	weapon_price = price
 	buyable = true
-	title = "Default Weapon"
+	#title = "Default Weapon"
 	#TODO Description
 	
 		
