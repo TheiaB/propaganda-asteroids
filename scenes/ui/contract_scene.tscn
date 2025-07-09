@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://cr70ytbjn72bw"]
+
+[ext_resource type="Script" uid="uid://cv80cbmj0hqb7" path="res://scripts/ui/contract_scene_button.gd" id="1_1ln4n"]
+
+[node name="contract_scene" type="Node2D"]
+script = ExtResource("1_1ln4n")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 208.0
+offset_top = 434.0
+offset_right = 947.0
+offset_bottom = 518.0
+text = "Accept Contract
+"

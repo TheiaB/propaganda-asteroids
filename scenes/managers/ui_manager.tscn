@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://cdbqn35l6oxha"]
+[gd_scene load_steps=17 format=3 uid="uid://cdbqn35l6oxha"]
 
 [ext_resource type="Script" uid="uid://v3yhkitng47m" path="res://scripts/managers/UIManager.gd" id="1_mpd4i"]
 [ext_resource type="PackedScene" uid="uid://bc51efbyjg2sg" path="res://scenes/death_scene.tscn" id="2_id3g5"]
 [ext_resource type="PackedScene" uid="uid://c16pnf7ty4o08" path="res://scenes/start_run.tscn" id="3_nxfho"]
-[ext_resource type="Script" path="res://scripts/fuel.gd" id="4_a7j1f"]
+[ext_resource type="Script" uid="uid://dg2rbolnjklge" path="res://scripts/fuel.gd" id="4_a7j1f"]
+[ext_resource type="PackedScene" uid="uid://cr70ytbjn72bw" path="res://scenes/ui/contract_scene.tscn" id="4_dgnm4"]
 [ext_resource type="Script" uid="uid://bhrq1l2ba8qeu" path="res://scripts/ui/shop_mission_interfaces.gd" id="5_dgnm4"]
 [ext_resource type="Script" uid="uid://dthu1u871n6xu" path="res://scripts/label_money_amount.gd" id="5_id3g5"]
 [ext_resource type="Texture2D" uid="uid://bfnedgbgrilvy" path="res://assets/ui/T_shop.png" id="6_ytsje"]
@@ -16,7 +17,7 @@
 
 [sub_resource type="BoxMesh" id="BoxMesh_5newe"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_a7j1f"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_dgnm4"]
 viewport_path = NodePath(".")
 
 [node name="UIManager" type="Node"]
@@ -25,6 +26,9 @@ script = ExtResource("1_mpd4i")
 [node name="death_scene" parent="." instance=ExtResource("2_id3g5")]
 
 [node name="start_scene" parent="." instance=ExtResource("3_nxfho")]
+visible = false
+
+[node name="contract_scene" parent="." instance=ExtResource("4_dgnm4")]
 
 [node name="IngameInterface" type="CanvasLayer" parent="."]
 layer = 2
@@ -223,7 +227,7 @@ alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="ShopMissionInterfaces/TabContainer/Shop/PurchaseInterface/HBoxContainer/ItemPreview"]
 layout_mode = 2
-texture = SubResource("ViewportTexture_a7j1f")
+texture = SubResource("ViewportTexture_dgnm4")
 stretch_mode = 3
 
 [node name="ItemTitle" type="Label" parent="ShopMissionInterfaces/TabContainer/Shop/PurchaseInterface/HBoxContainer/ItemPreview"]
@@ -293,6 +297,7 @@ text = "START MISSION"
 
 [connection signal="next_run" from="death_scene" to="." method="_on_death_scene_next_run"]
 [connection signal="start_run" from="start_scene" to="." method="_on_start_run"]
+[connection signal="accept_contract" from="contract_scene" to="." method="_on_contract_scene_accept_contract"]
 [connection signal="start_mission" from="ShopMissionInterfaces" to="." method="_on_shop_mission_interfaces_start_mission"]
 [connection signal="buy_button_pressed" from="ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer/GridContainer/ItemPanel" to="." method="_on_item_panel_buy_button_pressed"]
 [connection signal="pressed" from="ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer/GridContainer/ItemPanel/BuyButton" to="." method="_on_buy_button_pressed"]

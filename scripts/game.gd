@@ -44,6 +44,10 @@ func _on_fuel_timer_timeout() -> void:
 	ui_manager.setUI("death_scene")
 
 func _on_ui_manager_on_death_scene_next_run() -> void:
+	ui_manager.setUI("contract_scene")
+
+
+func _on_ui_manager_on_contract_accept() -> void:
 	ship_manager.spawn_ship()
 	mission_manager._finish_mission()
 	ui_manager.setUI()

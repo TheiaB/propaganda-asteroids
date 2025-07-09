@@ -116,11 +116,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9738, 0, -6)
 [node name="CollisionShape3D" parent="Zones/ZonePlanet3/ZoneArea" index="0"]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, -1, 0)
 
-[node name="planet_ocean_surface_water2" parent="Zones/ZonePlanet3" instance=ExtResource("11_dinhu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
-
 [node name="CollisionShape3D" parent="Zones/ZonePlanet3/ZoneProximity" index="0"]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+
+[node name="planet_ocean_surface_water2" parent="Zones/ZonePlanet3" instance=ExtResource("11_dinhu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Zones/ZonePlanet3"]
 
@@ -154,6 +154,7 @@ mesh = SubResource("PlaneMesh_dinhu")
 surface_material_override/0 = SubResource("ShaderMaterial_ca42v")
 
 [connection signal="timeout" from="TimerManager/FuelTimer" to="." method="_on_fuel_timer_timeout"]
+[connection signal="on_contract_accept" from="UIManager" to="." method="_on_ui_manager_on_contract_accept"]
 [connection signal="on_death_scene_next_run" from="UIManager" to="." method="_on_ui_manager_on_death_scene_next_run"]
 [connection signal="on_shop_mission_interfaces_start_mission" from="UIManager" to="." method="_on_ui_manager_on_shop_mission_interfaces_start_mission"]
 [connection signal="on_start_run" from="UIManager" to="." method="_on_ui_manager_on_start_run"]
