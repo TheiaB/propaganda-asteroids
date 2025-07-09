@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="ParameterPreset" id="{97081fcf-d02c-4e41-921d-b2074e1e2513}">
+		<property name="name">
+			<value>AntDecay</value>
+		</property>
+		<relationship name="folder">
+			<destination>{4c4c2460-ced7-4940-a361-5bb5aba7bcf0}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{32dc53a9-33ed-4b7e-acfa-63a9a3f8eef8}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{32dc53a9-33ed-4b7e-acfa-63a9a3f8eef8}">
+		<property name="parameterType">
+			<value>1</value>
+		</property>
+		<property name="maximum">
+			<value>3</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
