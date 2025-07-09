@@ -91,7 +91,8 @@ unique_name_in_owner = true
 script = ExtResource("6_ca42v")
 
 [node name="FuelTimer" type="Timer" parent="TimerManager"]
-wait_time = 300.0
+wait_time = 5.0
+autostart = true
 
 [node name="UIManager" parent="." instance=ExtResource("7_kvpfn")]
 unique_name_in_owner = true

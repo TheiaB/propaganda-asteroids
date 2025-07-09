@@ -11,7 +11,6 @@ func _ready():
 	accept_button.disabled = true
 	visible = false
 	legal_text.scroll_active = true
-
 	scroll_container.get_v_scroll_bar().value_changed.connect(_on_scroll_check)
 
 func show_popup(item):
