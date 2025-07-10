@@ -58,7 +58,7 @@ func _on_ui_manager_on_contract_accept() -> void:
 	self.resource_money = 50
 	refuel()
 	if firstTime:
-		ship_manager.update_loadout(item_manager.get_rand_item())
+		ship_manager.update_loadout(GlobalItemManager.get_rand_item())
 		firstTime = false
 	
 	
@@ -70,13 +70,6 @@ func _on_ui_manager_on_shop_mission_interfaces_start_mission() -> void:
 func _on_ui_manager_on_start_run() -> void:
 	ship_manager.spawn_ship()
 	ui_manager.setUI()
-
-func _on_mission_manager_start_mission() -> void:
-	refuel()
-	timer_manager.fuel_timer.stop()
-	if ship:
-		ship.activate_docking_behaviour()
-	ui_manager.setUI("open_missions")
 
 
 func _on_mission_manager_finish_mission() -> void:
@@ -103,6 +96,8 @@ func _on_ui_manager_ship_fly() -> void:
 
 
 func _on_mission_manager_enter_base() -> void:
+	refuel()
+	timer_manager.fuel_timer.stop()
 	if ship:
 		ship.activate_docking_behaviour()
 	ui_manager.setUI("open_missions")
