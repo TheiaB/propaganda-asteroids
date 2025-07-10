@@ -57,9 +57,9 @@ func _on_ui_manager_on_contract_accept() -> void:
 	ui_manager.setUI()
 	self.resource_money = 50
 	refuel()
-	if firstTime:
+	if !firstTime:
 		ship_manager.update_loadout(GlobalItemManager.get_rand_item())
-		firstTime = false
+	firstTime = false
 	
 	
 func _on_ui_manager_on_shop_mission_interfaces_start_mission() -> void:

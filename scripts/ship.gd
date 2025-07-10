@@ -100,7 +100,7 @@ func _process(_delta):
 			stop_restricted_movement()
 			stop_restrict_rotation()
 			var charge_duration = Time.get_ticks_msec() - charge_start_time
-			print(charge_duration)
+			print(charge_duration, "Lasergun")
 			if weapon.charge_timer <= charge_duration:
 				weapon.shoot_projectile(self)
 	else:
@@ -109,13 +109,11 @@ func _process(_delta):
 
 	if Input.is_action_pressed("gas"):
 		if not thruster_state_on:
-			print("start rocket")
 			$ThrusterStart.play_one_shot()
 			$ThrusterLoop.play()
 			thruster_state_on = true
 	else:
 		if thruster_state_on:
-			print("stop rocket")
 			$ThrusterLoop.stop()
 			$ThrusterStop.play_one_shot()
 			thruster_state_on = false
