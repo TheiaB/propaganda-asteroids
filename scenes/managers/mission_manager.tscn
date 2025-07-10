@@ -8,14 +8,14 @@ script = ExtResource("1_ld7rp")
 
 [node name="BaseMission" type="Node" parent="."]
 script = ExtResource("2_5ynlg")
-title = "This is a mission"
+title = "Mission A"
 text = "This is a text"
 reward = 300
 destination = 2
 
 [node name="BaseMission2" type="Node" parent="."]
 script = ExtResource("2_5ynlg")
-title = "This is a mission"
+title = "Mission B"
 text = "This is a text"
 reward = 300
 start = 2

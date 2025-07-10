@@ -28,7 +28,7 @@ func _ready():
 	timer_manager.startAll()
 	asteroid_manager.init()
 	ship_manager.init(camera_3d, arrow, self)
-	ui_manager.init(self)
+	ui_manager.init(self, mission_manager)
 	firstTime = true
 
 	
@@ -62,8 +62,8 @@ func _on_ui_manager_on_contract_accept() -> void:
 	firstTime = false
 	
 	
-func _on_ui_manager_on_shop_mission_interfaces_start_mission() -> void:
-	mission_manager.start_mission(mission_manager.get_random_mission())
+func _on_ui_manager_on_shop_mission_interfaces_start_mission(mission: Mission) -> void:
+	mission_manager.start_mission(mission)
 	ui_manager.setUI("close_all")
 
 
@@ -94,10 +94,10 @@ func _on_ui_manager_ship_fly() -> void:
 		ship.activate_set_sail_behaviour(2.0)
 		timer_manager.fuel_timer.start()
 
-
 func _on_mission_manager_enter_base() -> void:
 	refuel()
 	timer_manager.fuel_timer.stop()
 	if ship:
 		ship.activate_docking_behaviour()
 	ui_manager.setUI("open_missions")
+	ui_manager.set_displayed_missions(mission_manager.missions)

@@ -5,7 +5,8 @@ class_name ShopMissionInterface
 @onready var missions: TabBar = $TabContainer/Mission
 @onready var margin_container : MarginContainer = $MarginContainer
 
-signal start_mission
+
+signal mission_open_pressed
 signal ship_fly
 
 func open_missions() -> void:
@@ -19,9 +20,6 @@ func open_shop() -> void:
 func close_all() -> void:
 	self.hide()
 
-func _on_mission_start_button_pressed() -> void:
-	emit_signal("start_mission")
-
 func _on_shop_tab_button_pressed() -> void:
 	open_shop()
 
@@ -31,3 +29,7 @@ func _on_mission_tab_button_pressed() -> void:
 func _on_exit_button_pressed() -> void:
 	close_all()
 	emit_signal("ship_fly")
+	
+
+func _on_mission_open_mission_button(mission: Mission) -> void:
+	emit_signal("mission_open_pressed", mission)

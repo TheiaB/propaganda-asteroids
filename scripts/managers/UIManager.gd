@@ -12,6 +12,10 @@ class_name UIManager
 @onready var label_money_amount: Label = %LabelMoneyAmount
 @onready var confirmation_popup : PopupPanel = %ConfirmationPopup
 @onready var no_money_popup : PopupPanel = %NoMoneyPopup
+@onready var mission_popup: PopupPanel = $ShopMissionInterfaces/MissionPopup
+@onready var mission_interface: MissionInterface = $ShopMissionInterfaces/TabContainer/Mission
+
+
 
 signal on_start_run
 signal on_death_scene_next_run
@@ -20,10 +24,13 @@ signal purchased_item(item_title : String)
 signal on_contract_accept
 signal ship_fly
 
+var mission_manager : MissionManager
 
-func init(_game: Game):
+
+func init(_game: Game, _mission_manager: MissionManager):
 	fuel_amount_slider.game = _game
 	label_money_amount.game = _game	
+	mission_manager = _mission_manager
 	
 
 func setUI(ui_name: String = ""):
@@ -56,10 +63,6 @@ func _on_death_scene_next_run() -> void:
 	emit_signal("on_death_scene_next_run")
 
 
-func _on_shop_mission_interfaces_start_mission() -> void:
-	emit_signal("on_shop_mission_interfaces_start_mission")
-	emit_signal("ship_fly")
-
 func _on_confirmation_popup_terms_accepted(item_title: String) -> void:
 	emit_signal('purchased_item', item_title)
 
@@ -70,4 +73,18 @@ func _on_grid_container_panel_buy_pressed(item_data: Variant) -> void:
 	confirmation_popup.show_popup(item_data)
 
 func _on_shop_mission_interfaces_ship_fly() -> void:
+	emit_signal("ship_fly")
+	
+func popup_mission(mission: Mission):
+	mission_popup.popup_mission(mission)
+
+func _on_shop_mission_interfaces_mission_open_pressed(mission: Mission) -> void:
+	popup_mission(mission)
+	
+func set_displayed_missions(missions : Array[Mission]):
+	mission_interface.set_displayed_mission(missions)
+
+func _on_mission_popup_on_mission_popup_button_pressed(mission: Mission) -> void:
+	mission_popup.hide()
+	emit_signal("on_shop_mission_interfaces_start_mission", mission)
 	emit_signal("ship_fly")

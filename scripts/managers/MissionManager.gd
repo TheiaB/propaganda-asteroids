@@ -60,6 +60,7 @@ func player_entered_planet_zone(zone:ZonePlanet):
 					ship.unequip_cargo()
 				arrow.destination_position = ZoneManager.get_home_planet().global_position
 			else:
+				print(current_mission.mission_progress)
 				print('mission: wrong planet')
 	
 
