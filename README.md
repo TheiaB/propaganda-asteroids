@@ -2,7 +2,6 @@
 
 
 # TODOs
-- [ ] UI narative
-- [ ] put away sound stuff in seperate manager
-- [ ] stop shooting/thrusting sounds in base
-
+- [ ] Mission End Dialog
+- [ ] Item Dialog (Need to depend on Item)
+- [ ] check if missions dont have edge cases
