@@ -20,13 +20,12 @@ func _process(delta):
 	var intensity = abs(sin(blink_timer))
 	color_rect.set_color(Color(lerp(0.5, 1.0, intensity),0,0))
 
-	# Optional: Shake
 	var shake_amount = 5.0
-	position = Vector2(
+	var shake_position = Vector2(
 		randf_range(-shake_amount, shake_amount),
 		randf_range(-shake_amount, shake_amount)
 	)
-
+	label.position = shake_position
 
 func _on_close_timer_timeout() -> void:
 	hide()

@@ -24,11 +24,6 @@ var asteroid_types = [
 	{ "scene": preload("res://scenes/asteroids/termite_asteroid.tscn"), "tier": EnemyTier.SPECIAL},
 	{ "scene": preload("res://scenes/asteroids/crystal_asteroid.tscn"), "tier": EnemyTier.SPECIAL}
 ]
-#var asteroid_types = [
-	#preload("res://scenes/asteroids/asteroid.tscn"),
-	#preload("res://scenes/asteroids/big_asteroid.tscn"),
-	#preload("res://scenes/asteroids/small_asteroid.tscn"),
-#]
 
 var ship : Ship
 var proximity_planet : ZonePlanet
@@ -41,7 +36,7 @@ func init(zone_planets: Array[ZonePlanet]) -> void:
 	for zone_planet in zone_planets:
 		zone_planet.proximity_entered.connect(player_entered_planet_proximity)
 		zone_planet.proximity_exited.connect(player_exited_planet_proximity)
-	set_difficulty(3)
+	set_difficulty(1)
 
 func set_difficulty(level: int):
 	level = clamp(level, 1, 10)
@@ -52,8 +47,6 @@ func set_difficulty(level: int):
 	bound_force_range.y = lerp(0.7, 1.0, t)
 	asteroid_speed_range.x = lerp(3, 10, t)
 	asteroid_speed_range.y = lerp(5, 50, t)
-	print(asteroid_timer.wait_time)
-	print(bound_force_range)
 	for i in range(asteroid_types.size()):
 		var tier = asteroid_types[i].tier
 		match tier:
@@ -82,13 +75,16 @@ func pick_weighted(items: Array, weights: Array) -> Variant:
 
 func player_entered_planet_proximity(zone : ZonePlanet):
 	print('game: player entered planet proximity')
+	asteroid_timer.stop()
 	if zone.health <= 1 : 
 		proximity_planet = zone
 		planet_as_timer.start()
+		
 
 func player_exited_planet_proximity():
 	proximity_planet = null
 	planet_as_timer.stop()
+	asteroid_timer.start()
 	print('game: left planet proximity')
 
 func set_rand_asteroid_position() -> Vector3:
@@ -99,7 +95,6 @@ func set_rand_asteroid_position() -> Vector3:
 	var rand_ang: float = randf_range(0, 2 * PI)
 	# Use cosine and sine to get direction on the XZ-plane
 	var spawn_offset: Vector3 = Vector3(cos(rand_ang), 0, sin(rand_ang)) * spawn_distance_offset
-	# Replace this with your actual center in 3D world space
 	var center: Vector3 = camera.global_transform.origin
 	var spawn_location: Vector3 = Vector3(center.x,0,center.z) + spawn_offset
 	return spawn_location
@@ -125,10 +120,6 @@ func create_asteroid(_ship, bound_force : Vector2):
 		return
 	var bound_force_fin = randf_range(bound_force.x, bound_force.y)
 	spawn_random_asteroid(bound_force_fin)
-
-func create_planet_asteroid(planet : ZonePlanet):
-	if planet :
-		spawn_planet_asteroid(planet)
 	
 func spawn_random_asteroid(bound_force : float):
 	if target == null:
@@ -147,8 +138,9 @@ func spawn_random_asteroid(bound_force : float):
 	asteroid_instance.speed = randf_range(asteroid_speed_range.x, asteroid_speed_range.y)
 	add_sibling(asteroid_instance)
 	
+	
 func spawn_planet_asteroid(planet : ZonePlanet):
-	if target == null:
+	if target == null || proximity_planet == null:
 		return
 	#TODO spawn the correct asteroid that corresponds to the planet
 	var AsteroidScene = asteroid_types[randi() % asteroid_types.size()]
@@ -168,4 +160,4 @@ func _on_asteroid_timer_timeout() -> void:
 
 
 func _on_planet_timer_timeout() -> void:
-	create_planet_asteroid(proximity_planet)
+	spawn_planet_asteroid(proximity_planet)

@@ -310,6 +310,7 @@ text = "X"
 
 [node name="ConfirmationPopup" parent="ShopMissionInterfaces" instance=ExtResource("13_a7j1f")]
 unique_name_in_owner = true
+visible = false
 
 [node name="NoMoneyPopup" type="PopupPanel" parent="ShopMissionInterfaces"]
 unique_name_in_owner = true
