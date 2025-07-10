@@ -39,6 +39,7 @@ GlobalItemManager="*res://scenes/managers/global_item_manager.tscn"
 FmodManager="*res://addons/fmod/FmodManager.gd"
 BankLoaderMain="*res://bank_loader_main.gd"
 SoundManager5000="*res://scenes/sound_manager_5000.tscn"
+ZoneManager="*res://scenes/managers/zone_manager.tscn"
 
 [editor_plugins]
 

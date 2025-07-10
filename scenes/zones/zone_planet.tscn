@@ -9,6 +9,7 @@ radius = 2.0
 
 [node name="ZonePlanet" instance=ExtResource("1_7bg85")]
 script = ExtResource("2_02r6e")
+unique_name = ""
 health = 3
 
 [node name="CollisionShape3D" parent="ZoneArea" index="0"]

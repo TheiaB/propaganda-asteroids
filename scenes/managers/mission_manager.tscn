@@ -1,6 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://bn6hjlre2x7cy"]
+[gd_scene load_steps=3 format=3 uid="uid://bn6hjlre2x7cy"]
 
 [ext_resource type="Script" uid="uid://cb5vi23sjon66" path="res://scripts/managers/MissionManager.gd" id="1_ld7rp"]
+[ext_resource type="Script" uid="uid://dofpcrayms2x1" path="res://scripts/mission.gd" id="2_5ynlg"]
 
 [node name="mission_manager" type="Node"]
 script = ExtResource("1_ld7rp")
+
+[node name="BaseMission" type="Node" parent="."]
+script = ExtResource("2_5ynlg")
+title = "This is a mission"
+text = "This is a text"
+reward = 300
+destination = 2
+
+[node name="BaseMission2" type="Node" parent="."]
+script = ExtResource("2_5ynlg")
+title = "This is a mission"
+text = "This is a text"
+reward = 300
+start = 2
+destination = 1

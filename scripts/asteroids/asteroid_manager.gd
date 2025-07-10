@@ -32,8 +32,8 @@ var proximity_planet : ZonePlanet
 func _ready() -> void:
 	target = get_node_or_null(target_path)
 
-func init(zone_planets: Array[ZonePlanet]) -> void:
-	for zone_planet in zone_planets:
+func init() -> void:
+	for zone_planet in ZoneManager.get_planets():
 		zone_planet.proximity_entered.connect(player_entered_planet_proximity)
 		zone_planet.proximity_exited.connect(player_exited_planet_proximity)
 	set_difficulty(1)
@@ -113,15 +113,15 @@ func set_planet_asteroid_position(planet : ZonePlanet):
 	var random_dir = Vector3(randf_range(-1, 1), randf_range(-1, 1), randf_range(-1, 1)).normalized()
 	return planet.global_position + random_dir * get_box_radius(planet.get_node('ZoneArea'))
 
-func create_asteroid(_ship, bound_force : Vector2):
+func create_asteroid(_ship, _bound_force : Vector2):
 	if target == null and _ship != null:
 		target = _ship
 	elif target == null and _ship == null:
 		return
-	var bound_force_fin = randf_range(bound_force.x, bound_force.y)
+	var bound_force_fin = randf_range(_bound_force.x, _bound_force.y)
 	spawn_random_asteroid(bound_force_fin)
 	
-func spawn_random_asteroid(bound_force : float):
+func spawn_random_asteroid(_bound_force : float):
 	if target == null:
 		return
 	var valid_enemies = []
@@ -134,7 +134,7 @@ func spawn_random_asteroid(bound_force : float):
 	var chosen = pick_weighted(valid_enemies, valid_weights)
 	var asteroid_instance = chosen.scene.instantiate()
 	asteroid_instance.position = set_rand_asteroid_position()
-	asteroid_instance.set_move_dir(bound_force, target)
+	asteroid_instance.set_move_dir(_bound_force, target)
 	asteroid_instance.speed = randf_range(asteroid_speed_range.x, asteroid_speed_range.y)
 	add_sibling(asteroid_instance)
 	

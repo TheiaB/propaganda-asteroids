@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0n3nbhu0iukh"]
+
+[sub_resource type="GDScript" id="GDScript_6pbe6"]
+script/source = "extends Node
+enum MissionPlanets {water, planet2, planet3}
+
+var planet: MissionPlanets
+"
+
+[node name="GlobalStateManager" type="Node"]
+script = SubResource("GDScript_6pbe6")
