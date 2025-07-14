@@ -4,6 +4,7 @@ class_name Mission
 
 @export var title : String
 @export var text : String
+@export var finish_text: String
 @export var reward : int
 
 @export var start : ZoneManager.Planets

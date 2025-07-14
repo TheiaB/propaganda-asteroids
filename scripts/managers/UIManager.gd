@@ -12,8 +12,10 @@ class_name UIManager
 @onready var label_money_amount: Label = %LabelMoneyAmount
 @onready var confirmation_popup : PopupPanel = %ConfirmationPopup
 @onready var no_money_popup : PopupPanel = %NoMoneyPopup
-@onready var mission_popup: PopupPanel = $ShopMissionInterfaces/MissionPopup
+#@onready var mission_popup: PopupPanel = $ShopMissionInterfaces/MissionPopup
 @onready var mission_interface: MissionInterface = $ShopMissionInterfaces/TabContainer/Mission
+@onready var mission_popup: MissionPopup = $ShopMissionInterfaces/MissionPopup
+
 
 
 
@@ -23,6 +25,7 @@ signal on_shop_mission_interfaces_start_mission
 signal purchased_item(item_title : String)
 signal on_contract_accept
 signal ship_fly
+signal on_mission_finished_popup_button_pressed
 
 var mission_manager : MissionManager
 
@@ -84,7 +87,19 @@ func _on_shop_mission_interfaces_mission_open_pressed(mission: Mission) -> void:
 func set_displayed_missions(missions : Array[Mission]):
 	mission_interface.set_displayed_mission(missions)
 
+func clear_missions():
+	mission_interface.set_displayed_mission([])
+
+func mission_finish_popup(mission: Mission):
+	mission_popup.popup_mission_finish(mission)
+	
+
 func _on_mission_popup_on_mission_popup_button_pressed(mission: Mission) -> void:
 	mission_popup.hide()
 	emit_signal("on_shop_mission_interfaces_start_mission", mission)
 	emit_signal("ship_fly")
+
+
+func _on_mission_popup_on_finish_mission_popup_button_pressed(mission: Mission) -> void:
+	mission_popup.hide()
+	emit_signal("on_mission_finished_popup_button_pressed", mission)

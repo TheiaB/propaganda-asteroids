@@ -125,6 +125,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_ca42v")
 [connection signal="timeout" from="TimerManager/FuelTimer" to="." method="_on_fuel_timer_timeout"]
 [connection signal="on_contract_accept" from="UIManager" to="." method="_on_ui_manager_on_contract_accept"]
 [connection signal="on_death_scene_next_run" from="UIManager" to="." method="_on_ui_manager_on_death_scene_next_run"]
+[connection signal="on_mission_finished_popup_button_pressed" from="UIManager" to="." method="_on_ui_manager_on_mission_finished_popup_button_pressed"]
 [connection signal="on_shop_mission_interfaces_start_mission" from="UIManager" to="." method="_on_ui_manager_on_shop_mission_interfaces_start_mission"]
 [connection signal="on_start_run" from="UIManager" to="." method="_on_ui_manager_on_start_run"]
 [connection signal="purchased_item" from="UIManager" to="." method="_on_ui_manager_purchased_item"]

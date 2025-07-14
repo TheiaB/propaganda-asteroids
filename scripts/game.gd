@@ -31,6 +31,8 @@ func _ready():
 	ui_manager.init(self, mission_manager)
 	firstTime = true
 
+	ui_manager.set_displayed_missions(mission_manager.missions)
+
 	
 func updateShip():
 	asteroid_manager.ship = ship
@@ -72,8 +74,10 @@ func _on_ui_manager_on_start_run() -> void:
 	ui_manager.setUI()
 
 
-func _on_mission_manager_finish_mission() -> void:
-	pass # Replace with reward
+func _on_mission_manager_finish_mission(mission : Mission) -> void:
+	mission_manager.add_mission_to_finished_missions(mission)
+	ui_manager.clear_missions()
+	ui_manager.mission_finish_popup(mission)
 
 func refuel() -> void:
 	self.resource_fuel = 100
@@ -100,4 +104,9 @@ func _on_mission_manager_enter_base() -> void:
 	if ship:
 		ship.activate_docking_behaviour()
 	ui_manager.setUI("open_missions")
-	ui_manager.set_displayed_missions(mission_manager.missions)
+	#ui_manager.set_displayed_missions(mission_manager.missions)
+
+
+
+func _on_ui_manager_on_mission_finished_popup_button_pressed(mission: Mission) -> void:
+	ui_manager.set_displayed_missions(mission_manager.get_remaining_missions())

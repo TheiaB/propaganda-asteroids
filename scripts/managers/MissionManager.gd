@@ -8,6 +8,7 @@ enum DeliveryStates {EMPTY,DELIVERING}
 var current_delivery_state: DeliveryStates = DeliveryStates.EMPTY
 
 @onready var missions : Array[Mission] = [$BaseMission, $BaseMission2]
+var finished_missions : Array[Mission] = []
 
 var current_mission: Mission
 
@@ -36,13 +37,16 @@ func init(_arrow:Arrow3D) -> void:
 		mission.init(ship)
 	
 func on_home_zone_player_entered(_zone):
+	emit_signal("enter_base")
+
 	if(current_delivery_state == DeliveryStates.EMPTY):
 		if current_mission != null:
 			if(current_mission.is_correct_planet(_zone) and ZoneManager.get_home_planet() == _zone):
 				current_mission.try_next(_zone)
 				current_mission.reset()
-	
-	emit_signal("enter_base")
+
+				emit_signal("finish_mission", current_mission)
+
 
 func player_entered_planet_zone(zone:ZonePlanet):
 	if(current_mission != null):
@@ -77,3 +81,10 @@ func start_mission(mission: Mission) -> void:
 	
 func get_random_mission() -> Mission:
 	return missions.pick_random()
+
+
+func add_mission_to_finished_missions(mission: Mission):
+	finished_missions.append(mission)
+
+func get_remaining_missions() -> Array[Mission]:
+	return missions.filter(func(x): return x not in finished_missions)
