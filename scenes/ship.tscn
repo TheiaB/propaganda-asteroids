@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://boprrp0xswaga"]
+[gd_scene load_steps=9 format=3 uid="uid://boprrp0xswaga"]
 
 [ext_resource type="Script" uid="uid://bbduxt1lb18ne" path="res://scripts/ship.gd" id="1_2gnfn"]
 [ext_resource type="PackedScene" uid="uid://dhubj25omlkk6" path="res://assets/ship/sapce_ship.fbx" id="2_2gnfn"]
+[ext_resource type="PackedScene" uid="uid://cu5hdltnm5jj2" path="res://assets/ship/ship.gltf" id="3_4tobq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q631a"]
 size = Vector3(2.68066, 1, 0.53598)
@@ -48,6 +49,10 @@ transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 1.5, 0, -0.2)
 shape = SubResource("BoxShape3D_4tobq")
 
 [node name="sapce_ship" parent="." instance=ExtResource("2_2gnfn")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+visible = false
+
+[node name="ship" parent="." instance=ExtResource("3_4tobq")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 
 [node name="InvincibilityTimer" type="Timer" parent="."]
