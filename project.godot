@@ -41,6 +41,10 @@ BankLoaderMain="*res://bank_loader_main.gd"
 SoundManager5000="*res://scenes/sound_manager_5000.tscn"
 ZoneManager="*res://scenes/managers/zone_manager.tscn"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/fmod/plugin.cfg")
