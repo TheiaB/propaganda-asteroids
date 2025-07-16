@@ -19,6 +19,7 @@ size = Vector3(0.723633, 1, 0.71518)
 size = Vector3(0.649872, 1, 0.807007)
 
 [node name="Ship" type="CharacterBody3D"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
 collision_layer = 2
 collision_mask = 49
 script = ExtResource("1_2gnfn")

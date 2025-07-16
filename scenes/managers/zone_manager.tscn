@@ -1,43 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://bdmtg28xc2n0k"]
+[gd_scene load_steps=4 format=3 uid="uid://bdmtg28xc2n0k"]
 
-[ext_resource type="PackedScene" uid="uid://dlotxfarbs74i" path="res://scenes/zones/zone_planet.tscn" id="1_ng2hf"]
 [ext_resource type="Script" uid="uid://b4ghd1urtn6vc" path="res://scripts/managers/ZoneManager.gd" id="1_sojj3"]
-[ext_resource type="PackedScene" uid="uid://dolmjcndh7xbw" path="res://assets/planets/planet_ocean_surface_water.gltf" id="2_sojj3"]
 [ext_resource type="PackedScene" uid="uid://bvyjbe5rb50yn" path="res://scenes/zones/zone_home.tscn" id="3_f8inv"]
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_dinhu"]
+[ext_resource type="PackedScene" uid="uid://bc7jaqjp0f7tn" path="res://scenes/zones/water_planet.tscn" id="3_sojj3"]
 
 [node name="Zones" type="Node"]
 script = ExtResource("1_sojj3")
 
-[node name="ZonePlanet1" parent="." instance=ExtResource("1_ng2hf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.92632, 0, 0)
-unique_name = "Planet1"
+[node name="ZonePlanet1" parent="." instance=ExtResource("3_sojj3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.1741, 0, 0)
 
-[node name="ZonePlanet2" parent="." instance=ExtResource("1_ng2hf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.8301)
-unique_name = "Planet2"
+[node name="ZonePlanet2" parent="." instance=ExtResource("3_sojj3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 22.3067)
 
-[node name="ZonePlanet3" parent="." instance=ExtResource("1_ng2hf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9738, 0, -6)
-unique_name = "Planet3"
-
-[node name="CollisionShape3D" parent="ZonePlanet3/ZoneArea" index="0"]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, -1, 0)
-
-[node name="CollisionShape3D" parent="ZonePlanet3/ZoneProximity" index="0"]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
-
-[node name="planet_ocean_surface_water2" parent="ZonePlanet3" instance=ExtResource("2_sojj3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="ZonePlanet3"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ZonePlanet3/StaticBody3D"]
-transform = Transform3D(14, 0, 0, 0, 14, 0, 0, 0, 14, 0, 0, 0)
-shape = SubResource("CylinderShape3D_dinhu")
+[node name="ZonePlanet3" parent="." instance=ExtResource("3_sojj3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, 0)
 
 [node name="ZoneHome" parent="." instance=ExtResource("3_f8inv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.74538)
-
-[editable path="ZonePlanet3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.27936, 0, -16.6829)
