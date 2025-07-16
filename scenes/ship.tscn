@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://boprrp0xswaga"]
+[gd_scene load_steps=11 format=3 uid="uid://boprrp0xswaga"]
 
 [ext_resource type="Script" uid="uid://bbduxt1lb18ne" path="res://scripts/ship.gd" id="1_2gnfn"]
 [ext_resource type="PackedScene" uid="uid://dhubj25omlkk6" path="res://assets/ship/sapce_ship.fbx" id="2_2gnfn"]
@@ -17,6 +17,12 @@ size = Vector3(0.723633, 1, 0.71518)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4tobq"]
 size = Vector3(0.649872, 1, 0.807007)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tfsc7"]
+size = Vector3(0.291504, 0.32074, 2.98425)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gudjc"]
+size = Vector3(1.54297, 0.60144, 0.538818)
 
 [node name="Ship" type="CharacterBody3D"]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
@@ -87,5 +93,13 @@ event_guid = "{2e8c47f4-6883-4e3c-b28d-07128cc4722a}"
 [node name="ThrusterStop" type="FmodEventEmitter3D" parent="."]
 event_name = "event:/SpaceShipSFX/ShipThrusterStop"
 event_guid = "{a1e76d5d-b242-49a7-b728-0a4dc9298bc1}"
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00561524, -0.0159607, 0.992126)
+shape = SubResource("BoxShape3D_tfsc7")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.86889, 1.21542)
+shape = SubResource("BoxShape3D_gudjc")
 
 [connection signal="timeout" from="InvincibilityTimer" to="." method="_on_invincibility_timer_timeout"]
