@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://sfcyk6bywjc0"
-path.s3tc="res://.godot/imported/spaceport_warehouse_door_mat.png-7ba3d129f70a4831af7fcb32ec82cebc.s3tc.ctex"
+uid="uid://8msrm6dfyxoy"
+path.s3tc="res://.godot/imported/spaceport_building_slice_mat.png-fe87d2875d71b7cb76599c2d83d83928.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/HomePlanet/spaceport_warehouse_door_mat.png"
-dest_files=["res://.godot/imported/spaceport_warehouse_door_mat.png-7ba3d129f70a4831af7fcb32ec82cebc.s3tc.ctex"]
+source_file="res://assets/spaceport/spaceport_building_slice_mat.png"
+dest_files=["res://.godot/imported/spaceport_building_slice_mat.png-fe87d2875d71b7cb76599c2d83d83928.s3tc.ctex"]
 
 [params]
 

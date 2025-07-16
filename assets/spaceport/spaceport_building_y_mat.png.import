@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4nar3tmp6pcj"
-path.s3tc="res://.godot/imported/spaceport_building_house_1_mat.png-8c823724bfb8ae05d4fd009236eaf228.s3tc.ctex"
+uid="uid://d3n0d5rjggf0y"
+path.s3tc="res://.godot/imported/spaceport_building_y_mat.png-f27f6d0d316b3bbbccd26a3b5660aff7.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/HomePlanet/spaceport_building_house_1_mat.png"
-dest_files=["res://.godot/imported/spaceport_building_house_1_mat.png-8c823724bfb8ae05d4fd009236eaf228.s3tc.ctex"]
+source_file="res://assets/spaceport/spaceport_building_y_mat.png"
+dest_files=["res://.godot/imported/spaceport_building_y_mat.png-f27f6d0d316b3bbbccd26a3b5660aff7.s3tc.ctex"]
 
 [params]
 

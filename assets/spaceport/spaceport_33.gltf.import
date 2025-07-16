@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://el6jk8ctg8lf"
-path="res://.godot/imported/spaceport.gltf-f779ad83c67231007fb7ac69bd62c11c.scn"
+uid="uid://dk6j4lleue4eu"
+path="res://.godot/imported/spaceport_33.gltf-da25e13aecbef45436da17f3ef8e6871.scn"
 
 [deps]
 
-source_file="res://assets/HomePlanet/spaceport.gltf"
-dest_files=["res://.godot/imported/spaceport.gltf-f779ad83c67231007fb7ac69bd62c11c.scn"]
+source_file="res://assets/spaceport/spaceport_33.gltf"
+dest_files=["res://.godot/imported/spaceport_33.gltf-da25e13aecbef45436da17f3ef8e6871.scn"]
 
 [params]
 
