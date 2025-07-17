@@ -13,6 +13,6 @@ collision_mask = 2
 collision_layer = 16
 collision_mask = 2
 
-[connection signal="body_entered" from="ZoneArea" to="." method="_on_player_enter_zone"]
+[connection signal="body_entered" from="ZoneArea" to="." method="_on_body_enter_zone"]
 [connection signal="body_entered" from="ZoneProximity" to="." method="_on_zone_proximity_body_entered"]
 [connection signal="body_exited" from="ZoneProximity" to="." method="_on_zone_proximity_body_exited"]

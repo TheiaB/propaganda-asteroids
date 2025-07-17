@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://docticspr2gg3"]
+[gd_scene load_steps=4 format=3 uid="uid://docticspr2gg3"]
 
 [ext_resource type="Script" uid="uid://bbbo88f7xud44" path="res://scripts/projectiles/beam.gd" id="1_6i4ya"]
+[ext_resource type="SpriteFrames" uid="uid://cpgsbsb6jjowj" path="res://assets/ship/ship_spritesheet.tres" id="2_ih723"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_6i4ya"]
 height = 40.0
@@ -19,10 +20,21 @@ shape = SubResource("CylinderShape3D_6i4ya")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -20)
+visible = false
 radius = 2.0
 height = 40.0
 
 [node name="LingerTimer" type="Timer" parent="."]
 wait_time = 0.8
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
+offset = Vector2(0, 128)
+flip_v = true
+pixel_size = 0.015
+axis = 1
+sprite_frames = ExtResource("2_ih723")
+animation = &"laser"
+frame_progress = 0.07166
 
 [connection signal="timeout" from="LingerTimer" to="." method="_on_linger_timer_timeout"]

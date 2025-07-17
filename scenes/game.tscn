@@ -139,3 +139,5 @@ surface_material_override/0 = SubResource("ShaderMaterial_ca42v")
 [connection signal="ship_died" from="ShipManager" to="." method="_on_ship_manager_ship_died"]
 [connection signal="enter_base" from="MissionManager" to="." method="_on_mission_manager_enter_base"]
 [connection signal="finish_mission" from="MissionManager" to="." method="_on_mission_manager_finish_mission"]
+
+[editable path="ZoneManager"]

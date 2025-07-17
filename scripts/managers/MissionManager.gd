@@ -28,7 +28,7 @@ func init(_arrow:Arrow3D) -> void:
 	zone_home.player_entered.connect(on_home_zone_player_entered)
 	# guide to home at first
 	arrow.ship = ship
-	arrow.destination_position = zone_home.global_position
+	arrow.destination_position = zone_home.zone_area.global_position
 	
 	for zone_planet in zone_planets:
 		zone_planet.player_entered.connect(player_entered_planet_zone)
@@ -62,7 +62,7 @@ func player_entered_planet_zone(zone:ZonePlanet):
 				current_delivery_state = DeliveryStates.EMPTY
 				if(ship != null):
 					ship.unequip_cargo()
-				arrow.destination_position = ZoneManager.get_home_planet().global_position
+				arrow.destination_position = ZoneManager.get_home_planet().zone_area.global_position
 			else:
 				print(current_mission.mission_progress)
 				print('mission: wrong planet')

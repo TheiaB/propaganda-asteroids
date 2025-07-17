@@ -32,7 +32,7 @@ func _ready():
 	firstTime = true
 
 	ui_manager.set_displayed_missions(mission_manager.missions)
-	asteroid_manager.set_difficulty(5)
+	asteroid_manager.set_difficulty(1)
 
 	
 func updateShip():
@@ -111,7 +111,8 @@ func _on_mission_manager_enter_base() -> void:
 
 func _on_ui_manager_on_mission_finished_popup_button_pressed(mission: Mission) -> void:
 	ui_manager.set_displayed_missions(mission_manager.get_remaining_missions())
-
+	resource_money *= mission.reward
+	
 
 func _on_ship_manager_activate_active_item() -> void:
 	if self.resource_money > ship.active_item.activation_cost:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bvyjbe5rb50yn"]
+[gd_scene load_steps=15 format=3 uid="uid://bvyjbe5rb50yn"]
 
 [ext_resource type="PackedScene" uid="uid://bx2bqpsqh04ct" path="res://scenes/zones/zone.tscn" id="1_gnnva"]
 [ext_resource type="Script" uid="uid://bjhqng1205g2k" path="res://scripts/zones/zone_home.gd" id="2_ponqu"]
@@ -33,23 +33,29 @@ size = Vector3(1.54883, 1, 1.2843)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_a536u"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_5r1a1"]
+size = Vector3(18.7993, 1, 12.8799)
+
 [node name="ZoneHome" instance=ExtResource("1_gnnva")]
 script = ExtResource("2_ponqu")
 
+[node name="ZoneArea" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
 [node name="ShopEntry" type="CollisionShape3D" parent="ZoneArea" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.36921, 0, 4.72927)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.36921, 0, -0.27073)
 shape = SubResource("BoxShape3D_y1gjm")
 
 [node name="ShopEntry2" type="CollisionShape3D" parent="ZoneArea" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.846026, 0, 4.72927)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.846026, 0, -0.27073)
 shape = SubResource("BoxShape3D_y1gjm")
 
 [node name="ShopEntry3" type="CollisionShape3D" parent="ZoneArea" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.79317, 0, 4.72927)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.79317, 0, -0.27073)
 shape = SubResource("BoxShape3D_y1gjm")
 
 [node name="ShopEntry4" type="CollisionShape3D" parent="ZoneArea" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.49037, 0, 4.72927)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.49037, 0, -0.27073)
 shape = SubResource("BoxShape3D_y1gjm")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
@@ -105,4 +111,15 @@ shape = SubResource("CylinderShape3D_a536u")
 
 [node name="spaceport_33" parent="." index="3" instance=ExtResource("3_a536u")]
 
+[node name="AsteroidKillerArea3D" type="Area3D" parent="." index="4"]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AsteroidKillerArea3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.34748, -0.104316, 0.139295)
+shape = SubResource("BoxShape3D_5r1a1")
+
+[node name="ParkHereMarker3D" type="Marker3D" parent="." index="5"]
+
 [connection signal="area_exited" from="ZoneArea" to="." method="_on_zone_area_area_exited"]
+[connection signal="body_entered" from="AsteroidKillerArea3D" to="." method="_on_body_enter_zone"]

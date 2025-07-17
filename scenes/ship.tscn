@@ -1,22 +1,28 @@
-[gd_scene load_steps=11 format=3 uid="uid://boprrp0xswaga"]
+[gd_scene load_steps=17 format=3 uid="uid://boprrp0xswaga"]
 
 [ext_resource type="Script" uid="uid://bbduxt1lb18ne" path="res://scripts/ship.gd" id="1_2gnfn"]
 [ext_resource type="PackedScene" uid="uid://dhubj25omlkk6" path="res://assets/ship/sapce_ship.fbx" id="2_2gnfn"]
 [ext_resource type="PackedScene" uid="uid://cu5hdltnm5jj2" path="res://assets/ship/ship.gltf" id="3_4tobq"]
+[ext_resource type="PackedScene" uid="uid://c67duphyjlojt" path="res://assets/ship/cargo/cargo.gltf" id="4_gudjc"]
+[ext_resource type="SpriteFrames" uid="uid://cpgsbsb6jjowj" path="res://assets/ship/ship_spritesheet.tres" id="4_tfsc7"]
+[ext_resource type="Script" uid="uid://b04eolgqte2pm" path="res://scripts/cargo.gd" id="5_7j21i"]
+[ext_resource type="Texture2D" uid="uid://cmthwymp770j6" path="res://assets/ship/cargo/Container_Blue copie.png" id="6_itrim"]
+[ext_resource type="Texture2D" uid="uid://d3mwiosv5eabo" path="res://assets/ship/cargo/Container_Green.png" id="7_bseor"]
+[ext_resource type="Texture2D" uid="uid://bpgkuyhqurqa4" path="res://assets/ship/cargo/Container_Yelllow.png" id="8_tlr80"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q631a"]
 size = Vector3(2.68066, 1, 0.53598)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_q631a"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2gnfn"]
-albedo_color = Color(0.927587, 0.615252, 0.340187, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2gnfn"]
 size = Vector3(0.723633, 1, 0.71518)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4tobq"]
 size = Vector3(0.649872, 1, 0.807007)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_q631a"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2gnfn"]
+albedo_color = Color(0.927587, 0.615252, 0.340187, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tfsc7"]
 size = Vector3(0.291504, 0.32074, 2.98425)
@@ -37,12 +43,6 @@ shape = SubResource("BoxShape3D_q631a")
 [node name="Muzzle" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.19673)
 
-[node name="Cargo" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, 0.25, 0, 0, 0, 0.5, 0, -0.5, 0.316154)
-visible = false
-mesh = SubResource("CylinderMesh_q631a")
-surface_material_override/0 = SubResource("StandardMaterial3D_2gnfn")
-
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
 transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, 0, -0.536158)
 shape = SubResource("BoxShape3D_2gnfn")
@@ -61,6 +61,17 @@ visible = false
 
 [node name="ship" parent="." instance=ExtResource("3_4tobq")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+
+[node name="cargo" parent="ship" instance=ExtResource("4_gudjc")]
+visible = false
+script = ExtResource("5_7j21i")
+textures = Array[Resource]([ExtResource("6_itrim"), ExtResource("7_bseor"), ExtResource("8_tlr80")])
+
+[node name="CargoDebug" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.25, 0, 0, 0, 0.5, 0, -0.5, 0.316154)
+visible = false
+mesh = SubResource("CylinderMesh_q631a")
+surface_material_override/0 = SubResource("StandardMaterial3D_2gnfn")
 
 [node name="InvincibilityTimer" type="Timer" parent="."]
 wait_time = 3.0
@@ -102,4 +113,33 @@ shape = SubResource("BoxShape3D_tfsc7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.86889, 1.21542)
 shape = SubResource("BoxShape3D_gudjc")
 
+[node name="ThrusterSpriteRight" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 2, 1.715, -0.175, 0.35)
+offset = Vector2(0, -128)
+flip_v = true
+axis = 1
+sprite_frames = ExtResource("4_tfsc7")
+animation = &"thruster"
+
+[node name="ThrusterSpriteLeft" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 2, -1.715, -0.175, 0.35)
+offset = Vector2(0, -128)
+flip_v = true
+axis = 1
+sprite_frames = ExtResource("4_tfsc7")
+animation = &"thruster"
+
+[node name="LaserShootSprite" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.067)
+offset = Vector2(0, 128)
+pixel_size = 0.0075
+axis = 1
+sprite_frames = ExtResource("4_tfsc7")
+animation = &"laser_impact"
+frame = 6
+frame_progress = 1.0
+
 [connection signal="timeout" from="InvincibilityTimer" to="." method="_on_invincibility_timer_timeout"]
+[connection signal="animation_finished" from="ThrusterSpriteRight" to="." method="_on_thruster_sprite_animation_finished"]
+
+[editable path="ship/cargo"]
