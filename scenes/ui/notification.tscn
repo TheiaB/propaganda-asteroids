@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cshvo4cd408sm"]
+
+[ext_resource type="Script" uid="uid://cxq3lmhs36op7" path="res://scripts/ui/notification.gd" id="1_u4fg0"]
+
+[node name="Notification" type="Node2D"]
+script = ExtResource("1_u4fg0")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 882.0
+offset_top = 542.0
+offset_right = 1134.0
+offset_bottom = 620.0
+text = "adsfljksadflkj"

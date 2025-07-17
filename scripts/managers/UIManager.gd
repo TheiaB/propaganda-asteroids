@@ -16,6 +16,8 @@ class_name UIManager
 @onready var mission_interface: MissionInterface = $ShopMissionInterfaces/TabContainer/Mission
 @onready var mission_popup: MissionPopup = $ShopMissionInterfaces/MissionPopup
 
+@onready var notification: Notification = $notification
+
 
 
 
@@ -34,7 +36,10 @@ func init(_game: Game, _mission_manager: MissionManager):
 	fuel_amount_slider.game = _game
 	label_money_amount.game = _game	
 	mission_manager = _mission_manager
-	
+
+
+func notify(text: String, time: float):
+	notification.notify(text, time)
 
 func setUI(ui_name: String = ""):
 	death_scene.visible = false
