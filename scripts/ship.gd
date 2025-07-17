@@ -19,6 +19,9 @@ var charge_start_time : float = 0.0
 @onready var thruster: FmodEventEmitter3D = $ThrusterLoop
 var thruster_state_on := false
 
+@onready var thruster_sprite_right: AnimatedSprite3D = $ThrusterSpriteRight
+@onready var thruster_sprite_left: AnimatedSprite3D = $ThrusterSpriteLeft
+@onready var laser_shoot_sprite: AnimatedSprite3D = $LaserShootSprite
 
 var is_on_port: bool = false
 
@@ -100,17 +103,23 @@ func _process(_delta):
 			print(charge_duration, "Lasergun")
 			if weapon.charge_timer <= charge_duration:
 				weapon.shoot_projectile(self)
+				laser_shoot_sprite.play('laser_impact')
 	else:
 		if Input.is_action_just_pressed("shoot"):
 			weapon.shoot_projectile(self)
+			laser_shoot_sprite.play('laser_impact')
 
 	if Input.is_action_pressed("gas"):
 		if not thruster_state_on:
+			thruster_sprite_left.play("thruster_start")
+			thruster_sprite_right.play("thruster_start")
 			$ThrusterStart.play_one_shot()
 			$ThrusterLoop.play()
 			thruster_state_on = true
 	else:
 		if thruster_state_on:
+			thruster_sprite_left.play("thruster_die")
+			thruster_sprite_right.play("thruster_die")
 			$ThrusterLoop.stop()
 			$ThrusterStop.play_one_shot()
 			thruster_state_on = false
@@ -164,10 +173,18 @@ func _physics_process(delta):
 
 	move_and_slide()
 
-@onready var cargo: MeshInstance3D = $Cargo
+@onready var cargo: Cargo = $ship/cargo #$Cargo
 func equip_cargo():
 	cargo.show()
+	cargo.random_texture()
 
 func unequip_cargo():
 	cargo.hide()
 	
+
+
+func _on_thruster_sprite_animation_finished() -> void:
+	if(thruster_sprite_right.animation == 'thruster_start'):
+		if(thruster_state_on):
+			thruster_sprite_left.play('thruster_loop')
+			thruster_sprite_right.play('thruster_loop')

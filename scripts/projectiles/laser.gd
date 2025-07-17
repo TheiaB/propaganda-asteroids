@@ -1,9 +1,11 @@
 extends Projectile
 
 var initial_velocity
+@onready var sprite: AnimatedSprite3D = $AnimatedSprite3D
 
 func _ready() -> void:
 	initial_velocity = ship.velocity
+	sprite.play("laser")
 
 func _physics_process(delta: float) -> void:
 	var bullet_direction = -transform.basis.z * speed

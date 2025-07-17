@@ -43,7 +43,7 @@ ZoneManager="*res://scenes/managers/zone_manager.tscn"
 
 [display]
 
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
