@@ -104,3 +104,5 @@ transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -0.073, 0, 0)
 shape = SubResource("CylinderShape3D_a536u")
 
 [node name="spaceport_33" parent="." index="3" instance=ExtResource("3_a536u")]
+
+[connection signal="area_exited" from="ZoneArea" to="." method="_on_zone_area_area_exited"]

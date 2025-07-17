@@ -33,10 +33,7 @@ func activate_set_sail_behaviour(_delay):
 
 func setInvinsibility(_isInvinsible:bool):
 	isInvinsible = _isInvinsible
-	for child in get_children():
-		if child is CollisionShape3D:
-			child.set_deferred("disabled", isInvinsible) 
-
+	
 func delayedInvinsibilityReset(_delay:float):
 	invincibility_timer.wait_time = _delay
 	invincibility_timer.start()

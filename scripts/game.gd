@@ -32,6 +32,7 @@ func _ready():
 	firstTime = true
 
 	ui_manager.set_displayed_missions(mission_manager.missions)
+	asteroid_manager.set_difficulty(5)
 
 	
 func updateShip():
