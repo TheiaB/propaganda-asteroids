@@ -34,7 +34,7 @@ size = Vector3(1.54883, 1, 1.2843)
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_a536u"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5r1a1"]
-size = Vector3(18.7993, 1, 12.8799)
+size = Vector3(15.3435, 1, 12.8799)
 
 [node name="ZoneHome" instance=ExtResource("1_gnnva")]
 script = ExtResource("2_ponqu")
@@ -112,11 +112,11 @@ shape = SubResource("CylinderShape3D_a536u")
 [node name="spaceport_33" parent="." index="3" instance=ExtResource("3_a536u")]
 
 [node name="AsteroidKillerArea3D" type="Area3D" parent="." index="4"]
-collision_layer = 0
-collision_mask = 16
+collision_layer = 16
+collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AsteroidKillerArea3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.34748, -0.104316, 0.139295)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.380421, -0.104316, 0.139295)
 shape = SubResource("BoxShape3D_5r1a1")
 
 [node name="ParkHereMarker3D" type="Marker3D" parent="." index="5"]

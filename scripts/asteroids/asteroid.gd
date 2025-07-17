@@ -8,9 +8,17 @@ var screen_size = DisplayServer.screen_get_size()
 @export var health = 3
 @export var damage = 1
 
+@onready var area_3d: Area3D = $Area3D
+
 func _ready() -> void:
 	linear_velocity = move_dir
 	screen_size = get_viewport().get_visible_rect().size
+	var all_overlapping_areas:Array[Area3D] = area_3d.get_overlapping_areas()
+	for overlapping_area:Area3D in all_overlapping_areas:
+		if(overlapping_area.collision_layer == 5): # if its a zone
+			print('Asteroid spawned within illegal zone.')
+			queue_free()
+			pass
 
 # bound fource is e.g. value between 0.7-0.8
 # target = ship
