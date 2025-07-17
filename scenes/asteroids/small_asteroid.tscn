@@ -13,6 +13,7 @@ radius = 1.08383
 [node name="Asteroid" type="RigidBody3D" groups=["Asteroids"]]
 collision_layer = 4
 collision_mask = 12
+axis_lock_linear_y = true
 mass = 71.966
 physics_material_override = SubResource("PhysicsMaterial_akfqu")
 gravity_scale = 0.0
