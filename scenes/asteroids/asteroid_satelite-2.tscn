@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://drywrsn3lswy2"]
+
+[ext_resource type="Script" uid="uid://bxh6oltf5uiv6" path="res://scripts/asteroids/asteroid.gd" id="1_1tf0p"]
+[ext_resource type="PackedScene" uid="uid://brn7yl7tpnc4g" path="res://assets/asteroids/asteroid_satellite_2/asteroid_satellite_2.gltf" id="2_1tf0p"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_akfqu"]
+friction = 0.5
+bounce = 1.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2h0cg"]
+size = Vector3(2.13367, 1, 3.43408)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_afu5r"]
+size = Vector3(2.14069, 1, 3.4502)
+
+[node name="Asteroid" type="RigidBody3D" groups=["Asteroids"]]
+collision_layer = 20
+collision_mask = 12
+mass = 71.966
+physics_material_override = SubResource("PhysicsMaterial_akfqu")
+gravity_scale = 0.0
+script = ExtResource("1_1tf0p")
+speed = 5
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+visible = false
+
+[node name="asteroid_satellite_22" parent="." instance=ExtResource("2_1tf0p")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.0403748, 0.0823897, 0.391479)
+shape = SubResource("BoxShape3D_2h0cg")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+visible = false
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0823897, 0)
+collision_layer = 32
+collision_mask = 26
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, 0.0693375, 0, 0.426196)
+shape = SubResource("BoxShape3D_afu5r")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

@@ -1,34 +1,35 @@
-[gd_scene load_steps=5 format=3 uid="uid://dxb46wibjrce3"]
+[gd_scene load_steps=6 format=3 uid="uid://c5i5gf1wwpyei"]
 
-[ext_resource type="Script" uid="uid://bxh6oltf5uiv6" path="res://scripts/asteroids/asteroid.gd" id="1_ujvpl"]
-[ext_resource type="PackedScene" uid="uid://dsornnd7hwust" path="res://assets/asteroids/asteroid_general/asteroid_general.gltf" id="2_nxpf8"]
+[ext_resource type="Script" uid="uid://bxh6oltf5uiv6" path="res://scripts/asteroids/asteroid.gd" id="1_2h0cg"]
+[ext_resource type="PackedScene" uid="uid://xnk5t2jfofoh" path="res://assets/asteroids/asteroid_satellite_1/asteroid_satellite_1.gltf" id="2_2h0cg"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_akfqu"]
 friction = 0.5
 bounce = 1.0
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_0md28"]
-radius = 1.08383
+[sub_resource type="BoxShape3D" id="BoxShape3D_2h0cg"]
+size = Vector3(1, 1, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_afu5r"]
+size = Vector3(1, 1, 5)
 
 [node name="Asteroid" type="RigidBody3D" groups=["Asteroids"]]
 collision_layer = 20
 collision_mask = 12
-axis_lock_linear_y = true
 mass = 71.966
 physics_material_override = SubResource("PhysicsMaterial_akfqu")
 gravity_scale = 0.0
-script = ExtResource("1_ujvpl")
+script = ExtResource("1_2h0cg")
 speed = 5
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="."]
 visible = false
 
-[node name="asteroid_general2" parent="." instance=ExtResource("2_nxpf8")]
-transform = Transform3D(0.505, 0, 0, 0, 0.505, 0, 0, 0, 0.505, 0, -0.0542719, -0.0452216)
+[node name="asteroid_satellite_1" parent="." instance=ExtResource("2_2h0cg")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
-shape = SubResource("SphereShape3D_0md28")
+shape = SubResource("BoxShape3D_2h0cg")
 
 [node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
 visible = false
@@ -39,7 +40,7 @@ collision_mask = 26
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, 0, 0, 0)
-shape = SubResource("SphereShape3D_0md28")
+shape = SubResource("BoxShape3D_afu5r")
 
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

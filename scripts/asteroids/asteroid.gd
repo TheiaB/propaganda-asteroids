@@ -7,11 +7,13 @@ var screen_size = DisplayServer.screen_get_size()
 @export var speed = 100
 @export var health = 3
 @export var damage = 1
-
+var rotational_speed_modif = 0.3
 @onready var area_3d: Area3D = $Area3D
 
 func _ready() -> void:
 	linear_velocity = move_dir
+	var rot_direction = Vector3(randf_range(-1, 1), randf_range(-1, 1), randf_range(-1, 1)).normalized()
+	angular_velocity = rot_direction * speed  * rotational_speed_modif
 	screen_size = get_viewport().get_visible_rect().size
 	var all_overlapping_areas:Array[Area3D] = area_3d.get_overlapping_areas()
 	for overlapping_area:Area3D in all_overlapping_areas:
@@ -22,6 +24,7 @@ func _ready() -> void:
 
 # bound fource is e.g. value between 0.7-0.8
 # target = ship
+
 func set_move_dir(bound_force : float, target : Node) -> void:
 	if bound_force >= 0 :
 		var offset : Vector3 = (target.position - position)
@@ -81,3 +84,15 @@ func _on_area_3d_body_entered(ship) -> void:
 	
 func destroy_me():
 	queue_free()
+
+func _process(delta: float) -> void:
+	if(linear_velocity.length() > speed * 2.0):
+		linear_velocity -= linear_velocity.normalized() * 0.1
+	elif(linear_velocity.length() < speed * 0.5):
+		linear_velocity += linear_velocity.normalized() * 0.1
+	
+	if(angular_velocity.length() > speed * rotational_speed_modif * 0.9):
+		angular_velocity = angular_velocity.normalized() * speed * rotational_speed_modif
+	elif(angular_velocity.length() < speed * rotational_speed_modif * 1.1):
+		angular_velocity = angular_velocity.normalized() * speed * rotational_speed_modif
+	

@@ -19,6 +19,8 @@ var bound_force_range : Vector2
 var asteroid_types = [
 	{ "scene": preload("res://scenes/asteroids/small_asteroid.tscn"), "tier": EnemyTier.COMMON },
 	{ "scene": preload("res://scenes/asteroids/asteroid.tscn"), "tier": EnemyTier.UNCOMMON},
+	{ "scene": preload("res://scenes/asteroids/asteroid_satelite-1.tscn"), "tier": EnemyTier.RARE},
+	{ "scene": preload("res://scenes/asteroids/asteroid_satelite-2.tscn"), "tier": EnemyTier.RARE},
 	{ "scene": preload("res://scenes/asteroids/big_asteroid.tscn"), "tier": EnemyTier.RARE},
 	{ "scene": preload("res://scenes/asteroids/water_asteroid.tscn"), "tier": EnemyTier.SPECIAL},
 	{ "scene": preload("res://scenes/asteroids/termite_asteroid.tscn"), "tier": EnemyTier.SPECIAL},
@@ -137,7 +139,7 @@ func spawn_random_asteroid(_bound_force : float):
 			valid_weights.append(spawn_weights[i])
 
 	var chosen = pick_weighted(valid_enemies, valid_weights)
-	var asteroid_instance = chosen.scene.instantiate()
+	var asteroid_instance:Asteroid = chosen.scene.instantiate()
 	asteroid_instance.position = set_rand_asteroid_position()
 	asteroid_instance.speed = randf_range(asteroid_speed_range.x, asteroid_speed_range.y)
 	asteroid_instance.set_move_dir(_bound_force, target)

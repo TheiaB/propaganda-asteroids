@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://3wsahrb0lx3f"]
+[gd_scene load_steps=5 format=3 uid="uid://3wsahrb0lx3f"]
 
 [ext_resource type="Script" uid="uid://bxh6oltf5uiv6" path="res://scripts/asteroids/asteroid.gd" id="1_ckhff"]
+[ext_resource type="PackedScene" uid="uid://dsornnd7hwust" path="res://assets/asteroids/asteroid_general/asteroid_general.gltf" id="2_kfbcv"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_akfqu"]
 friction = 0.5
@@ -20,6 +21,7 @@ speed = 5
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
@@ -35,6 +37,9 @@ collision_mask = 10
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 shape = SubResource("SphereShape3D_0md28")
+
+[node name="asteroid_general2" parent="." instance=ExtResource("2_kfbcv")]
+transform = Transform3D(0.26, 0, 0, 0, 0.26, 0, 0, 0, 0.26, 0, -0.0242423, -0.0452216)
 
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
