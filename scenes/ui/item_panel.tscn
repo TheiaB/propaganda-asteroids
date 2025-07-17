@@ -1,11 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://hcmibft8yacr"]
+[gd_scene load_steps=2 format=3 uid="uid://hcmibft8yacr"]
 
 [ext_resource type="Script" uid="uid://ci0anbyggpyh7" path="res://scripts/ui/item_panel.gd" id="1_0k6an"]
-[ext_resource type="Texture2D" uid="uid://ckad6s5jnpht1" path="res://assets/ui/T_item_placeholder.png" id="1_oqpv0"]
 
 [node name="ItemPanel" type="Panel"]
 custom_minimum_size = Vector2(256, 285)
-offset_right = 256.0
+offset_left = 1.0
+offset_right = 257.0
 offset_bottom = 285.0
 script = ExtResource("1_0k6an")
 
@@ -20,9 +20,12 @@ layout_mode = 0
 offset_right = 256.0
 offset_bottom = 290.0
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 256)
 layout_mode = 2
-texture = ExtResource("1_oqpv0")
+autoplay = true
+expand = true
+loop = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2

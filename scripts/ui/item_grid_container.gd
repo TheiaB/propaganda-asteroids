@@ -15,14 +15,13 @@ func init_grid():
 	for item_data in all_items:
 		if !item_data.buyable:
 			continue
-		var panel = item_panel_scene.instantiate() 
+		var panel: ItemPanel = item_panel_scene.instantiate() 
 		panel.visible = true
 		
-		panel.visual 		= item_data.visual
-		panel.visual3D 		= item_data.visual3D
 		panel.title 		= item_data.title
 		panel.price 		= item_data.price
 		panel.description 	= item_data.description
+		panel.presentation_video = item_data.video
 		
 		panel.buy_button_pressed.connect(_on_panel_buy_pressed)
 

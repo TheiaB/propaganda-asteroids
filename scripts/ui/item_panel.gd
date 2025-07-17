@@ -2,16 +2,14 @@
 extends Panel
 class_name ItemPanel
 
-@export var visual:Texture2D
-@export var visual3D:Mesh
 @export var title:String
 @export var price:int
 @export var description:String
-
-@onready var texture_item: TextureRect = $VBoxContainer/TextureRect
+@export var presentation_video : VideoStream
 
 @onready var label_title: Label = $VBoxContainer/HBoxContainer/LabelTitle
 @onready var label_price: Label = $VBoxContainer/HBoxContainer/LabelPrice
+@onready var video_stream_player: VideoStreamPlayer = $VBoxContainer/VideoStreamPlayer
 
 signal buy_button_pressed(node : Node)
 
@@ -19,8 +17,9 @@ func _ready() -> void:
 	update_item()
 
 func update_item():
-	if(visual != null):
-		texture_item.texture = visual
+	if(presentation_video != null):
+		video_stream_player.stream = presentation_video
+		video_stream_player.play()
 	if(title != null):
 		label_title.text = title
 	if(price != null):
