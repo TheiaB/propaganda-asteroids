@@ -97,11 +97,11 @@ func _on_ui_manager_purchased_item(item_title: String) -> void:
 func _on_ui_manager_ship_fly() -> void:
 	if ship:
 		ship.activate_set_sail_behaviour(2.0)
-		timer_manager.fuel_timer.start()
+		timer_manager.startFuel()
 
 func _on_mission_manager_enter_base() -> void:
 	refuel()
-	timer_manager.fuel_timer.stop()
+	timer_manager.stopFuel()
 	if ship:
 		ship.activate_docking_behaviour()
 	ui_manager.setUI("open_missions")
@@ -113,5 +113,22 @@ func _on_ui_manager_on_mission_finished_popup_button_pressed(mission: Mission) -
 	ui_manager.set_displayed_missions(mission_manager.get_remaining_missions())
 
 
-func _on_ship_manager_money_spent(cost:int) -> void:
-	self.resource_money -= cost
+func _on_ship_manager_activate_active_item() -> void:
+	if self.resource_money > ship.active_item.activation_cost:
+		self.resource_money -= ship.active_item.activation_cost
+		timer_manager.startActive()
+		ship_manager.ship.active_item.activate_item(ship_manager.ship)
+		
+
+func _on_ship_manager_deactivate_active_item() -> void:
+	timer_manager.active_item_money_timer.stop()
+	ship_manager.ship.active_item.deactivate_item(ship_manager.ship)
+
+
+
+func _on_active_item_money_timer_timeout() -> void:
+	self.resource_money -= ship.active_item.activation_cost
+	if self.resource_money < ship.active_item.activation_cost:
+		print("Deactivating due to insufficient funds")
+		ship_manager.ship.active_item.deactivate_item(ship_manager.ship)
+		timer_manager.active_item_money_timer.stop()

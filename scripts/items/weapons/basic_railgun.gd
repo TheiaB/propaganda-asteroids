@@ -17,7 +17,7 @@ func _ready() -> void:
 	chargeable = true
 	buyable = true
 	title = "Railgun"
-	#TODO desc
+	description = "A powerful Railgun, that will devastate anything in its path"
 	
 func shoot_projectile(ship: Ship):
 	ship.start_restrict_rotation(restricted_rotation_multiplier)

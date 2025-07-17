@@ -88,6 +88,9 @@ script = ExtResource("6_ca42v")
 wait_time = 5.0
 autostart = true
 
+[node name="ActiveItemMoneyTimer" type="Timer" parent="TimerManager"]
+wait_time = 0.1
+
 [node name="UIManager" parent="." instance=ExtResource("7_kvpfn")]
 unique_name_in_owner = true
 
@@ -123,6 +126,7 @@ mesh = SubResource("PlaneMesh_dinhu")
 surface_material_override/0 = SubResource("ShaderMaterial_ca42v")
 
 [connection signal="timeout" from="TimerManager/FuelTimer" to="." method="_on_fuel_timer_timeout"]
+[connection signal="timeout" from="TimerManager/ActiveItemMoneyTimer" to="." method="_on_active_item_money_timer_timeout"]
 [connection signal="on_contract_accept" from="UIManager" to="." method="_on_ui_manager_on_contract_accept"]
 [connection signal="on_death_scene_next_run" from="UIManager" to="." method="_on_ui_manager_on_death_scene_next_run"]
 [connection signal="on_mission_finished_popup_button_pressed" from="UIManager" to="." method="_on_ui_manager_on_mission_finished_popup_button_pressed"]
@@ -130,7 +134,8 @@ surface_material_override/0 = SubResource("ShaderMaterial_ca42v")
 [connection signal="on_start_run" from="UIManager" to="." method="_on_ui_manager_on_start_run"]
 [connection signal="purchased_item" from="UIManager" to="." method="_on_ui_manager_purchased_item"]
 [connection signal="ship_fly" from="UIManager" to="." method="_on_ui_manager_ship_fly"]
-[connection signal="money_spent" from="ShipManager" to="." method="_on_ship_manager_money_spent"]
+[connection signal="activate_active_item" from="ShipManager" to="." method="_on_ship_manager_activate_active_item"]
+[connection signal="deactivate_active_item" from="ShipManager" to="." method="_on_ship_manager_deactivate_active_item"]
 [connection signal="ship_died" from="ShipManager" to="." method="_on_ship_manager_ship_died"]
 [connection signal="enter_base" from="MissionManager" to="." method="_on_mission_manager_enter_base"]
 [connection signal="finish_mission" from="MissionManager" to="." method="_on_mission_manager_finish_mission"]

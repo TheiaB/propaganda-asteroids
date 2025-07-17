@@ -14,8 +14,8 @@ func _ready() -> void:
 	weapon_damage = damage
 	weapon_price = price
 	buyable = true
-	#title = "Default Weapon"
-	#TODO Description
+	title = "Starting Weapon"
+	description = "Your standard blaster"
 	
 		
 func shoot_projectile(ship: Ship):

@@ -5,14 +5,16 @@ class_name Ship
 @export var stats : CharacterStats
 
 signal ship_died
-signal money_spent(cost : int)
+signal activate_active_item
+signal deactivate_active_item
 
-@export var weapon: Weapon
-@export var shield: Shield
+@export var weapon : Weapon
+@export var shield : Shield
 @export var active_item : Generic_Active_Item
-@export var items: Array[Generic_Item]
-var isInvinsible: bool = false
-var projectiles_node: Node
+@export var items : Array[Generic_Item]
+var isInvinsible : bool = false
+var projectiles_node : Node
+var active_item_node : Node
 var charge_start_time : float = 0.0
 
 @onready var muzzle := $Muzzle
@@ -43,7 +45,7 @@ func delayedInvinsibilityReset(_delay:float):
 func _on_invincibility_timer_timeout() -> void:
 	setInvinsibility(false)
 
-func createBasic(camera: Player_Camera, _projectiles_node: Node):
+func createBasic(camera: Player_Camera, _projectiles_node : Node):
 	var _weapon = preload("res://scenes/items/weapons/basic_weapon.tscn").instantiate()
 	var _shield = preload("res://scenes/items/shields/basic_shield.tscn").instantiate()
 	var _stats = preload("res://scenes/basic_start_stats.tscn").instantiate()
@@ -117,11 +119,13 @@ func _process(_delta):
 			$ThrusterStop.play_one_shot()
 			thruster_state_on = false
 			
-	if Input.is_action_pressed("active_item"):
-		print("bye bye money")
-		emit_signal("money_spent", 1)
-		pass
-		#active_item.activate()
+	if Input.is_action_just_pressed("active_item"):
+		if active_item:
+			emit_signal("activate_active_item")
+	if Input.is_action_just_released("active_item"):
+		if active_item:
+			emit_signal("deactivate_active_item")
+			
 		
 
 func start_restrict_rotation(_restricted_rotation_multiplier):

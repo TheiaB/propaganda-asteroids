@@ -9,7 +9,8 @@ var arrow : Arrow3D
 var game : Game
 
 signal ship_died
-signal money_spent(cost : int)
+signal activate_active_item
+signal deactivate_active_item
 
 func init(_camera_3d: Camera3D, _arrow: Arrow3D, _game: Game) -> void:
 	camera_3d = _camera_3d
@@ -23,7 +24,8 @@ func spawn_ship() -> void:
 	arrow.ship = ship
 	game.add_child(ship)
 	ship.connect("ship_died", send_ship_died)
-	ship.connect("money_spent", send_money_spent)
+	ship.connect("activate_active_item", send_activate_active_item)
+	ship.connect("deactivate_active_item", send_deactivate_active_item)
 	game.ship = ship
 	game.updateShip()
 	
@@ -35,7 +37,8 @@ func update_loadout(item : Item) -> void:
 		ship.shield.buyable = true
 		ship.shield = item
 	elif item is Generic_Active_Item:
-		ship.active_item.buyable = true
+		if ship.active_item:
+			ship.active_item.buyable = true
 		ship.active_item = item
 	else:
 		ship.items.append(item)
@@ -43,5 +46,8 @@ func update_loadout(item : Item) -> void:
 func send_ship_died():
 	emit_signal("ship_died")
 	
-func send_money_spent(cost : int):
-	emit_signal("money_spent", cost)
+func send_activate_active_item():
+	emit_signal("activate_active_item")
+	
+func send_deactivate_active_item():
+	emit_signal("deactivate_active_item")

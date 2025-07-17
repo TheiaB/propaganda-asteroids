@@ -36,7 +36,7 @@ func init() -> void:
 	for zone_planet in ZoneManager.get_planets():
 		zone_planet.proximity_entered.connect(player_entered_planet_proximity)
 		zone_planet.proximity_exited.connect(player_exited_planet_proximity)
-	set_difficulty(1)
+	set_difficulty(5)
 
 func set_difficulty(level: int):
 	level = clamp(level, 1, 10)

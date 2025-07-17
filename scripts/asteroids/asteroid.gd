@@ -40,6 +40,9 @@ func get_random_screen_offset_point() -> Vector3:
 
 	
 func _on_area_3d_area_entered(area : Area3D) -> void:
+	if area is ActiveShield:
+		print('activeshield')
+		queue_free()
 	if area is Projectile:
 		var bullet := area as Projectile
 		health -= bullet.damage
