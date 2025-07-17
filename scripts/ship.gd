@@ -5,9 +5,11 @@ class_name Ship
 @export var stats : CharacterStats
 
 signal ship_died
+signal money_spent(cost : int)
 
 @export var weapon: Weapon
 @export var shield: Shield
+@export var active_item : Generic_Active_Item
 @export var items: Array[Generic_Item]
 var isInvinsible: bool = false
 var projectiles_node: Node
@@ -53,7 +55,7 @@ func create(camera: Player_Camera, _projectiles_node: Node, _weapon: Weapon, _sh
 	ship.weapon = _weapon
 	ship.add_child(ship.weapon)	
 	ship.shield = _shield
-	ship.add_child(ship.shield)	
+	ship.add_child(ship.shield)
 	ship.stats = _stats
 	ship.add_child(ship.stats)
 	ship.transform = ship.transform.scaled(Vector3(0.5, 0.5, 0.5))
@@ -114,6 +116,12 @@ func _process(_delta):
 			$ThrusterLoop.stop()
 			$ThrusterStop.play_one_shot()
 			thruster_state_on = false
+			
+	if Input.is_action_pressed("active_item"):
+		print("bye bye money")
+		emit_signal("money_spent", 1)
+		pass
+		#active_item.activate()
 		
 
 func start_restrict_rotation(_restricted_rotation_multiplier):

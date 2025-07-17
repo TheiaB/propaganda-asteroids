@@ -9,6 +9,7 @@ signal panel_buy_pressed(item:Item)
 #@export_tool_button("Init Grid", "Callable") var init_action = init_grid
 func init_grid():
 	all_items = GlobalItemManager.get_all_items()
+	GlobalItemManager.sort_by_prize(all_items)
 	for n in self.get_children():
 		n.queue_free()
 	print('--- In Grid Container')

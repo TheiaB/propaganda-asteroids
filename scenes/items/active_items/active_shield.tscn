@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bv6k7ca81hb5x"]
+
+[ext_resource type="Script" uid="uid://b7fvyxoghyrap" path="res://scripts/items/active_items/active_shield.gd" id="1_euify"]
+
+[node name="ActiveShield" type="Node"]
+script = ExtResource("1_euify")

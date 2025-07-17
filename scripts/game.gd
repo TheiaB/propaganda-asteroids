@@ -111,3 +111,7 @@ func _on_mission_manager_enter_base() -> void:
 
 func _on_ui_manager_on_mission_finished_popup_button_pressed(mission: Mission) -> void:
 	ui_manager.set_displayed_missions(mission_manager.get_remaining_missions())
+
+
+func _on_ship_manager_money_spent(cost:int) -> void:
+	self.resource_money -= cost
