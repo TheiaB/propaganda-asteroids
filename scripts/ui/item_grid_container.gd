@@ -4,7 +4,7 @@ extends GridContainer
 var all_items:Array[Item]
 @onready var item_panel_scene: PackedScene = preload("res://scenes/ui/item_panel.tscn")
 
-signal panel_buy_pressed(item_data)
+signal panel_buy_pressed(item:Item)
 
 #@export_tool_button("Init Grid", "Callable") var init_action = init_grid
 func init_grid():
@@ -23,15 +23,15 @@ func init_grid():
 		panel.description 	= item_data.description
 		panel.presentation_video = item_data.video
 		
-		panel.buy_button_pressed.connect(_on_panel_buy_pressed)
+		panel.buy_button_pressed.connect(_on_panel_buy_pressed.bind(item_data))
 
 		self.add_child(panel)
 		print('added item: ',panel.title)
 		
 	print('--- After Grid Container')
 
-func _on_panel_buy_pressed(item_data):
-	emit_signal("panel_buy_pressed", item_data)
+func _on_panel_buy_pressed(item:Item):
+	emit_signal("panel_buy_pressed", item)
 
 func _ready() -> void:
 	if not Engine.is_editor_hint():

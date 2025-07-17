@@ -7,3 +7,4 @@ class_name Item
 @export var description:String = "DEFAULT ITEM DESCRIPTION"
 @export var buyable:bool = false
 @export var video:VideoStream
+@export var legal_text:String = "[b]no text[/b]"

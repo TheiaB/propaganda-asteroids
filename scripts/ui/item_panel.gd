@@ -11,7 +11,7 @@ class_name ItemPanel
 @onready var label_price: Label = $VBoxContainer/HBoxContainer/LabelPrice
 @onready var video_stream_player: VideoStreamPlayer = $VBoxContainer/VideoStreamPlayer
 
-signal buy_button_pressed(node : Node)
+signal buy_button_pressed
 
 func _ready() -> void:
 	update_item()
@@ -36,7 +36,7 @@ func _on_gui_input(_event: InputEvent) -> void:
 
 
 func _on_buy_button_pressed() -> void:
-	emit_signal("buy_button_pressed", self)
+	emit_signal("buy_button_pressed")
 
 func _get_tooltip(_at_position: Vector2):
 	return "%s" % [description]

@@ -15,21 +15,13 @@ func _ready():
 
 func show_popup(item):
 	item_data = item
-	legal_text.text = _generate_legal_text()
+	legal_text.text = item_data.legal_text
 	legal_text.scroll_active = true
 	#legal_text.scroll_to_line(0)
 	scroll_container.get_v_scroll_bar().value = 0
 	accept_button.disabled = true
 	show()
-	popup_centered() 
-
-func _generate_legal_text() -> String:
-	var text = "Terms & Conditions:\n"
-	for i in range(50):
-		text += "This is a made-up legal clause #%d. " % i
-		text += "You agree to not sue anyone even if this game takes your cat.\n"
-	return text
-
+	popup_centered()
 		
 func _on_scroll_check(value: float) -> void:
 	var scrollbar = scroll_container.get_v_scroll_bar()

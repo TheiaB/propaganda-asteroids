@@ -72,8 +72,6 @@ func _on_confirmation_popup_terms_accepted(item_title: String) -> void:
 func _on_contract_scene_accept_contract() -> void:
 	emit_signal("on_contract_accept")
 	
-func _on_grid_container_panel_buy_pressed(item_data: Variant) -> void:
-	confirmation_popup.show_popup(item_data)
 
 func _on_shop_mission_interfaces_ship_fly() -> void:
 	emit_signal("ship_fly")
@@ -103,3 +101,7 @@ func _on_mission_popup_on_mission_popup_button_pressed(mission: Mission) -> void
 func _on_mission_popup_on_finish_mission_popup_button_pressed(mission: Mission) -> void:
 	mission_popup.hide()
 	emit_signal("on_mission_finished_popup_button_pressed", mission)
+
+
+func _on_grid_container_panel_buy_pressed(item: Item) -> void:
+	confirmation_popup.show_popup(item)
