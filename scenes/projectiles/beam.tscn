@@ -28,13 +28,13 @@ height = 40.0
 wait_time = 0.8
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(6, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
 offset = Vector2(0, 128)
 flip_v = true
 pixel_size = 0.015
 axis = 1
 sprite_frames = ExtResource("2_ih723")
 animation = &"laser"
-frame_progress = 0.487915
+frame_progress = 0.07166
 
 [connection signal="timeout" from="LingerTimer" to="." method="_on_linger_timer_timeout"]

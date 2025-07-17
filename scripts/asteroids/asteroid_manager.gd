@@ -41,12 +41,17 @@ func init() -> void:
 func set_difficulty(level: int):
 	level = clamp(level, 1, 10)
 	var t = float(level - 1) / 9.0
-	asteroid_timer.wait_time = lerp(0.8, 0.1, t)
+	asteroid_timer.wait_time = lerp(0.8, 0.2, t)
 	spawn_weights.clear()
-	bound_force_range.x = lerp(0.5, 1.0, t)
+	bound_force_range.x = lerp(0.501, 0.9, t)
 	bound_force_range.y = lerp(0.7, 1.0, t)
-	asteroid_speed_range.x = lerp(3, 10, t)
-	asteroid_speed_range.y = lerp(5, 50, t)
+	asteroid_speed_range.x = lerp(2, 4, t)
+	asteroid_speed_range.y = lerp(3, 5, t)
+	
+	print('DIFFICULTY LEVEL: ',level)
+	print('Lerp Parameter: ',t)
+	print('Bound force: ', bound_force_range)
+	print('Speed range: ', asteroid_speed_range)
 	for i in range(asteroid_types.size()):
 		var tier = asteroid_types[i].tier
 		match tier:
@@ -134,8 +139,8 @@ func spawn_random_asteroid(_bound_force : float):
 	var chosen = pick_weighted(valid_enemies, valid_weights)
 	var asteroid_instance = chosen.scene.instantiate()
 	asteroid_instance.position = set_rand_asteroid_position()
-	asteroid_instance.set_move_dir(_bound_force, target)
 	asteroid_instance.speed = randf_range(asteroid_speed_range.x, asteroid_speed_range.y)
+	asteroid_instance.set_move_dir(_bound_force, target)
 	add_sibling(asteroid_instance)
 	
 	

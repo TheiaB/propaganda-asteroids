@@ -8,4 +8,7 @@ script = ExtResource("2_02r6e")
 unique_name = ""
 health = 3
 
+[node name="ZoneArea" parent="." index="0"]
+collision_mask = 6
+
 [connection signal="body_exited" from="ZoneArea" to="." method="_on_zone_area_body_exited"]

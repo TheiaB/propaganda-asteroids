@@ -59,7 +59,7 @@ script = ExtResource("1_lnu2h")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20, 0)
 current = true
 script = ExtResource("1_yqjtg")
 smooth_speed = 3.5
@@ -133,3 +133,5 @@ surface_material_override/0 = SubResource("ShaderMaterial_ca42v")
 [connection signal="ship_died" from="ShipManager" to="." method="_on_ship_manager_ship_died"]
 [connection signal="enter_base" from="MissionManager" to="." method="_on_mission_manager_enter_base"]
 [connection signal="finish_mission" from="MissionManager" to="." method="_on_mission_manager_finish_mission"]
+
+[editable path="ZoneManager"]

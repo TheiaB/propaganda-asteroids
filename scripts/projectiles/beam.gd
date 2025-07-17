@@ -1,8 +1,11 @@
 extends Projectile
 
+@onready var animated_sprite_3d: AnimatedSprite3D = $AnimatedSprite3D
+
 func _ready() -> void:
 	destroyable = false
 	$LingerTimer.start()
+	animated_sprite_3d.play('laser')
 	
 func _physics_process(_delta: float) -> void:
 	if ship:

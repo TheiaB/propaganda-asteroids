@@ -17,4 +17,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 22.3067)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, 0)
 
 [node name="ZoneHome" parent="." instance=ExtResource("3_f8inv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.27936, 0, -16.6829)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, -16.683)
