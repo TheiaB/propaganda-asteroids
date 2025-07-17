@@ -1,5 +1,6 @@
 # propaganda-asteroids
 
 # TODOs
-- [ ] check if missions dont have edge cases
+- [ ] check for edge cases (mission/closing missions window/ items)
+- [ ] radar item
 - [ ] Ship break?
