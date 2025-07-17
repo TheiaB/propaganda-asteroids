@@ -5,6 +5,8 @@ signal proximity_entered(zone)
 signal player_entered(zone)
 signal proximity_exited()
 
+@onready var zone_area: Area3D = $ZoneArea
+
 
 func _on_body_enter_zone(_body: Node3D) -> void:
 	#var layer:int= _body.get_collision_layer()
