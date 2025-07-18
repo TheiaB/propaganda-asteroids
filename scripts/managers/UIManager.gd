@@ -18,6 +18,9 @@ class_name UIManager
 
 @onready var notification: Notification = $notification
 
+@onready var shop_grid: ShopGrid = %GridContainer
+
+
 
 
 
@@ -61,7 +64,8 @@ func setUI(ui_name: String = ""):
 	if ui_name == "close_all":
 		shop_mission_interface.close_all()
 
-
+func update_shop():
+	shop_grid.init_grid()
 
 func _on_start_run() -> void:
 	emit_signal("on_start_run")

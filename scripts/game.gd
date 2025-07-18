@@ -89,8 +89,8 @@ func _on_ui_manager_purchased_item(item_title: String) -> void:
 	if (item.price <= self.resource_money):
 		self.resource_money -= item.price
 		ship_manager.update_loadout(item)
-		item.buyable = false
-		$UIManager/ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer/GridContainer.init_grid()
+		item.in_stock = false
+		ui_manager.update_shop()
 	else:
 		ui_manager.no_money_popup.show_popup()
 
@@ -102,6 +102,7 @@ func _on_ui_manager_ship_fly() -> void:
 
 func _on_mission_manager_enter_base() -> void:
 	refuel()
+	ui_manager.update_shop()
 	timer_manager.stopFuel()
 	if ship:
 		ship.activate_docking_behaviour()

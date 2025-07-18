@@ -31,20 +31,20 @@ func spawn_ship() -> void:
 	
 func update_loadout(item : Item) -> void:
 	if item is Weapon:
-		ship.weapon.buyable = true
+		ship.weapon.in_stock = true
 		if ship.weapon != null:
 			ship.weapon.on_unequip()
 		ship.weapon = item
 		item.on_equip()
 	elif item is Shield:
-		ship.shield.buyable = true
+		ship.shield.in_stock = true
 		if ship.shield != null:
 			ship.shield.on_unequip()
 		ship.shield = item
 		item.on_equip()
 	elif item is Generic_Active_Item:
 		if ship.active_item:
-			ship.active_item.buyable = true
+			ship.active_item.in_stock = true
 			ship.active_item.on_unequip()
 		ship.active_item = item
 		item.on_equip()

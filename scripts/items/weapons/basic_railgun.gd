@@ -15,7 +15,6 @@ func _ready() -> void:
 	weapon_damage = damage
 	weapon_price = price
 	chargeable = true
-	buyable = true
 	title = "Railgun"
 	description = "A powerful Railgun, that will devastate anything in its path"
 	

@@ -1,20 +1,20 @@
 @tool
 extends GridContainer
 
+class_name ShopGrid
+
 var all_items:Array[Item]
 @onready var item_panel_scene: PackedScene = preload("res://scenes/ui/item_panel.tscn")
 
 signal panel_buy_pressed(item:Item)
 
-#@export_tool_button("Init Grid", "Callable") var init_action = init_grid
 func init_grid():
 	all_items = GlobalItemManager.get_all_items()
 	GlobalItemManager.sort_by_prize(all_items)
 	for n in self.get_children():
 		n.queue_free()
-	print('--- In Grid Container')
 	for item_data in all_items:
-		if !item_data.buyable:
+		if !item_data.buyable() or !item_data.in_stock:
 			continue
 		var panel: ItemPanel = item_panel_scene.instantiate() 
 		panel.visible = true
@@ -27,9 +27,7 @@ func init_grid():
 		panel.buy_button_pressed.connect(_on_panel_buy_pressed.bind(item_data))
 
 		self.add_child(panel)
-		print('added item: ',panel.title)
 		
-	print('--- After Grid Container')
 
 func _on_panel_buy_pressed(item:Item):
 	emit_signal("panel_buy_pressed", item)

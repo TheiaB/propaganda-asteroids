@@ -337,7 +337,7 @@ metadata/_custom_type_script = "uid://b53blbfibsubs"
 offset_left = 4.0
 offset_top = 4.0
 offset_right = 218.0
-offset_bottom = 434.0
+offset_bottom = 96.0
 
 [node name="Title" type="Label" parent="ShopMissionInterfaces/MissionPopup/VBoxContainer"]
 layout_mode = 2
