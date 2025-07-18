@@ -7,4 +7,12 @@ class_name Item
 @export var description:String = "DEFAULT ITEM DESCRIPTION"
 @export var buyable:bool = false
 @export var video:VideoStream
+@export var unique_name:String = ""
 @export_multiline var legal_text:String = "[b]no text[/b]"
+
+
+func on_equip():
+	pass
+
+func on_unequip():
+	pass

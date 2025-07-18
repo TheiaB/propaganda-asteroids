@@ -6,4 +6,5 @@
 script = ExtResource("1_r6r4d")
 title = "Basic Weapon"
 description = "Your starting weapon"
+unique_name = "basic_weapon"
 metadata/_custom_type_script = "uid://cmd6uvcht5xc5"

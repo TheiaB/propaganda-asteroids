@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cp7vxjkpww1yt"]
+
+[ext_resource type="Script" uid="uid://4i5neq8hcchx" path="res://scripts/items/generic_items/radar_item.gd" id="1_fae0h"]
+
+[node name="RadarItem" type="Node"]
+script = ExtResource("1_fae0h")
+metadata/_custom_type_script = "uid://cle63b14ouwvl"

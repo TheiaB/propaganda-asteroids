@@ -80,7 +80,7 @@ func _on_area_3d_body_entered(ship) -> void:
 		ship.on_collision_with_asteroid(ship.weapon.weapon_damage)
 		queue_free()
 	else:
-		print("REEEEEEEE")
+		pass
 	
 func destroy_me():
 	queue_free()

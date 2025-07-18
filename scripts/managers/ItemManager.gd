@@ -8,12 +8,17 @@ var shields : Array[Shield]
 var generic_items : Array[Generic_Item]
 var active_items : Array[Generic_Active_Item]
 
-func _ready() -> void:
+func init() -> void:
 	instantiate_all_in_path("res://scenes/items/weapons/", weapons)
 	instantiate_all_in_path("res://scenes/items/shields/", shields)
 	instantiate_all_in_path("res://scenes/items/generic_items/", generic_items)
 	instantiate_all_in_path("res://scenes/items/active_items/", active_items)
 
+
+func find(unique_name:String):
+	for item in get_all_items():
+		if item.unique_name == unique_name:
+			return item
 	
 func instantiate_all_in_path(path, array):
 	var dir = DirAccess.open(path)
@@ -22,7 +27,7 @@ func instantiate_all_in_path(path, array):
 	while file_name != "":
 		var obj = load(path + file_name)
 		if obj:
-			var item = obj.instantiate()
+			var item:Item = obj.instantiate()
 			add_child(item)
 			array.append(item)
 		file_name = dir.get_next()

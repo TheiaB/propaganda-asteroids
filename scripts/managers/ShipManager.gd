@@ -32,16 +32,26 @@ func spawn_ship() -> void:
 func update_loadout(item : Item) -> void:
 	if item is Weapon:
 		ship.weapon.buyable = true
+		if ship.weapon != null:
+			ship.weapon.on_unequip()
 		ship.weapon = item
+		item.on_equip()
 	elif item is Shield:
 		ship.shield.buyable = true
+		if ship.shield != null:
+			ship.shield.on_unequip()
 		ship.shield = item
+		item.on_equip()
 	elif item is Generic_Active_Item:
 		if ship.active_item:
 			ship.active_item.buyable = true
+			ship.active_item.on_unequip()
 		ship.active_item = item
+		item.on_equip()
 	else:
 		ship.items.append(item)
+		item.on_equip()
+	
 
 func send_ship_died():
 	emit_signal("ship_died")

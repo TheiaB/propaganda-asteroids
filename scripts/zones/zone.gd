@@ -15,7 +15,6 @@ func _on_body_enter_zone(_body: Node3D) -> void:
 	if(_body is Ship):
 		player_entered.emit(self)
 	elif(_body is Asteroid):
-		print('asteroid collision')
 		var asteroid:Asteroid = _body
 		asteroid.destroy_me()
 		pass

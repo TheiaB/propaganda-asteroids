@@ -49,8 +49,8 @@ func _on_invincibility_timer_timeout() -> void:
 	setInvinsibility(false)
 
 func createBasic(camera: Player_Camera, _projectiles_node : Node):
-	var _weapon = preload("res://scenes/items/weapons/basic_weapon.tscn").instantiate()
-	var _shield = preload("res://scenes/items/shields/basic_shield.tscn").instantiate()
+	var _weapon = GlobalItemManager.find("basic_weapon")
+	var _shield = GlobalItemManager.find("basic_shield")
 	var _stats = preload("res://scenes/basic_start_stats.tscn").instantiate()
 	return create(camera, _projectiles_node, _weapon, _shield, _stats)
 
@@ -58,9 +58,9 @@ func createBasic(camera: Player_Camera, _projectiles_node : Node):
 func create(camera: Player_Camera, _projectiles_node: Node, _weapon: Weapon, _shield: Shield, _stats: CharacterStats):
 	var ship: Ship = preload("res://scenes/ship.tscn").instantiate()
 	ship.weapon = _weapon
-	ship.add_child(ship.weapon)	
 	ship.shield = _shield
-	ship.add_child(ship.shield)
+	_weapon.on_equip()
+	_shield.on_equip()
 	ship.stats = _stats
 	ship.add_child(ship.stats)
 	ship.transform = ship.transform.scaled(Vector3(0.5, 0.5, 0.5))
