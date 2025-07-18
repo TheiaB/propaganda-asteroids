@@ -1,10 +1,10 @@
-extends Item
+extends Generic_Item
 
 func _ready() -> void:
 	buyable = true
 	
 func on_equip():
-	pass
-	
+	GlobalCameraManager.camera.offset.y += 5
+
 func on_unequip():
-	pass
+	GlobalCameraManager.camera.offset.y -= 5

@@ -24,7 +24,7 @@ var ship: Ship
 var firstTime : bool
 
 func _ready():
-	GlobalItemManager.init()
+	GlobalCameraManager.init(camera_3d)
 	mission_manager.init(arrow)
 	timer_manager.startAll()
 	asteroid_manager.init()

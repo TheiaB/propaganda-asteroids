@@ -8,7 +8,9 @@ var shields : Array[Shield]
 var generic_items : Array[Generic_Item]
 var active_items : Array[Generic_Active_Item]
 
-func init() -> void:
+var player_camera : Player_Camera
+
+func _ready() -> void:
 	instantiate_all_in_path("res://scenes/items/weapons/", weapons)
 	instantiate_all_in_path("res://scenes/items/shields/", shields)
 	instantiate_all_in_path("res://scenes/items/generic_items/", generic_items)

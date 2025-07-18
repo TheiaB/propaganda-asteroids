@@ -10,6 +10,7 @@ class_name Item
 @export var unique_name:String = ""
 @export_multiline var legal_text:String = "[b]no text[/b]"
 
+var camera : Player_Camera
 
 func on_equip():
 	pass
