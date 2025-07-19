@@ -12,7 +12,7 @@ title = "Mission A"
 text = "This is a text"
 finish_text = "Yeha"
 reward = 300
-destination = 2
+cargo_dest = 1
 
 [node name="BaseMission2" type="Node" parent="."]
 script = ExtResource("2_5ynlg")
@@ -20,5 +20,4 @@ title = "Mission B"
 text = "This is a text"
 finish_text = "You Got this"
 reward = 300
-start = 2
-destination = 1
+cargo_dest = 2

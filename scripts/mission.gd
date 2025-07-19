@@ -7,44 +7,43 @@ class_name Mission
 @export var finish_text: String
 @export var reward : int
 
-@export var start : ZoneManager.Planets
-@export var destination : ZoneManager.Planets
-enum Progress {NOT_STARTED, STARTED, REACHED_FRIST, REACHED_SECOND, FINISHED}
-var mission_progress : Progress = Progress.NOT_STARTED
+@export var cargo_start : ZoneManager.Planets
+@export var cargo_dest  : ZoneManager.Planets
 
-var ship : Ship
+var arrow : Arrow3D
 
-func init(_ship: Ship) -> void:
-	ship = _ship
+var mission_progress = 0
+
+
+func init(_arrow: Arrow3D) -> void:
+	arrow = _arrow
 
 func reset() -> void:
 	mission_progress = 0
 
-func try_next(planet: Zone):
-	if is_correct_planet(planet):
-		mission_progress += 1
-		return true
-	else:
-		return false
+func update_mission_state(_ship: Ship, _planet: Zone) -> GlobalStatesManager.MissionState:
+	if _ship == null:
+		return GlobalStatesManager.MissionState.NO_SHIP
+	if get_cargo_start_planet() == ZoneManager.get_home_planet():
+		if _planet == get_cargo_start_planet() and mission_progress == 0:
+			_ship.equip_cargo()
+			return update_progress_and_arrow(get_cargo_dest_planet(), GlobalStatesManager.MissionState.RUNNING)
+		elif _planet == get_cargo_dest_planet() and mission_progress == 1:
+			_ship.unequip_cargo()
+			return update_progress_and_arrow(ZoneManager.get_home_planet(), GlobalStatesManager.MissionState.DELIVERED)
+		elif _planet == ZoneManager.get_home_planet() and mission_progress == 2:
+			return update_progress_and_arrow(ZoneManager.get_home_planet(), GlobalStatesManager.MissionState.FINISHED)
+		return GlobalStatesManager.MissionState.ERROR
+	return GlobalStatesManager.MissionState.ERROR
 
-func is_correct_planet(planet: Zone) -> bool:
-	if mission_progress == Progress.NOT_STARTED:
-		return planet == ZoneManager.get_home_planet()
-	if mission_progress == Progress.STARTED:
-		return planet == get_start_planet()
-	if mission_progress == Progress.REACHED_FRIST:
-		return planet == get_destination_planet()
-	return planet == ZoneManager.get_home_planet()
+func update_progress_and_arrow(_zone: Zone, ret_val: GlobalStatesManager.MissionState) -> GlobalStatesManager.MissionState:
+	mission_progress += 1
+	arrow.destination_position = _zone.global_position
+	return ret_val
 
-func is_at_destination(planet: Zone) -> bool:
-	return planet == get_destination_planet()
-	
-func is_at_start(planet: Zone) -> bool:
-	return planet == get_start_planet()
+func get_cargo_start_planet() -> ZonePlanet:
+	return ZoneManager.get_planet_by_enum(cargo_start)
 
-func get_destination_planet() -> ZonePlanet:
-	return ZoneManager.get_planet_by_enum(destination)
-	
-func get_start_planet() -> ZonePlanet:
-	return ZoneManager.get_planet_by_enum(start)
+func get_cargo_dest_planet() -> ZonePlanet:
+	return ZoneManager.get_planet_by_enum(cargo_dest)
 	

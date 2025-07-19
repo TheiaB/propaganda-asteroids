@@ -34,49 +34,37 @@ func init(_arrow:Arrow3D) -> void:
 		zone_planet.player_entered.connect(player_entered_planet_zone)
 
 	for mission in missions:
-		mission.init(ship)
+		mission.init(arrow)
 	
 func on_home_zone_player_entered(_zone):
 	emit_signal("enter_base")
 
-	if(current_delivery_state == DeliveryStates.EMPTY):
-		if current_mission != null:
-			if(current_mission.is_correct_planet(_zone) and ZoneManager.get_home_planet() == _zone):
-				current_mission.try_next(_zone)
-				current_mission.reset()
+	if current_mission != null:
+		var erg = current_mission.update_mission_state(ship, _zone)
+		match erg:
+				GlobalStatesManager.MissionState.FINISHED:
+					emit_signal("finish_mission", current_mission)
+				_:
+					print("default_behaviour: ", erg)
 
-				emit_signal("finish_mission", current_mission)
 
-
-func player_entered_planet_zone(zone:ZonePlanet):
+func player_entered_planet_zone(_zone:ZonePlanet):
 	if(current_mission != null):
 		if(current_delivery_state == DeliveryStates.DELIVERING):
-			if(current_mission.is_correct_planet(zone) and current_mission.is_at_start(zone)):
-				current_mission.try_next(zone)
-				if(ship != null):
-					ship.equip_cargo()
-				arrow.destination_position = current_mission.get_destination_planet().global_position
-				
-			elif(current_mission.is_correct_planet(zone) and current_mission.is_at_destination(zone)):
-				current_mission.try_next(zone)
-				current_delivery_state = DeliveryStates.EMPTY
-				if(ship != null):
-					ship.unequip_cargo()
-				arrow.destination_position = ZoneManager.get_home_planet().zone_area.global_position
-			else:
-				print(current_mission.mission_progress)
+			current_mission.update_mission_state(ship, _zone)
 	
 
 func start_mission(mission: Mission) -> void:
 	current_delivery_state = DeliveryStates.DELIVERING
 	current_mission = mission
-
 	arrow.ship = ship
 
-	current_mission.try_next(ZoneManager.get_home_planet())
-	arrow.destination_position = current_mission.get_start_planet().global_position
-	arrow.process_mode = Node.PROCESS_MODE_INHERIT
-	arrow.show()
+	match current_mission.update_mission_state(ship, ZoneManager.get_home_planet()):
+		GlobalStatesManager.MissionState.RUNNING:
+			arrow.process_mode = Node.PROCESS_MODE_INHERIT
+			arrow.show()
+		_:
+			pass
 	
 func get_random_mission() -> Mission:
 	return missions.pick_random()

@@ -41,6 +41,7 @@ BankLoaderMain="*res://bank_loader_main.gd"
 SoundManager5000="*res://scenes/sound_manager_5000.tscn"
 ZoneManager="*res://scenes/managers/zone_manager.tscn"
 GlobalCameraManager="*res://scripts/managers/CameraManager.gd"
+GlobalStatesManager="*res://scripts/managers/GlobalStates.gd"
 
 [display]
 

@@ -10,6 +10,7 @@ func on_unequip():
 	GlobalCameraManager.camera.offset.y -= 5
 
 func buyable():
-	var zone_planet_1_health = ZoneManager.get_planet_by_enum(ZoneManager.Planets.zone_planet_1).health
-	print("zone_planet_1_heath: ", zone_planet_1_health)
+	var zone_planet_1_health : ZonePlanet = ZoneManager.get_planet_by_enum(ZoneManager.Planets.PLANET1)
+
+	print("zone_planet_1_heath: ", zone_planet_1_health.health)
 	return true
