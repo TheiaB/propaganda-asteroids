@@ -1,3 +1,4 @@
+@tool
 extends Zone
 class_name ZonePlanet
 
@@ -5,6 +6,11 @@ class_name ZonePlanet
 @export var health :int= 3
 
 @export var planet_iterations:Array[Node3D]
+
+@export_tool_button("Hurt Me Mommy", "Callable") var hurt_planet = hurt
+
+func hurt():
+	modify_health(-1)
 
 func modify_health(amount:int):
 	print('---health ',name, ' ',health)

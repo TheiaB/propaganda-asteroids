@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bdmtg28xc2n0k"]
+[gd_scene load_steps=6 format=3 uid="uid://bdmtg28xc2n0k"]
 
 [ext_resource type="Script" uid="uid://b4ghd1urtn6vc" path="res://scripts/managers/ZoneManager.gd" id="1_sojj3"]
 [ext_resource type="PackedScene" uid="uid://fps07losnw76" path="res://scenes/zones/ant_planet.tscn" id="3_4y2fq"]
 [ext_resource type="PackedScene" uid="uid://bvyjbe5rb50yn" path="res://scenes/zones/zone_home.tscn" id="3_f8inv"]
 [ext_resource type="PackedScene" uid="uid://bc7jaqjp0f7tn" path="res://scenes/zones/water_planet.tscn" id="3_sojj3"]
+[ext_resource type="PackedScene" uid="uid://c0ko72djajciq" path="res://scenes/zones/crystal_planet.tscn" id="4_f8inv"]
 
 [node name="Zones" type="Node"]
 script = ExtResource("1_sojj3")
@@ -14,8 +15,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.1741, 0, 41)
 [node name="ZonePlanetAnt" parent="." instance=ExtResource("3_4y2fq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -3.6933)
 
-[node name="ZonePlanetCrystal" parent="." instance=ExtResource("3_sojj3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, 0, -44)
+[node name="ZonePlanetCrystal" parent="." instance=ExtResource("4_f8inv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -21)
 
 [node name="ZoneHome" parent="." instance=ExtResource("3_f8inv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, -16.683)

@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://c0ko72djajciq"]
+
+[ext_resource type="PackedScene" uid="uid://dlotxfarbs74i" path="res://scenes/zones/zone_planet.tscn" id="1_eug5a"]
+[ext_resource type="PackedScene" uid="uid://j0puguffsn11" path="res://assets/planets/planet_crystal_iteration_1/planet_Crystal_surface_iteration_1.gltf" id="2_6oi87"]
+[ext_resource type="PackedScene" uid="uid://umhoqng6nnln" path="res://assets/planets/planet_crystal_iteration_2/planet_Crystal_surface_iteration_2.gltf" id="3_m22fk"]
+[ext_resource type="PackedScene" uid="uid://vv8fdwl15cvm" path="res://assets/planets/planet_crystal_iteration_3/planet_Crystal_surface_iteration_3.gltf" id="4_txngk"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7mx2p"]
+radius = 7.04245
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_vmpea"]
+radius = 7.64095
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_o7a0i"]
+
+[node name="CrystalPlanet" node_paths=PackedStringArray("planet_iterations") instance=ExtResource("1_eug5a")]
+unique_name = "crystalplanet"
+planet_iterations = [NodePath("planet_Crystal_surface_iteration_1"), NodePath("planet_Crystal_surface_iteration_2"), NodePath("planet_Crystal_surface_iteration_3")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ZoneArea" index="0"]
+shape = SubResource("SphereShape3D_7mx2p")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="ZoneProximity" index="0"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("SphereShape3D_vmpea")
+
+[node name="planet_Crystal_surface_iteration_1" parent="." index="2" instance=ExtResource("2_6oi87")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
+
+[node name="planet_Crystal_surface_iteration_2" parent="." index="3" instance=ExtResource("3_m22fk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
+visible = false
+
+[node name="planet_Crystal_surface_iteration_3" parent="." index="4" instance=ExtResource("4_txngk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="5"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(14, 0, 0, 0, 14, 0, 0, 0, 14, 0, 0, 0)
+shape = SubResource("CylinderShape3D_o7a0i")
+
+[connection signal="body_entered" from="ZoneArea" to="." method="_on_player_enter_zone"]
