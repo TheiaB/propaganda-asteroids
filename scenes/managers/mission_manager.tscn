@@ -6,7 +6,7 @@
 [node name="mission_manager" type="Node"]
 script = ExtResource("1_ld7rp")
 
-[node name="BaseMission" type="Node" parent="."]
+[node name="FromHome" type="Node" parent="."]
 script = ExtResource("2_5ynlg")
 title = "Mission A"
 text = "This is a text"
@@ -14,10 +14,19 @@ finish_text = "Yeha"
 reward = 300
 cargo_dest = 1
 
-[node name="BaseMission2" type="Node" parent="."]
+[node name="ToHome" type="Node" parent="."]
 script = ExtResource("2_5ynlg")
-title = "Mission B"
+title = "Mission dest = home"
 text = "This is a text"
 finish_text = "You Got this"
 reward = 300
+cargo_start = 1
+
+[node name="BetweenPlanets" type="Node" parent="."]
+script = ExtResource("2_5ynlg")
+title = "Between Planets"
+text = "This is a text"
+finish_text = "You Got this"
+reward = 300
+cargo_start = 1
 cargo_dest = 2

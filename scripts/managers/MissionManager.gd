@@ -7,7 +7,7 @@ var zone_planets : Array[ZonePlanet]
 enum DeliveryStates {EMPTY,DELIVERING}
 var current_delivery_state: DeliveryStates = DeliveryStates.EMPTY
 
-@onready var missions : Array[Mission] = [$BaseMission, $BaseMission2]
+@onready var missions : Array[Mission] = []
 var finished_missions : Array[Mission] = []
 
 var current_mission: Mission
@@ -19,6 +19,9 @@ signal enter_base
 signal finish_mission
 
 func _ready() -> void:
+	for child in get_children():
+		if child is Mission:
+			missions.append(child)
 	zone_home = preload("res://scenes/zones/zone_home.tscn").instantiate()
 
 func init(_arrow:Arrow3D) -> void:
