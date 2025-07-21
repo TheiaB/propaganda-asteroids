@@ -7,8 +7,8 @@ class_name ZonePlanet
 @export var planet_iterations:Array[Node3D]
 
 func modify_health(amount:int):
-	health + amount
-	print('---health ',health)
+	print('---health ',name, ' ',health)
+	health += amount
 	for planet in planet_iterations:
 		planet.hide()
 	if(health > planet_iterations.size()):
@@ -26,7 +26,7 @@ func modify_health(amount:int):
 		# health 1 on planet 2
 		print('---health ',health)
 		planet_iterations[planet_iterations.size() - health].show()
-	pass
+	return
 
 
 func _ready():

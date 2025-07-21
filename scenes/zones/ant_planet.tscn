@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://fps07losnw76"]
+[gd_scene load_steps=8 format=3 uid="uid://fps07losnw76"]
 
 [ext_resource type="PackedScene" uid="uid://dlotxfarbs74i" path="res://scenes/zones/zone_planet.tscn" id="1_ar7jf"]
-[ext_resource type="Script" uid="uid://bk0eewklfgdb8" path="res://scripts/zones/zone_ant_planet.gd" id="2_sbjvw"]
 [ext_resource type="PackedScene" uid="uid://d4kjfwttxq58j" path="res://assets/planets/planet_ant_iteration_1/planet_ant_iteration_1.gltf" id="3_7rq7q"]
 [ext_resource type="PackedScene" uid="uid://b15dvxlajtftc" path="res://assets/planets/planet_ant_iteration_2/planet_ant_iteration_2.gltf" id="4_t6d8a"]
 [ext_resource type="PackedScene" uid="uid://cl8onqkyx6088" path="res://assets/planets/planet_ant_iteration_3/planet_ant_iteration_3.gltf" id="5_4xiri"]
@@ -14,8 +13,7 @@ radius = 7.64095
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_o7a0i"]
 
-[node name="ZonePlanet" node_paths=PackedStringArray("planet_iterations") instance=ExtResource("1_ar7jf")]
-script = ExtResource("2_sbjvw")
+[node name="AntPlanet" node_paths=PackedStringArray("planet_iterations") instance=ExtResource("1_ar7jf")]
 unique_name = "antplanet"
 planet_iterations = [NodePath("planet_ant_iteration_1"), NodePath("planet_ant_iteration_2"), NodePath("planet_ant_iteration_3")]
 
