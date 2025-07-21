@@ -14,6 +14,7 @@ func init_grid():
 	for n in self.get_children():
 		n.queue_free()
 	for item_data in all_items:
+		
 		if !item_data.buyable() or !item_data.in_stock:
 			continue
 		var panel: ItemPanel = item_panel_scene.instantiate() 

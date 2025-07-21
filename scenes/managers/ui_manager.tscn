@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cdbqn35l6oxha"]
+[gd_scene load_steps=26 format=3 uid="uid://cdbqn35l6oxha"]
 
 [ext_resource type="Script" uid="uid://v3yhkitng47m" path="res://scripts/managers/UIManager.gd" id="1_mpd4i"]
 [ext_resource type="PackedScene" uid="uid://bc51efbyjg2sg" path="res://scenes/death_scene.tscn" id="2_id3g5"]
@@ -16,12 +16,24 @@
 [ext_resource type="Script" uid="uid://df7nyjxol6syj" path="res://scripts/ui/mission_interface.gd" id="12_ytsje"]
 [ext_resource type="PackedScene" uid="uid://c63ewp0wfu3g5" path="res://scenes/ui/confirmation_popup.tscn" id="13_a7j1f"]
 [ext_resource type="Script" uid="uid://dgrnw5eysolw8" path="res://scenes/managers/no_money_popup.gd" id="14_dgnm4"]
+[ext_resource type="Theme" uid="uid://mbsg4xqnedxi" path="res://assets/ui/theme/FlatUI4/kenneyUI-red.tres" id="15_0d6jp"]
+[ext_resource type="Theme" uid="uid://6shp5ck1tnja" path="res://assets/ui/theme/FlatUI4/kenneyUI.tres" id="16_8t74x"]
 [ext_resource type="Script" uid="uid://b53blbfibsubs" path="res://scripts/ui/mission_popup.gd" id="16_m2gsp"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_5newe"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_tu02a"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_0d6jp"]
 viewport_path = NodePath(".")
+
+[sub_resource type="ImageTexture" id="ImageTexture_tu02a"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_2whxp"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_0d6jp"]
+thickness = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8t74x"]
+bg_color = Color(0.117647, 0.654902, 0.882353, 1)
 
 [node name="UIManager" type="Node"]
 script = ExtResource("1_mpd4i")
@@ -34,68 +46,6 @@ script = ExtResource("1_mpd4i")
 visible = false
 
 [node name="contract_scene" parent="." instance=ExtResource("4_dgnm4")]
-
-[node name="IngameInterface" type="CanvasLayer" parent="."]
-layer = 2
-
-[node name="ColorRect" type="ColorRect" parent="IngameInterface"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -256.0
-offset_bottom = 80.0
-grow_horizontal = 0
-color = Color(0, 0, 0, 0.25098)
-
-[node name="LabelFuel" type="Label" parent="IngameInterface"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -241.0
-offset_top = 40.0
-offset_right = -188.0
-offset_bottom = 63.0
-grow_horizontal = 0
-text = "Fuel"
-
-[node name="fuel_amount_slider" type="HSlider" parent="IngameInterface"]
-unique_name_in_owner = true
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -157.0
-offset_top = 40.0
-offset_right = -29.0
-offset_bottom = 56.0
-grow_horizontal = 0
-value = 50.0
-editable = false
-scrollable = false
-script = ExtResource("4_a7j1f")
-
-[node name="LabelMoney" type="Label" parent="IngameInterface"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -241.0
-offset_top = 10.0
-offset_right = -188.0
-offset_bottom = 33.0
-grow_horizontal = 0
-text = "Money"
-
-[node name="LabelMoneyAmount" type="Label" parent="IngameInterface"]
-unique_name_in_owner = true
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -155.0
-offset_top = 10.0
-offset_right = -102.0
-offset_bottom = 33.0
-grow_horizontal = 0
-text = "$$$"
-script = ExtResource("5_id3g5")
 
 [node name="ShopMissionInterfaces" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
@@ -224,7 +174,7 @@ alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="ShopMissionInterfaces/TabContainer/Shop/PurchaseInterface/HBoxContainer/ItemPreview"]
 layout_mode = 2
-texture = SubResource("ViewportTexture_tu02a")
+texture = SubResource("ViewportTexture_0d6jp")
 stretch_mode = 3
 
 [node name="ItemTitle" type="Label" parent="ShopMissionInterfaces/TabContainer/Shop/PurchaseInterface/HBoxContainer/ItemPreview"]
@@ -275,29 +225,31 @@ texture = ExtResource("10_0d6jp")
 expand_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="ShopMissionInterfaces"]
-offset_right = 164.0
-offset_bottom = 58.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 203.0
+offset_bottom = 74.0
 
 [node name="VBoxContainer" type="HBoxContainer" parent="ShopMissionInterfaces/MarginContainer"]
 layout_mode = 2
 alignment = 1
 
+[node name="ExitButton" type="Button" parent="ShopMissionInterfaces/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("15_0d6jp")
+text = "BACK"
+
 [node name="ShopTabButton" type="Button" parent="ShopMissionInterfaces/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
+theme = ExtResource("16_8t74x")
 text = "Shop"
 
 [node name="MissionTabButton" type="Button" parent="ShopMissionInterfaces/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
+theme = ExtResource("16_8t74x")
 text = "Mission"
-
-[node name="ExitButton" type="Button" parent="ShopMissionInterfaces"]
-offset_left = 1117.0
-offset_top = 601.0
-offset_right = 1148.0
-offset_bottom = 644.0
-text = "X"
 
 [node name="ConfirmationPopup" parent="ShopMissionInterfaces" instance=ExtResource("13_a7j1f")]
 unique_name_in_owner = true
@@ -329,15 +281,15 @@ uppercase = true
 wait_time = 5.0
 
 [node name="MissionPopup" type="PopupPanel" parent="ShopMissionInterfaces"]
-size = Vector2i(222, 100)
+size = Vector2i(332, 382)
 script = ExtResource("16_m2gsp")
 metadata/_custom_type_script = "uid://b53blbfibsubs"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ShopMissionInterfaces/MissionPopup"]
 offset_left = 4.0
 offset_top = 4.0
-offset_right = 218.0
-offset_bottom = 434.0
+offset_right = 328.0
+offset_bottom = 378.0
 
 [node name="Title" type="Label" parent="ShopMissionInterfaces/MissionPopup/VBoxContainer"]
 layout_mode = 2
@@ -354,6 +306,72 @@ layout_mode = 2
 text = "I want to start this Mission
 "
 
+[node name="IngameInterface" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="ColorRect" type="ColorRect" parent="IngameInterface"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -262.0
+offset_bottom = 80.0
+grow_horizontal = 0
+color = Color(0, 0, 0, 0.376471)
+
+[node name="LabelFuel" type="Label" parent="IngameInterface"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -242.0
+offset_top = 44.0
+offset_right = -188.0
+offset_bottom = 67.0
+grow_horizontal = 0
+text = "Fuel"
+
+[node name="fuel_amount_slider" type="HSlider" parent="IngameInterface"]
+unique_name_in_owner = true
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -157.0
+offset_top = 44.0
+offset_right = -29.0
+offset_bottom = 60.0
+grow_horizontal = 0
+theme_override_icons/grabber = SubResource("ImageTexture_tu02a")
+theme_override_icons/grabber_disabled = SubResource("ImageTexture_2whxp")
+theme_override_styles/slider = SubResource("StyleBoxLine_0d6jp")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_8t74x")
+value = 50.0
+editable = false
+scrollable = false
+script = ExtResource("4_a7j1f")
+
+[node name="LabelMoney" type="Label" parent="IngameInterface"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -242.0
+offset_top = 14.0
+offset_right = -188.0
+offset_bottom = 37.0
+grow_horizontal = 0
+text = "CASH"
+
+[node name="LabelMoneyAmount" type="Label" parent="IngameInterface"]
+unique_name_in_owner = true
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -155.0
+offset_top = 14.0
+offset_right = -102.0
+offset_bottom = 37.0
+grow_horizontal = 0
+text = "$$$"
+script = ExtResource("5_id3g5")
+
 [connection signal="next_run" from="death_scene" to="." method="_on_death_scene_next_run"]
 [connection signal="start_run" from="start_scene" to="." method="_on_start_run"]
 [connection signal="accept_contract" from="contract_scene" to="." method="_on_contract_scene_accept_contract"]
@@ -361,9 +379,9 @@ text = "I want to start this Mission
 [connection signal="ship_fly" from="ShopMissionInterfaces" to="." method="_on_shop_mission_interfaces_ship_fly"]
 [connection signal="panel_buy_pressed" from="ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer/GridContainer" to="." method="_on_grid_container_panel_buy_pressed"]
 [connection signal="open_mission_button" from="ShopMissionInterfaces/TabContainer/Mission" to="ShopMissionInterfaces" method="_on_mission_open_mission_button"]
+[connection signal="pressed" from="ShopMissionInterfaces/MarginContainer/VBoxContainer/ExitButton" to="ShopMissionInterfaces" method="_on_exit_button_pressed"]
 [connection signal="pressed" from="ShopMissionInterfaces/MarginContainer/VBoxContainer/ShopTabButton" to="ShopMissionInterfaces" method="_on_shop_tab_button_pressed"]
 [connection signal="pressed" from="ShopMissionInterfaces/MarginContainer/VBoxContainer/MissionTabButton" to="ShopMissionInterfaces" method="_on_mission_tab_button_pressed"]
-[connection signal="pressed" from="ShopMissionInterfaces/ExitButton" to="ShopMissionInterfaces" method="_on_exit_button_pressed"]
 [connection signal="terms_accepted" from="ShopMissionInterfaces/ConfirmationPopup" to="." method="_on_confirmation_popup_terms_accepted"]
 [connection signal="timeout" from="ShopMissionInterfaces/NoMoneyPopup/CloseTimer" to="ShopMissionInterfaces/NoMoneyPopup" method="_on_close_timer_timeout"]
 [connection signal="on_finish_mission_popup_button_pressed" from="ShopMissionInterfaces/MissionPopup" to="." method="_on_mission_popup_on_finish_mission_popup_button_pressed"]

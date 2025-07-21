@@ -7,8 +7,8 @@ class_name ItemPanel
 @export var description:String
 @export var presentation_video : VideoStream
 
-@onready var label_title: Label = $VBoxContainer/HBoxContainer/LabelTitle
-@onready var label_price: Label = $VBoxContainer/HBoxContainer/LabelPrice
+@onready var label_title: Label = $VBoxContainer/MarginContainer/HBoxContainer/LabelTitle
+@onready var label_price: Label = $VBoxContainer/MarginContainer/HBoxContainer/LabelPrice
 @onready var video_stream_player: VideoStreamPlayer = $VBoxContainer/VideoStreamPlayer
 
 signal buy_button_pressed
@@ -32,6 +32,10 @@ func _process(_delta: float) -> void:
 
 
 func _on_gui_input(_event: InputEvent) -> void:
+	if _event is InputEventMouseButton and _event.button_index == MOUSE_BUTTON_LEFT and _event.is_pressed():
+		_on_buy_button_pressed()
+	elif _event.is_action_pressed("click"):
+		_on_buy_button_pressed()
 	pass # Replace with function body.
 
 

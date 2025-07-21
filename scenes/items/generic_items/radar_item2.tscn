@@ -1,13 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://cp7vxjkpww1yt"]
+[gd_scene load_steps=2 format=3 uid="uid://bo66wruylsea0"]
 
-[ext_resource type="Script" uid="uid://4i5neq8hcchx" path="res://scripts/items/generic_items/radar_item.gd" id="1_fae0h"]
-[ext_resource type="VideoStream" uid="uid://cdbo4eie6cf0k" path="res://assets/itemvideos/item_radar_anim.ogv" id="2_cul7q"]
+[ext_resource type="Script" uid="uid://be40qbakj4nqj" path="res://scripts/items/shields/shield.gd" id="1_s2sud"]
 
-[node name="radar_item" type="Node"]
-script = ExtResource("1_fae0h")
+[node name="radar_item2" type="Node"]
+script = ExtResource("1_s2sud")
 title = "Radar"
 description = "Radar goes Brrrrrr"
-video = ExtResource("2_cul7q")
+unique_name = "shield2"
 legal_text = "[b]no text[/b]fadsfkjasdfkb
 
 bla 

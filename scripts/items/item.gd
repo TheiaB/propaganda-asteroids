@@ -47,7 +47,7 @@ class_name Item
 											[b]no text[/b]"""
 
 
-var in_stock = true
+@export var in_stock = true
 
 var camera : Player_Camera
 
@@ -58,4 +58,4 @@ func on_unequip():
 	pass
 
 func buyable():
-	return false
+	return true

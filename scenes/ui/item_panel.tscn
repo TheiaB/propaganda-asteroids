@@ -7,6 +7,7 @@ custom_minimum_size = Vector2(256, 285)
 offset_left = 1.0
 offset_right = 257.0
 offset_bottom = 285.0
+mouse_default_cursor_shape = 2
 script = ExtResource("1_0k6an")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -27,23 +28,38 @@ autoplay = true
 expand = true
 loop = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="LabelTitle" type="Label" parent="VBoxContainer/HBoxContainer"]
+[node name="LabelTitle" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 
-[node name="LabelPrice" type="Label" parent="VBoxContainer/HBoxContainer"]
+[node name="LabelPrice" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "		0 $"
 horizontal_alignment = 2
 
 [node name="BuyButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 98.0
-offset_top = 214.0
-offset_right = 158.0
-offset_bottom = 254.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -30.6621
+offset_top = -77.0
+offset_right = 30.6621
+offset_bottom = -34.749
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 2
 text = "Buy"
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]

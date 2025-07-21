@@ -22,10 +22,12 @@ func show_popup(item):
 	accept_button.disabled = true
 	show()
 	popup_centered()
+	_on_scroll_check(scroll_container.get_v_scroll_bar().value)
+	
 		
 func _on_scroll_check(value: float) -> void:
 	var scrollbar = scroll_container.get_v_scroll_bar()
-	if scrollbar.value >= scrollbar.max_value - scrollbar.page - 5:
+	if scrollbar.value >= scrollbar.max_value - scrollbar.page - 5 or legal_text.get_content_height() < scrollbar.max_value:
 		accept_button.disabled = false
 
 func _on_accept_button_pressed() -> void:
