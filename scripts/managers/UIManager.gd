@@ -109,6 +109,7 @@ func _on_mission_popup_on_mission_popup_button_pressed(mission: Mission) -> void
 
 func _on_mission_popup_on_finish_mission_popup_button_pressed(mission: Mission) -> void:
 	mission_popup.hide()
+	print('---- finish mission (ui manager)')
 	emit_signal("on_mission_finished_popup_button_pressed", mission)
 
 

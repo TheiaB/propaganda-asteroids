@@ -9,6 +9,7 @@ class_name Mission
 
 @export var cargo_start : ZoneManager.Planets
 @export var cargo_dest  : ZoneManager.Planets
+#@export var planets_to_damage  : Array[ZoneManager.Planets]
 
 var arrow : Arrow3D
 
@@ -30,6 +31,7 @@ func update_cargo_start_is_home_mission(_ship: Ship, _planet: Zone) -> GlobalSta
 		return update_progress_and_arrow(GlobalStatesManager.MissionState.DELIVERED)
 	elif _planet == ZoneManager.get_home_planet() and mission_progress == 2:
 		return update_progress_and_arrow(GlobalStatesManager.MissionState.FINISHED)
+		
 	return GlobalStatesManager.MissionState.ERROR
 
 func update_cargo_dest_is_home_mission(_ship: Ship, _planet: Zone) -> GlobalStatesManager.MissionState:
@@ -79,3 +81,22 @@ func get_cargo_start_planet() -> ZonePlanet:
 func get_cargo_dest_planet() -> ZonePlanet:
 	return ZoneManager.get_planet_by_enum(cargo_dest)
 	
+func finish_mission():
+	print('--- finish mission (mission)')
+	print('dest:',ZoneManager.get_planet_by_enum(cargo_dest))
+	print('start:',ZoneManager.get_planet_by_enum(cargo_start))
+	# Design philosophy:
+	# Damange all involved planets
+	var planet_to_damage:ZonePlanet
+	# check if involved planets are not HOME, but an actual planet Zone
+	if(ZoneManager.get_planet_by_enum(cargo_dest) is ZonePlanet):
+		planet_to_damage = ZoneManager.get_planet_by_enum(cargo_dest)
+		planet_to_damage.modify_health(-1)
+		print('--- modify health to planet: ', planet_to_damage)
+	if(ZoneManager.get_planet_by_enum(cargo_start) is ZonePlanet):
+		planet_to_damage = ZoneManager.get_planet_by_enum(cargo_start)
+		planet_to_damage.modify_health(-1)
+		print('--- modify health to planet: ', planet_to_damage)
+		
+		
+	pass
