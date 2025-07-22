@@ -13,7 +13,7 @@ func _ready() -> void:
 	projectile_scene = preload("res://scenes/projectiles/laser.tscn")
 	weapon_damage = damage
 	weapon_price = price
-	title = "Starting Weapon"
+	title = "standart weapon"
 	description = "Your standard blaster"
 	
 		

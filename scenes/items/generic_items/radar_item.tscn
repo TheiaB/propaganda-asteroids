@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cp7vxjkpww1yt"]
 
 [ext_resource type="Script" uid="uid://4i5neq8hcchx" path="res://scripts/items/generic_items/radar_item.gd" id="1_fae0h"]
-[ext_resource type="VideoStream" uid="uid://cdbo4eie6cf0k" path="res://assets/itemvideos/item_radar_anim.ogv" id="2_cul7q"]
+[ext_resource type="VideoStream" uid="uid://ba80hixqart1s" path="res://assets/itemvideos/radar_gif.ogv" id="2_cul7q"]
 
 [node name="radar_item" type="Node"]
 script = ExtResource("1_fae0h")

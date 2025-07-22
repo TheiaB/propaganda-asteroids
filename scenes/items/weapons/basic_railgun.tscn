@@ -1,11 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://cvfnlpcbd4v07"]
+[gd_scene load_steps=3 format=3 uid="uid://cvfnlpcbd4v07"]
 
 [ext_resource type="Script" uid="uid://7etrgc1yilu8" path="res://scripts/items/weapons/basic_railgun.gd" id="1_achn0"]
+[ext_resource type="VideoStream" uid="uid://bx7h0dh1i7iwd" path="res://assets/itemvideos/railgun_gif.ogv" id="2_heh0i"]
 
 [node name="basic_railgun" type="Node"]
 script = ExtResource("1_achn0")
 title = "Railgun"
 description = "Tada"
+video = ExtResource("2_heh0i")
 legal_text = "Certainly! Here’s a shop listing for a “Railgun” using bbtext formatting, blending powerful salesmanship with some sly fine print in the spirit of your example:
 
 [b]Railgun XT-9: The Ultimate Laser Shooty![/b]
