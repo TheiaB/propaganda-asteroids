@@ -38,3 +38,11 @@ text = "This is a text"
 finish_text = "You Got this"
 reward = 300
 cargo_start = 2
+
+[node name="antmissiontest" type="Node" parent="."]
+script = ExtResource("2_5ynlg")
+title = "Ant Test 1"
+text = "This is a text"
+finish_text = "You Got this"
+reward = 400
+cargo_dest = 2
