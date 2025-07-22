@@ -1,11 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://b3gptuxi7o4ay"]
+[gd_scene load_steps=2 format=3 uid="uid://b3gptuxi7o4ay"]
 
 [ext_resource type="Script" uid="uid://bdsn3msak3gh1" path="res://scripts/items/generic_items/passive_speed_boost.gd" id="1_r467o"]
-[ext_resource type="VideoStream" uid="uid://pl4awj1l4wlh" path="res://assets/itemvideos/item_thruster_girl_vid.ogv" id="2_luwvo"]
 
 [node name="passive_speed_boost" type="Node"]
 script = ExtResource("1_r467o")
 title = "Passive Speed Boost"
 price = 56
-video = ExtResource("2_luwvo")
 metadata/_custom_type_script = "uid://c3pv4m1xhxmy5"
