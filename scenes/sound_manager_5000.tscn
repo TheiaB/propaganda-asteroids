@@ -8,3 +8,72 @@ script = ExtResource("1_5npi2")
 [node name="LaserBasic" type="FmodEventEmitter3D" parent="."]
 event_name = "event:/Items/Weapons/GunShotBasic"
 event_guid = "{72b2c958-1e7b-4819-9105-45d647d9ff23}"
+
+[node name="LaserTriple" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/Items/Weapons/TripleShot"
+event_guid = "{19bd04dd-697d-4a8a-8eb2-7178a69f0acb}"
+
+[node name="AsteroidHit" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/Asteroids&Trash/AsteroidHit"
+event_guid = "{58cdd67a-81e7-4e49-beea-f5de1ca0aed3}"
+
+[node name="AsteroidDestroyed" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/Asteroids&Trash/AsteroidDestroy"
+event_guid = "{d4d918f7-ddcd-429e-aa4c-851559723c14}"
+
+[node name="ShieldStatic" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/Items/Shields/1HitShield"
+event_guid = "{500e9c94-682d-4444-9d9b-4b20afd3d735}"
+
+[node name="ShieldCrack" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/Items/Shields/ShieldCrack"
+event_guid = "{605ae1b6-1a2f-4a07-9aa0-cd0c0ea3cae9}"
+
+[node name="ShieldDestroyed" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/Items/Shields/ShieldDest"
+event_guid = "{07e5d077-b8b4-48bd-bc4a-3854ac724b98}"
+
+[node name="RailGunSFX" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/Items/Weapons/RailGunShot"
+event_guid = "{09497c00-2307-4b7b-b660-91f7886d5cf1}"
+
+[node name="ShipDestroyed" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/SpaceShipSFX/ShipBoom"
+event_guid = "{04ac35b3-3d10-4262-af88-69bf1af9378e}"
+
+[node name="BuyButton" type="FmodEventEmitter3D" parent="."]
+
+[node name="CloseMenuButton" type="FmodEventEmitter3D" parent="."]
+
+[node name="ErrorButton" type="FmodEventEmitter3D" parent="."]
+
+[node name="MissionAccept" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/UI_Sounds/MissionAccept"
+event_guid = "{7993a6bd-a9f3-44dd-9cdf-cbc1def2db3f}"
+
+[node name="MissionComplete" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/UI_Sounds/MissionComplete"
+event_guid = "{f5933414-6cfe-4b83-8633-d05f0358dcef}"
+
+[node name="NewsJingleShort" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/UI_Sounds/NewsJingleShort"
+event_guid = "{2d4799d0-9d62-4073-afc2-e5ea75da250c}"
+
+[node name="NewsJingleLong" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/UI_Sounds/NewsJingleLong"
+event_guid = "{7b285dda-3956-490e-ac79-d505f551d582}"
+
+[node name="BasicButton" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/UI_Sounds/BasicButton"
+event_guid = "{10133335-a44d-433f-b1af-61b5a3ffadd6}"
+
+[node name="OpenMenuButton" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/UI_Sounds/OpenMenu"
+event_guid = "{f153fc41-63fe-4680-9855-c980e57b846a}"
+
+[node name="StationMusic" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/SpaceStation/ShopTheme"
+event_guid = "{0db026ef-26bf-4dae-bbfa-6bcb7cac00f6}"
+"fmod_parameters/Parameter 1/id" = -1480888325622384024
+"fmod_parameters/Parameter 1" = 0
+"fmod_parameters/Parameter 1/variant_type" = 2

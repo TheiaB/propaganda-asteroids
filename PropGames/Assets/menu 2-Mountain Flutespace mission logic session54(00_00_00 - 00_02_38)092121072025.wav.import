@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cqx8ywaacjxmj"
+path="res://.godot/imported/menu 2-Mountain Flutespace mission logic session54(00_00_00 - 00_02_38)092121072025.wav-80606d44c77fe0f943a0bec06edacf6c.sample"
+
+[deps]
+
+source_file="res://PropGames/Assets/menu 2-Mountain Flutespace mission logic session54(00_00_00 - 00_02_38)092121072025.wav"
+dest_files=["res://.godot/imported/menu 2-Mountain Flutespace mission logic session54(00_00_00 - 00_02_38)092121072025.wav-80606d44c77fe0f943a0bec06edacf6c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
