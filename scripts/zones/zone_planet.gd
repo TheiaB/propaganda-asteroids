@@ -44,3 +44,8 @@ func _ready():
 
 func _process(delta: float) -> void:
 	current_planet_iteration.rotate_y(rotation_speed * delta)
+
+func _on_zone_area_body_exited(body: Node3D) -> void:
+	if (body is Asteroid):
+		var asteroid = body as Asteroid
+		asteroid.enable()

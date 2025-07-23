@@ -17,9 +17,9 @@ func _on_body_enter_zone(_body: Node3D) -> void:
 	elif(_body is Asteroid):
 		var asteroid:Asteroid = _body
 		asteroid.destroy_me()
-		pass
 	else:
 		print('this collided: ',_body.get_class())
+		
 
 
 func _on_zone_proximity_body_entered(_body: Node3D) -> void:
@@ -29,3 +29,4 @@ func _on_zone_proximity_body_entered(_body: Node3D) -> void:
 
 func _on_zone_proximity_body_exited(_body: Node3D) -> void:
 	proximity_exited.emit()
+	

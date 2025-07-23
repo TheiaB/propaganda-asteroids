@@ -7,6 +7,7 @@
 script = ExtResource("2_02r6e")
 unique_name = ""
 health = 3
+rotation_speed = -0.05
 planet_iterations = []
 
 [node name="ZoneArea" parent="." index="0"]

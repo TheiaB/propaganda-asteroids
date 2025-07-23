@@ -10,6 +10,7 @@ signal panel_buy_pressed(item:Item)
 
 func init_grid():
 	all_items = GlobalItemManager.get_all_items()
+	print(all_items)
 	GlobalItemManager.sort_by_prize(all_items)
 	for n in self.get_children():
 		n.queue_free()

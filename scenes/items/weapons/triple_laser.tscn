@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccdafq5nlkpgj"]
+
+[ext_resource type="Script" uid="uid://yit734t8t3ho" path="res://scripts/items/weapons/basic_weapon.gd" id="1_qlgc1"]
+[ext_resource type="VideoStream" uid="uid://dnh4ls0bg5cr6" path="res://assets/itemvideos/triple_laser_gif2.ogv" id="2_5jcfd"]
+
+[node name="basic_weapon" type="Node"]
+script = ExtResource("1_qlgc1")
+title = "Triple Laser"
+description = "Your starting weapon"
+video = ExtResource("2_5jcfd")
+unique_name = "basic_weapon"
+metadata/_custom_type_script = "uid://cmd6uvcht5xc5"

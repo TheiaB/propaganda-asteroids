@@ -6,7 +6,7 @@
 [node name="basic_railgun" type="Node"]
 script = ExtResource("1_achn0")
 title = "Railgun"
-description = "Tada"
+description = "A powerful Railgun, that will devastate anything in its path"
 video = ExtResource("2_heh0i")
 legal_text = "Certainly! Here’s a shop listing for a “Railgun” using bbtext formatting, blending powerful salesmanship with some sly fine print in the spirit of your example:
 
@@ -45,3 +45,4 @@ legal_text = "Certainly! Here’s a shop listing for a “Railgun” using bbtex
 
 [i]Thank you for vaporizing your hard-earned credits with us! You waive your right to complain or seek actual customer service. All transactions final in this or any possible reality. Batteries not included.[/i]
 s"
+in_stock = false

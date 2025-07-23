@@ -9,6 +9,7 @@ var screen_size = DisplayServer.screen_get_size()
 @export var damage = 1
 var rotational_speed_modif = 0.3
 @onready var area_3d: Area3D = $Area3D
+var is_spawn_invincible : bool = false
 
 func _ready() -> void:
 	linear_velocity = move_dir
@@ -37,15 +38,9 @@ func set_move_dir(bound_force : float, target : Node) -> void:
 		).normalized() * (1 - bound_force);
 		move_dir = (random_direction + towards_player).normalized() * speed# (towards_player + get_random_screen_offset_point() * (1 - bound_force)).normalized() * speed
 	else :
-		move_dir = get_random_direction_away_from(position, target.position)
-
-func get_random_direction_away_from(spawn_position: Vector3, current_position : Vector3) -> Vector3:
-	var base_direction = (current_position - spawn_position).normalized()
-	var angle_offset = deg_to_rad(randf_range(-30, 30))
-	#Rotate the direction by the random angle
-	var random_direction = base_direction.rotate(angle_offset)
-	#var random_direction = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
-	return random_direction * speed
+		var angle = randf() * TAU
+		var direction = Vector2.from_angle(angle)
+		move_dir = Vector3(direction.x,0,direction.y) * speed
 
 func get_random_screen_offset_point() -> Vector3:
 	
@@ -81,9 +76,19 @@ func _on_area_3d_body_entered(ship) -> void:
 		queue_free()
 	else:
 		pass
+		
+func disable():
+	#$Area3D/CollisionShape3D.disabled = true
+	set_deferred("disabled", true)
+	is_spawn_invincible = true
+	
+func enable():
+	set_deferred("disabled", false)
+	is_spawn_invincible = false
 	
 func destroy_me():
-	queue_free()
+	if !is_spawn_invincible:
+		queue_free()
 
 func _process(delta: float) -> void:
 	if(linear_velocity.length() > speed * 2.0):

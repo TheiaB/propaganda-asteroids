@@ -13,8 +13,6 @@ func _ready() -> void:
 	projectile_scene = preload("res://scenes/projectiles/laser.tscn")
 	weapon_damage = damage
 	weapon_price = price
-	title = "standart weapon"
-	description = "Your standard blaster"
 	
 		
 func shoot_projectile(ship: Ship):

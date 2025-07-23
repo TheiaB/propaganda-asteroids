@@ -5,7 +5,11 @@
 
 [node name="ActiveShield" type="Node"]
 script = ExtResource("1_euify")
+<<<<<<< HEAD
 title = "active shield"
+=======
+title = "Active Shield"
+>>>>>>> b640406 (Fixed planet spawning asteroids)
 video = ExtResource("2_87w72")
 legal_text = "[p] Press \"K\" to shield yourself  [p] 
 ______________________________

@@ -4,7 +4,6 @@ var shield : Projectile
 
 func _ready() -> void:
 	item_scene = preload("res://scenes/projectiles/active_shield_effect.tscn")
-	title = "Active Shield"
 	description = "Use this shield in the right moment. \n" 
 	description += "To protect yourself from harm. \n For the low cost of only 1$"
 	activation_cost = 1
