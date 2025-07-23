@@ -18,15 +18,21 @@ var mission_accept_sfx: FmodEventEmitter3D = null
 var mission_complete_sfx: FmodEventEmitter3D = null
 var news_jingle_short: FmodEventEmitter3D = null
 var news_jingle_long: FmodEventEmitter3D = null
+@onready var railgun_charge_sfx: FmodEventEmitter3D = $RailGunCharge
+@onready var railgun_shot_sfx: FmodEventEmitter3D = $RailGunShot
+@onready var active_shield_sfx: FmodEventEmitter3D = $ActiveShield
+@onready var realgun_charge_sfx: FmodEventEmitter3D = $DieEchteCharge
+@onready var realgun_shot_sfx: FmodEventEmitter3D = $DieEchteShot
 
-
-var music_ocean_planet: FmodEventEmitter3D = null
-var music_ant_planet: FmodEventEmitter3D = null
-var music_crystal_planet: FmodEventEmitter3D = null
+@onready var music_ocean_planet: FmodEventEmitter3D = $OceanMusic
+@onready var music_ant_planet: FmodEventEmitter3D = $AntMusic
+@onready var music_crystal_planet: FmodEventEmitter3D = $CrystalMusic
 @onready var music_station: FmodEventEmitter3D = $StationMusic
-@onready var music_gamestart: FmodEventEmitter3D = null
-@onready var music_gameend: FmodEventEmitter3D = null
-@onready var music_contract: FmodEventEmitter3D = null
+@onready var music_gamestart: FmodEventEmitter3D = $StartScreenMusic
+@onready var music_gameend: FmodEventEmitter3D = $DeathMusic
+@onready var music_contract: FmodEventEmitter3D = $ContractMusic
+@onready var music_ambience: FmodEventEmitter3D = $SpaceAmbience
+
 
 
 func _ready():
