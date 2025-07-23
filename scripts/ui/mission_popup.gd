@@ -8,9 +8,11 @@ var is_finish: bool
 signal on_mission_popup_button_pressed
 signal on_finish_mission_popup_button_pressed
 
-@onready var mission_title: Label = $VBoxContainer/Title
-@onready var rich_text_label: RichTextLabel = $VBoxContainer/RichTextLabel
-@onready var button: Button = $VBoxContainer/Button
+@onready var mission_title: Label = $ScrollContainer/VBoxContainer/Title
+@onready var rich_text_label: RichTextLabel = $ScrollContainer/VBoxContainer/RichTextLabel
+@onready var button: Button = $ScrollContainer/VBoxContainer/Button
+
+
 
 
 func popup_mission(mission: Mission):
