@@ -9,4 +9,5 @@ delay_between = 0.05
 title = "Machine Gun"
 price = 0
 description = "Pewpewpew"
+in_stock = false
 metadata/_custom_type_script = "uid://cmd6uvcht5xc5"
