@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{5c49502a-5c1f-485e-9bac-556b59065ef2}">
+		<property name="assetPath">
+			<value>NewsJingleShort.ogg</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>5.902222222222222</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{d9985992-415a-46ba-b294-74633eb61c7a}</destination>
+		</relationship>
+	</object>
+</objects>

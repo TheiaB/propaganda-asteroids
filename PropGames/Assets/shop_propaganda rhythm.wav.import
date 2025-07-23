@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://emqae7kv4h02"
+path="res://.godot/imported/shop_propaganda rhythm.wav-d78195b6e37f9907abb10f8dd91ccb66.sample"
+
+[deps]
+
+source_file="res://PropGames/Assets/shop_propaganda rhythm.wav"
+dest_files=["res://.godot/imported/shop_propaganda rhythm.wav-d78195b6e37f9907abb10f8dd91ccb66.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

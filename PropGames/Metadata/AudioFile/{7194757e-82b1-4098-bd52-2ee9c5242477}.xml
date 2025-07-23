@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{7194757e-82b1-4098-bd52-2ee9c5242477}">
+		<property name="assetPath">
+			<value>ShieldShatter.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.008</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{d9985992-415a-46ba-b294-74633eb61c7a}</destination>
+		</relationship>
+	</object>
+</objects>

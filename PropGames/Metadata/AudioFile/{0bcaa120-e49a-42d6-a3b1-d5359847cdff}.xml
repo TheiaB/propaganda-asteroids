@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{0bcaa120-e49a-42d6-a3b1-d5359847cdff}">
+		<property name="assetPath">
+			<value>menu 2-Mountain Flutespace mission logic session54(00_00_00 - 00_02_38)092121072025.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>58.666666666666664</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{d9985992-415a-46ba-b294-74633eb61c7a}</destination>
+		</relationship>
+	</object>
+</objects>

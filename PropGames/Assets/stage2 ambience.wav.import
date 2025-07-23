@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://btn52h3qqbdvs"
+path="res://.godot/imported/stage2 ambience.wav-21c1cb5f4fc1223f6811f66f06aa0c3b.sample"
+
+[deps]
+
+source_file="res://PropGames/Assets/stage2 ambience.wav"
+dest_files=["res://.godot/imported/stage2 ambience.wav-21c1cb5f4fc1223f6811f66f06aa0c3b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

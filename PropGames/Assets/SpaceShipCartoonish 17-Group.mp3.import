@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://brdpcimokb574"
+path="res://.godot/imported/SpaceShipCartoonish 17-Group.mp3-a27019a73329a78aa6c42dddb1afc99d.mp3str"
+
+[deps]
+
+source_file="res://PropGames/Assets/SpaceShipCartoonish 17-Group.mp3"
+dest_files=["res://.godot/imported/SpaceShipCartoonish 17-Group.mp3-a27019a73329a78aa6c42dddb1afc99d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

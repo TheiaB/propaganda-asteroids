@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{95e9715d-3e62-4ce9-b13f-11256214a364}">
+		<property name="assetPath">
+			<value>shop_propaganda guitar.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>32</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{d9985992-415a-46ba-b294-74633eb61c7a}</destination>
+		</relationship>
+	</object>
+</objects>

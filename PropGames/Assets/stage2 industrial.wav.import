@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://jg58ivo0688r"
+path="res://.godot/imported/stage2 industrial.wav-43d05aef5a0b3ac2cb27c288bdff5fb6.sample"
+
+[deps]
+
+source_file="res://PropGames/Assets/stage2 industrial.wav"
+dest_files=["res://.godot/imported/stage2 industrial.wav-43d05aef5a0b3ac2cb27c288bdff5fb6.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

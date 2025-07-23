@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://5lmo8836su1d"
+path="res://.godot/imported/SpaceShipCartoonish 7-FX Sonar.mp3-737508976205ffd3936cffb3482fb702.mp3str"
+
+[deps]
+
+source_file="res://PropGames/Assets/SpaceShipCartoonish 7-FX Sonar.mp3"
+dest_files=["res://.godot/imported/SpaceShipCartoonish 7-FX Sonar.mp3-737508976205ffd3936cffb3482fb702.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

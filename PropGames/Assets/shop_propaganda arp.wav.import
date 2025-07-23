@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://do5i50mgb5j4c"
+path="res://.godot/imported/shop_propaganda arp.wav-e98fd02a35042fbedd3dbe899e1c758e.sample"
+
+[deps]
+
+source_file="res://PropGames/Assets/shop_propaganda arp.wav"
+dest_files=["res://.godot/imported/shop_propaganda arp.wav-e98fd02a35042fbedd3dbe899e1c758e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

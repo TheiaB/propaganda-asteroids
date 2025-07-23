@@ -5,7 +5,7 @@
 			<value>TripleShot</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{e7638f46-3704-42b4-9678-c84f38727398}</destination>
@@ -82,7 +82,11 @@
 			<destination>{d790baf5-fac4-4b98-9a82-1e0c9be76b30}</destination>
 		</relationship>
 	</object>
-	<object class="MultiSound" id="{4c9fe564-5287-40a0-888b-5fae8b033023}" />
+	<object class="MultiSound" id="{4c9fe564-5287-40a0-888b-5fae8b033023}">
+		<relationship name="sounds">
+			<destination>{82d1c2c0-6a1d-4270-923c-4bfdf4306fd3}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusEffectChain" id="{c7986d64-cd96-4f9a-894c-6ce2b9e4f4b0}">
 		<relationship name="effects">
 			<destination>{e452b8c8-257d-4cb4-8a6c-dc9feac21139}</destination>
@@ -95,6 +99,31 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{e4e9e58b-187b-43ae-a285-f0db97dc214e}" />
+	<object class="SingleSound" id="{82d1c2c0-6a1d-4270-923c-4bfdf4306fd3}">
+		<property name="startOffset">
+			<value>8.5</value>
+		</property>
+		<property name="volume">
+			<value>-6</value>
+		</property>
+		<property name="pitch">
+			<value>-2</value>
+		</property>
+		<relationship name="modulators">
+			<destination>{0f7dd433-2cce-4ef1-aa01-098dfbf02f89}</destination>
+		</relationship>
+		<relationship name="audioFile">
+			<destination>{64bf2145-3d43-4fba-b754-cd442d2ec088}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusFader" id="{e452b8c8-257d-4cb4-8a6c-dc9feac21139}" />
 	<object class="MixerBusFader" id="{c21495e1-0a62-4453-8679-6f4c66a6556e}" />
+	<object class="RandomizerModulator" id="{0f7dd433-2cce-4ef1-aa01-098dfbf02f89}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>pitch</value>
+		</property>
+		<property name="amount">
+			<value>6</value>
+		</property>
+	</object>
 </objects>

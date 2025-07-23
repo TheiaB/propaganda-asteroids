@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bfq5qfw6vafs4"
+path="res://.godot/imported/SpaceShipCartoonish Stage 2 Dest.mp3-f7b5e75394bee53c767212c031695843.mp3str"
+
+[deps]
+
+source_file="res://PropGames/Assets/SpaceShipCartoonish Stage 2 Dest.mp3"
+dest_files=["res://.godot/imported/SpaceShipCartoonish Stage 2 Dest.mp3-f7b5e75394bee53c767212c031695843.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
