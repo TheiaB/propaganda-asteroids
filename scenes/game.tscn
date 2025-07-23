@@ -39,19 +39,22 @@ glow_enabled = true
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_trtic"]
 render_priority = 0
 shader = ExtResource("13_kvuet")
-shader_parameter/FloatParameter = 512.0
+shader_parameter/Speed = -0.005
+shader_parameter/Scale = 256.0
 shader_parameter/Texture2DParameter2 = ExtResource("14_ir15t")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rysoc"]
 render_priority = 0
 shader = ExtResource("13_kvuet")
-shader_parameter/FloatParameter = 256.0
+shader_parameter/Speed = 0.005
+shader_parameter/Scale = 256.0
 shader_parameter/Texture2DParameter2 = ExtResource("15_ca42v")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ca42v"]
 render_priority = 0
 shader = ExtResource("13_kvuet")
-shader_parameter/FloatParameter = 128.0
+shader_parameter/Speed = 0.005
+shader_parameter/Scale = 256.0
 shader_parameter/Texture2DParameter2 = ExtResource("15_ir15t")
 
 [node name="Game" type="Node"]
@@ -73,7 +76,9 @@ script = ExtResource("4_vtaks")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 2.12011, 5.03893, -4.67931)
+light_cull_mask = 4294967279
 shadow_enabled = true
+shadow_caster_mask = 4294967279
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_feb5d")

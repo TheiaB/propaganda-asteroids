@@ -134,6 +134,7 @@ func _process(_delta):
 	if Input.is_action_just_released("active_item"):
 		if active_item:
 			emit_signal("deactivate_active_item")
+	
 			
 		
 

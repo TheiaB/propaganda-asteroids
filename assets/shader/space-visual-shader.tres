@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=15 format=3 uid="uid://diyt4cx0hnlnl"]
+[gd_resource type="VisualShader" load_steps=19 format=3 uid="uid://diyt4cx0hnlnl"]
 
 [sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_b8jt7"]
 constant = 1.0
@@ -14,13 +14,28 @@ varying_type = 4
 [sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_ocra4"]
 op_type = 0
 
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_b8jt7"]
+default_input_values = [0, Vector2(0.1, 0), 1, Vector2(0, 0)]
+op_type = 0
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_kstrl"]
+input_name = "time"
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_ocra4"]
+operator = 2
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_uyc38"]
+parameter_name = "Speed"
+default_value_enabled = true
+default_value = 0.05
+
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_ocra4"]
 source = 5
 
 [sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_kstrl"]
-parameter_name = "FloatParameter"
+parameter_name = "Scale"
 default_value_enabled = true
-default_value = 4.0
+default_value = 256.0
 
 [sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_ocra4"]
 default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
@@ -54,7 +69,8 @@ render_mode blend_add, depth_draw_opaque, cull_back, diffuse_lambert, specular_s
 // Varyings
 varying vec3 var_WorldPos;
 
-uniform float FloatParameter = 4.0;
+uniform float Speed = 0.05000000074506;
+uniform float Scale = 256.0;
 uniform sampler2D Texture2DParameter2 : hint_default_black;
 
 
@@ -79,6 +95,18 @@ void vertex() {
 }
 
 void fragment() {
+// Input:16
+	float n_out16p0 = TIME;
+
+
+// FloatParameter:18
+	float n_out18p0 = Speed;
+
+
+// FloatOp:17
+	float n_out17p0 = n_out16p0 * n_out18p0;
+
+
 // VaryingGetter:12
 	vec3 n_out12p0 = var_WorldPos;
 
@@ -94,16 +122,20 @@ void fragment() {
 
 
 // FloatParameter:5
-	float n_out5p0 = FloatParameter;
+	float n_out5p0 = Scale;
 
 
 // VectorOp:6
 	vec2 n_out6p0 = n_out14p0 / vec2(n_out5p0);
 
 
+// VectorOp:15
+	vec2 n_out15p0 = vec2(n_out17p0) + n_out6p0;
+
+
 	vec4 n_out2p0;
 // Texture2D:2
-	n_out2p0 = texture(Texture2DParameter2, n_out6p0);
+	n_out2p0 = texture(Texture2DParameter2, n_out15p0);
 
 
 // FloatConstant:9
@@ -127,27 +159,26 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-385.512, -75.1118)
 modes/blend = 1
 varyings/WorldPos = "0,4"
 nodes/vertex/2/node = SubResource("VisualShaderNodeInput_uyc38")
-nodes/vertex/2/position = Vector2(-959.544, 4.03484)
+nodes/vertex/2/position = Vector2(-1140, -20)
 nodes/vertex/3/node = SubResource("VisualShaderNodeInput_fqv52")
-nodes/vertex/3/position = Vector2(-999.544, 104.035)
+nodes/vertex/3/position = Vector2(-1160, 180)
 nodes/vertex/4/node = SubResource("VisualShaderNodeTransformVecMult_xgaw8")
-nodes/vertex/4/position = Vector2(-619.544, 4.03484)
+nodes/vertex/4/position = Vector2(-500, -120)
 nodes/vertex/5/node = SubResource("VisualShaderNodeVaryingSetter_moc6i")
-nodes/vertex/5/position = Vector2(-357.921, 104.161)
-nodes/vertex/connections = PackedInt32Array(2, 0, 4, 0, 3, 0, 4, 1, 4, 0, 5, 0)
-nodes/fragment/0/position = Vector2(500, 300)
+nodes/vertex/5/position = Vector2(-160, 100)
+nodes/vertex/connections = PackedInt32Array(4, 0, 5, 0, 2, 0, 4, 0, 3, 0, 4, 1)
+nodes/fragment/0/position = Vector2(1480, -20)
 nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_ocra4")
-nodes/fragment/2/position = Vector2(0, 300)
+nodes/fragment/2/position = Vector2(780, -160)
 nodes/fragment/5/node = SubResource("VisualShaderNodeFloatParameter_kstrl")
-nodes/fragment/5/position = Vector2(-800, 300)
+nodes/fragment/5/position = Vector2(-940, 300)
 nodes/fragment/6/node = SubResource("VisualShaderNodeVectorOp_ocra4")
-nodes/fragment/6/position = Vector2(-400, 200)
+nodes/fragment/6/position = Vector2(-160, -100)
 nodes/fragment/8/node = SubResource("VisualShaderNodeTexture2DParameter_b8jt7")
-nodes/fragment/8/position = Vector2(-400, 500)
+nodes/fragment/8/position = Vector2(-800, 920)
 nodes/fragment/9/node = SubResource("VisualShaderNodeFloatConstant_ocra4")
 nodes/fragment/9/position = Vector2(0, 600)
 nodes/fragment/10/node = SubResource("VisualShaderNodeFloatConstant_b8jt7")
@@ -155,9 +186,17 @@ nodes/fragment/10/position = Vector2(0, 700)
 nodes/fragment/11/node = SubResource("VisualShaderNodeFloatConstant_kstrl")
 nodes/fragment/11/position = Vector2(0, 800)
 nodes/fragment/12/node = SubResource("VisualShaderNodeVaryingGetter_b8jt7")
-nodes/fragment/12/position = Vector2(-1200, 0)
+nodes/fragment/12/position = Vector2(-1300, -120)
 nodes/fragment/13/node = SubResource("VisualShaderNodeVectorDecompose_kstrl")
-nodes/fragment/13/position = Vector2(-1000, 0)
+nodes/fragment/13/position = Vector2(-940, -120)
 nodes/fragment/14/node = SubResource("VisualShaderNodeVectorCompose_ocra4")
-nodes/fragment/14/position = Vector2(-800, 0)
-nodes/fragment/connections = PackedInt32Array(5, 0, 6, 1, 6, 0, 2, 0, 8, 0, 2, 2, 9, 0, 0, 2, 10, 0, 0, 3, 11, 0, 0, 4, 2, 0, 0, 0, 12, 0, 13, 0, 14, 0, 6, 0, 13, 0, 14, 0, 13, 2, 14, 1)
+nodes/fragment/14/position = Vector2(-560, -120)
+nodes/fragment/15/node = SubResource("VisualShaderNodeVectorOp_b8jt7")
+nodes/fragment/15/position = Vector2(300, -400)
+nodes/fragment/16/node = SubResource("VisualShaderNodeInput_kstrl")
+nodes/fragment/16/position = Vector2(-1140, -860)
+nodes/fragment/17/node = SubResource("VisualShaderNodeFloatOp_ocra4")
+nodes/fragment/17/position = Vector2(-160, -560)
+nodes/fragment/18/node = SubResource("VisualShaderNodeFloatParameter_uyc38")
+nodes/fragment/18/position = Vector2(-1160, -680)
+nodes/fragment/connections = PackedInt32Array(5, 0, 6, 1, 8, 0, 2, 2, 12, 0, 13, 0, 14, 0, 6, 0, 13, 0, 14, 0, 13, 2, 14, 1, 18, 0, 17, 1, 9, 0, 0, 2, 10, 0, 0, 3, 11, 0, 0, 4, 2, 0, 0, 0, 16, 0, 17, 0, 6, 0, 15, 1, 15, 0, 2, 0, 17, 0, 15, 0)

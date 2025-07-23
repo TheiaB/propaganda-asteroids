@@ -1,0 +1,228 @@
+[gd_scene load_steps=12 format=3 uid="uid://bnb5fyoxgj4b4"]
+
+[ext_resource type="PackedScene" uid="uid://bi2fkkpnm4xeo" path="res://scenes/menu_3d.tscn" id="1_c7ajr"]
+[ext_resource type="Script" uid="uid://d3cqd6y1glryc" path="res://scripts/ui/menu_ui.gd" id="1_h8mjf"]
+[ext_resource type="Theme" uid="uid://h1f7iqhh7ycb" path="res://assets/ui/theme/FlatUI4/kenneyUI-yellow.tres" id="2_44wi2"]
+[ext_resource type="Texture2D" uid="uid://dt5vxoq7uupgw" path="res://assets/ui/logo/ass-logo-corner.png" id="2_h8mjf"]
+[ext_resource type="Theme" uid="uid://mbsg4xqnedxi" path="res://assets/ui/theme/FlatUI4/kenneyUI-red.tres" id="5_w735g"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_c7ajr"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_44wi2"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_c7ajr")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_de0uw"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="Animation" id="Animation_de0uw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_w735g"]
+resource_name = "fade_to_black"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.266667, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, false, true, true, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0666667, 0.266667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_de0uw"]
+_data = {
+&"RESET": SubResource("Animation_de0uw"),
+&"fade_to_black": SubResource("Animation_w735g")
+}
+
+[node name="MenuUI" type="CanvasLayer"]
+layer = 5
+script = ExtResource("1_h8mjf")
+
+[node name="Menu3D" parent="." instance=ExtResource("1_c7ajr")]
+
+[node name="ship" parent="Menu3D" index="0"]
+transform = Transform3D(-0.0473673, -0.65974, -0.75, -0.612372, 0.612372, -0.5, 0.789149, 0.435595, -0.433013, -513, 0, 253)
+
+[node name="DebugPlane" parent="Menu3D" index="5"]
+surface_material_override/0 = SubResource("StandardMaterial3D_44wi2")
+
+[node name="Camera3D" parent="Menu3D/SubViewport" index="0"]
+current = true
+
+[node name="MenuBackground" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_de0uw")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 500.0
+grow_vertical = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+texture = ExtResource("2_h8mjf")
+expand_mode = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 16
+
+[node name="ButtonPlay" type="Button" parent="CenterContainer/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+text = "Play"
+
+[node name="ButtonReset" type="Button" parent="CenterContainer/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+text = "Reset"
+
+[node name="ButtonCredits" type="Button" parent="CenterContainer/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+text = "Credits"
+
+[node name="ButtonDebug" type="Button" parent="CenterContainer/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_44wi2")
+text = "Debug"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_de0uw")
+}
+
+[node name="TransitionTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="Credits" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -774.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="TextureRect" type="ColorRect" parent="Credits"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -297.0
+offset_top = -240.0
+offset_right = 263.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0273124, 0.094064, 0.0918034, 0.752941)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Credits"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -287.0
+offset_top = -220.0
+offset_right = 253.0
+offset_bottom = 220.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "A PROPAGANDA GAMES PRODUCTION
+
+-
+
+Made during Summer Semester 2025
+at HfG"
+
+[node name="ButtonExitCredits" type="Button" parent="Credits"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -297.0
+offset_top = 243.0
+offset_right = -221.676
+offset_bottom = 285.251
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_w735g")
+text = "BACK"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer2/VBoxContainer/ButtonPlay" to="." method="_on_button_play_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer2/VBoxContainer/ButtonReset" to="." method="_on_button_reset_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer2/VBoxContainer/ButtonCredits" to="." method="_on_button_credits_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer2/VBoxContainer/ButtonDebug" to="." method="_on_button_debug_pressed"]
+[connection signal="pressed" from="Credits/ButtonExitCredits" to="." method="_on_button_exit_credits_pressed"]
+
+[editable path="Menu3D"]
+[editable path="Menu3D/ship"]

@@ -34,8 +34,43 @@ func _ready():
 
 	ui_manager.set_displayed_missions(mission_manager.missions)
 	asteroid_manager.set_difficulty(1)
-
 	
+	GlobalMenu.connect("menu_open",pause)
+	GlobalMenu.connect("menu_close",unpause)
+	GlobalMenu.connect("menu_restart",fresh_restart)
+	GlobalMenu.connect("esc",esc)
+
+func esc():
+	if(ui_manager.shop_mission_interface.visible):
+		print("close ui")
+		ui_manager.shop_mission_interface.close_all()
+		ui_manager.shop_mission_interface.emit_signal("ship_fly")
+	elif GlobalMenu.visible :
+		GlobalMenu.emit_signal("menu_close")
+		GlobalMenu.close_menu()
+	else:
+		print("open menu")
+		GlobalMenu.emit_signal("menu_open")
+
+func pause():
+	#get_tree().paused = true
+	process_mode = Node.PROCESS_MODE_DISABLED
+	print("pause")
+	pass
+
+func unpause():
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	#get_tree().paused = false
+
+func fresh_restart():
+	#GlobalItemManager.get_tree().reload_scene()
+	#GlobalStatesManager.get_tree().reload_scene()
+	#ZoneManager.get_tree().reload_scene()
+	#get_tree().reload_scene()
+	print("restarting")
+	get_tree().reload_current_scene()
+	#ship.queue_free()
+
 func updateShip():
 	asteroid_manager.ship = ship
 	mission_manager.ship = ship

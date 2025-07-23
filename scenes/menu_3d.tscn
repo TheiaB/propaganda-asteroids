@@ -1,0 +1,140 @@
+[gd_scene load_steps=19 format=3 uid="uid://bi2fkkpnm4xeo"]
+
+[ext_resource type="Script" uid="uid://hmwg36qp2itx" path="res://scripts/menu_3d.gd" id="1_ef5vu"]
+[ext_resource type="PackedScene" uid="uid://cu5hdltnm5jj2" path="res://assets/ship/ship.gltf" id="1_u34p7"]
+[ext_resource type="PackedScene" uid="uid://c67duphyjlojt" path="res://assets/ship/cargo/cargo.gltf" id="2_ef5vu"]
+[ext_resource type="Shader" uid="uid://diyt4cx0hnlnl" path="res://assets/shader/space-visual-shader.tres" id="3_24y7d"]
+[ext_resource type="Texture2D" uid="uid://x563xgobc7qq" path="res://assets/space/t-space-01.png" id="4_7f5ux"]
+[ext_resource type="SpriteFrames" uid="uid://cpgsbsb6jjowj" path="res://assets/ship/ship_spritesheet.tres" id="4_24y7d"]
+[ext_resource type="Texture2D" uid="uid://2kf05jtnku8b" path="res://assets/space/t-space-03.png" id="5_w5jwr"]
+[ext_resource type="Texture2D" uid="uid://bprqkumf86jbq" path="res://assets/space/t-space-02.png" id="6_kfcwb"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_snkhy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3lj46"]
+render_priority = 0
+shader = ExtResource("3_24y7d")
+shader_parameter/Speed = 0.001
+shader_parameter/Scale = 128.0
+shader_parameter/Texture2DParameter2 = ExtResource("4_7f5ux")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_chh5i"]
+render_priority = 0
+shader = ExtResource("3_24y7d")
+shader_parameter/Speed = 0.01
+shader_parameter/Scale = 128.0
+shader_parameter/Texture2DParameter2 = ExtResource("5_w5jwr")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6nvu6"]
+render_priority = 0
+shader = ExtResource("3_24y7d")
+shader_parameter/Speed = 0.05
+shader_parameter/Scale = 128.0
+shader_parameter/Texture2DParameter2 = ExtResource("6_kfcwb")
+
+[sub_resource type="Animation" id="Animation_24y7d"]
+length = 0.001
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ship")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.43968, -0.723318, 0.0222602, 0.531976)
+
+[sub_resource type="Animation" id="Animation_ef5vu"]
+resource_name = "space_rotation"
+length = 12.0
+loop_mode = 1
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ship")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.43968, -0.723318, 0.0222602, 0.531976, 5.66667, 1, 0.339, -0.821, 0.174, 0.424, 11.9333, 1, 0.43968, -0.723318, 0.0222603, 0.531975, 12, 1, 0.43968, -0.723318, 0.0222603, 0.531975)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_24y7d"]
+_data = {
+&"RESET": SubResource("Animation_24y7d"),
+&"space_rotation": SubResource("Animation_ef5vu")
+}
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ef5vu"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ef5vu"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_24y7d"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_ef5vu")
+
+[node name="Menu3D" type="Node3D"]
+script = ExtResource("1_ef5vu")
+
+[node name="ship" parent="." instance=ExtResource("1_u34p7")]
+transform = Transform3D(-0.0473673, -0.65974, -0.75, -0.612372, 0.612372, -0.5, 0.789149, 0.435595, -0.433013, -513, 0, 253)
+
+[node name="Ship" parent="ship" index="0"]
+layers = 8
+
+[node name="cargo" parent="ship" instance=ExtResource("2_ef5vu")]
+
+[node name="ThrusterSpriteRight" type="AnimatedSprite3D" parent="ship"]
+transform = Transform3D(1.62988, -6.51952, 0, 1.55615, 6.22459, 1.3709, -0.484686, -1.93874, 4.40145, 5.26, 0.21, 0.35)
+offset = Vector2(0, -128)
+flip_v = true
+axis = 1
+sprite_frames = ExtResource("4_24y7d")
+animation = &"thruster_loop"
+frame_progress = 0.395533
+
+[node name="ThrusterSpriteLeft" type="AnimatedSprite3D" parent="ship"]
+transform = Transform3D(1.48929, -0.747666, 0, 0.239567, 4.2948, 0.832425, -0.0686949, -1.23151, 2.90301, -5.285, 0.155, 0.35)
+offset = Vector2(0, -128)
+flip_v = true
+axis = 1
+sprite_frames = ExtResource("4_24y7d")
+animation = &"thruster_loop"
+frame_progress = 0.344124
+
+[node name="SpaceLowest" type="MeshInstance3D" parent="."]
+transform = Transform3D(2048, 0, 0, 0, 2048, 0, 0, 0, 2048, 0, -256, 0)
+visible = false
+mesh = SubResource("PlaneMesh_snkhy")
+surface_material_override/0 = SubResource("ShaderMaterial_3lj46")
+
+[node name="SpaceMiddle" type="MeshInstance3D" parent="."]
+transform = Transform3D(2048, 0, 0, 0, 2048, 0, 0, 0, 2048, 0, -96, 0)
+visible = false
+mesh = SubResource("PlaneMesh_snkhy")
+surface_material_override/0 = SubResource("ShaderMaterial_chh5i")
+
+[node name="SpaceUpper" type="MeshInstance3D" parent="."]
+transform = Transform3D(2048, 0, 0, 0, 2048, 0, 0, 0, 2048, 0, -48, 0)
+visible = false
+mesh = SubResource("PlaneMesh_snkhy")
+surface_material_override/0 = SubResource("ShaderMaterial_6nvu6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_24y7d")
+}
+
+[node name="DebugPlane" type="MeshInstance3D" parent="."]
+transform = Transform3D(-7.77189e-08, 0, 1, 0, 1, 0, -1.778, 0, -4.37114e-08, -513, 9, 249)
+visible = false
+mesh = SubResource("PlaneMesh_ef5vu")
+surface_material_override/0 = SubResource("StandardMaterial3D_24y7d")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(1152, 640)
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport"]
+transform = Transform3D(-4.37114e-08, -0.965926, 0.258819, -0.238516, 0.251349, 0.938048, -0.971138, -0.0617326, -0.230389, -508.497, 11.8015, 252.999)
+fov = 48.7
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+
+[editable path="ship"]

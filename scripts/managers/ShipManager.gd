@@ -62,6 +62,7 @@ func send_ship_died():
 	if ship.active_item:
 		ship.active_item.on_unequip()
 	
+	
 func send_activate_active_item():
 	emit_signal("activate_active_item")
 	
