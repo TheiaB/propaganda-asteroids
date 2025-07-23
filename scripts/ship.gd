@@ -12,7 +12,7 @@ signal deactivate_active_item
 @export var shield : Shield
 @export var active_item : Generic_Active_Item
 @export var items : Array[Generic_Item]
-var isInvinsible : bool = false
+@export var isInvinsible : bool = false
 var projectiles_node : Node
 var active_item_node : Node
 var charge_start_time : float = 0.0
@@ -86,6 +86,7 @@ func _ready() -> void:
 
 	
 func on_collision_with_asteroid(damage):
+	print("Asteroid Collision")
 	if !isInvinsible:
 		shield.shield_health -= damage
 		if shield.shield_health <= 0:

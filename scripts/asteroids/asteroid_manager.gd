@@ -30,6 +30,7 @@ var asteroid_types = [
 var ship : Ship
 var proximity_planet : ZonePlanet
 
+var current_difficulty_level:int
 
 func _ready() -> void:
 	target = get_node_or_null(target_path)
@@ -38,10 +39,14 @@ func init() -> void:
 	for zone_planet in ZoneManager.get_planets():
 		zone_planet.proximity_entered.connect(player_entered_planet_proximity)
 		zone_planet.proximity_exited.connect(player_exited_planet_proximity)
-	set_difficulty(5)
+	#set_difficulty(5)
+
+func add_difficulty(levels:int=1):
+	set_difficulty(current_difficulty_level + levels)
 
 func set_difficulty(level: int):
 	level = clamp(level, 1, 10)
+	current_difficulty_level = level
 	var t = float(level - 1) / 9.0
 	asteroid_timer.wait_time = lerp(0.8, 0.2, t)
 	spawn_weights.clear()

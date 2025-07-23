@@ -113,6 +113,7 @@ func _on_ui_manager_on_start_run() -> void:
 
 func _on_mission_manager_finish_mission(mission : Mission) -> void:
 	mission_manager.add_mission_to_finished_missions(mission)
+	asteroid_manager.add_difficulty()
 	ui_manager.clear_missions()
 	ui_manager.mission_finish_popup(mission)
 
