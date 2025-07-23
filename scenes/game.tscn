@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cnotxnjbhrj4a"]
+[gd_scene load_steps=22 format=3 uid="uid://cnotxnjbhrj4a"]
 
 [ext_resource type="Script" uid="uid://dxicgx2v6rcda" path="res://scripts/game.gd" id="1_lnu2h"]
 [ext_resource type="Script" uid="uid://c3nebth5qx3wg" path="res://scripts/camera_3d.gd" id="1_yqjtg"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://cyg2e5xslvje3" path="res://scenes/asteroids/asteroid_manager.tscn" id="5_p57ef"]
 [ext_resource type="Script" uid="uid://dti8u68m46th2" path="res://scripts/managers/timer_manager.gd" id="6_ca42v"]
 [ext_resource type="PackedScene" uid="uid://cdbqn35l6oxha" path="res://scenes/managers/ui_manager.tscn" id="7_kvpfn"]
-[ext_resource type="PackedScene" uid="uid://bdmtg28xc2n0k" path="res://scenes/managers/zone_manager.tscn" id="10_trtic"]
 [ext_resource type="Shader" uid="uid://diyt4cx0hnlnl" path="res://assets/shader/space-visual-shader.tres" id="13_kvuet"]
 [ext_resource type="Texture2D" uid="uid://x563xgobc7qq" path="res://assets/space/t-space-01.png" id="14_ir15t"]
 [ext_resource type="PackedScene" uid="uid://bn6hjlre2x7cy" path="res://scenes/managers/mission_manager.tscn" id="14_trtic"]
@@ -105,9 +104,6 @@ unique_name_in_owner = true
 [node name="MissionManager" parent="." instance=ExtResource("14_trtic")]
 unique_name_in_owner = true
 
-[node name="ZoneManager" parent="." instance=ExtResource("10_trtic")]
-unique_name_in_owner = true
-
 [node name="BankLoaderMain" type="FmodBankLoader" parent="."]
 bank_paths = ["res://PropGames/Build/Desktop/Master.strings.bank", "res://PropGames/Build/Desktop/Master.bank", "res://PropGames/Build/Desktop/UI+Station_SFX.bank", "res://PropGames/Build/Desktop/ShipSFX.bank", "res://PropGames/Build/Desktop/MusicMain.bank"]
 
@@ -144,5 +140,3 @@ surface_material_override/0 = SubResource("ShaderMaterial_ca42v")
 [connection signal="ship_died" from="ShipManager" to="." method="_on_ship_manager_ship_died"]
 [connection signal="enter_base" from="MissionManager" to="." method="_on_mission_manager_enter_base"]
 [connection signal="finish_mission" from="MissionManager" to="." method="_on_mission_manager_finish_mission"]
-
-[editable path="ZoneManager"]

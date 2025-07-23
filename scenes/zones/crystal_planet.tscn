@@ -42,3 +42,7 @@ transform = Transform3D(14, 0, 0, 0, 14, 0, 0, 0, 14, 0, 0, 0)
 shape = SubResource("CylinderShape3D_o7a0i")
 
 [connection signal="body_entered" from="ZoneArea" to="." method="_on_player_enter_zone"]
+
+[editable path="planet_Crystal_surface_iteration_1"]
+[editable path="planet_Crystal_surface_iteration_2"]
+[editable path="planet_Crystal_surface_iteration_3"]

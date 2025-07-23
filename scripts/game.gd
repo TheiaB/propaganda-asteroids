@@ -7,7 +7,7 @@ class_name Game
 @onready var ui_manager: UIManager = %UIManager
 @onready var timer_manager: TimerManager = $TimerManager
 @onready var mission_manager: MissionManager = %MissionManager
-@onready var zone_manager: ZoneManager = %ZoneManager
+#@onready var zone_manager: ZoneManager = %ZoneManager
 
 var ship: Ship
 

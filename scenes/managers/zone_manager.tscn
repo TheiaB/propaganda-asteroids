@@ -6,14 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://bc7jaqjp0f7tn" path="res://scenes/zones/water_planet.tscn" id="3_sojj3"]
 [ext_resource type="PackedScene" uid="uid://c0ko72djajciq" path="res://scenes/zones/crystal_planet.tscn" id="4_f8inv"]
 
-[node name="Zones" type="Node"]
+[node name="Zones" type="Node3D"]
 script = ExtResource("1_sojj3")
 
 [node name="ZonePlanetWater" parent="." instance=ExtResource("3_sojj3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.1741, 0, 41)
 
 [node name="ZonePlanetAnt" parent="." instance=ExtResource("3_4y2fq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 0, 21.3067)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 0, 26.3067)
 
 [node name="ZonePlanetCrystal" parent="." instance=ExtResource("4_f8inv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53, 0, -19)

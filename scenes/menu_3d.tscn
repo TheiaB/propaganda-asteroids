@@ -73,7 +73,7 @@ albedo_texture = SubResource("ViewportTexture_ef5vu")
 script = ExtResource("1_ef5vu")
 
 [node name="ship" parent="." instance=ExtResource("1_u34p7")]
-transform = Transform3D(-0.0473673, -0.65974, -0.75, -0.612372, 0.612372, -0.5, 0.789149, 0.435595, -0.433013, -513, 0, 253)
+transform = Transform3D(-0.0473674, -0.65974, -0.75, -0.612372, 0.612372, -0.5, 0.789149, 0.435595, -0.433013, -513, 0, 253)
 
 [node name="Ship" parent="ship" index="0"]
 layers = 8

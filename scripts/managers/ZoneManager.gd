@@ -1,4 +1,4 @@
-extends Node
+extends Node3D
 
 @onready var zone_home: ZoneHome = $ZoneHome
 @onready var zone_planet_water: ZonePlanet = $ZonePlanetWater

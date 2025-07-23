@@ -1,4 +1,4 @@
-@tool
+#@tool
 extends Zone
 class_name ZonePlanet
 
@@ -7,32 +7,32 @@ class_name ZonePlanet
 
 @export var planet_iterations:Array[Node3D]
 
-@export_tool_button("Hurt Me Mommy", "Callable") var hurt_planet = hurt
-
-func hurt():
+#@export_tool_button("Hurt Me Mommy", "Callable") var hurt_planet = hurt
+func hurt() -> void:
 	modify_health(-1)
 
-func modify_health(amount:int):
+func modify_health(amount:int = -1):
 	print('---health ',name, ' ',health)
 	health += amount
-	for planet in planet_iterations:
-		planet.hide()
-	if(health > planet_iterations.size()):
-		# health 4 on planet 0
-		planet_iterations[0].show()
-		print('---more health than necessary')
-	elif(health < 1):
-		# health 0 on planet 2
-		print('---less health than necessary')
-		planet_iterations[planet_iterations.size() - 1].show()
-	else:
-		# maps
-		# health 3 on planet 0
-		# health 2 on planet 1
-		# health 1 on planet 2
-		print('---health ',health)
-		planet_iterations[planet_iterations.size() - health].show()
-	return
+	if(planet_iterations.size()>0):
+		for planet in planet_iterations:
+			planet.hide()
+		if(health > planet_iterations.size()):
+			# health 4 on planet 0
+			planet_iterations[0].show()
+			print('---more health than necessary')
+		elif(health < 1):
+			# health 0 on planet 2
+			print('---less health than necessary')
+			planet_iterations[planet_iterations.size() - 1].show()
+		else:
+			# maps
+			# health 3 on planet 0
+			# health 2 on planet 1
+			# health 1 on planet 2
+			print('---health ',health)
+			planet_iterations[planet_iterations.size() - health].show()
+		return
 
 
 func _ready():
