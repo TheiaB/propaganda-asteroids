@@ -8,5 +8,6 @@ func _ready():
 	
 
 func _button_pressed():
+	SoundManager5000.basic_button_sfx.play_one_shot()
 	emit_signal("start_run")
 	

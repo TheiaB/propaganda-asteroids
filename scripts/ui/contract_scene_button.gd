@@ -77,8 +77,8 @@ By accepting this contract, the employee has unconditionally accepted all terms 
 	scroll_container.get_v_scroll_bar().value = 0
 	scroll_container.get_v_scroll_bar().value_changed.connect(_on_scroll_check)
 	_on_scroll_check(scroll_container.get_v_scroll_bar().value)
-	
 
+	
 func _on_scroll_check(value: float) -> void:
 	var scrollbar = scroll_container.get_v_scroll_bar()
 	var at_bottom = value >= scrollbar.max_value - scrollbar.page - 1
@@ -89,5 +89,5 @@ func _on_scroll_check(value: float) -> void:
 
 
 func _on_accept_contract_pressed() -> void:
-	SoundManager5000.basic_button_sfx.start()
+	SoundManager5000.basic_button_sfx.play_one_shot()
 	emit_signal("accept_contract")

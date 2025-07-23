@@ -32,6 +32,7 @@ func init_grid():
 		
 
 func _on_panel_buy_pressed(item:Item):
+	SoundManager5000.menu_open_sfx.play_one_shot()
 	emit_signal("panel_buy_pressed", item)
 
 func _ready() -> void:

@@ -83,6 +83,7 @@ func get_cargo_dest_planet() -> ZonePlanet:
 	
 func finish_mission():
 	print('--- finish mission (mission)')
+	SoundManager5000.mission_complete_sfx.play_one_shot()
 	print('dest:',ZoneManager.get_planet_by_enum(cargo_dest))
 	print('start:',ZoneManager.get_planet_by_enum(cargo_start))
 	# Design philosophy:

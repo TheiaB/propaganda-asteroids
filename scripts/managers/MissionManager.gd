@@ -41,6 +41,10 @@ func init(_arrow:Arrow3D) -> void:
 	
 func on_home_zone_player_entered(_zone):
 	emit_signal("enter_base")
+	SoundManager5000.music_ambience.stop()
+	SoundManager5000.music_station.set_parameter("Dock", 1)
+	SoundManager5000.music_station.play()
+	print("station entered")
 
 	if current_mission != null:
 		var erg = current_mission.update_mission_state(ship, _zone)

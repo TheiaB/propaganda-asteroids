@@ -90,6 +90,7 @@ func on_collision_with_asteroid(damage):
 	if !isInvinsible:
 		shield.shield_health -= damage
 		if shield.shield_health <= 0:
+			SoundManager5000.ship_dest_sfx.play_one_shot()
 			emit_signal("ship_died")
 			queue_free()
 	

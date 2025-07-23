@@ -83,6 +83,7 @@ func _on_contract_scene_accept_contract() -> void:
 	
 
 func _on_shop_mission_interfaces_ship_fly() -> void:
+	print("space station exited")
 	emit_signal("ship_fly")
 	
 func popup_mission(mission: Mission):
@@ -104,6 +105,9 @@ func mission_finish_popup(mission: Mission):
 
 func _on_mission_popup_on_mission_popup_button_pressed(mission: Mission) -> void:
 	mission_popup.hide()
+	SoundManager5000.mission_accept_sfx.play_one_shot()
+	SoundManager5000.music_station.stop()
+	SoundManager5000.music_ambience.play()
 	emit_signal("on_shop_mission_interfaces_start_mission", mission)
 	emit_signal("ship_fly")
 

@@ -62,11 +62,13 @@ func _on_area_3d_area_entered(area : Area3D) -> void:
 		print('activeshield')
 		queue_free()
 	if area is Projectile:
+		SoundManager5000.asteroid_hit_sfx.play_one_shot()
 		var bullet := area as Projectile
 		health -= bullet.damage
 		if bullet.destroyable:
 			bullet.queue_free()
 		if health <= 0:
+			SoundManager5000.asteroid_destroyed_sfx.play_one_shot()
 			queue_free()
 
 

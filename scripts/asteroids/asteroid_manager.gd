@@ -42,6 +42,19 @@ func init() -> void:
 
 func add_difficulty(levels:int=1):
 	set_difficulty(current_difficulty_level + levels)
+	if current_difficulty_level <= 2:
+		FmodServer.set_global_parameter_by_name("Space Decay", 0)
+	if current_difficulty_level == 3:  
+		FmodServer.set_global_parameter_by_name("Space Decay", 1)
+	if current_difficulty_level == 5:
+		FmodServer.set_global_parameter_by_name("Space Decay", 2)
+	if current_difficulty_level == 7:
+		FmodServer.set_global_parameter_by_name("Space Decay", 3)
+	if current_difficulty_level >= 9: 
+		FmodServer.set_global_parameter_by_name("Space Decay", 4)
+
+
+
 
 func set_difficulty(level: int):
 	level = clamp(level, 1, 10)
@@ -58,6 +71,16 @@ func set_difficulty(level: int):
 	print('Lerp Parameter: ',t)
 	print('Bound force: ', bound_force_range)
 	print('Speed range: ', asteroid_speed_range)
+	if current_difficulty_level <= 2:
+		FmodServer.set_global_parameter_by_name("Space Decay", 0)
+	if current_difficulty_level == 3:  
+		FmodServer.set_global_parameter_by_name("Space Decay", 1)
+	if current_difficulty_level == 5:
+		FmodServer.set_global_parameter_by_name("Space Decay", 2)
+	if current_difficulty_level == 7:
+		FmodServer.set_global_parameter_by_name("Space Decay", 3)
+	if current_difficulty_level >= 9: 
+		FmodServer.set_global_parameter_by_name("Space Decay", 4)
 	for i in range(asteroid_types.size()):
 		var tier = asteroid_types[i].tier
 		match tier:
@@ -71,6 +94,9 @@ func set_difficulty(level: int):
 				spawn_weights.append(0.0)
 	asteroid_timer.start()
 
+		
+		
+		
 func pick_weighted(items: Array, weights: Array) -> Variant:
 	var total_weight := 0.0
 	for weight in weights:
@@ -87,7 +113,33 @@ func pick_weighted(items: Array, weights: Array) -> Variant:
 func player_entered_planet_proximity(zone : ZonePlanet):
 	print('game: player entered planet proximity')
 	asteroid_timer.stop()
+	SoundManager5000.music_ambience.stop()
+	if zone.unique_name == "waterplanet":
+		SoundManager5000.music_ocean_planet.play()
+	if zone.unique_name == "antplanet":
+		SoundManager5000.music_ant_planet.play()
+	if zone.unique_name == "crystalplanet":
+		SoundManager5000.music_crystal_planet.play()
+	if zone.health == 2:
+		if zone.unique_name == "waterplanet":
+			SoundManager5000.music_ocean_planet.set_parameter("OceanDecay", 1)
+			print("OceanDecay 1")
+		if zone.unique_name == "antplanet":
+			SoundManager5000.music_ant_planet.set_parameter("AntDecay", 1)
+			print("AntDecay1")
+		if zone.unique_name == "crystalplanet":
+			SoundManager5000.music_ant_planet.set_parameter("CrystalDecay", 1)
+			print("CrystalDecay1")
 	if zone.health <= 1 : 
+		if zone.unique_name == "waterplanet":
+			SoundManager5000.music_ocean_planet.set_parameter("OceanDecay", 2)
+			print("OceanDecay 2")
+		if zone.unique_name == "antplanet":
+			SoundManager5000.music_ant_planet.set_parameter("AntDecay", 2)
+			print("AntDecay 2")
+		if zone.unique_name == "crystalplanet":
+			SoundManager5000.music_ant_planet.set_parameter("CrystalDecay", 2)
+			print("CrystalDecay 2")
 		proximity_planet = zone
 		planet_as_timer.start()
 		
@@ -96,6 +148,11 @@ func player_exited_planet_proximity():
 	proximity_planet = null
 	planet_as_timer.stop()
 	asteroid_timer.start()
+	SoundManager5000.music_ambience.play()
+	SoundManager5000.music_ant_planet.stop()
+	SoundManager5000.music_ocean_planet.stop()
+	SoundManager5000.music_crystal_planet.stop()
+
 	print('game: left planet proximity')
 
 func set_rand_asteroid_position() -> Vector3:

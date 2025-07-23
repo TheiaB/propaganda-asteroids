@@ -33,8 +33,6 @@ var news_jingle_long: FmodEventEmitter3D = null
 @onready var music_contract: FmodEventEmitter3D = $ContractMusic
 @onready var music_ambience: FmodEventEmitter3D = $SpaceAmbience
 
-
-
 func _ready():
 	basic_button_sfx = $BasicButton
 	menu_open_sfx = $OpenMenuButton
@@ -46,7 +44,6 @@ func _ready():
 	shield_static_sfx = $ShieldStatic
 	shield_crack_sfx = $ShieldCrack
 	shield_dest_sfx = $ShieldDestroyed
-	railgun_sfx = $RailGunSFX
 	ship_dest_sfx = $ShipDestroyed
 	buy_button_sfx = $BuyButton
 	error_button = $ErrorButton

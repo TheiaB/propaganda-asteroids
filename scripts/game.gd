@@ -56,10 +56,13 @@ func pause():
 	#get_tree().paused = true
 	process_mode = Node.PROCESS_MODE_DISABLED
 	print("pause")
+	FmodServer.set_global_parameter_by_name("PauseScreen", 1.0)
 	pass
 
 func unpause():
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	FmodServer.set_global_parameter_by_name("PauseScreen", 0.0)
+
 	#get_tree().paused = false
 
 func fresh_restart():
@@ -94,6 +97,7 @@ func _on_ui_manager_on_death_scene_next_run() -> void:
 func _on_ui_manager_on_contract_accept() -> void:
 	ship_manager.spawn_ship()
 	ui_manager.setUI()
+	SoundManager5000.music_ambience.play()
 	self.resource_money = 50
 	refuel()
 	if !firstTime:
@@ -126,9 +130,11 @@ func _on_ui_manager_purchased_item(item_title: String) -> void:
 		self.resource_money -= item.price
 		ship_manager.update_loadout(item)
 		item.in_stock = false
+		SoundManager5000.buy_button_sfx.play_one_shot()
 		ui_manager.update_shop()
 	else:
 		ui_manager.no_money_popup.show_popup()
+		SoundManager5000.error_button.play_one_shot()
 
 
 func _on_ui_manager_ship_fly() -> void:

@@ -38,10 +38,14 @@ event_name = "event:/SpaceShipSFX/ShipBoom"
 event_guid = "{04ac35b3-3d10-4262-af88-69bf1af9378e}"
 
 [node name="BuyButton" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/UI_Sounds/BuyButton"
+event_guid = "{49a16144-b566-42e8-94a1-36f0bbbf52c9}"
 
 [node name="CloseMenuButton" type="FmodEventEmitter3D" parent="."]
 
 [node name="ErrorButton" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/UI_Sounds/Error"
+event_guid = "{452d6d10-7d0f-4b4b-bace-d36da3114e50}"
 
 [node name="MissionAccept" type="FmodEventEmitter3D" parent="."]
 event_name = "event:/UI_Sounds/MissionAccept"
@@ -70,9 +74,9 @@ event_guid = "{f153fc41-63fe-4680-9855-c980e57b846a}"
 [node name="StationMusic" type="FmodEventEmitter3D" parent="."]
 event_name = "event:/SpaceStation/ShopTheme"
 event_guid = "{0db026ef-26bf-4dae-bbfa-6bcb7cac00f6}"
-"fmod_parameters/Parameter 1/id" = -1480888325622384024
-"fmod_parameters/Parameter 1" = 0
-"fmod_parameters/Parameter 1/variant_type" = 2
+fmod_parameters/Dock/id = -1480888325622384024
+fmod_parameters/Dock = 0
+fmod_parameters/Dock/variant_type = 2
 
 [node name="OceanMusic" type="FmodEventEmitter3D" parent="."]
 event_name = "event:/PlanetMusic/OceanPlanet"
