@@ -70,7 +70,6 @@ func set_difficulty(level: int):
 			EnemyTier.SPECIAL:
 				spawn_weights.append(0.0)
 	asteroid_timer.start()
-	print(asteroid_types)
 
 func pick_weighted(items: Array, weights: Array) -> Variant:
 	var total_weight := 0.0
