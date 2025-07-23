@@ -216,6 +216,7 @@ func spawn_planet_asteroid(planet : ZonePlanet):
 	for i in range(asteroid_types.size()):
 		if asteroid_types[i].tier == EnemyTier.SPECIAL:
 			var name = asteroid_types[i].name
+			print(name)
 			if name == planet.unique_name:
 				var planet_asteroid = asteroid_types[i].scene
 				asteroid_instance = planet_asteroid.instantiate()
@@ -224,6 +225,7 @@ func spawn_planet_asteroid(planet : ZonePlanet):
 		asteroid_instance.position = planet.position
 		asteroid_instance.set_move_dir(-1,target)
 		asteroid_instance.disable()
+		print(asteroid_instance)
 		add_sibling(asteroid_instance)
 
 
