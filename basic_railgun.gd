@@ -1,7 +1,7 @@
 extends Weapon
 
 @export var damage = 5
-@export var speed = 100
+@export var speed = 20
 @export var amount = 1
 @export var delay_between = 50
 @export var charge_timer = 250
@@ -10,7 +10,7 @@ extends Weapon
 
 
 func _ready() -> void:
-	projectile_scene = preload("res://scenes/projectiles/laser.tscn")
+	projectile_scene = preload("res://scenes/projectiles/railgunlaser.tscn")
 	weapon_damage = damage
 	weapon_price = price
 	chargeable = true

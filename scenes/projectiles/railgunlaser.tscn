@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6e1wugpey536"]
+
+[ext_resource type="Script" uid="uid://fnk6mjorg2nc" path="res://scenes/projectiles/railgunlaser.gd" id="1_e6vcc"]
+[ext_resource type="SpriteFrames" uid="uid://cpgsbsb6jjowj" path="res://assets/ship/ship_spritesheet.tres" id="2_a2tbi"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5no5p"]
+
+[node name="railgunlaser" type="Area3D"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+collision_layer = 8
+collision_mask = 32
+script = ExtResource("1_e6vcc")
+metadata/_custom_type_script = "uid://dmi1bmq3cyxve"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_5no5p")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -1.12053e-10, 0.00256348)
+visible = false
+height = 0.976807
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+visible = false
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+visible = false
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(0.999998, 0.00193731, 0, -0.00193731, 0.999998, 0, 0, 0, 1, -0.00123382, -0.09011, 2.52947)
+offset = Vector2(0, -80)
+pixel_size = 0.015
+axis = 1
+sprite_frames = ExtResource("2_a2tbi")
+animation = &"railgun_bullet"
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]
