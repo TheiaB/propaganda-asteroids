@@ -36,7 +36,6 @@ func _on_gui_input(_event: InputEvent) -> void:
 		_on_buy_button_pressed()
 	elif _event.is_action_pressed("click"):
 		_on_buy_button_pressed()
-	pass # Replace with function body.
 
 
 func _on_buy_button_pressed() -> void:
