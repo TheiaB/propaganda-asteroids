@@ -97,6 +97,3 @@ func finish_mission():
 		planet_to_damage = ZoneManager.get_planet_by_enum(cargo_start)
 		planet_to_damage.modify_health(-1)
 		print('--- modify health to planet: ', planet_to_damage)
-		
-		
-	pass

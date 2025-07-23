@@ -2,12 +2,24 @@
 
 [ext_resource type="Script" uid="uid://cxq3lmhs36op7" path="res://scripts/ui/notification.gd" id="1_u4fg0"]
 
-[node name="Notification" type="Node2D"]
+[node name="Notification" type="CanvasLayer"]
+layer = 2
 script = ExtResource("1_u4fg0")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 visible = false
 offset_left = 882.0
-offset_top = 542.0
+offset_top = 452.0
 offset_right = 1134.0
 offset_bottom = 620.0
+text = "dsjflsdkjflksdfjlksdfjlskdfjlsdkfjlksdjflsdkjflsdkfjlsdkfjdslkfj"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(1000, 500)
+offset_right = 1152.0
+offset_bottom = 640.0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5

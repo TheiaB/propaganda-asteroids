@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cdbqn35l6oxha"]
+[gd_scene load_steps=26 format=3 uid="uid://cdbqn35l6oxha"]
 
 [ext_resource type="Script" uid="uid://v3yhkitng47m" path="res://scripts/managers/UIManager.gd" id="1_mpd4i"]
 [ext_resource type="PackedScene" uid="uid://bc51efbyjg2sg" path="res://scenes/death_scene.tscn" id="2_id3g5"]
@@ -19,7 +19,6 @@
 [ext_resource type="Theme" uid="uid://mbsg4xqnedxi" path="res://assets/ui/theme/FlatUI4/kenneyUI-red.tres" id="15_0d6jp"]
 [ext_resource type="Theme" uid="uid://6shp5ck1tnja" path="res://assets/ui/theme/FlatUI4/kenneyUI.tres" id="16_8t74x"]
 [ext_resource type="Script" uid="uid://b53blbfibsubs" path="res://scripts/ui/mission_popup.gd" id="16_m2gsp"]
-[ext_resource type="Texture2D" uid="uid://bre5dj6e12nai" path="res://assets/news/testpicture.png" id="18_8t74x"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_5newe"]
 
@@ -38,8 +37,6 @@ bg_color = Color(0.117647, 0.654902, 0.882353, 1)
 
 [node name="UIManager" type="Node"]
 script = ExtResource("1_mpd4i")
-
-[node name="notification" parent="." instance=ExtResource("2_tu02a")]
 
 [node name="death_scene" parent="." instance=ExtResource("2_id3g5")]
 
@@ -302,7 +299,6 @@ text = "Title"
 [node name="TextureRect" type="TextureRect" parent="ShopMissionInterfaces/MissionPopup/ScrollContainer/VBoxContainer"]
 visible = false
 layout_mode = 2
-texture = ExtResource("18_8t74x")
 stretch_mode = 3
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ShopMissionInterfaces/MissionPopup/ScrollContainer/VBoxContainer"]
@@ -315,6 +311,9 @@ tab_size = 2
 layout_mode = 2
 text = "I want to start this Mission
 "
+
+[node name="notification" parent="." instance=ExtResource("2_tu02a")]
+visible = false
 
 [node name="IngameInterface" type="CanvasLayer" parent="."]
 layer = 2

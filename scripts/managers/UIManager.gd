@@ -41,8 +41,8 @@ func init(_game: Game, _mission_manager: MissionManager):
 	mission_manager = _mission_manager
 
 
-func notify(text: String, time: float):
-	notification.notify(text, time)
+func notify(time: float):
+	notification.notify(time)
 
 func setUI(ui_name: String = ""):
 	death_scene.visible = false
@@ -100,6 +100,7 @@ func clear_missions():
 func mission_finish_popup(mission: Mission):
 	mission_popup.popup_mission_finish(mission)
 	
+	
 
 func _on_mission_popup_on_mission_popup_button_pressed(mission: Mission) -> void:
 	mission_popup.hide()
@@ -110,8 +111,14 @@ func _on_mission_popup_on_mission_popup_button_pressed(mission: Mission) -> void
 func _on_mission_popup_on_finish_mission_popup_button_pressed(mission: Mission) -> void:
 	mission_popup.hide()
 	print('---- finish mission (ui manager)')
+	var texture = ImageTexture.create_from_image(ZoneManager.get_planet_by_enum(mission.cargo_dest).current_news)
+	notification.texture_rect.texture = texture
+	notification.show()
+	notify(10)
 	emit_signal("on_mission_finished_popup_button_pressed", mission)
+
 
 
 func _on_grid_container_panel_buy_pressed(item: Item) -> void:
 	confirmation_popup.show_popup(item)
+	
