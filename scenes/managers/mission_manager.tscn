@@ -6,43 +6,74 @@
 [node name="mission_manager" type="Node"]
 script = ExtResource("1_ld7rp")
 
-[node name="FromHome" type="Node" parent="."]
+[node name="ant1" type="Node" parent="."]
 script = ExtResource("2_5ynlg")
 title = "Mission A"
 text = "This is a text"
 finish_text = "Yeha"
 reward = 300
-cargo_dest = 1
+cargo_start = 2
 
-[node name="ToHome" type="Node" parent="."]
-script = ExtResource("2_5ynlg")
-title = "Mission dest = home"
-text = "This is a text"
-finish_text = "You Got this"
-reward = 300
-cargo_start = 1
-
-[node name="BetweenPlanets" type="Node" parent="."]
-script = ExtResource("2_5ynlg")
-title = "Between Planets"
-text = "This is a text"
-finish_text = "You Got this"
-reward = 300
-cargo_start = 1
-cargo_dest = 2
-
-[node name="AntMission" type="Node" parent="."]
+[node name="ocean1" type="Node" parent="."]
 script = ExtResource("2_5ynlg")
 title = "Ant Test"
 text = "This is a text"
 finish_text = "You Got this"
 reward = 300
-cargo_start = 2
+cargo_dest = 1
 
-[node name="antmissiontest" type="Node" parent="."]
+[node name="crystal1" type="Node" parent="."]
 script = ExtResource("2_5ynlg")
 title = "Ant Test 1"
 text = "This is a text"
 finish_text = "You Got this"
 reward = 400
+cargo_dest = 3
+
+[node name="ant2" type="Node" parent="."]
+script = ExtResource("2_5ynlg")
+title = "Mission dest = home"
+text = "This is a text"
+finish_text = "You Got this"
+reward = 300
+cargo_dest = 2
+
+[node name="crystal2" type="Node" parent="."]
+script = ExtResource("2_5ynlg")
+title = "Ant Test 1"
+text = "This is a text"
+finish_text = "You Got this"
+reward = 400
+cargo_start = 3
+
+[node name="ocean2" type="Node" parent="."]
+script = ExtResource("2_5ynlg")
+title = "Ant Test"
+text = "This is a text"
+finish_text = "You Got this"
+reward = 300
+cargo_start = 1
+
+[node name="crystal3" type="Node" parent="."]
+script = ExtResource("2_5ynlg")
+title = "Ant Test 1"
+text = "This is a text"
+finish_text = "You Got this"
+reward = 400
+cargo_start = 3
+
+[node name="ocean3" type="Node" parent="."]
+script = ExtResource("2_5ynlg")
+title = "Ant Test"
+text = "This is a text"
+finish_text = "You Got this"
+reward = 300
+cargo_start = 1
+
+[node name="ant3" type="Node" parent="."]
+script = ExtResource("2_5ynlg")
+title = "Between Planets"
+text = "This is a text"
+finish_text = "You Got this"
+reward = 300
 cargo_dest = 2

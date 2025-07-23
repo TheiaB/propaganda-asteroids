@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ccdafq5nlkpgj"]
 
 [ext_resource type="Script" uid="uid://yit734t8t3ho" path="res://scripts/items/weapons/basic_weapon.gd" id="1_r6r4d"]
-[ext_resource type="VideoStream" uid="uid://rhy4bvnecwrg" path="res://assets/itemvideos/triple_laser_gif.ogv" id="2_8gh2c"]
+[ext_resource type="VideoStream" uid="uid://dnh4ls0bg5cr6" path="res://assets/itemvideos/triple_laser_gif2.ogv" id="2_8gh2c"]
 
 [node name="basic_weapon" type="Node"]
 script = ExtResource("1_r6r4d")
