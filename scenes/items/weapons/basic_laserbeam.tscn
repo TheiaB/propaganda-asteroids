@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvfnlpcbd4v07"]
+
+[ext_resource type="Script" uid="uid://7etrgc1yilu8" path="res://scripts/items/weapons/basic_laserbeam.gd" id="1_hoi5b"]
+[ext_resource type="VideoStream" uid="uid://bx7h0dh1i7iwd" path="res://assets/itemvideos/railgun_gif.ogv" id="2_6fnip"]
+
+[node name="basic_laserbeam" type="Node"]
+script = ExtResource("1_hoi5b")
+title = "Laserbeam"
+description = "A powerful Railgun, that will devastate anything in its path"
+video = ExtResource("2_6fnip")
+legal_text = "Certainly! Here’s a shop listing for a “Railgun” using bbtext formatting, blending powerful salesmanship with some sly fine print in the spirit of your example:
+
+[b]Railgun XT-9: The Ultimate Laser Shooty![/b]
+
+[i]Unleash devastation with a single, endless beam—precision, style, and possibly minor property damage guaranteed![/i]
+
+[b]Features:[/b]
+-  [u]INFINITE-LENGTH LASER:[/u] Cuts through enemies, walls, floors, ceilings, reality itself.  
+-  [u]Hypercharged Visual FX:[/u] Watch the world light up (sometimes literally)!  
+-  [u]Ergonomic Reload Mechanism:[/u] Reloads in just [s]3[/s] 7-14 seconds.*  
+-  [u]Tactile Satisfaction:[/u] Feels GREAT in your hands (do not use with wet hands).  
+-  [u]Soundtrack Mode:[/u] Automatically plays “pew pew” sounds, override not currently available.
+
+[b]What’s Included:[/b]
+-  The [i]Railgun XT-9[/i] unit  
+-  1 complimentary sticker (“Big Laser Energy!”)  
+-  User manual (now translated into 2.4 languages)  
+-  Starter pack of [i]High-Voltage Fission Cores[/i]*
+
+[b]Usage Terms (Please Read Carefully):[/b]
+-  [b]Blasts may occasionally curve due to normal quantum variance.[/b]  
+-  [b]Some structural destabilization may occur, especially nearby and occasionally elsewhere.[/b]  
+-  [b]Effects on personal relationships and nearby electronics are considered outside warranty coverage.[/b]
+
+[quote][i]By purchasing, you tacitly agree to our [b]Terms of Beamagement[/b]:  
+[list]
+[*] All sales are final and binding across all known jurisdictions and alternate timelines.  
+[*] Warranty expires if the product is exposed to any environment containing oxygen, nitrogen, or moisture.
+[*] [s]“Unlimited”[/s] shooting time is based on average use in a vacuum with power-saving mode enabled.
+[*] [b]Return Policy:[/b] Accepted only if you can prove the universe has not been accidentally bisected upon railgun discharge.
+[*] Seller retains undisputed rights to [i]all[/i] pictures taken of or by the laser.
+[*] Operates best when used during periods of low planetary magnetic activity. Do not use during lunar eclipses.*  
+[*] [size=1][i]Occasional time dilation, unintentional portals, or “unexpected governmental interest” not covered.[/i][/size]  
+[/list][/i][/quote]
+
+[i]Thank you for vaporizing your hard-earned credits with us! You waive your right to complain or seek actual customer service. All transactions final in this or any possible reality. Batteries not included.[/i]
+s"

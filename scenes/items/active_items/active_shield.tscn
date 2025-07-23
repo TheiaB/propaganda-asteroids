@@ -1,7 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://dxma74npmr057"]
+[gd_scene load_steps=3 format=3 uid="uid://dxma74npmr057"]
 
 [ext_resource type="Script" uid="uid://b7fvyxoghyrap" path="res://scripts/items/active_items/active_shield.gd" id="1_euify"]
+[ext_resource type="VideoStream" uid="uid://bk2u4bpy1poas" path="res://assets/itemvideos/active-shield.ogv" id="2_87w72"]
 
 [node name="ActiveShield" type="Node"]
 script = ExtResource("1_euify")
 title = "Active Shield"
+video = ExtResource("2_87w72")
