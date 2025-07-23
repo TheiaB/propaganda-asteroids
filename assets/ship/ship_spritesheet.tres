@@ -68,6 +68,9 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("22_wthht")
+}, {
+"duration": 1.0,
 "texture": ExtResource("14_wkb1t")
 }, {
 "duration": 1.0,

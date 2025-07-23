@@ -6,15 +6,17 @@
 [ext_resource type="PackedScene" uid="uid://vv8fdwl15cvm" path="res://assets/planets/planet_crystal_iteration_3/planet_Crystal_surface_iteration_3.gltf" id="4_txngk"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7mx2p"]
-radius = 7.04245
+radius = 6.28529
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vmpea"]
 radius = 7.64095
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_o7a0i"]
+radius = 0.435547
 
 [node name="CrystalPlanet" node_paths=PackedStringArray("planet_iterations") instance=ExtResource("1_eug5a")]
 unique_name = "crystalplanet"
+rotation_speed = -0.05
 planet_iterations = [NodePath("planet_Crystal_surface_iteration_1"), NodePath("planet_Crystal_surface_iteration_2"), NodePath("planet_Crystal_surface_iteration_3")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ZoneArea" index="0"]
