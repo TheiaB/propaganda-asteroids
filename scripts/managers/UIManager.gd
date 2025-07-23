@@ -14,7 +14,7 @@ class_name UIManager
 @onready var no_money_popup : PopupPanel = %NoMoneyPopup
 #@onready var mission_popup: PopupPanel = $ShopMissionInterfaces/MissionPopup
 @onready var mission_interface: MissionInterface = $ShopMissionInterfaces/TabContainer/Mission
-@onready var mission_popup: MissionPopup = $ShopMissionInterfaces/MissionPopup
+@onready var mission_popup: PanelContainer = $ShopMissionInterfaces/MissionPopup
 
 @onready var notification: Notification = $notification
 

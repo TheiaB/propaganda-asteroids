@@ -280,16 +280,14 @@ uppercase = true
 [node name="CloseTimer" type="Timer" parent="ShopMissionInterfaces/NoMoneyPopup"]
 wait_time = 5.0
 
-[node name="MissionPopup" type="PopupPanel" parent="ShopMissionInterfaces"]
-size = Vector2i(332, 382)
+[node name="MissionPopup" type="PanelContainer" parent="ShopMissionInterfaces"]
+visible = false
+offset_right = 332.0
+offset_bottom = 382.0
 script = ExtResource("16_m2gsp")
-metadata/_custom_type_script = "uid://b53blbfibsubs"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ShopMissionInterfaces/MissionPopup"]
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 328.0
-offset_bottom = 378.0
+layout_mode = 2
 
 [node name="Title" type="Label" parent="ShopMissionInterfaces/MissionPopup/VBoxContainer"]
 layout_mode = 2
