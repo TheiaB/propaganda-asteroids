@@ -8,7 +8,7 @@ var target : Node = null
 @onready var planet_as_timer : Timer = $PlanetTimer
 
 var asteroid_scene : PackedScene = preload("res://scenes/asteroids/asteroid.tscn")
-var spawn_distance_offset : float = 9
+var spawn_distance_offset : float = 12
 
 
 enum EnemyTier { COMMON, UNCOMMON, RARE, SPECIAL }

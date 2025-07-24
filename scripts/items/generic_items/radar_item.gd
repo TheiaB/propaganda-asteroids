@@ -4,10 +4,10 @@ func _ready() -> void:
 	pass
 	
 func on_equip():
-	GlobalCameraManager.camera.offset.y += 5
+	GlobalCameraManager.camera.offset.y += 2.5
 
 func on_unequip():
-	GlobalCameraManager.camera.offset.y -= 5
+	GlobalCameraManager.camera.offset.y -= 2.5
 
 func buyable():
 	var zone_planet_1_health : ZonePlanet = ZoneManager.get_planet_by_enum(ZoneManager.Planets.PLANET_WATER)
