@@ -1,12 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://ccdafq5nlkpgj"]
+[gd_scene load_steps=3 format=3 uid="uid://ccdafq5nlkpgj"]
 
 [ext_resource type="Script" uid="uid://yit734t8t3ho" path="res://scripts/items/weapons/basic_weapon.gd" id="1_qlgc1"]
+[ext_resource type="VideoStream" path="res://assets/itemvideos/0001_2.ogv" id="2_8gh2c"]
 
 [node name="basic_weapon" type="Node"]
 script = ExtResource("1_qlgc1")
 title = "Basic Weapon"
 price = 90
 description = "Basic Blaster™: Your inaugural weapon, the Basic Blaster™, is the epitome of dependable simplicity.  While this trusty firearm ensures foundational offense capability, its exorbitant cost is the direct result of industry-wide “Artificial Scarcity Events” and “Strategic Price Stabilization Initiatives.”  Purchase now—if you can afford it—and prepare for basic but steadfast service on your battlefield journey."
+video = ExtResource("2_8gh2c")
 unique_name = "basic_weapon"
 legal_text = "[center][b][color=#5E81AC]THE BASIC BLASTER™[/color][/b][/center]
 [center][i]Comprehensive Weapon Acquisition and Utilization Contract (CWAUC) v1.0.984[/i][/center]
