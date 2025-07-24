@@ -6,6 +6,7 @@
 [node name="radar_item" type="Node"]
 script = ExtResource("1_fae0h")
 title = "Radar"
+price = 399
 description = "Radar goes Brrrrrr"
 video = ExtResource("2_cul7q")
 legal_text = "[b]no text[/b]fadsfkjasdfkb

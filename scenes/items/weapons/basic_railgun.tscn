@@ -8,8 +8,9 @@ script = ExtResource("1_achn0")
 title = "Railgun"
 price = 0
 video = ExtResource("2_heh0i")
+
 unique_name = "real_railgun"
-legal_text = "Hold Spacebar and release for a powerful shot
+legal_text = "Hold [Spacebar] and release for a powerful shot
 _
 ____________________________
 
