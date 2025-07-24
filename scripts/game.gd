@@ -72,11 +72,7 @@ func fresh_restart():
 	#ZoneManager.get_tree().reload_scene()
 	#get_tree().reload_scene()
 	print("restarting")
-	get_tree().reload_current_scene()
-	GlobalMenu.open_menu()
-	print(SoundManager5000)
-	print(SoundManager5000.is_inside_tree())
-	#ship.queue_free()
+	get_tree().quit()
 
 func updateShip():
 	asteroid_manager.ship = ship
