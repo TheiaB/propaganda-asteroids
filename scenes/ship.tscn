@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://boprrp0xswaga"]
+[gd_scene load_steps=20 format=3 uid="uid://boprrp0xswaga"]
 
 [ext_resource type="Script" uid="uid://bbduxt1lb18ne" path="res://scripts/ship.gd" id="1_2gnfn"]
 [ext_resource type="PackedScene" uid="uid://dhubj25omlkk6" path="res://assets/ship/sapce_ship.fbx" id="2_2gnfn"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://cmthwymp770j6" path="res://assets/ship/cargo/Container_Blue copie.png" id="6_itrim"]
 [ext_resource type="Texture2D" uid="uid://d3mwiosv5eabo" path="res://assets/ship/cargo/Container_Green.png" id="7_bseor"]
 [ext_resource type="Texture2D" uid="uid://bpgkuyhqurqa4" path="res://assets/ship/cargo/Container_Yelllow.png" id="8_tlr80"]
+[ext_resource type="Texture2D" uid="uid://byy4s11e3thmi" path="res://assets/ship/passive_shields/passive schild 2@2x.png" id="10_tlr80"]
+[ext_resource type="Texture2D" uid="uid://d4lni0ol2es6h" path="res://assets/ship/passive_shields/passive schild@2x.png" id="11_03y04"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q631a"]
 size = Vector3(2.68066, 1, 0.53598)
@@ -29,6 +31,25 @@ size = Vector3(0.291504, 0.32074, 2.98425)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gudjc"]
 size = Vector3(1.54297, 0.60144, 0.538818)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_48mkp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_tlr80")
+}],
+"loop": true,
+"name": &"1_shield_health",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_03y04")
+}],
+"loop": true,
+"name": &"more_shield_health",
+"speed": 5.0
+}]
 
 [node name="Ship" type="CharacterBody3D"]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
@@ -130,6 +151,13 @@ sprite_frames = ExtResource("4_tfsc7")
 animation = &"laser_impact"
 frame = 6
 frame_progress = 1.0
+
+[node name="ShieldSprite" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(0.13, 0, 0, 0, 0.13, 0, 0, 0, 0.13, 0, 0.3, 0.75)
+visible = false
+axis = 1
+sprite_frames = SubResource("SpriteFrames_48mkp")
+animation = &"1_shield_health"
 
 [connection signal="timeout" from="InvincibilityTimer" to="." method="_on_invincibility_timer_timeout"]
 [connection signal="animation_finished" from="ThrusterSpriteRight" to="." method="_on_thruster_sprite_animation_finished"]

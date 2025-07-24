@@ -2,8 +2,15 @@ extends Projectile
 
 class_name ActiveShield
 
+@onready var shield_sprite: Sprite3D = $Sprite3D
+
+var shields = [
+	preload("res://assets/ship/passive_shields/passive schild@2x.png"),
+	preload("res://assets/ship/passive_shields/passive schild 2@2x.png")
+]
+
 func _ready() -> void:
-	destroyable = false
+	print(shield_sprite.texture)
 	
 func _process(_delta: float) -> void:
 	if ship:

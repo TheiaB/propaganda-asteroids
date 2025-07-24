@@ -42,6 +42,7 @@ func update_loadout(item : Item) -> void:
 			ship.shield.on_unequip()
 		ship.shield = item
 		item.on_equip()
+		ship.shield.activate_shield(ship)
 	elif item is Generic_Active_Item:
 		if ship.active_item:
 			ship.active_item.in_stock = true
@@ -51,7 +52,7 @@ func update_loadout(item : Item) -> void:
 	else:
 		ship.items.append(item)
 		item.on_equip()
-	ship.load_item_attributes()
+	#ship.load_item_attributes()
 	
 
 func send_ship_died():

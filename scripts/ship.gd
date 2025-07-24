@@ -26,6 +26,7 @@ var thruster_state_on := false
 @onready var thruster_sprite_right: AnimatedSprite3D = $ThrusterSpriteRight
 @onready var thruster_sprite_left: AnimatedSprite3D = $ThrusterSpriteLeft
 @onready var laser_shoot_sprite: AnimatedSprite3D = $LaserShootSprite
+@onready var shield_sprite : AnimatedSprite3D = $ShieldSprite
 
 var is_on_port: bool = false
 
@@ -50,7 +51,7 @@ func _on_invincibility_timer_timeout() -> void:
 
 func createBasic(camera: Player_Camera, _projectiles_node : Node):
 	var _weapon = GlobalItemManager.find("basic_weapon")
-	var _shield = GlobalItemManager.find("basic_shield")
+	var _shield = GlobalItemManager.find("radiation_shield")
 	var _stats = preload("res://scenes/basic_start_stats.tscn").instantiate()
 	return create(camera, _projectiles_node, _weapon, _shield, _stats)
 
@@ -77,9 +78,11 @@ func load_item_attributes():
 	
 	print(global_position)
 	stats.load_attributes(self)
+	
 		
 	for item in items:
 		item.load_attributes(self)
+
 
 func _ready() -> void:
 	load_item_attributes()
@@ -99,6 +102,16 @@ func on_collision_with_asteroid(damage):
 			SoundManager5000.shield_crack_sfx.play_one_shot()
 	
 func _process(_delta):
+	if shield:
+		if shield.shield_health > 2:
+			shield_sprite.show()
+			shield_sprite.play("more_shield_health")
+		elif shield.shield_health == 2:
+			shield_sprite.show()
+			shield_sprite.play("1_shield_health")
+		else:
+			shield_sprite.hide()
+			shield_sprite.stop()
 	if weapon.chargeable:
 		if Input.is_action_pressed("shoot") and weapon.charging == false:
 			weapon.charging = true
