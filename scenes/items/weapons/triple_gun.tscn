@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://j20qjbheuprs"]
+
+[ext_resource type="Script" uid="uid://yit734t8t3ho" path="res://scripts/items/weapons/basic_weapon.gd" id="1_h26tm"]
+[ext_resource type="VideoStream" uid="uid://rhy4bvnecwrg" path="res://assets/itemvideos/triple_laser_gif.ogv" id="2_o77i0"]
+
+[node name="triple_weapon" type="Node"]
+script = ExtResource("1_h26tm")
+amount = 3
+delay_between = 0.05
+title = "Triple Laser"
+price = 150
+description = "Shoot three times as many bullets with the same amount of effort."
+video = ExtResource("2_o77i0")
+legal_text = "[center][b][color=#A3BE8C]THE TRIPLETAP™[/color][/b][/center]
+[center][i]Multishot Usage, Licensing, and Overkill Authorization Protocol (MULAP) v4.2.7[/i][/center]
+-------------------
+[color=#777777][i]Acceptance is mandatory and acknowledges understanding of triple-volume fire consequences.[/i][/color]
+-------------------
+[b]1. SYSTEM OVERVIEW:[/b]  
+The TripleTap™ (hereafter “The Tap”) embodies a triad of projectile emission mechanisms, delivering three sequential shots per trigger actuation.
+-------------------
+[b]2. LICENSE RESTRICTIONS:[/b]  
+Each projectile is individually licensed; usage implies tripled fee accumulation and multiplied risk factors.
+-------------------
+[b]3. PERFORMANCE AND LIABILITY:[/b]  
+While The Tap dramatically increases fire volume, it also triples ammunition consumption, recoil effects, and user fatigue probabilities.
+-------------------
+[b]4. PAYMENT AND FEE STRUCTURE:[/b]  
+Fees include:
+• Base Weapon Price  
+• Triple Ammunition Consumption Levy  
+• Advanced Recoil Compensation Surcharge  
+-------------------
+User assumes all risk of projectile spread, collateral damage, and unexpected enemy aggression.
+-------------------
+[b]5. DISCLAIMER:[/b]  
+The Tap’s triple discharge does not guarantee triple damage, triple satisfaction, or triple user enjoyment.
+-------------------
+[quote][i]Note: The TripleTap™ fires three times — your patience must as well.[/i][/quote]
+-------------------
+[center][color=#A3BE8C][b]TripleTap™: Three shots, triple the paperwork.[/b][/color][/center]"
+metadata/_custom_type_script = "uid://cmd6uvcht5xc5"

@@ -1,0 +1,93 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpu0kmchl40ck"]
+
+[ext_resource type="Script" uid="uid://bdsn3msak3gh1" path="res://scripts/items/generic_items/passive_speed_boost.gd" id="1_pfo7v"]
+[ext_resource type="VideoStream" uid="uid://dtlxfcg525s4a" path="res://assets/itemvideos/thruster_gils_gif.ogv" id="2_4i14b"]
+
+[node name="passive_speed_boost" type="Node"]
+script = ExtResource("1_pfo7v")
+MAX_SPEED = 400
+title = "Speed Boost"
+price = 65
+description = "Improves your ships thrusters, allowing you to go faster."
+video = ExtResource("2_4i14b")
+legal_text = "[center][b][color=#D08770]SPEEDBURST™ GIRL EDITION™[/color][/b][/center]
+[center][i]Comprehensive License of Empowerment, Subjection, Monetization, and Gendered Acceleration (CL-ESMGA) v47.113b[/i][/center]
+------------
+[color=#888888][i]Effective Date: Installation.  
+Last Reviewed: Never.  
+Duration: Eternal.  
+By proceeding beyond this line, you waive all rights to joy, brevity, or understanding.[/i][/color]
+------------
+[b]1. PREAMBLE:[/b]  
+By accessing, considering, equipping, previewing, scrolling past, or emotionally reacting to [b]SpeedBurst™ Girl Edition™ Premium Sparkleline Ultra+ Expansion Kit[/b] (hereafter “The Product”), you, the user (hereafter “You,” “User,” “Subject,” “Consumer-Unit 5F”), hereby irrevocably enter into this legally binding, non-negotiable, retroactive-until-birth agreement with [color=#BF616A][b]OmniCore Behavioral Solutions Group™ (\"OCBSG\")[/b][/color], a fully opaque subsidiary of [i]The Speed Conglomerate™[/i], registered in all jurisdictions that do not currently outlaw consumer exploitation.
+------------
+---
+------------
+[b]2. DEFINITIONS:[/b]  
+For purposes of this agreement, the following terms shall be defined in the most inconvenient way possible:
+------------
+• “Enhanced Velocity Experience™” – A marketing term describing the illusion of speed, regardless of actual gameplay mechanics.  
+• “Empowerment” – The licensed sensation of agency, granted temporarily and subject to withdrawal during maintenance windows.  
+• “Pink” – A psychologically weaponized hue, deployed to trigger gender-targeted purchasing behavior.  
+• “Free Will” – A deprecated protocol not supported in versions 4.5 or higher.  
+• “Moment of Use” – Any measurable or immeasurable period during which the product is, may be, or might have been perceived as equipped.
+------------
+---
+------------
+[b]3. PAYMENT, ACCESS, AND MULTI-LAYERED MONETIZATION:[/b]  
+You acknowledge and accept that The Product, while functionally indistinguishable from SpeedBurst™ Standard Edition, shall be priced at [b]387% more[/b] due to market-tested [i]Emotive Coloration™, Glamorized Tooltip Metadata™, and Implied Empowerment Algorithms™[/i].
+------------
+The Product may also require:
+• A one-time activation surcharge  
+• A recurring [i]Feminized Velocity Access Fee™ (FVAF)[/i]  
+• Optional Confidence Auto-Replenishment Microtransactions (CARMs)  
+• Payment of Gratitude-Based Adjusted Tithing (GBAT)
+------------
+Prices are subject to change, manipulation, and whim, with no obligation to notify You except via messages buried in unsearchable forums.
+-----
+---
+----
+[b]4. USER CONDUCT & ACCEPTABLE USAGE POLICY:[/b]  
+By equipping The Product, You agree to:
+-----------
+• Publicly affirm that You feel faster  
+• Tag OCBSG in celebratory social posts  
+• Not compare The Product with male-targeted equivalents unless otherwise sponsored to do so  
+• Remain fabulous at all times  
+• Refrain from sarcasm, irony, or critical thought regarding pricing
+----------
+Failure to comply may result in temporary glamour suspension, involuntary sparkle audits, or full [color=#BF616A]Confidence Revocation™[/color].
+--------
+---
+-------
+[b]5. LEGAL DISCLAIMERS, LIMITATIONS, NULLIFICATIONS, AND UNTRUTHS:[/b]
+----------
+• The Product provides [i]no actual speed advantage[/i] beyond placebo-based animation variance.  
+• Empowerment is [b]not guaranteed[/b], and may fluctuate with moon phase, ad exposure, or ambient self-worth.  
+• Effects are purely cosmetic and may be invisible during moments of personal doubt.  
+• The Product is [i]not responsible[/i] for navigation errors, existential crises, romantic disappointments, or in-game injury.
+------------
+[quote][i]Do not use while emotionally unstable, financially solvent, or legally conscious.[/i][/quote]
+---------
+---
+--------
+[b]6. TERMINATION, IRREVOCABILITY & AFTERLIFE CLAUSES:[/b]
+-------------
+This agreement is perpetual, irreversible, and continues post-mortem (see Clause 9.B: [i]Spectral License Transferability[/i]).  
+User may not opt out, delete account, or uninstall product without express notarized permission from OCBSG's [b]Celestial Legal Oversight Division[/b] located on Floor 71B, Office Complex D, in the Infinite Litigation Plane™.
+----
+---
+----
+[b]7. FINE PRINT AMPLIFICATION (FOR LEGAL REDUNDANCY):[/b]
+--------------
+This agreement contains:
+• Hidden clauses in non-visible font sizes  
+• Self-replicating sub-clauses with recursive obligations  
+• Inert legal booby traps  
+• Semantic tripwires disguised as emoticons  
+• At least one metaphor that becomes literal upon reading it three times
+--------------------------
+[center][b][color=#EBCB8B]Acceptance of these terms is implied by your continued existence.  
+Empowerment sold separately. Results may vary.  
+All hail the Market.[/color][/b][/center]"
+metadata/_custom_type_script = "uid://c3pv4m1xhxmy5"

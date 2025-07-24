@@ -5,8 +5,26 @@
 
 [node name="ActiveShield" type="Node"]
 script = ExtResource("1_euify")
-
 title = "Active shield"
 price = 499
-
+description = "Say goodbye to space hazards. The A.S. (SHELL SHIELD) absorbs every asteroid in your path — no exceptions. Powered by advanced kinetic energy conversion, this shield neutralizes impacts before they reach your hull, turning danger into harmless energy. Lightweight, ultra-responsive, and engineered for relentless protection, AsteroidGuard keeps your mission moving safely through even the densest asteroid fields."
 video = ExtResource("2_87w72")
+legal_text = "[center][b][color=#EBCB8B]Terms of Continued Engagement (TCE)[/color][/b][/center]
+
+By initiating, activating, contemplating, or otherwise interacting with the Selected Item (hereinafter referred to as \"[b]The Product[/b]\"), the user (hereinafter referred to as \"[i]You[/i]\") hereby consents — either knowingly or unknowingly — to a dynamic, usage-contingent engagement model.
+
+Said model may, from time to time (or continuously), assess a [b]Value Recognition Fee (VRF)[/b], billed in perpetuity, at a rate [i]not to exceed (but not limited to)[/i] [color=#A3BE8C]one (1) United States Dollar per Moment of Utilization (MoU)[/color].
+
+[quote]A [b]Moment of Utilization[/b] is defined, without specificity, as any measurable or immeasurable unit of time during which The Product is:  
+(a) in use  
+(b) not in use but could be  
+(c) thought about in relation to use, including hypotheticals[/quote]
+
+The Product may employ proprietary methods (including but not limited to [i]ethereal accounting[/i], [i]quantum guesswork[/i], or [i]ambient telemetry[/i]) to assess usage. Failure to comply, unsubscribe, or acknowledge these terms shall be considered [b]acceptance by default[/b].
+
+[b]The subscription is:[/b]
+• [i]Non-cancelable[/i]  
+• [i]Auto-renewing[/i]  
+• [i]May apply retroactively, preemptively, or in parallel dimensions[/i]
+
+[center][color=#BF616A][b]Enjoy your Product.[/b][/color][/center]"

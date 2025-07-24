@@ -4,10 +4,46 @@
 
 [node name="penalty_weapon" type="Node"]
 script = ExtResource("1_mg88y")
+<<<<<<< HEAD
 speed = 5
 delay_between = 1.0
 title = "Penalty Weapon"
 price = 299
 description = "Big penalty"
 in_stock = false
+=======
+speed = 3
+delay_between = 2.0
+title = "Organic Weapon"
+price = 40
+description = "Marketed as the “streamlined choice,” the Economy Blaster™ pares down your arsenal to essentials — mostly by reducing effectiveness and comfort.  Although objectively weaker than the Basic Blaster™, its “minimalist design philosophy” and “budget-conscious pricing” make it a must-have for savvy players who love marketing spin more than killing enemies."
+legal_text = "[center][b][color=#BF616A]THE ECONOMY BLASTER™[/color][/b][/center]
+[center][i]Value Optimization and User Recalibration Agreement (VO-URA) v2.15b[/i][/center]
+-----------------
+[color=#777777][i]Activation constitutes consent to all terms herein, including but not limited to subconscious acceptance of inferiority rebranding.[/i][/color]
+-----------------
+[b]1. PRODUCT DESCRIPTION:[/b]  
+The Economy Blaster™ (hereafter “The Econ”) is a recalibrated armament, designed to “streamline” combat efficiency by reducing extraneous features.
+-----------------
+[b]2. IMPROVEMENT REDEFINITION CLAUSE:[/b]  
+Despite measurable performance metrics indicating suboptimal lethality and increased misfire rates, The Econ is hereby designated an “improved” alternative through advanced marketing reframing techniques.
+-----------------
+[b]3. USAGE AND RESTRICTIONS:[/b]  
+The Econ may incur increased reload times, lower damage output, and decreased ergonomic comfort, yet shall be embraced for its “cost-effective lethality” and “minimalist charm.”
+-----------------
+[b]4. PURCHASE TERMS:[/b]  
+Acquisition includes:
+• Economically Justified Fee  
+• Brand Loyalty Tax  
+• Optional Disillusionment Coverage (highly recommended)  
+-----------------
+Refunds are disallowed due to “strategic user experience commitments.”
+-----------------
+[b]5. LIABILITY AND WARRANTY:[/b]  
+The Econ is provided “as marketed,” with no guarantee of performance improvement or user satisfaction. Use may result in increased frustration, nostalgia for The Basic Blaster™, or existential questioning.
+-----------------
+[quote][i]Warning: The Econ may cause users to fondly remember overpriced predecessors.[/i][/quote]
+-----------------
+[center][color=#BF616A][b]Economy Blaster™: Because sometimes less is more... confusingly so.[/b][/color][/center]"
+>>>>>>> 7911241 (Only the dead have seen the end of war.)
 metadata/_custom_type_script = "uid://cmd6uvcht5xc5"

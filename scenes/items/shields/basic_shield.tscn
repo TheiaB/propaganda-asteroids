@@ -5,9 +5,34 @@
 
 [node name="basic_shield" type="Node"]
 script = ExtResource("1_7uk2p")
-title = "Shield"
+title = "Radiation Shield"
 price = 79
-description = "Shields you"
+description = "Step into the future of space travel with cutting-edge spatial shielding technology. Designed to safeguard your spacecraft from the unpredictable dangers of deep space, our shield offers seamless protection against micrometeoroids, radiation bursts, and debris.Experience enhanced safety with an adaptive energy barrier that responds in real-time to threats, maintaining optimal performance while minimizing power consumption. Lightweight and fully integrated, the Spatial Shield lets you focus on exploration, not defense."
 video = ExtResource("2_wjqgk")
 unique_name = "basic_shield"
-legal_text = "[b]Terms of Service for the Item: \"Cursed Amulet of Minor Inconveniences\"[/b][i]Effective Immediately Upon Acquisition. There is No Escape.[/i][b]1. Acknowledgement of Doom[/b]By equipping or even glancing at this item, you agree to a legally-binding pact of minor misfortunes. Your soul is now under probation.[b]2. You Surrender the Following Rights:[/b]• Your immortal soul (non-transferable).  • Parental claim to your third-born child.  • Full rights to monitor your location, dreams, and bathroom singing.  • Your ability to win rock-paper-scissors more than once per day.  [b]3. Side Effects Include:[/b]• Hearing your footsteps half a second late.  • Left shoe squeaks during stealth missions.  • Your character randomly yells “I REGRET EVERYTHING!” in cutscenes.  • Garlic aura. No toggle.  • Attracts minor ghosts and telemarketers.[b]4. Surveillance[/b]By owning this item, you grant us permission to:  • Access your webcam “for atmospheric purposes.”  • Whisper minor spoilers in your left ear.  • Translate your dreams into lootbox probabilities.  [b]5. Legal Ownership[/b]While you possess this item, we reserve:  • The right to rearrange your HUD.  • All intellectual property over your catchphrases.  • Your houseplants will now whisper in Latin.  [b]6. Reality Bending Clause[/b]• Physics may behave inconsistently in your general area.  • Sandwiches now taste like vague regret.  • NPCs will refer to you as “The Mildly Damned.”  [b]7. Termination[/b]This contract expires only if:  • The sun explodes.  • You uninstall the game (you won’t).  • You defeat our CEO in mortal chess combat beneath a red moon.[b]8. Liability Waiver[/b]We are not responsible for:  • Unwanted hauntings.  • Awkward conversations with exes.  • Unexpected existential dread.  [b]9. Changes to This Agreement[/b]We may update this at any time via:  • Dreams.  • Cursed emails.  • Strange noises from your attic.[b]10. By Reading This...[/b]You agree to all terms above, and also probably cursed your save file. That’s on you.[i]Thank you for shopping![/i]"
+legal_text = "[center][b][color=#B48EAD]Radiation Shield™ Limited Assurance and Acknowledgement Clause (LAAC)[/color][/b][/center]
+
+By possessing, wearing, displaying, admiring, or merely being within the general conceptual vicinity of the [b]Radiation Shield™[/b] (hereinafter \"The Shield\"), the user (hereinafter \"The Believer\") acknowledges the following:
+
+The Shield is [b]certified by no recognized authority[/b] to offer [i]passive metaphysical resistance[/i] against:
+• 5G, 6G, 7G and speculative pre-quantum waveforms  
+• Cosmic microwave background radiation and rogue neutrino storms  
+• Government-issued thought patterns and/or [i]Reptilian neuro-manipulation[/i]  
+• Unspecified energies, vibes, or atmospheres deemed \"inauspicious\"
+
+While The Shield has been [color=#A3BE8C]enthusiastically endorsed[/color] in certain online forums, kitchen-table studies, and visionary dream sequences, it provides [b]no measurable, implied, or observable protection[/b] against [b]anything[/b].
+
+[i]Any shielding effect is strictly coincidental and may be psychosomatic, placebo-based, or retroactively imagined.[/i]
+
+[b]Use of The Shield constitutes:[/b]
+• Tacit and irreversible acceptance of the notion that [i]you are already protected[/i]  
+• Acceptance regardless of external circumstances, internal doubts, or objective reality
+
+[quote][i]✨ For entertainment purposes only. Not a medical device. Not a scientific device. Not a device.[/i][/quote]
+
+Prolonged use may result in:
+• Heightened self-assurance  
+• Conspiratorial confidence  
+• The [i]illusion of empowerment[/i]
+
+This product makes [b]no claims[/b] other than the ones just stated, and [b]disclaims those as well[/b]."

@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0y7va5psqlst"]
+
+[ext_resource type="Script" uid="uid://b2jwtio5e2xm" path="res://scripts/items/shields/basic_shield.gd" id="1_tgiec"]
+[ext_resource type="VideoStream" uid="uid://cgubui5kqcuhj" path="res://assets/itemvideos/basic_shield_gif.ogv" id="2_p4awr"]
+
+[node name="Protect_y" type="Node"]
+script = ExtResource("1_tgiec")
+health = 2
+title = "Protect-Y"
+description = "Step into the future of space travel with cutting-edge spatial shielding technology. Designed to safeguard your spacecraft from the unpredictable dangers of deep space, our shield offers seamless protection against micrometeoroids, radiation bursts, and debris.Experience enhanced safety with an adaptive energy barrier that responds in real-time to threats, maintaining optimal performance while minimizing power consumption. Lightweight and fully integrated, the Spatial Shield lets you focus on exploration, not defense."
+video = ExtResource("2_p4awr")
+unique_name = "basic_shield"
+legal_text = "→ Please note: 
+
+Use of Shields may cause
+
+- Persistent subsonic vibrations causing interference with sleep cycles, especially in unshielded crew quarters.
+
+- Auditory hallucinations resembling whispered speech or rhythmic knocking (\"space tapping\") after extended shield activation.
+
+- Structural resonance effects on thin-hull ships, occasionally resulting in microfractures or spontaneous detachment of interior panels.
+In rare cases, neural overstimulation from low-frequency oscillations may cause temporary aphasia, or disorientation.
+Symptoms are often dismissed as mission fatigue or psychological stress. No direct causality has been legally established. Continued operation is considered technically safe under current corporate guidelines.
+Ear protection is optional and not provided."

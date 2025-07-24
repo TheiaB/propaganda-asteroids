@@ -10,6 +10,8 @@ class_name ItemPanel
 @onready var label_title: Label = $VBoxContainer/MarginContainer/HBoxContainer/LabelTitle
 @onready var label_price: Label = $VBoxContainer/MarginContainer/HBoxContainer/LabelPrice
 @onready var video_stream_player: VideoStreamPlayer = $VBoxContainer/VideoStreamPlayer
+@onready var description_box : Panel = $Description
+@onready var description_label : Label = $Description/DescriptionBox/ScrollContainer/Description
 
 signal buy_button_pressed
 
@@ -24,6 +26,8 @@ func update_item():
 		label_title.text = title
 	if(price != null):
 		label_price.text = "		" + str(price) + " $"
+	if(description != null):
+		description_label.text = description 
 	
 
 func _process(_delta: float) -> void:
@@ -33,14 +37,13 @@ func _process(_delta: float) -> void:
 
 func _on_gui_input(_event: InputEvent) -> void:
 	if _event is InputEventMouseButton and _event.button_index == MOUSE_BUTTON_LEFT and _event.is_pressed():
-		_on_buy_button_pressed()
-	elif _event.is_action_pressed("click"):
-		_on_buy_button_pressed()
+		description_box.show()
+
 
 
 func _on_buy_button_pressed() -> void:
 	emit_signal("buy_button_pressed")
 
-func _get_tooltip(_at_position: Vector2):
-	print()
-	return "%s" % [description]
+
+func _on_close_description_pressed() -> void:
+	description_box.hide()

@@ -3,7 +3,7 @@ extends Weapon
 @export var damage = 5
 @export var speed = 100
 @export var amount = 1
-@export var delay_between = 50
+@export var delay_between = 100
 @export var charge_timer = 1000
 @export var restricted_rotation_multiplier = -1.0
 @export var restricted_movement_multiplier = -1.0

@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccdafq5nlkpgj"]
+
+[ext_resource type="Script" uid="uid://yit734t8t3ho" path="res://scripts/items/weapons/basic_weapon.gd" id="1_qlgc1"]
+
+[node name="basic_weapon" type="Node"]
+script = ExtResource("1_qlgc1")
+title = "Basic Weapon"
+price = 90
+description = "Basic Blaster™: Your inaugural weapon, the Basic Blaster™, is the epitome of dependable simplicity.  While this trusty firearm ensures foundational offense capability, its exorbitant cost is the direct result of industry-wide “Artificial Scarcity Events” and “Strategic Price Stabilization Initiatives.”  Purchase now—if you can afford it—and prepare for basic but steadfast service on your battlefield journey."
+unique_name = "basic_weapon"
+legal_text = "[center][b][color=#5E81AC]THE BASIC BLASTER™[/color][/b][/center]
+[center][i]Comprehensive Weapon Acquisition and Utilization Contract (CWAUC) v1.0.984[/i][/center]
+-------------
+[color=#777777][i]Effective immediately upon purchase or equipping.  
+By continuing, You accept all terms, conditions, surcharges, and hidden fees.[/i][/color]
+-------------
+[b]1. OVERVIEW:[/b]  
+The Basic Blaster™ (hereafter “The Blaster”) is a foundational weapon system, intended for initial armament but available for repurchase only under strict market constraints and scarcity protocols.
+-------------
+[b]2. AVAILABILITY AND ARTIFICIAL SHORTAGE:[/b]  
+Due to ongoing “Supply Chain Resilience Optimization Initiatives” (Section 45F-13b), The Blaster is priced at a premium exceeding standard baseline weapon costs by a minimum of 217%. This scarcity is deliberate and non-negotiable, intended to preserve perceived value and strategic market advantage.
+-------------
+[b]3. USAGE TERMS:[/b]  
+The Blaster offers baseline reliability, minor recoil, and nominal durability. It is not guaranteed to be effective against all enemy types, environments, or metaphysical threats.
+-------------
+[b]4. PAYMENT & FEES:[/b]  
+Purchase includes:
+• Base Weapon Price  
+• Scarcity Premium  
+• Mandatory Compliance Contribution (MCC)  
+• Future Depreciation Fund (non-refundable)  
+-------------
+Failure to pay all fees may result in forced return of the weapon or “Asset Reclamation Procedures” (see Clause 8).
+-------------
+[b]5. DISCLAIMERS:[/b]  
+The Blaster is sold “as is,” “where is,” and “with all known and unknown faults.” No warranties, express or implied, are granted for effectiveness, accuracy, or user satisfaction.
+-------------
+[quote][i]Note: The Blaster is the cornerstone of your armory, ironically priced beyond reason.[/i][/quote]
+-------------
+[center][color=#81A1C1][b]Basic Blaster™: Reliable, overpriced, and absolutely essential.[/b][/color][/center]
+--------------------------"
+metadata/_custom_type_script = "uid://cmd6uvcht5xc5"

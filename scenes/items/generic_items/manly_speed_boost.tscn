@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3gptuxi7o4ay"]
+
+[ext_resource type="Script" uid="uid://bdsn3msak3gh1" path="res://scripts/items/generic_items/passive_speed_boost.gd" id="1_3sbx2"]
+[ext_resource type="VideoStream" uid="uid://bx5vetatm8x8w" path="res://assets/itemvideos/thruster_boys_gif.ogv" id="2_l5l1k"]
+
+[node name="passive_speed_boost" type="Node"]
+script = ExtResource("1_3sbx2")
+MAX_SPEED = 400
+title = "Speed Boost"
+description = "Improves your ships thrusters, allowing you to go faster."
+video = ExtResource("2_l5l1k")
+legal_text = "[center][b][color=#8FBCBB]SpeedBurst™ Standard Edition: Terms of Accelerated Existence (TAE)[/color][/b][/center]
+
+Congratulations on equipping the [b]SpeedBurst™ Standard Edition[/b] — the baseline, regulation-compliant, no-frills tactical locomotion enhancer for [i]persons of neutral interest[/i].
+
+This item grants the user a [color=#A3BE8C]+X% increase in apparent movement velocity[/color], subject to the following conditions:
+
+• You move faster, until you don’t  
+• Momentum not guaranteed in emotionally weighted situations  
+• Results may vary by terrain, self-esteem, and gravitational anomalies
+
+[b][u]Use Restrictions:[/u][/b]
+SpeedBurst™ Standard is engineered for the [i]undistinguished, unadorned, and economically reasonable[/i]. Side effects include:
+• Mild satisfaction  
+• Efficient traversal  
+• Feelings of being \"just fast enough\" but never remarkable
+
+This product does not sparkle, glitter, wink, giggle, or compliment your shoes. If you want that, see [b]SpeedBurst™ Girl Edition™[/b].
+
+[center][color=#BF616A]Efficiency has no gender. But it does have a price point.[/color][/center]"
+metadata/_custom_type_script = "uid://c3pv4m1xhxmy5"
