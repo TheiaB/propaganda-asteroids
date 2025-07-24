@@ -76,10 +76,7 @@ var restricted_movement_multiplier = -1
 func load_item_attributes():
 	stats = preload("res://scenes/basic_start_stats.tscn").instantiate()
 	
-	print(global_position)
 	stats.load_attributes(self)
-	
-		
 	for item in items:
 		item.load_attributes(self)
 

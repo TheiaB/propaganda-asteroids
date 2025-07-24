@@ -10,6 +10,7 @@ var screen_size = DisplayServer.screen_get_size()
 var rotational_speed_modif = 0.3
 @onready var area_3d: Area3D = $Area3D
 var is_spawn_invincible : bool = false
+@onready var impact_sprite : AnimatedSprite3D = $AnimatedSprite3D
 
 func _ready() -> void:
 	linear_velocity = move_dir
@@ -59,7 +60,6 @@ func get_random_screen_offset_point() -> Vector3:
 	
 func _on_area_3d_area_entered(area : Area3D) -> void:
 	if area is ActiveShield:
-		print('activeshield')
 		queue_free()
 	if area is Projectile:
 		SoundManager5000.asteroid_hit_sfx.play_one_shot()
@@ -69,7 +69,15 @@ func _on_area_3d_area_entered(area : Area3D) -> void:
 			bullet.queue_free()
 		if health <= 0:
 			SoundManager5000.asteroid_destroyed_sfx.play_one_shot()
+			impact_sprite.show()
+			impact_sprite.play("normal_hit")
+			await impact_sprite.animation_finished
 			queue_free()
+			impact_sprite.show()
+			impact_sprite.play("normal_hit")
+			await impact_sprite.animation_finished
+			impact_sprite.hide()
+		
 
 
 func _on_area_3d_body_entered(ship) -> void:

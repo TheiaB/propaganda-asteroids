@@ -1,7 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://c5i5gf1wwpyei"]
+[gd_scene load_steps=12 format=3 uid="uid://c5i5gf1wwpyei"]
 
 [ext_resource type="Script" uid="uid://bxh6oltf5uiv6" path="res://scripts/asteroids/asteroid.gd" id="1_2h0cg"]
 [ext_resource type="PackedScene" uid="uid://xnk5t2jfofoh" path="res://assets/asteroids/asteroid_satellite_1/asteroid_satellite_1.gltf" id="2_2h0cg"]
+[ext_resource type="Texture2D" uid="uid://bpn515yuntvu7" path="res://assets/ship/Image_Sequence_Lazer_Explosion/resized_Chronologie 1_0000.png" id="3_1noto"]
+[ext_resource type="Texture2D" uid="uid://iqsr7sxbi5gw" path="res://assets/ship/Image_Sequence_Lazer_Explosion/resized_Chronologie 1_0001.png" id="4_xnpne"]
+[ext_resource type="Texture2D" uid="uid://dh0ucnhc7vo5j" path="res://assets/ship/Image_Sequence_Lazer_Explosion/resized_Chronologie 1_0002.png" id="5_y0l75"]
+[ext_resource type="Texture2D" uid="uid://df20f2g32ph2j" path="res://assets/ship/Image_Sequence_Lazer_Explosion/resized_Chronologie 1_0003.png" id="6_lurvu"]
+[ext_resource type="Texture2D" uid="uid://7b5fekrlnpv5" path="res://assets/ship/Image_Sequence_Lazer_Explosion/resized_Chronologie 1_0004.png" id="7_hgpir"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_akfqu"]
 friction = 0.5
@@ -12,6 +17,29 @@ size = Vector3(1, 1, 5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_afu5r"]
 size = Vector3(1, 1, 5)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ok8k4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_1noto")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_xnpne")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_y0l75")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_lurvu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_hgpir")
+}],
+"loop": false,
+"name": &"normal_hit",
+"speed": 25.0
+}]
 
 [node name="Asteroid" type="RigidBody3D" groups=["Asteroids"]]
 collision_layer = 20
@@ -42,6 +70,15 @@ collision_mask = 26
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, 0, 0, 0)
 shape = SubResource("BoxShape3D_afu5r")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(0.000680641, 0, 1, 0, 1, 0, -1, 0, 0.000680641, -1.088, 0, 0)
+visible = false
+axis = 1
+sprite_frames = SubResource("SpriteFrames_ok8k4")
+animation = &"normal_hit"
+frame = 4
+frame_progress = 1.0
 
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
