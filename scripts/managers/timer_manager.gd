@@ -16,9 +16,3 @@ func startActive() -> void:
 	
 func stopActive() -> void:
 	active_item_money_timer.stop()
-
-func startAll() -> void:
-	fuel_timer.start()
-	
-func stopAll() -> void:
-	fuel_timer.stop()

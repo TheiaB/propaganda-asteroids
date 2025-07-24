@@ -26,7 +26,6 @@ func _ready():
 	GlobalCameraManager.init(camera_3d)
 	SoundManager5000.init()
 	mission_manager.init(arrow)
-	timer_manager.startAll()
 	asteroid_manager.init()
 	ship_manager.init(camera_3d, arrow, self)
 	ui_manager.init(self, mission_manager)
@@ -69,17 +68,20 @@ func updateShip():
 	
 
 func _on_ship_manager_ship_died() -> void:
+	timer_manager.stopFuel()
 	ui_manager.setUI("death_scene")
 
 func _on_fuel_timer_timeout() -> void:
 	if self.resource_fuel <= 0:
 		ui_manager.setUI("death_scene")
 	else:
-		self.resource_fuel -= 5
+		self.resource_fuel -= 3
 	
 
 func _on_ui_manager_on_death_scene_next_run() -> void:
+	SoundManager5000.music_ambience.stop()
 	ui_manager.setUI("contract_scene")
+	timer_manager.stopFuel()
 
 
 func _on_ui_manager_on_contract_accept() -> void:
@@ -89,6 +91,7 @@ func _on_ui_manager_on_contract_accept() -> void:
 	GlobalMoneyManager.resource_money = 50
 	mission_manager.reset_current_mission()
 	refuel()
+	timer_manager.startFuel()
 	if !firstTime:
 		ship_manager.update_loadout(GlobalItemManager.find("protect_y"))
 		print("current shield", ship_manager.ship.shield)
@@ -135,7 +138,6 @@ func _on_ui_manager_ship_fly() -> void:
 func _on_mission_manager_enter_base() -> void:
 	refuel()
 	ui_manager.update_shop()
-	timer_manager.stopFuel()
 	if ship:
 		ship.activate_docking_behaviour()
 	ui_manager.setUI("open_missions")

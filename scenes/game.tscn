@@ -90,7 +90,6 @@ script = ExtResource("6_ca42v")
 
 [node name="FuelTimer" type="Timer" parent="TimerManager"]
 wait_time = 5.0
-autostart = true
 
 [node name="ActiveItemMoneyTimer" type="Timer" parent="TimerManager"]
 wait_time = 0.1
