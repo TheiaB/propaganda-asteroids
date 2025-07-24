@@ -10,13 +10,13 @@
 script = ExtResource("1_sojj3")
 
 [node name="ZonePlanetWater" parent="." instance=ExtResource("3_sojj3")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -58.2607, 0, 50.3638)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -55.7295, 0, 36.6072)
 
 [node name="ZonePlanetAnt" parent="." instance=ExtResource("3_4y2fq")]
-transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 97.9836, 0, 11.2109)
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 77.9053, 0, 11.2109)
 
 [node name="ZonePlanetCrystal" parent="." instance=ExtResource("4_f8inv")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1.21704, 0, -111.694)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 14.6973, 0, -66.9267)
 
 [node name="ZoneHome" parent="." instance=ExtResource("3_f8inv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, -16.683)

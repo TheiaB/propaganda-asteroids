@@ -64,13 +64,9 @@ func set_difficulty(level: int):
 	spawn_weights.clear()
 	bound_force_range.x = lerp(0.501, 0.9, t)
 	bound_force_range.y = lerp(0.7, 1.0, t)
-	asteroid_speed_range.x = lerp(2, 4, t)
-	asteroid_speed_range.y = lerp(3, 5, t)
+	asteroid_speed_range.x = lerp(1.5, 3.5, t)
+	asteroid_speed_range.y = lerp(2.5, 4.5, t)
 	
-	print('DIFFICULTY LEVEL: ',level)
-	print('Lerp Parameter: ',t)
-	print('Bound force: ', bound_force_range)
-	print('Speed range: ', asteroid_speed_range)
 	if current_difficulty_level <= 2:
 		FmodServer.set_global_parameter_by_name("Space Decay", 0)
 	if current_difficulty_level == 3:  
