@@ -30,8 +30,6 @@ func _ready():
 func _on_button_play_pressed() -> void:
 	print("play!")
 	close_menu()
-	SoundManager5000.music_gamestart.stop()
-	SoundManager5000.music_contract.play()
 	emit_signal("menu_close")
 	pass # Replace with function body.
 

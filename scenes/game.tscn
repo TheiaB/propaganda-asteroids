@@ -105,29 +105,9 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 
 [node name="BankLoaderMain" type="FmodBankLoader" parent="."]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
 bank_paths = ["res://PropGames/Build/Desktop/Master.strings.bank", "res://PropGames/Build/Desktop/Master.bank", "res://PropGames/Build/Desktop/UI+Station_SFX.bank", "res://PropGames/Build/Desktop/ShipSFX.bank", "res://PropGames/Build/Desktop/MusicMain.bank"]
-script = null
 
 [node name="ShipListener" type="FmodListener3D" parent="."]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-script = null
 
 [node name="SpaceLowest" type="MeshInstance3D" parent="."]
 transform = Transform3D(2048, 0, 0, 0, 2048, 0, 0, 0, 2048, 0, -256, 0)
