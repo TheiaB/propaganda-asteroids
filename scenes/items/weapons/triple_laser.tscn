@@ -6,6 +6,7 @@
 [node name="basic_weapon" type="Node"]
 script = ExtResource("1_qlgc1")
 title = "Triple Laser"
+price = 229
 description = "Your starting weapon"
 video = ExtResource("2_5jcfd")
 unique_name = "basic_weapon"

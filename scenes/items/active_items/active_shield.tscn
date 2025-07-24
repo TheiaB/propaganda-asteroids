@@ -5,5 +5,8 @@
 
 [node name="ActiveShield" type="Node"]
 script = ExtResource("1_euify")
-title = "Active Shield"
+
+title = "Active shield"
+price = 499
+
 video = ExtResource("2_87w72")

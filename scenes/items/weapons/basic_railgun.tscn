@@ -6,7 +6,10 @@
 [node name="basic_railgun" type="Node"]
 script = ExtResource("1_achn0")
 title = "Railgun"
-price = 0
+
+price = 249
+description = "Tada"
+
 video = ExtResource("2_heh0i")
 
 unique_name = "real_railgun"
