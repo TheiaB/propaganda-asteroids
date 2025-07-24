@@ -11,6 +11,11 @@ signal terms_accepted(item_title : String)
 signal accept_contract
 
 func _ready():
+	show_contract()
+
+
+func show_contract() -> void:
+	button.pressed.connect(_button_pressed)
 	contract_text.text = """
 Hiring notice:
 

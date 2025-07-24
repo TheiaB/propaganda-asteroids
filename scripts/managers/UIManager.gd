@@ -57,6 +57,7 @@ func setUI(ui_name: String = ""):
 		contract_scene.visible = true
 		SoundManager5000.music_gamestart.stop()
 		SoundManager5000.music_contract.play()
+		contract_scene.show_contract()
 		
 	if ui_name == "open_missions":
 		shop_mission_interface.open_missions()
