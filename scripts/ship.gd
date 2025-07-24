@@ -97,6 +97,8 @@ func on_collision_with_asteroid(damage):
 			SoundManager5000.shield_dest_sfx.play_one_shot()
 		if shield.shield_health >= 2:
 			SoundManager5000.shield_crack_sfx.play_one_shot()
+		shield.shield_health = shield.start_health
+		print(shield.shield_health)
 	
 func _process(_delta):
 	if shield:
