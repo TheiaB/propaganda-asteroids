@@ -89,7 +89,8 @@ func _on_ui_manager_on_contract_accept() -> void:
 	GlobalMoneyManager.resource_money = 50
 	refuel()
 	if !firstTime:
-		ship_manager.update_loadout(GlobalItemManager.get_rand_item())
+		ship_manager.update_loadout(GlobalItemManager.find("protect_y"))
+		print("current shield", ship_manager.ship.shield)
 	firstTime = false
 	
 	

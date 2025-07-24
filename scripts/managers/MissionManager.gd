@@ -64,7 +64,8 @@ func player_entered_planet_zone(_zone:ZonePlanet):
 func start_mission(mission: Mission) -> void:
 	current_delivery_state = DeliveryStates.DELIVERING
 	current_mission = mission
-	arrow.ship = ship
+	if arrow:
+		arrow.ship = ship
 
 	match current_mission.update_mission_state(ship, ZoneManager.get_home_planet()):
 		GlobalStatesManager.MissionState.RUNNING:
