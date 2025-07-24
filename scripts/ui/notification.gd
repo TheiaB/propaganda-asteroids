@@ -1,7 +1,6 @@
 extends CanvasLayer
 
 class_name Notification
-@onready var rich_text_label: RichTextLabel = $RichTextLabel
 @onready var texture_rect : TextureRect = $MarginContainer/TextureRect
 
 
