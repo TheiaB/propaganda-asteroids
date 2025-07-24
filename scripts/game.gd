@@ -152,7 +152,7 @@ func _on_ui_manager_on_mission_finished_popup_button_pressed(mission: Mission) -
 	print(mission)
 	mission.finish_mission()
 	ui_manager.set_displayed_missions(mission_manager.get_remaining_missions())
-	resource_money *= mission.reward
+	resource_money += mission.reward
 	
 
 func _on_ship_manager_activate_active_item() -> void:

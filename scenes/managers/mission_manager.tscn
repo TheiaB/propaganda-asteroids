@@ -43,7 +43,7 @@ script = ExtResource("2_5ynlg")
 title = "shipment #G598"
 text = "delivery of confidential go for Mainmetall defence manufacturing Inc."
 finish_text = "shipment completed!"
-reward = 300
+reward = 1
 cargo_dest = 2
 
 [node name="crystal2" type="Node" parent="."]
@@ -83,5 +83,5 @@ script = ExtResource("2_5ynlg")
 title = "shipment #G574"
 text = "delivery of building material to termidia 3"
 finish_text = "shipment completed!"
-reward = 300
+reward = 200
 cargo_dest = 2

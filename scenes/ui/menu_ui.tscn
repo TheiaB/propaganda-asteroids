@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://bnb5fyoxgj4b4"]
 
 [ext_resource type="PackedScene" uid="uid://bi2fkkpnm4xeo" path="res://scenes/menu_3d.tscn" id="1_c7ajr"]
-[ext_resource type="Script" uid="uid://d3cqd6y1glryc" path="res://scripts/ui/menu_ui.gd" id="1_h8mjf"]
+[ext_resource type="Script" path="res://scripts/ui/menu_ui.gd" id="1_h8mjf"]
 [ext_resource type="Theme" uid="uid://h1f7iqhh7ycb" path="res://assets/ui/theme/FlatUI4/kenneyUI-yellow.tres" id="2_44wi2"]
 [ext_resource type="Texture2D" uid="uid://dt5vxoq7uupgw" path="res://assets/ui/logo/ass-logo-corner.png" id="2_h8mjf"]
 [ext_resource type="Theme" uid="uid://mbsg4xqnedxi" path="res://assets/ui/theme/FlatUI4/kenneyUI-red.tres" id="5_w735g"]
@@ -196,12 +196,18 @@ offset_bottom = 220.0
 grow_horizontal = 2
 grow_vertical = 2
 bbcode_enabled = true
-text = "A PROPAGANDA GAMES PRODUCTION
+text = "PROPAGANDA GAMES Presents
 
--
+Occupational Hazard
+_______________________
 
 Made during Summer Semester 2025
-at HfG"
+at HfG Karlsruhe by
+
+Max
+Yannis
+Philip
+"
 
 [node name="ButtonExitCredits" type="Button" parent="Credits"]
 layout_mode = 1
