@@ -21,6 +21,8 @@ func init(_arrow: Arrow3D) -> void:
 
 func reset() -> void:
 	mission_progress = 0
+	arrow.destination_position = ZoneManager.get_home_planet().global_position
+
 
 func update_cargo_start_is_home_mission(_ship: Ship, _planet: Zone) -> GlobalStatesManager.MissionState:
 	if _planet == get_cargo_start_planet() and mission_progress == 0:
