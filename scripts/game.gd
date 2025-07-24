@@ -25,6 +25,7 @@ var firstTime : bool
 
 func _ready():
 	GlobalCameraManager.init(camera_3d)
+	SoundManager5000.init()
 	mission_manager.init(arrow)
 	timer_manager.startAll()
 	asteroid_manager.init()
@@ -72,6 +73,9 @@ func fresh_restart():
 	#get_tree().reload_scene()
 	print("restarting")
 	get_tree().reload_current_scene()
+	GlobalMenu.open_menu()
+	print(SoundManager5000)
+	print(SoundManager5000.is_inside_tree())
 	#ship.queue_free()
 
 func updateShip():

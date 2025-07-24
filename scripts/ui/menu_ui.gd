@@ -21,6 +21,9 @@ func _ready():
 	connect("menu_open", open_menu)
 	var viewportText:ViewportTexture = menu_background.texture
 	viewportText.viewport_path = sub_viewport.get_path()
+	SoundManager5000.music_gamestart.play()
+	
+
 	
 
 func _on_button_play_pressed() -> void:
@@ -34,10 +37,10 @@ func _on_button_reset_pressed() -> void:
 	#menu_restart.emit.call_deferred(5.0)
 	animation_player.play("fade_to_black")
 	await get_tree().create_timer(transition_timer.wait_time).timeout; menu_restart.emit()
-	close_menu()
-
-	pass # Replace with function body.
-
+	#close_menu()
+	# Replace with function body.
+	#open_menu()
+	
 
 func _on_button_credits_pressed() -> void:
 	credits.show()

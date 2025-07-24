@@ -1,5 +1,6 @@
 extends Node
 
+
 var basic_button_sfx: FmodEventEmitter3D = null
 var menu_open_sfx: FmodEventEmitter3D = null
 var menu_close_sfx: FmodEventEmitter3D = null
@@ -34,6 +35,10 @@ var news_jingle_long: FmodEventEmitter3D = null
 @onready var music_ambience: FmodEventEmitter3D = $SpaceAmbience
 
 func _ready():
+	init()
+	
+	
+func init():
 	basic_button_sfx = $BasicButton
 	menu_open_sfx = $OpenMenuButton
 	menu_close_sfx = $CloseMenuButton
@@ -52,7 +57,7 @@ func _ready():
 	news_jingle_short = $NewsJingleShort
 	news_jingle_long = $NewsJingleLong
 	
-	
+
 	
 func play_sound(sound: FmodEventEmitter3D):
 	sound.play()
