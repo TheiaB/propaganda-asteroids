@@ -87,6 +87,7 @@ func _on_ui_manager_on_contract_accept() -> void:
 	ui_manager.setUI()
 	SoundManager5000.music_ambience.play()
 	GlobalMoneyManager.resource_money = 50
+	mission_manager.reset_current_mission()
 	refuel()
 	if !firstTime:
 		ship_manager.update_loadout(GlobalItemManager.find("protect_y"))

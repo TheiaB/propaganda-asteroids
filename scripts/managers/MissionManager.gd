@@ -24,6 +24,11 @@ func _ready() -> void:
 			missions.append(child)
 	zone_home = preload("res://scenes/zones/zone_home.tscn").instantiate()
 
+func reset_current_mission():
+	if current_mission != null:
+		current_mission.reset()
+		current_mission = null
+
 func init(_arrow:Arrow3D) -> void:
 	arrow = _arrow
 	zone_home = ZoneManager.get_home_planet()
