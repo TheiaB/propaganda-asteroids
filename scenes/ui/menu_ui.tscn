@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bi2fkkpnm4xeo" path="res://scenes/menu_3d.tscn" id="1_c7ajr"]
 [ext_resource type="Script" uid="uid://d3cqd6y1glryc" path="res://scripts/ui/menu_ui.gd" id="1_h8mjf"]
-[ext_resource type="Texture2D" uid="uid://b7j3xff2wrxoe" path="res://assets/ui/logo/occupational hazard_new.png" id="3_w735g"]
+[ext_resource type="Texture2D" uid="uid://wjh6v2krcy4" path="res://assets/ui/logo/occupational_hazard_new.png" id="3_de0uw"]
 [ext_resource type="Theme" uid="uid://bnhngmri4tfgr" path="res://assets/ui/theme/FlatUI4/kenneyUI-green.tres" id="4_de0uw"]
 [ext_resource type="Theme" uid="uid://bb6vwl0h1flws" path="res://assets/ui/theme/FlatUI4/kenneyUI-blue.tres" id="5_de0uw"]
 [ext_resource type="Theme" uid="uid://mbsg4xqnedxi" path="res://assets/ui/theme/FlatUI4/kenneyUI-red.tres" id="5_w735g"]
@@ -115,7 +115,7 @@ alignment = 1
 [node name="TextureRect" type="TextureRect" parent="CenterContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-texture = ExtResource("3_w735g")
+texture = ExtResource("3_de0uw")
 expand_mode = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer2"]

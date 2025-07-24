@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bc51efbyjg2sg"]
 
 [ext_resource type="Script" uid="uid://cgy7mbnkbdtng" path="res://scripts/ui/death_screen.gd" id="1_3idvb"]
-[ext_resource type="Texture2D" uid="uid://cyfbx4q43uxxc" path="res://assets/ui/contract expired.png" id="2_o2qfb"]
+[ext_resource type="Texture2D" uid="uid://bturirtxa61eq" path="res://assets/ui/contract_expired.png" id="2_o2qfb"]
 
 [node name="death_scene" type="Node2D"]
 visible = false
