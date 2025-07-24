@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bd3nco3kmbmxr"]
+[gd_scene load_steps=4 format=3 uid="uid://bd3nco3kmbmxr"]
 
 [ext_resource type="Script" uid="uid://buyhtnmlwt743" path="res://scripts/projectiles/active_shield_effect.gd" id="1_nwpua"]
+[ext_resource type="Texture2D" uid="uid://diuplp2icxgs3" path="res://assets/ship/Zeichenfläche 1.png" id="2_6h42x"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_6ig0o"]
-radius = 2.0
+radius = 1.34929
 
 [node name="ActiveShield" type="Area3D"]
 collision_layer = 8
@@ -14,4 +15,11 @@ script = ExtResource("1_nwpua")
 shape = SubResource("SphereShape3D_6ig0o")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+visible = false
 radius = 2.0
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.0448831, 0, -0.117251)
+modulate = Color(1, 1, 1, 0.4)
+axis = 1
+texture = ExtResource("2_6h42x")

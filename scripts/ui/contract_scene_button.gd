@@ -11,11 +11,11 @@ signal terms_accepted(item_title : String)
 signal accept_contract
 
 func _ready():
+	button.pressed.connect(_button_pressed)
 	show_contract()
 
 
 func show_contract() -> void:
-	button.pressed.connect(_button_pressed)
 	contract_text.text = """
 Hiring notice:
 
@@ -80,7 +80,9 @@ No additional guarantees or protections beyond those expressly indicated in inte
 By accepting this contract, the employee has unconditionally accepted all terms listed herein, including those limiting company liability and transferring all risks to the employee.
 """
 	scroll_container.get_v_scroll_bar().value = 0
-	scroll_container.get_v_scroll_bar().value_changed.connect(_on_scroll_check)
+	var scroll_bar = scroll_container.get_v_scroll_bar()
+	if not scroll_bar.is_connected("value_changed", _on_scroll_check):
+		scroll_bar.value_changed.connect(_on_scroll_check)
 	_on_scroll_check(scroll_container.get_v_scroll_bar().value)
 
 func _on_scroll_check(value: float) -> void:

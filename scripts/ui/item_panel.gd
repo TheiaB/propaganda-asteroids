@@ -42,4 +42,5 @@ func _on_buy_button_pressed() -> void:
 	emit_signal("buy_button_pressed")
 
 func _get_tooltip(_at_position: Vector2):
+	print()
 	return "%s" % [description]
