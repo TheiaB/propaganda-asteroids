@@ -111,7 +111,16 @@ func _on_mission_popup_on_mission_popup_button_pressed(mission: Mission) -> void
 func _on_mission_popup_on_finish_mission_popup_button_pressed(mission: Mission) -> void:
 	mission_popup.hide()
 	print('---- finish mission (ui manager)')
-	var texture = ImageTexture.create_from_image(ZoneManager.get_planet_by_enum(mission.cargo_dest).current_news)
+	var dest_zone = ZoneManager.get_planet_by_enum(mission.cargo_dest)
+	var start_zone = ZoneManager.get_planet_by_enum(mission.cargo_start)
+	var texture
+	#is gonna fail if both are planets or is only gonna show the second news
+	if dest_zone is ZonePlanet:
+		print(dest_zone)
+		texture = dest_zone.current_news
+	if start_zone is ZonePlanet:
+		print(start_zone)
+		texture = start_zone.current_news
 	notification.texture_rect.texture = texture
 	notification.show()
 	notify(10)

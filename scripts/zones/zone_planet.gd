@@ -11,19 +11,19 @@ var current_planet_iteration:Node3D
 
 enum Planet {ANT, WATER, CRYSTAL, IRRELEVANT}
 
-var current_news : Image
+var current_news : Texture
 
 var news = [
-	{ "news": "res://assets/news/article_1.png", "planet" : Planet.CRYSTAL},
-	{ "news": "res://assets/news/article_2.png", "planet": Planet.CRYSTAL},
-	{ "news": "res://assets/news/article_3.png", "planet": Planet.CRYSTAL},
-	{ "news": "res://assets/news/article_4.png", "planet": Planet.WATER},
-	{ "news": "res://assets/news/article_5.png", "planet": Planet.WATER},
-	{ "news": "res://assets/news/article_6.png", "planet": Planet.WATER},
-	{ "news": "res://assets/news/article_7.png", "planet": Planet.WATER},
-	{ "news": "res://assets/news/article_8.png", "planet": Planet.ANT},
-	{ "news": "res://assets/news/article_9.png", "planet" : Planet.ANT},
-	{ "news": "res://assets/news/article_10.png", "planet" : Planet.ANT}
+	{ "news": preload("res://assets/news/article_1.png"), "planet" : Planet.CRYSTAL},
+	{ "news": preload("res://assets/news/article_2.png"), "planet": Planet.CRYSTAL},
+	{ "news": preload("res://assets/news/article_3.png"), "planet": Planet.CRYSTAL},
+	{ "news": preload("res://assets/news/article_4.png"), "planet": Planet.WATER},
+	{ "news": preload("res://assets/news/article_5.png"), "planet": Planet.WATER},
+	{ "news": preload("res://assets/news/article_6.png"), "planet": Planet.WATER},
+	{ "news": preload("res://assets/news/article_7.png"), "planet": Planet.WATER},
+	{ "news": preload("res://assets/news/article_8.png"), "planet": Planet.ANT},
+	{ "news": preload("res://assets/news/article_9.png"), "planet" : Planet.ANT},
+	{ "news": preload("res://assets/news/article_10.png"), "planet" : Planet.ANT}
 ]
 
 #@export_tool_button("Hurt Me Mommy", "Callable") var hurt_planet = hurt
@@ -41,7 +41,6 @@ func get_news_ind() -> Vector2:
 func modify_health(amount:int = -1):
 	print('---health ',name, ' ',health)
 	health += amount
-	current_news = Image.new()
 	var news_index = get_news_ind()
 	if(planet_iterations.size()>0):
 		for planet in planet_iterations:
@@ -49,12 +48,14 @@ func modify_health(amount:int = -1):
 		if(health > planet_iterations.size()):
 			# health 4+ on planet 0
 			current_planet_iteration = planet_iterations[0]
-			current_news.load(news[news_index.x].news)
+			current_news = news[news_index.x].news
+			print(news[news_index.x])
 			print('---more health than necessary')
 		elif(health < 1):
 			# health 0- on planet 2
 			print('---less health than necessary')
-			current_news.load(news[news_index.y].news)
+			current_news = news[news_index.y].news
+			print(news_index.y)
 			current_planet_iteration = planet_iterations[planet_iterations.size() - 1]
 		else:
 			# maps
@@ -63,9 +64,11 @@ func modify_health(amount:int = -1):
 			# health 1 on planet 2
 			print('---health ',health)
 			print(news[news_index.y - health].news)
-			current_news.load(news[news_index.y - health].news)
+			current_news = news[news_index.y + 1 - health].news
+			print(news_index.y - health)
 			current_planet_iteration = planet_iterations[planet_iterations.size() - health]
 		current_planet_iteration.show()
+		print(self.unique_name)
 		return
 
 

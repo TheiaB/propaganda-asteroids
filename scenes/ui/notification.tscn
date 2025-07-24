@@ -19,6 +19,10 @@ custom_minimum_size = Vector2(1000, 500)
 offset_right = 1152.0
 offset_bottom = 640.0
 
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.75)
+
 [node name="TextureRect" type="TextureRect" parent="MarginContainer"]
 layout_mode = 2
 expand_mode = 1
