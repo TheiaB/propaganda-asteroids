@@ -2,11 +2,8 @@ extends CanvasLayer
 
 class_name Notification
 @onready var texture_rect : TextureRect = $MarginContainer/TextureRect
+@onready var button: Button = $Button
 
 
-func notify(time:float):
-	var timer:Timer = Timer.new()
-	add_child(timer)
-	timer.wait_time = time
-	timer.timeout.connect(self.hide)
-	timer.start()
+func _ready() -> void:
+	button.pressed.connect(self.hide)

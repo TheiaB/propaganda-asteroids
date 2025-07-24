@@ -41,8 +41,6 @@ func init(_game: Game, _mission_manager: MissionManager):
 	mission_manager = _mission_manager
 
 
-func notify(time: float):
-	notification.notify(time)
 
 func setUI(ui_name: String = ""):
 	death_scene.visible = false
@@ -129,7 +127,6 @@ func _on_mission_popup_on_finish_mission_popup_button_pressed(mission: Mission) 
 		texture = start_zone.current_news
 	notification.texture_rect.texture = texture
 	notification.show()
-	notify(20)
 	emit_signal("on_mission_finished_popup_button_pressed", mission)
 
 
