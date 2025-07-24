@@ -11,7 +11,6 @@ signal terms_accepted(item_title : String)
 signal accept_contract
 
 func _ready():
-	button.pressed.connect(_button_pressed)
 	contract_text.text = """
 Hiring notice:
 
@@ -78,10 +77,6 @@ By accepting this contract, the employee has unconditionally accepted all terms 
 	scroll_container.get_v_scroll_bar().value = 0
 	scroll_container.get_v_scroll_bar().value_changed.connect(_on_scroll_check)
 	_on_scroll_check(scroll_container.get_v_scroll_bar().value)
-
-func _button_pressed():
-	SoundManager5000.basic_button_sfx.start()
-	emit_signal("accept_contract")
 	
 
 func _on_scroll_check(value: float) -> void:
