@@ -7,7 +7,7 @@
 script = ExtResource("1_pfo7v")
 MAX_SPEED = 400
 title = "Speed Boost"
-price = 65
+price = 280
 description = "Improves your ships thrusters, allowing you to go faster."
 video = ExtResource("2_4i14b")
 legal_text = "[center][b][color=#D08770]SPEEDBURST™ GIRL EDITION™[/color][/b][/center]

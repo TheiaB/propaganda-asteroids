@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cu5hdltnm5jj2" path="res://assets/ship/ship.gltf" id="3_4tobq"]
 [ext_resource type="PackedScene" uid="uid://c67duphyjlojt" path="res://assets/ship/cargo/cargo.gltf" id="4_gudjc"]
 [ext_resource type="SpriteFrames" uid="uid://cpgsbsb6jjowj" path="res://assets/ship/ship_spritesheet.tres" id="4_tfsc7"]
-[ext_resource type="Script" uid="uid://b04eolgqte2pm" path="res://scripts/cargo.gd" id="5_7j21i"]
+[ext_resource type="Script" path="res://scripts/cargo.gd" id="5_7j21i"]
 [ext_resource type="Texture2D" uid="uid://cmthwymp770j6" path="res://assets/ship/cargo/Container_Blue copie.png" id="6_itrim"]
 [ext_resource type="Texture2D" uid="uid://d3mwiosv5eabo" path="res://assets/ship/cargo/Container_Green.png" id="7_bseor"]
 [ext_resource type="Texture2D" uid="uid://bpgkuyhqurqa4" path="res://assets/ship/cargo/Container_Yelllow.png" id="8_tlr80"]

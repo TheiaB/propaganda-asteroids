@@ -6,7 +6,7 @@
 [node name="basic_laserbeam" type="Node"]
 script = ExtResource("1_hoi5b")
 title = "Laserbeam"
-price = 100
+price = 299
 description = "The LazeRazor™ fires a sustained laser beam after a mandatory charge, delivering continuous damage over time.  Stay perfectly still, focus, and watch your enemies melt — just remember, immobility comes at a cost."
 video = ExtResource("2_6fnip")
 unique_name = "laser_railgun"

@@ -7,7 +7,6 @@ func _ready() -> void:
 	description = "Use this shield in the right moment. \n" 
 	description += "To protect yourself from harm. \n For the low cost of only 1$"
 	activation_cost = 1
-	price = 10
 
 func activate_item(ship: Ship):
 	if ship:

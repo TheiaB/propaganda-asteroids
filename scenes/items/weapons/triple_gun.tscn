@@ -8,7 +8,7 @@ script = ExtResource("1_h26tm")
 amount = 3
 delay_between = 0.05
 title = "Triple Laser"
-price = 150
+price = 369
 description = "Shoot three times as many bullets with the same amount of effort."
 video = ExtResource("2_o77i0")
 legal_text = "[center][b][color=#A3BE8C]THE TRIPLETAP™[/color][/b][/center]

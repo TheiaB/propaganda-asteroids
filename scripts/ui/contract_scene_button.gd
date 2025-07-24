@@ -11,7 +11,6 @@ signal terms_accepted(item_title : String)
 signal accept_contract
 
 func _ready():
-	button.pressed.connect(_button_pressed)
 	show_contract()
 
 
