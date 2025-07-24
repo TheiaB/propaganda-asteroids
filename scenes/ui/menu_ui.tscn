@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://bnb5fyoxgj4b4"]
 
 [ext_resource type="PackedScene" uid="uid://bi2fkkpnm4xeo" path="res://scenes/menu_3d.tscn" id="1_c7ajr"]
-[ext_resource type="Script" path="res://scripts/ui/menu_ui.gd" id="1_h8mjf"]
+[ext_resource type="Script" uid="uid://d3cqd6y1glryc" path="res://scripts/ui/menu_ui.gd" id="1_h8mjf"]
 [ext_resource type="Theme" uid="uid://h1f7iqhh7ycb" path="res://assets/ui/theme/FlatUI4/kenneyUI-yellow.tres" id="2_44wi2"]
 [ext_resource type="Texture2D" uid="uid://dt5vxoq7uupgw" path="res://assets/ui/logo/ass-logo-corner.png" id="2_h8mjf"]
 [ext_resource type="Theme" uid="uid://mbsg4xqnedxi" path="res://assets/ui/theme/FlatUI4/kenneyUI-red.tres" id="5_w735g"]
@@ -126,18 +126,14 @@ theme_override_constants/separation = 16
 layout_mode = 2
 text = "Play"
 
-[node name="ButtonReset" type="Button" parent="CenterContainer/VBoxContainer2/VBoxContainer"]
-layout_mode = 2
-text = "Reset"
-
 [node name="ButtonCredits" type="Button" parent="CenterContainer/VBoxContainer2/VBoxContainer"]
 layout_mode = 2
 text = "Credits"
 
-[node name="ButtonDebug" type="Button" parent="CenterContainer/VBoxContainer2/VBoxContainer"]
+[node name="ButtonReset" type="Button" parent="CenterContainer/VBoxContainer2/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_44wi2")
-text = "Debug"
+text = "Reset Game"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
@@ -226,9 +222,8 @@ theme = ExtResource("5_w735g")
 text = "BACK"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer2/VBoxContainer/ButtonPlay" to="." method="_on_button_play_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer2/VBoxContainer/ButtonReset" to="." method="_on_button_reset_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer2/VBoxContainer/ButtonCredits" to="." method="_on_button_credits_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer2/VBoxContainer/ButtonDebug" to="." method="_on_button_debug_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer2/VBoxContainer/ButtonReset" to="." method="_on_button_debug_pressed"]
 [connection signal="pressed" from="Credits/ButtonExitCredits" to="." method="_on_button_exit_credits_pressed"]
 
 [editable path="Menu3D"]

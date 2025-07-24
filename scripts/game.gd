@@ -38,7 +38,6 @@ func _ready():
 	
 	GlobalMenu.connect("menu_open",pause)
 	GlobalMenu.connect("menu_close",unpause)
-	GlobalMenu.connect("menu_restart",fresh_restart)
 	GlobalMenu.connect("esc",esc)
 
 func esc():
@@ -63,16 +62,6 @@ func pause():
 func unpause():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	FmodServer.set_global_parameter_by_name("PauseScreen", 0.0)
-
-	#get_tree().paused = false
-
-func fresh_restart():
-	#GlobalItemManager.get_tree().reload_scene()
-	#GlobalStatesManager.get_tree().reload_scene()
-	#ZoneManager.get_tree().reload_scene()
-	#get_tree().reload_scene()
-	print("restarting")
-	get_tree().quit()
 
 func updateShip():
 	asteroid_manager.ship = ship

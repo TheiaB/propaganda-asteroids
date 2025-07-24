@@ -35,15 +35,10 @@ func _on_button_play_pressed() -> void:
 	emit_signal("menu_close")
 	pass # Replace with function body.
 
-func _on_button_reset_pressed() -> void:
-	#emit_signal("menu_restart")
-	#menu_restart.emit.call_deferred(5.0)
+func _on_button_debug_pressed() -> void:
 	animation_player.play("fade_to_black")
 	await get_tree().create_timer(transition_timer.wait_time).timeout; menu_restart.emit()
-	#close_menu()
-	# Replace with function body.
-	#open_menu()
-	
+	get_tree().quit()
 
 func _on_button_credits_pressed() -> void:
 	credits.show()
@@ -55,8 +50,7 @@ func _on_button_exit_credits_pressed() -> void:
 
 
 
-func _on_button_debug_pressed() -> void:
-	pass # Replace with function body.
+
 
 func open_menu():
 	animation_player.play_backwards("fade_to_black")
