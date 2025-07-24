@@ -16,8 +16,6 @@ func _ready() -> void:
 	
 		
 func shoot_projectile(ship: Ship):
-	#$LaserBasic.play_one_shot()
-	SoundManager5000.laser_basic_sfx.play_one_shot()
 	ship.start_restrict_rotation(restricted_rotation_multiplier)
 	ship.start_restrict_movement(restricted_movement_multiplier)
 	for _i in range(amount):

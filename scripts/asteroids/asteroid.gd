@@ -75,6 +75,7 @@ func _on_area_3d_area_entered(area : Area3D) -> void:
 func _on_area_3d_body_entered(ship) -> void:
 	if ship is Ship:
 		ship.on_collision_with_asteroid(ship.weapon.weapon_damage)
+		SoundManager5000.asteroid_destroyed_sfx.play_one_shot()
 		queue_free()
 	else:
 		pass

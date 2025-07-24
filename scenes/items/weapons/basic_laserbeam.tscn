@@ -8,6 +8,7 @@ script = ExtResource("1_hoi5b")
 title = "Laserbeam"
 description = "A powerful Railgun, that will devastate anything in its path"
 video = ExtResource("2_6fnip")
+unique_name = "laser_railgun"
 legal_text = "Certainly! Here’s a shop listing for a “Railgun” using bbtext formatting, blending powerful salesmanship with some sly fine print in the spirit of your example:
 
 [b]Railgun XT-9: The Ultimate Laser Shooty![/b]

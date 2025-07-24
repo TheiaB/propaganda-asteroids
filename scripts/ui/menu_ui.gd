@@ -24,7 +24,6 @@ func _ready():
 	SoundManager5000.music_gamestart.play()
 	#fmod loop is wrong
 	
-
 	
 
 func _on_button_play_pressed() -> void:

@@ -93,12 +93,20 @@ func on_collision_with_asteroid(damage):
 			SoundManager5000.ship_dest_sfx.play_one_shot()
 			emit_signal("ship_died")
 			queue_free()
+		if shield.shield_health == 1:
+			SoundManager5000.shield_dest_sfx.play_one_shot()
+		if shield.shield_health >= 2:
+			SoundManager5000.shield_crack_sfx.play_one_shot()
 	
 func _process(_delta):
 	if weapon.chargeable:
 		if Input.is_action_pressed("shoot") and weapon.charging == false:
 			weapon.charging = true
 			charge_start_time = Time.get_ticks_msec()
+			if weapon.unique_name == "laser_railgun":
+				SoundManager5000.railgun_charge_sfx.play_one_shot()
+			if weapon.unique_name == "real_railgun":
+				SoundManager5000.realgun_charge_sfx.play_one_shot()
 			start_restrict_rotation(0)
 			start_restrict_movement(0)
 		if Input.is_action_just_released("shoot"):
@@ -108,10 +116,15 @@ func _process(_delta):
 			var charge_duration = Time.get_ticks_msec() - charge_start_time
 			print(charge_duration, "Lasergun")
 			if weapon.charge_timer <= charge_duration:
+				if weapon.unique_name == "laser_railgun":
+					SoundManager5000.railgun_shot_sfx.play_one_shot()
+				if weapon.unique_name == "real_railgun":
+					SoundManager5000.realgun_shot_sfx.play_one_shot()
 				weapon.shoot_projectile(self)
 				laser_shoot_sprite.play('laser_impact')
 	else:
 		if Input.is_action_just_pressed("shoot"):
+			SoundManager5000.laser_basic_sfx.play_one_shot()
 			weapon.shoot_projectile(self)
 			laser_shoot_sprite.play('laser_impact')
 
@@ -133,12 +146,12 @@ func _process(_delta):
 	if Input.is_action_just_pressed("active_item"):
 		if active_item:
 			emit_signal("activate_active_item")
+			SoundManager5000.active_shield_sfx.play()
 	if Input.is_action_just_released("active_item"):
 		if active_item:
 			emit_signal("deactivate_active_item")
+			SoundManager5000.active_shield_sfx.stop()
 	
-			
-		
 
 func start_restrict_rotation(_restricted_rotation_multiplier):
 	self.restricted_rotation_multiplier = _restricted_rotation_multiplier
