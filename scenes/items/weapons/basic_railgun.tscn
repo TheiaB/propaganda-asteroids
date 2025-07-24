@@ -7,11 +7,9 @@
 script = ExtResource("1_achn0")
 title = "Railgun"
 price = 249
-video = ExtResource("2_heh0i")
-
-unique_name = "real_railgun"
 description = "[b]RailReaper™[/b]: The RailReaper™ fires a single, devastating slug that obliterates everything in its path — but be warned: charging the weapon immobilizes you completely.  Perfect for the tactical thinker who enjoys calculated devastation... and being a sitting target."
 video = ExtResource("2_heh0i")
+unique_name = "real_railgun"
 legal_text = "[center][b][color=#BF616A]THE RAILREAPER™[/color][/b][/center]
 [center][i]Charged Weapon Activation, Usage, and Immobilization Consent Agreement (CWUICA) v6.7.3[/i][/center]
 ------------------

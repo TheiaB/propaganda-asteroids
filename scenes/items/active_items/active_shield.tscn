@@ -9,7 +9,12 @@ title = "Active shield"
 price = 499
 description = "Say goodbye to space hazards. The A.S. (SHELL SHIELD) absorbs every asteroid in your path — no exceptions. Powered by advanced kinetic energy conversion, this shield neutralizes impacts before they reach your hull, turning danger into harmless energy. Lightweight, ultra-responsive, and engineered for relentless protection, AsteroidGuard keeps your mission moving safely through even the densest asteroid fields."
 video = ExtResource("2_87w72")
-legal_text = "[center][b][color=#EBCB8B]Terms of Continued Engagement (TCE)[/color][/b][/center]
+legal_text = "Press [Strg] or [ctrl] ot [K] to shield your ship
+--> costs money while active
+______________________________
+
+
+[center][b][color=#EBCB8B]Terms of Continued Engagement (TCE)[/color][/b][/center]
 
 By initiating, activating, contemplating, or otherwise interacting with the Selected Item (hereinafter referred to as \"[b]The Product[/b]\"), the user (hereinafter referred to as \"[i]You[/i]\") hereby consents — either knowingly or unknowingly — to a dynamic, usage-contingent engagement model.
 
