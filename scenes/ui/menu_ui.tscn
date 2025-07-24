@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://bnb5fyoxgj4b4"]
+[gd_scene load_steps=13 format=3 uid="uid://bnb5fyoxgj4b4"]
 
 [ext_resource type="PackedScene" uid="uid://bi2fkkpnm4xeo" path="res://scenes/menu_3d.tscn" id="1_c7ajr"]
 [ext_resource type="Script" uid="uid://d3cqd6y1glryc" path="res://scripts/ui/menu_ui.gd" id="1_h8mjf"]
-[ext_resource type="Theme" uid="uid://h1f7iqhh7ycb" path="res://assets/ui/theme/FlatUI4/kenneyUI-yellow.tres" id="2_44wi2"]
-[ext_resource type="Texture2D" uid="uid://dt5vxoq7uupgw" path="res://assets/ui/logo/ass-logo-corner.png" id="2_h8mjf"]
+[ext_resource type="Texture2D" uid="uid://b7j3xff2wrxoe" path="res://assets/ui/logo/occupational hazard_new.png" id="3_w735g"]
+[ext_resource type="Theme" uid="uid://bnhngmri4tfgr" path="res://assets/ui/theme/FlatUI4/kenneyUI-green.tres" id="4_de0uw"]
+[ext_resource type="Theme" uid="uid://bb6vwl0h1flws" path="res://assets/ui/theme/FlatUI4/kenneyUI-blue.tres" id="5_de0uw"]
 [ext_resource type="Theme" uid="uid://mbsg4xqnedxi" path="res://assets/ui/theme/FlatUI4/kenneyUI-red.tres" id="5_w735g"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_c7ajr"]
@@ -109,30 +110,34 @@ grow_vertical = 2
 [node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
 theme_override_constants/separation = 32
+alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="CenterContainer/VBoxContainer2"]
-custom_minimum_size = Vector2(256, 0)
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-texture = ExtResource("2_h8mjf")
-expand_mode = 4
+texture = ExtResource("3_w735g")
+expand_mode = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(224, 0)
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 4
 theme_override_constants/separation = 16
+alignment = 1
 
 [node name="ButtonPlay" type="Button" parent="CenterContainer/VBoxContainer2/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("4_de0uw")
 text = "Play"
 
 [node name="ButtonCredits" type="Button" parent="CenterContainer/VBoxContainer2/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("4_de0uw")
 text = "Credits"
 
 [node name="ButtonReset" type="Button" parent="CenterContainer/VBoxContainer2/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("2_44wi2")
+theme = ExtResource("5_de0uw")
 text = "Reset Game"
 
 [node name="ColorRect" type="ColorRect" parent="."]
