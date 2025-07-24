@@ -83,7 +83,6 @@ func load_item_attributes():
 
 func _ready() -> void:
 	load_item_attributes()
-	self.stats.MAX_SPEED = 700
 
 	
 func on_collision_with_asteroid(damage):

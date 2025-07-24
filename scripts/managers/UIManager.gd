@@ -123,7 +123,7 @@ func _on_mission_popup_on_finish_mission_popup_button_pressed(mission: Mission) 
 		texture = start_zone.current_news
 	notification.texture_rect.texture = texture
 	notification.show()
-	notify(10)
+	notify(20)
 	emit_signal("on_mission_finished_popup_button_pressed", mission)
 
 

@@ -6,6 +6,11 @@
 visible = false
 script = ExtResource("1_3idvb")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1144.0
+offset_bottom = 640.0
+color = Color(0, 0, 0, 0.85)
+
 [node name="Button" type="Button" parent="."]
 offset_left = 464.0
 offset_top = 352.0

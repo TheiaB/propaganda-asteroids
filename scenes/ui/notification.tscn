@@ -6,14 +6,6 @@
 layer = 2
 script = ExtResource("1_u4fg0")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-visible = false
-offset_left = 882.0
-offset_top = 452.0
-offset_right = 1134.0
-offset_bottom = 620.0
-text = "dsjflsdkjflksdfjlksdfjlskdfjlsdkfjlksdjflsdkjflsdkfjlsdkfjdslkfj"
-
 [node name="MarginContainer" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(1000, 500)
 offset_right = 1152.0
