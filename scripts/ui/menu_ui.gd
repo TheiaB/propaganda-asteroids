@@ -22,6 +22,7 @@ func _ready():
 	var viewportText:ViewportTexture = menu_background.texture
 	viewportText.viewport_path = sub_viewport.get_path()
 	SoundManager5000.music_gamestart.play()
+	#fmod loop is wrong
 	
 
 	
@@ -29,6 +30,8 @@ func _ready():
 func _on_button_play_pressed() -> void:
 	print("play!")
 	close_menu()
+	SoundManager5000.music_gamestart.stop()
+	SoundManager5000.music_contract.play()
 	emit_signal("menu_close")
 	pass # Replace with function body.
 
