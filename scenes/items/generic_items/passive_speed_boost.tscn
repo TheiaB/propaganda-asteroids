@@ -6,7 +6,7 @@
 [node name="passive_speed_boost" type="Node"]
 script = ExtResource("1_r467o")
 title = "Passive Speed Boost"
-price = 79
 
+price = 259
 video = ExtResource("2_luwvo")
 metadata/_custom_type_script = "uid://c3pv4m1xhxmy5"
