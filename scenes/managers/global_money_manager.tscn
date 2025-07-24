@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dm3u5qt3g7c5o"]
+
+[ext_resource type="Script" uid="uid://b11fcusad8tvb" path="res://scripts/managers/global_money_manager.gd" id="1_21nb1"]
+
+[node name="GlobalMoneyManager" type="Node"]
+script = ExtResource("1_21nb1")

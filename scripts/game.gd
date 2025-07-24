@@ -15,7 +15,6 @@ var ship: Ship
 @onready var camera_3d: Player_Camera = %Camera3D
 
 @export_group("💸 PLAYER RESOURCES")
-@export_range(0, 100, 1) var resource_money:int = 50
 @export_range(0, 100, 1) var resource_fuel:int = 100
 
 
@@ -87,7 +86,7 @@ func _on_ui_manager_on_contract_accept() -> void:
 	ship_manager.spawn_ship()
 	ui_manager.setUI()
 	SoundManager5000.music_ambience.play()
-	self.resource_money = 50
+	GlobalMoneyManager.resource_money = 50
 	refuel()
 	if !firstTime:
 		ship_manager.update_loadout(GlobalItemManager.get_rand_item())
@@ -115,8 +114,8 @@ func refuel() -> void:
 
 func _on_ui_manager_purchased_item(item_title: String) -> void:
 	var item = GlobalItemManager.get_item(item_title)
-	if (item.price <= self.resource_money):
-		self.resource_money -= item.price
+	if (item.price <= GlobalMoneyManager.resource_money):
+		GlobalMoneyManager.resource_money -= item.price
 		ship_manager.update_loadout(item)
 		item.in_stock = false
 		SoundManager5000.buy_button_sfx.play_one_shot()
@@ -147,12 +146,12 @@ func _on_ui_manager_on_mission_finished_popup_button_pressed(mission: Mission) -
 	print(mission)
 	mission.finish_mission()
 	ui_manager.set_displayed_missions(mission_manager.get_remaining_missions())
-	resource_money += mission.reward
+	GlobalMoneyManager.resource_money += mission.reward
 	
 
 func _on_ship_manager_activate_active_item() -> void:
-	if self.resource_money > ship.active_item.activation_cost:
-		self.resource_money -= ship.active_item.activation_cost
+	if GlobalMoneyManager.resource_money > ship.active_item.activation_cost:
+		GlobalMoneyManager.resource_money -= ship.active_item.activation_cost
 		timer_manager.startActive()
 		ship_manager.ship.active_item.activate_item(ship_manager.ship)
 		
@@ -164,8 +163,8 @@ func _on_ship_manager_deactivate_active_item() -> void:
 
 
 func _on_active_item_money_timer_timeout() -> void:
-	self.resource_money -= ship.active_item.activation_cost
-	if self.resource_money < ship.active_item.activation_cost:
+	GlobalMoneyManager.resource_money -= ship.active_item.activation_cost
+	if GlobalMoneyManager.resource_money < ship.active_item.activation_cost:
 		print("Deactivating due to insufficient funds")
 		ship_manager.ship.active_item.deactivate_item(ship_manager.ship)
 		timer_manager.active_item_money_timer.stop()
