@@ -146,12 +146,15 @@ func _process(_delta):
 	if Input.is_action_just_pressed("active_item"):
 		if active_item:
 			emit_signal("activate_active_item")
-			SoundManager5000.active_shield_sfx.play()
+			if GlobalMoneyManager.resource_money >= 1:
+				SoundManager5000.active_shield_sfx.play()
 	if Input.is_action_just_released("active_item"):
 		if active_item:
 			emit_signal("deactivate_active_item")
 			SoundManager5000.active_shield_sfx.stop()
 	
+	if GlobalMoneyManager.resource_money < 1:
+		SoundManager5000.active_shield_sfx.stop()
 
 func start_restrict_rotation(_restricted_rotation_multiplier):
 	self.restricted_rotation_multiplier = _restricted_rotation_multiplier
