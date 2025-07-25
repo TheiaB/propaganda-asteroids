@@ -197,17 +197,37 @@ offset_bottom = 220.0
 grow_horizontal = 2
 grow_vertical = 2
 bbcode_enabled = true
-text = "PROPAGANDA GAMES Presents
-
+text = "PROPAGANDIZING GAMES 2025
 Occupational Hazard
 _______________________
 
 Made during Summer Semester 2025
 at HfG Karlsruhe by
-
-Max
-Yannis
-Philip
+_______________________
+HfG - Hochschule für Gestaltung Karlsruhe
+_______________________
+Anne-Claire Michi
+Caroline Merel
+Col Lee
+Feng Qianqian
+Francesca Malfatti
+Theia Bähr
+_______________________
+HfG - Hochschule für Gestaltung Offenbach
+_______________________
+Noa Haller
+_______________________
+KIT - Karlsruher Institut für Technologie
+_______________________
+Yannis Preker
+Philip Dissert
+_______________________
+HfM - Hochschule für Musik Karlsruhe
+_______________________
+Jiyeong Lee
+Maximilian Paul Keune
+Mia Weis
+Shombit Kumar Podder
 "
 
 [node name="ButtonExitCredits" type="Button" parent="Credits"]
