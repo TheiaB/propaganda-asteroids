@@ -82,11 +82,14 @@ func _on_ui_manager_on_death_scene_next_run() -> void:
 	SoundManager5000.music_ambience.stop()
 	ui_manager.setUI("contract_scene")
 	timer_manager.stopFuel()
+	SoundManager5000.music_gamestart.stop()
+	SoundManager5000.music_contract.play()
 
 
 func _on_ui_manager_on_contract_accept() -> void:
 	ship_manager.spawn_ship()
 	ui_manager.setUI()
+	SoundManager5000.music_contract.stop()
 	SoundManager5000.music_ambience.play()
 	GlobalMoneyManager.resource_money = 50
 	mission_manager.reset_current_mission()
