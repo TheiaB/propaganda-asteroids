@@ -93,6 +93,8 @@ func on_collision_with_asteroid(damage):
 			SoundManager5000.ship_dest_sfx.play_one_shot()
 			emit_signal("ship_died")
 			queue_free()
+			SoundManager5000.music_ambience.stop()
+			SoundManager5000.music_gameend.play()
 			shield.shield_health = shield.start_health
 		if shield.shield_health == 1:
 			SoundManager5000.shield_dest_sfx.play_one_shot()
