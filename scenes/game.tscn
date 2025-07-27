@@ -104,29 +104,9 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 
 [node name="BankLoaderMain" type="FmodBankLoader" parent="."]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
 bank_paths = ["res://PropGames/Build/Desktop/Master.strings.bank", "res://PropGames/Build/Desktop/Master.bank", "res://PropGames/Build/Desktop/UI+Station_SFX.bank", "res://PropGames/Build/Desktop/ShipSFX.bank", "res://PropGames/Build/Desktop/MusicMain.bank"]
-script = null
 
 [node name="ShipListener" type="FmodListener3D" parent="."]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-script = null
 
 [node name="SpaceLowest" type="MeshInstance3D" parent="."]
 transform = Transform3D(2048, 0, 0, 0, 2048, 0, 0, 0, 2048, 0, -256, 0)
@@ -145,6 +125,15 @@ surface_material_override/0 = SubResource("ShaderMaterial_ca42v")
 
 [connection signal="timeout" from="TimerManager/FuelTimer" to="." method="_on_fuel_timer_timeout"]
 [connection signal="timeout" from="TimerManager/ActiveItemMoneyTimer" to="." method="_on_active_item_money_timer_timeout"]
+[connection signal="on_contract_accept" from="UIManager" to="." method="_on_ui_manager_on_contract_accept"]
+[connection signal="on_death_scene_next_run" from="UIManager" to="." method="_on_ui_manager_on_death_scene_next_run"]
+[connection signal="on_mission_finished_popup_button_pressed" from="UIManager" to="." method="_on_ui_manager_on_mission_finished_popup_button_pressed"]
+[connection signal="on_shop_mission_interfaces_start_mission" from="UIManager" to="." method="_on_ui_manager_on_shop_mission_interfaces_start_mission"]
+[connection signal="on_start_run" from="UIManager" to="." method="_on_ui_manager_on_start_run"]
+[connection signal="purchased_item" from="UIManager" to="." method="_on_ui_manager_purchased_item"]
+[connection signal="ship_fly" from="UIManager" to="." method="_on_ui_manager_ship_fly"]
 [connection signal="activate_active_item" from="ShipManager" to="." method="_on_ship_manager_activate_active_item"]
 [connection signal="deactivate_active_item" from="ShipManager" to="." method="_on_ship_manager_deactivate_active_item"]
 [connection signal="ship_died" from="ShipManager" to="." method="_on_ship_manager_ship_died"]
+[connection signal="enter_base" from="MissionManager" to="." method="_on_mission_manager_enter_base"]
+[connection signal="finish_mission" from="MissionManager" to="." method="_on_mission_manager_finish_mission"]
