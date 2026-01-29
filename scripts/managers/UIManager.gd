@@ -80,6 +80,7 @@ func _on_confirmation_popup_terms_accepted(item_title: String) -> void:
 	emit_signal('purchased_item', item_title)
 
 func _on_contract_scene_accept_contract() -> void:
+	print("got here")
 	emit_signal("on_contract_accept")
 	
 

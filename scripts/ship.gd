@@ -32,10 +32,13 @@ var is_on_port: bool = false
 
 func activate_docking_behaviour():
 	is_on_port = true
+	$ThrusterLoop.stop()
 	setInvinsibility(true)
+	set_process(false)
 
 func activate_set_sail_behaviour(_delay):
 	is_on_port = false
+	set_process(true)
 	delayedInvinsibilityReset(_delay)
 	
 
@@ -138,6 +141,7 @@ func _process(_delta):
 				laser_shoot_sprite.play('laser_impact')
 	else:
 		if Input.is_action_just_pressed("shoot"):
+			print("shooting")
 			SoundManager5000.laser_basic_sfx.play_one_shot()
 			weapon.shoot_projectile(self)
 			laser_shoot_sprite.play('laser_impact')

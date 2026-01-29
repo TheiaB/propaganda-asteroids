@@ -82,6 +82,8 @@ func _on_ui_manager_on_death_scene_next_run() -> void:
 	SoundManager5000.music_ambience.stop()
 	ui_manager.setUI("contract_scene")
 	timer_manager.stopFuel()
+	asteroid_manager.stop_asteroids()
+	asteroid_manager.despawn_all_asteroids()
 
 
 func _on_ui_manager_on_contract_accept() -> void:
@@ -92,6 +94,7 @@ func _on_ui_manager_on_contract_accept() -> void:
 	mission_manager.reset_current_mission()
 	refuel()
 	timer_manager.startFuel()
+	asteroid_manager.spawn_asteroids()
 	if !firstTime:
 		ship_manager.update_loadout(GlobalItemManager.find("protect_y"))
 		print("current shield", ship_manager.ship.shield)
@@ -110,7 +113,7 @@ func _on_ui_manager_on_start_run() -> void:
 
 func _on_mission_manager_finish_mission(mission : Mission) -> void:
 	mission_manager.add_mission_to_finished_missions(mission)
-	asteroid_manager.add_difficulty()
+	asteroid_manager.increase_difficulty()
 	ui_manager.clear_missions()
 	ui_manager.mission_finish_popup(mission)
 
@@ -131,13 +134,22 @@ func _on_ui_manager_purchased_item(item_title: String) -> void:
 
 
 func _on_ui_manager_ship_fly() -> void:
+	#aka exit space station
 	if ship:
 		ship.activate_set_sail_behaviour(2.0)
 		timer_manager.startFuel()
+		asteroid_manager.spawn_asteroids()
+		
 
 func _on_mission_manager_enter_base() -> void:
+	timer_manager.stopFuel()
 	refuel()
+	asteroid_manager.stop_asteroids()
+	asteroid_manager.despawn_all_asteroids()
 	ui_manager.update_shop()
+
+
+	
 	if ship:
 		ship.activate_docking_behaviour()
 	ui_manager.setUI("open_missions")
