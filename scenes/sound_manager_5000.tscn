@@ -42,6 +42,7 @@ event_name = "event:/UI_Sounds/BuyButton"
 event_guid = "{49a16144-b566-42e8-94a1-36f0bbbf52c9}"
 
 [node name="CloseMenuButton" type="FmodEventEmitter3D" parent="."]
+event_guid = "{00000000-0002-0000-0300-000026000000}"
 
 [node name="ErrorButton" type="FmodEventEmitter3D" parent="."]
 event_name = "event:/UI_Sounds/Error"

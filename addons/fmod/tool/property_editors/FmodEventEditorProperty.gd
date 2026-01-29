@@ -1,4 +1,5 @@
-@tool class_name FmodEventEditorProperty extends FmodPathEditorProperty
+@tool 
+class_name FmodEventEditorProperty extends FmodPathEditorProperty
 
 
 static var EVENT_PARAMETER_PREFIX_FOR_PROPERTIES = "fmod_parameters"

@@ -49,6 +49,10 @@ GlobalMoneyManager="*res://scenes/managers/global_money_manager.tscn"
 
 window/stretch/mode="canvas_items"
 
+[editor]
+
+export/convert_text_resources_to_binary=false
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/fmod/plugin.cfg")

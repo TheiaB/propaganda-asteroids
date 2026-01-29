@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://diuplp2icxgs3"
-path.s3tc="res://.godot/imported/Zeichenfläche 1.png-44689ce4fa6f500943647ff8751785a2.s3tc.ctex"
+uid="uid://b5jinfu8ruvu5"
+path.s3tc="res://.godot/imported/Planet_pickup_indicator2.png-466df1a91c5896ac46c55c884fd89987.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/ship/Zeichenfläche 1.png"
-dest_files=["res://.godot/imported/Zeichenfläche 1.png-44689ce4fa6f500943647ff8751785a2.s3tc.ctex"]
+source_file="res://assets/Indicators/Planet_pickup_indicator2.png"
+dest_files=["res://.godot/imported/Planet_pickup_indicator2.png-466df1a91c5896ac46c55c884fd89987.s3tc.ctex"]
 
 [params]
 

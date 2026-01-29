@@ -22,17 +22,21 @@ func init(_arrow: Arrow3D) -> void:
 func reset() -> void:
 	mission_progress = 0
 	arrow.destination_position = ZoneManager.get_home_planet().global_position
+	ZoneManager.get_home_planet().get_node("Indicator_node").visible = true
 
 
 func update_cargo_start_is_home_mission(_ship: Ship, _planet: Zone) -> GlobalStatesManager.MissionState:
 	if _planet == get_cargo_start_planet() and mission_progress == 0:
 		_ship.equip_cargo()
+		_planet.get_node("Indicator_node").visible = false
 		return update_progress_and_arrow(GlobalStatesManager.MissionState.RUNNING, get_cargo_dest_planet())
 	elif _planet == get_cargo_dest_planet() and mission_progress == 1:
 		_ship.unequip_cargo()
+		ZoneManager.get_home_planet().get_node("Indicator_node").visible = true
 		return update_progress_and_arrow(GlobalStatesManager.MissionState.DELIVERED)
 	elif _planet == ZoneManager.get_home_planet() and mission_progress == 2:
 		return update_progress_and_arrow(GlobalStatesManager.MissionState.FINISHED)
+		_planet.get_node("Indicator_node").visible = true
 		
 	return GlobalStatesManager.MissionState.ERROR
 

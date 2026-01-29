@@ -1,6 +1,5 @@
-extends Node
-
 class_name Item
+extends Node
 
 @export var title:String = "DEFAULT ITEM TITLE"
 @export var price:int = 50
@@ -52,6 +51,7 @@ class_name Item
 var camera : Player_Camera
 
 func on_equip():
+	print("on_equip")
 	pass
 
 func on_unequip():

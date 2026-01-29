@@ -56,12 +56,14 @@ func update_loadout(item : Item) -> void:
 
 func send_ship_died():
 	emit_signal("ship_died")
+	print("dead")
 	ship.weapon.on_unequip()
 	ship.shield.on_unequip()
 	for item in ship.items:
 		item.on_unequip()
 	if ship.active_item:
 		ship.active_item.on_unequip()
+	
 	
 	
 func send_activate_active_item():

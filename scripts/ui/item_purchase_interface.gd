@@ -1,4 +1,4 @@
-@tool
+#@tool
 extends Control
 
 @export var visual3D:Mesh

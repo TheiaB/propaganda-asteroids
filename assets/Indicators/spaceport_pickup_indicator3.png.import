@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://diuplp2icxgs3"
-path.s3tc="res://.godot/imported/Zeichenfläche 1.png-44689ce4fa6f500943647ff8751785a2.s3tc.ctex"
+uid="uid://d0r2bbc5myd0q"
+path.s3tc="res://.godot/imported/spaceport_pickup_indicator3.png-356de27d0e7768ef9a422bc35a67d088.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/ship/Zeichenfläche 1.png"
-dest_files=["res://.godot/imported/Zeichenfläche 1.png-44689ce4fa6f500943647ff8751785a2.s3tc.ctex"]
+source_file="res://assets/Indicators/spaceport_pickup_indicator3.png"
+dest_files=["res://.godot/imported/spaceport_pickup_indicator3.png-356de27d0e7768ef9a422bc35a67d088.s3tc.ctex"]
 
 [params]
 
