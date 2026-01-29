@@ -7,4 +7,5 @@ func _ready() -> void:
 
 func init(_camera: Player_Camera) -> void:
 	camera = _camera
+	camera.offset.y += 2.5
 	

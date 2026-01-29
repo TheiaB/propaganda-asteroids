@@ -12,5 +12,5 @@ func on_unequip():
 func buyable():
 	var zone_planet_1_health : ZonePlanet = ZoneManager.get_planet_by_enum(ZoneManager.Planets.PLANET_WATER)
 
-	print("zone_planet_1_heath: ", zone_planet_1_health.health)
+	print("zone_planet_1_health: ", zone_planet_1_health.health)
 	return true

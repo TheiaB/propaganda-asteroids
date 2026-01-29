@@ -33,6 +33,7 @@ func _ready():
 
 	ui_manager.set_displayed_missions(mission_manager.missions)
 	asteroid_manager.set_difficulty(1)
+	asteroid_manager.spawn_asteroids()
 	
 	GlobalMenu.connect("menu_open",pause)
 	GlobalMenu.connect("menu_close",unpause)
@@ -142,14 +143,12 @@ func _on_ui_manager_ship_fly() -> void:
 		
 
 func _on_mission_manager_enter_base() -> void:
+	print("entered base")
 	timer_manager.stopFuel()
 	refuel()
 	asteroid_manager.stop_asteroids()
 	asteroid_manager.despawn_all_asteroids()
 	ui_manager.update_shop()
-
-
-	
 	if ship:
 		ship.activate_docking_behaviour()
 	ui_manager.setUI("open_missions")
