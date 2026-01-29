@@ -1,10 +1,11 @@
-@tool class_name FmodBankExplorer extends Window
+@tool 
+class_name FmodBankExplorer extends Window
 
 enum ToDisplayFlags {
-    BANKS = 1,
-    BUSES = 2,
-    VCA = 4,
-    EVENTS = 8
+	BANKS = 1,
+	BUSES = 2,
+	VCA = 4,
+	EVENTS = 8
 }
 
 static var _fmod_icon = load("res://addons/fmod/icons/fmod_icon.svg")
@@ -131,80 +132,80 @@ func generate_tree(to_display: int, callable: Callable = Callable()):
 
 
 func _add_elements_as_tree(elements: Array, parent: TreeItem):
-    var stack = Array()
-    for element in elements:
-        _add_element_to_stack(stack, parent, element)
+	var stack = Array()
+	for element in elements:
+		_add_element_to_stack(stack, parent, element)
 
 
 func _add_element_to_stack(stack: Array, parent_root: TreeItem, path_element):
-    var fmod_path: String = path_element.get_path()
-    var path_parts := fmod_path.split("/")
-    if path_parts[path_parts.size() - 1] == "":
-        path_parts.remove_at(path_parts.size() - 1)
-    
-    for i in range(0, path_parts.size()):
-        var path_part = path_parts[i]
-        path_part = path_part if path_part != "bus:" else "Master"
-        
-        if i >= stack.size():
-            var parent_item = parent_root if stack.is_empty() else stack[stack.size() - 1]
-            var tree_item = tree.create_item(parent_item)
-            tree_item.set_text(0, path_part)
-            if i == path_parts.size() - 1:
-                tree_item.set_metadata(0, path_element)
-                tree_item.set_icon(0, _get_icon_for_fmod_path(fmod_path))
-            stack.append(tree_item)
-            continue
-        
-        if stack[i].get_text(0) != path_part:
-            for j in range(stack.size() - 1, i - 1, -1):
-                stack.remove_at(j)
-            
-            var parent_item = parent_root if stack.is_empty() else stack[stack.size() - 1]
-            var tree_item = tree.create_item(parent_item)
-            tree_item.set_text(0, path_part)
-            if i == path_parts.size() - 1:
-                tree_item.set_metadata(0, path_element)
-                tree_item.set_icon(0, _get_icon_for_fmod_path(fmod_path))
-            stack.append(tree_item)
+	var fmod_path: String = path_element.get_path()
+	var path_parts := fmod_path.split("/")
+	if path_parts[path_parts.size() - 1] == "":
+		path_parts.remove_at(path_parts.size() - 1)
+	
+	for i in range(0, path_parts.size()):
+		var path_part = path_parts[i]
+		path_part = path_part if path_part != "bus:" else "Master"
+		
+		if i >= stack.size():
+			var parent_item = parent_root if stack.is_empty() else stack[stack.size() - 1]
+			var tree_item = tree.create_item(parent_item)
+			tree_item.set_text(0, path_part)
+			if i == path_parts.size() - 1:
+				tree_item.set_metadata(0, path_element)
+				tree_item.set_icon(0, _get_icon_for_fmod_path(fmod_path))
+			stack.append(tree_item)
+			continue
+		
+		if stack[i].get_text(0) != path_part:
+			for j in range(stack.size() - 1, i - 1, -1):
+				stack.remove_at(j)
+			
+			var parent_item = parent_root if stack.is_empty() else stack[stack.size() - 1]
+			var tree_item = tree.create_item(parent_item)
+			tree_item.set_text(0, path_part)
+			if i == path_parts.size() - 1:
+				tree_item.set_metadata(0, path_element)
+				tree_item.set_icon(0, _get_icon_for_fmod_path(fmod_path))
+			stack.append(tree_item)
 
 
 func _on_item_selected():
-    var metadata = tree.get_selected().get_metadata(0)
-    if metadata == null or !metadata.get_guid():
-        %PathsBG.hide()
-        %EventPlayControls.hide()
-        copy_path_button.visible = false
-        copy_guid_button.visible = false
-        %SelectButton.visible = false
-        %ParametersLabel.visible = false
-        %ParametersContainer.visible = false
-        return
-    %GuidLabel.set_text(metadata.get_guid())
-    %PathLabel.set_text(metadata.get_path())
-    %PathsBG.show()
-    if should_display_copy_buttons:
-        copy_path_button.visible = true
-        copy_guid_button.visible = true
-    if should_display_select_button:
-        %SelectButton.visible = true
-    
-    if metadata is FmodEventDescription:
-        %EventPlayControls.set_fmod_event(metadata)
-        var _show_parameter_controls : bool = %EventParametersDisplay.set_fmod_event(metadata)
-        %ParametersLabel.visible = _show_parameter_controls
-        %ParametersContainer.visible = _show_parameter_controls
-        return
-    %EventPlayControls.hide()
-    %EventParametersDisplay.hide()
-    %ParametersLabel.visible = false
-    %ParametersContainer.visible = false
+	var metadata = tree.get_selected().get_metadata(0)
+	if metadata == null or !metadata.get_guid():
+		%PathsBG.hide()
+		%EventPlayControls.hide()
+		copy_path_button.visible = false
+		copy_guid_button.visible = false
+		%SelectButton.visible = false
+		%ParametersLabel.visible = false
+		%ParametersContainer.visible = false
+		return
+	%GuidLabel.set_text(metadata.get_guid())
+	%PathLabel.set_text(metadata.get_path())
+	%PathsBG.show()
+	if should_display_copy_buttons:
+		copy_path_button.visible = true
+		copy_guid_button.visible = true
+	if should_display_select_button:
+		%SelectButton.visible = true
+	
+	if metadata is FmodEventDescription:
+		%EventPlayControls.set_fmod_event(metadata)
+		var _show_parameter_controls : bool = %EventParametersDisplay.set_fmod_event(metadata)
+		%ParametersLabel.visible = _show_parameter_controls
+		%ParametersContainer.visible = _show_parameter_controls
+		return
+	%EventPlayControls.hide()
+	%EventParametersDisplay.hide()
+	%ParametersLabel.visible = false
+	%ParametersContainer.visible = false
 
 func _on_copy_path_button():
-    DisplayServer.clipboard_set(%PathLabel.text)
+	DisplayServer.clipboard_set(%PathLabel.text)
 
 func _on_copy_guid_button():
-    DisplayServer.clipboard_set(%GuidLabel.text)
+	DisplayServer.clipboard_set(%GuidLabel.text)
 
 
 func on_refresh_banks_button_pressed() -> void:
@@ -218,20 +219,20 @@ func on_refresh_banks_button_pressed() -> void:
 
 
 func close_window():
-    %EventPlayControls.stop_event()
-    visible = false
+	%EventPlayControls.stop_event()
+	visible = false
 
 static func _get_icon_for_fmod_path(fmod_path: String) -> Texture2D:
-    var icon: Texture2D = null
-    if fmod_path.begins_with("bus:/"):
-        icon = _bus_icon
-    elif fmod_path.begins_with("event:/"):
-        icon = _event_icon
-    elif fmod_path.begins_with("vca:/"):
-        icon = _vca_icon
-    elif fmod_path.begins_with("snapshot:/"):
-        icon = _snapshot_icon
-    return icon
+	var icon: Texture2D = null
+	if fmod_path.begins_with("bus:/"):
+		icon = _bus_icon
+	elif fmod_path.begins_with("event:/"):
+		icon = _event_icon
+	elif fmod_path.begins_with("vca:/"):
+		icon = _vca_icon
+	elif fmod_path.begins_with("snapshot:/"):
+		icon = _snapshot_icon
+	return icon
 
 static func sort_by_path(a, b):
-    return a.get_path().casecmp_to(b.get_path()) < 0
+	return a.get_path().casecmp_to(b.get_path()) < 0

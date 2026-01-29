@@ -100,13 +100,11 @@ frame_progress = 0.344124
 
 [node name="SpaceLowest" type="MeshInstance3D" parent="."]
 transform = Transform3D(2048, 0, 0, 0, 2048, 0, 0, 0, 2048, 0, -256, 0)
-visible = false
 mesh = SubResource("PlaneMesh_snkhy")
 surface_material_override/0 = SubResource("ShaderMaterial_3lj46")
 
 [node name="SpaceMiddle" type="MeshInstance3D" parent="."]
 transform = Transform3D(2048, 0, 0, 0, 2048, 0, 0, 0, 2048, 0, -96, 0)
-visible = false
 mesh = SubResource("PlaneMesh_snkhy")
 surface_material_override/0 = SubResource("ShaderMaterial_chh5i")
 

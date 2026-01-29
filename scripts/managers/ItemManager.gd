@@ -15,6 +15,7 @@ func _ready() -> void:
 	instantiate_all_in_path("res://scenes/items/shields/", shields)
 	instantiate_all_in_path("res://scenes/items/generic_items/", generic_items)
 	instantiate_all_in_path("res://scenes/items/active_items/", active_items)
+	print("initiate_weapons")
 
 
 func find(unique_name:String):

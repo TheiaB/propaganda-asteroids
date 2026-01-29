@@ -126,6 +126,7 @@ columns = 3
 script = ExtResource("7_m2gsp")
 
 [node name="PurchaseInterface" type="Control" parent="ShopMissionInterfaces/TabContainer/Shop"]
+process_mode = 4
 visible = false
 custom_minimum_size = Vector2(800, 420)
 layout_mode = 1
@@ -182,6 +183,7 @@ text = "Cubium"
 horizontal_alignment = 1
 
 [node name="ItemSubViewport" parent="ShopMissionInterfaces/TabContainer/Shop/PurchaseInterface/HBoxContainer/ItemPreview" instance=ExtResource("9_2whxp")]
+process_mode = 4
 own_world_3d = true
 
 [node name="MeshInstance3D" parent="ShopMissionInterfaces/TabContainer/Shop/PurchaseInterface/HBoxContainer/ItemPreview/ItemSubViewport/Pivot" index="0"]

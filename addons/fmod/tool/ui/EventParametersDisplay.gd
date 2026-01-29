@@ -1,4 +1,5 @@
-@tool class_name EventParametersDisplay extends ScrollContainer
+@tool 
+class_name EventParametersDisplay extends ScrollContainer
 
 static var parameter_display_scene: PackedScene = load("res://addons/fmod/tool/ui/ParameterDisplay.tscn")
 

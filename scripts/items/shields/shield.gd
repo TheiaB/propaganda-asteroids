@@ -6,3 +6,4 @@ class_name Shield
 
 func activate_shield(_ship : Ship):
 	pass
+	print("activate shield")

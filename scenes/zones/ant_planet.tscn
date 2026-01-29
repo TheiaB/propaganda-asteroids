@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://fps07losnw76"]
+[gd_scene load_steps=9 format=3 uid="uid://fps07losnw76"]
 
 [ext_resource type="PackedScene" uid="uid://dlotxfarbs74i" path="res://scenes/zones/zone_planet.tscn" id="1_ar7jf"]
 [ext_resource type="PackedScene" uid="uid://d4kjfwttxq58j" path="res://assets/planets/planet_ant_iteration_1/planet_ant_iteration_1.gltf" id="3_7rq7q"]
 [ext_resource type="PackedScene" uid="uid://b15dvxlajtftc" path="res://assets/planets/planet_ant_iteration_2/planet_ant_iteration_2.gltf" id="4_t6d8a"]
 [ext_resource type="PackedScene" uid="uid://cl8onqkyx6088" path="res://assets/planets/planet_ant_iteration_3/planet_ant_iteration_3.gltf" id="5_4xiri"]
+[ext_resource type="Texture2D" uid="uid://b5jinfu8ruvu5" path="res://assets/Indicators/Planet_pickup_indicator2.png" id="5_t6d8a"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7mx2p"]
 radius = 7.04245
@@ -15,7 +16,6 @@ radius = 7.64095
 
 [node name="AntPlanet" node_paths=PackedStringArray("planet_iterations") instance=ExtResource("1_ar7jf")]
 unique_name = "antplanet"
-rotation_speed = -0.05
 planet_iterations = [NodePath("planet_ant_iteration_1"), NodePath("planet_ant_iteration_2"), NodePath("planet_ant_iteration_3")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ZoneArea" index="0"]
@@ -41,5 +41,9 @@ visible = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
 transform = Transform3D(14, 0, 0, 0, 14, 0, 0, 0, 14, 0, 0, 0)
 shape = SubResource("CylinderShape3D_o7a0i")
+
+[node name="Sprite3D" type="Sprite3D" parent="." index="6"]
+transform = Transform3D(0.143661, 0.0593243, 2.59315e-09, 0, -6.79398e-09, 0.155428, 0.0593243, -0.143661, -6.27963e-09, -2.79725, -2.04173, 6.43446)
+texture = ExtResource("5_t6d8a")
 
 [connection signal="body_entered" from="ZoneArea" to="." method="_on_player_enter_zone"]
