@@ -76,13 +76,12 @@ func set_difficulty(level: int):
 	level = clamp(level, 1, 10)
 	current_difficulty_level = level
 	var t = float(level - 1) / 9.0
-	asteroid_timer.wait_time = lerp(0.8, 0.2, t)
+	asteroid_timer.wait_time = lerp(0.8, 0.1, t)
 	spawn_weights.clear()
 	bound_force_range.x = lerp(0.501, 0.9, t)
 	bound_force_range.y = lerp(0.7, 1.0, t)
-	asteroid_speed_factor_range.x = lerp(0.3, 0.7, t)
-	asteroid_speed_factor_range.y = lerp(0.5, 0.9, t)
-	
+	asteroid_speed_factor_range.x = lerp(0.3, 0.9, t)
+	asteroid_speed_factor_range.y = lerp(0.5, 1.1, t)
 	if current_difficulty_level <= 2:
 		FmodServer.set_global_parameter_by_name("Space Decay", 0)
 	if current_difficulty_level == 3:  

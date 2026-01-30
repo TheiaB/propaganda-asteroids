@@ -13,7 +13,6 @@ signal accept_contract
 func _ready():
 	show_contract()
 
-
 func show_contract() -> void:
 	contract_text.text = """
 Hiring notice:

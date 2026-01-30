@@ -7,8 +7,10 @@ class_name ItemPanel
 @export var description:String
 @export var presentation_video : VideoStream
 
-@onready var label_title: Label = $VBoxContainer/MarginContainer/HBoxContainer/LabelTitle
-@onready var label_price: Label = $VBoxContainer/MarginContainer/HBoxContainer/LabelPrice
+#@onready var label_title: Label = $VBoxContainer/MarginContainer/HBoxContainer/LabelTitle
+#@onready var label_price: Label = $VBoxContainer/MarginContainer/HBoxContainer/LabelPrice
+@onready var label_title: Label = $VBoxContainer/Control/LabelTitle
+@onready var label_price: Label = $VBoxContainer/Control/LabelPrice
 @onready var video_stream_player: VideoStreamPlayer = $VBoxContainer/VideoStreamPlayer
 @onready var description_box : Panel = $Description
 @onready var description_label : Label = $Description/DescriptionBox/ScrollContainer/Description
@@ -25,7 +27,7 @@ func update_item():
 	if(title != null):
 		label_title.text = title
 	if(price != null):
-		label_price.text = "		" + str(price) + " $"
+		label_price.text = "		" + str(price) + "$"
 	if(description != null):
 		description_label.text = description 
 	

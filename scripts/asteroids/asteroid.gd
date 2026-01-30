@@ -101,7 +101,7 @@ func destroy_me():
 	if !is_spawn_invincible:
 		queue_free()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if(linear_velocity.length() > speed * 2.0):
 		linear_velocity -= linear_velocity.normalized() * 0.1
 	elif(linear_velocity.length() < speed * 0.5):

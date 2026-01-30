@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ccdafq5nlkpgj"]
 
 [ext_resource type="Script" uid="uid://yit734t8t3ho" path="res://scripts/items/weapons/basic_weapon.gd" id="1_qlgc1"]
-[ext_resource type="VideoStream" path="res://assets/itemvideos/0001_2.ogv" id="2_8gh2c"]
+[ext_resource type="VideoStream" uid="uid://ccvarnkb72nkc" path="res://assets/itemvideos/0001_2.ogv" id="2_8gh2c"]
 
 [node name="basic_weapon" type="Node"]
 script = ExtResource("1_qlgc1")

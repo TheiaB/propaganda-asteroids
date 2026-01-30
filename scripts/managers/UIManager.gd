@@ -20,6 +20,8 @@ class_name UIManager
 
 @onready var shop_grid: ShopGrid = %GridContainer
 
+@onready var ingame_interface : CanvasLayer = $IngameInterface
+
 
 
 
@@ -46,8 +48,10 @@ func setUI(ui_name: String = ""):
 	death_scene.visible = false
 	start_scene.visible = false
 	contract_scene.visible = false
+	#hide_ingame_interface()
 	
 	if ui_name == "death_scene":
+		hide_ingame_interface()
 		death_scene.visible = true
 	
 	if ui_name == "start_scene":
@@ -55,24 +59,35 @@ func setUI(ui_name: String = ""):
 	
 	if ui_name == "contract_scene":
 		contract_scene.visible = true
+		hide_ingame_interface()
 		SoundManager5000.music_gamestart.stop()
 		SoundManager5000.music_contract.play()
 		contract_scene.show_contract()
 		
 	if ui_name == "open_missions":
 		shop_mission_interface.open_missions()
+		#hide_ingame_interface()
 		
 	if ui_name == "close_all":
 		shop_mission_interface.close_all()
+		show_ingame_interface()
+		
 
 func update_shop():
 	shop_grid.init_grid()
+	
+func hide_ingame_interface() -> void:
+	ingame_interface.visible = false
+	
+func show_ingame_interface() -> void:
+	ingame_interface.visible = true
 
 func _on_start_run() -> void:
 	emit_signal("on_start_run")
 
 
 func _on_death_scene_next_run() -> void:
+	print("death scene next")
 	emit_signal("on_death_scene_next_run")
 
 
@@ -80,13 +95,13 @@ func _on_confirmation_popup_terms_accepted(item_title: String) -> void:
 	emit_signal('purchased_item', item_title)
 
 func _on_contract_scene_accept_contract() -> void:
-	print("got here")
 	emit_signal("on_contract_accept")
+	show_ingame_interface()
 	
 
 func _on_shop_mission_interfaces_ship_fly() -> void:
-	print("space station exited")
 	emit_signal("ship_fly")
+	show_ingame_interface()
 	
 func popup_mission(mission: Mission):
 	mission_popup.popup_mission(mission)
@@ -95,6 +110,7 @@ func _on_shop_mission_interfaces_mission_open_pressed(mission: Mission) -> void:
 	popup_mission(mission)
 	
 func set_displayed_missions(missions : Array[Mission]):
+	print("displaying missions")
 	mission_interface.set_displayed_mission(missions)
 
 func clear_missions():
@@ -112,6 +128,7 @@ func _on_mission_popup_on_mission_popup_button_pressed(mission: Mission) -> void
 	SoundManager5000.music_ambience.play()
 	emit_signal("on_shop_mission_interfaces_start_mission", mission)
 	emit_signal("ship_fly")
+	show_ingame_interface()
 
 
 func _on_mission_popup_on_finish_mission_popup_button_pressed(mission: Mission) -> void:

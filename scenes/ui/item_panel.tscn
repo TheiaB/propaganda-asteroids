@@ -3,23 +3,23 @@
 [ext_resource type="Script" uid="uid://ci0anbyggpyh7" path="res://scripts/ui/item_panel.gd" id="1_0k6an"]
 
 [node name="ItemPanel" type="Panel"]
-custom_minimum_size = Vector2(256, 285)
+custom_minimum_size = Vector2(255, 288)
 offset_left = 1.0
-offset_right = 257.0
-offset_bottom = 285.0
+offset_right = 256.0
+offset_bottom = 288.0
 mouse_default_cursor_shape = 2
 script = ExtResource("1_0k6an")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
-offset_right = 254.0
-offset_bottom = 256.0
+offset_right = 255.0
+offset_bottom = 246.0
 color = Color(0, 0, 0, 0.752941)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
 offset_right = 256.0
-offset_bottom = 290.0
+offset_bottom = 288.0
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 256)
@@ -28,48 +28,55 @@ autoplay = true
 expand = true
 loop = true
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_right = 8
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
+[node name="Control" type="Control" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="LabelTitle" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
+[node name="LabelTitle" type="Label" parent="VBoxContainer/Control"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 0
+offset_left = 7.0
+offset_top = -4.0
+offset_right = 151.0
+offset_bottom = 28.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -3
+theme_override_font_sizes/font_size = 14
+vertical_alignment = 1
+autowrap_mode = 3
+clip_text = true
+max_lines_visible = 2
 
-[node name="LabelPrice" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
+[node name="LabelPrice" type="Label" parent="VBoxContainer/Control"]
+layout_mode = 0
+offset_left = 151.0
+offset_top = -4.0
+offset_right = 207.0
+offset_bottom = 28.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "		0 $"
-horizontal_alignment = 2
+theme_override_font_sizes/font_size = 16
+text = "		0$"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="BuyButton" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -30.662
-offset_top = -72.0
-offset_right = 30.6622
-offset_bottom = -29.749
-grow_horizontal = 2
-grow_vertical = 0
+layout_mode = 0
+offset_left = 207.0
+offset_top = 256.0
+offset_right = 268.324
+offset_bottom = 298.251
+scale = Vector2(0.76, 0.76)
 mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 16
 text = "Buy"
 
 [node name="Description" type="Panel" parent="."]
 visible = false
 layout_mode = 0
 offset_right = 255.0
-offset_bottom = 284.0
+offset_bottom = 288.0
 
 [node name="ColorRect2" type="ColorRect" parent="Description"]
-custom_minimum_size = Vector2(255, 242)
+custom_minimum_size = Vector2(255, 256)
 layout_mode = 2
 offset_right = 255.0
 offset_bottom = 242.0
@@ -77,7 +84,7 @@ color = Color(0, 0, 0, 0.85)
 
 [node name="DescriptionBox" type="VBoxContainer" parent="Description"]
 layout_mode = 0
-offset_right = 255.0
+offset_right = 256.0
 offset_bottom = 242.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Description/DescriptionBox"]
@@ -90,17 +97,56 @@ vertical_scroll_mode = 2
 clip_contents = true
 custom_minimum_size = Vector2(248, 242)
 layout_mode = 2
-text = "jkjlkjkljlkj"
 autowrap_mode = 2
 
 [node name="CloseDescription" type="Button" parent="Description"]
 layout_mode = 2
-offset_top = 242.0
-offset_right = 255.0
-offset_bottom = 284.251
+offset_left = -1.0
+offset_top = 246.0
+offset_right = 254.0
+offset_bottom = 288.251
 text = "Close"
+
+[node name="Deprecated" type="Node" parent="."]
+
+[node name="BuyButton" type="Button" parent="Deprecated"]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -384.0
+offset_top = -648.0
+offset_right = -322.676
+offset_bottom = -605.749
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+text = "Buy"
+
+[node name="MarginContainer" type="MarginContainer" parent="Deprecated"]
+visible = false
+offset_left = 1.0
+offset_top = 260.0
+offset_right = 257.0
+offset_bottom = 278.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Deprecated/MarginContainer"]
+layout_mode = 2
+
+[node name="LabelTitle" type="Label" parent="Deprecated/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+
+[node name="LabelPrice" type="Label" parent="Deprecated/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "		0 $"
+horizontal_alignment = 2
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="BuyButton" to="." method="_on_buy_button_pressed"]
 [connection signal="pressed" from="Description/CloseDescription" to="." method="_on_close_description_pressed"]
+[connection signal="pressed" from="Deprecated/BuyButton" to="." method="_on_buy_button_pressed"]

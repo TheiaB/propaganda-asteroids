@@ -8,6 +8,12 @@ class_name TimerManager
 func startFuel() -> void:
 	fuel_timer.start()
 	
+func pauseFuel() -> void:
+	fuel_timer.paused = true
+	
+func unpauseFuel() -> void:
+	fuel_timer.paused = false
+	
 func stopFuel() -> void:
 	fuel_timer.stop()
 	

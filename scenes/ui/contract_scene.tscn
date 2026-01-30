@@ -1,15 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://cr70ytbjn72bw"]
+[gd_scene load_steps=3 format=3 uid="uid://cr70ytbjn72bw"]
 
 [ext_resource type="Script" uid="uid://cv80cbmj0hqb7" path="res://scripts/ui/contract_scene_button.gd" id="1_1ln4n"]
+[ext_resource type="Theme" uid="uid://bb6vwl0h1flws" path="res://assets/ui/theme/FlatUI4/kenneyUI-blue.tres" id="2_5t2tq"]
 
 [node name="contract_scene" type="Node2D"]
 script = ExtResource("1_1ln4n")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_left = 214.0
+offset_left = 28.0
 offset_top = 35.0
-offset_right = 977.0
+offset_right = 1123.0
 offset_bottom = 613.0
+theme = ExtResource("2_5t2tq")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -19,7 +21,7 @@ vertical_scroll_mode = 2
 scroll_deadzone = 50
 
 [node name="Contract" type="Label" parent="VBoxContainer/ScrollContainer"]
-custom_minimum_size = Vector2(755, 610)
+custom_minimum_size = Vector2(1087, 578)
 layout_mode = 2
 autowrap_mode = 1
 
@@ -28,5 +30,14 @@ unique_name_in_owner = true
 layout_mode = 2
 disabled = true
 text = "Accept Contract"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+show_behind_parent = true
+offset_left = 28.0
+offset_top = 36.0
+offset_right = 1123.0
+offset_bottom = 613.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.654902)
 
 [connection signal="pressed" from="VBoxContainer/AcceptContract" to="." method="_on_accept_contract_pressed"]

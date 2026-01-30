@@ -48,7 +48,8 @@ axis_lock_linear_y = true
 mass = 70.0
 physics_material_override = SubResource("PhysicsMaterial_t0pqt")
 script = ExtResource("1_jn443")
-speed = 5
+speed = 4
+health = 2
 metadata/_custom_type_script = "uid://bxh6oltf5uiv6"
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="."]

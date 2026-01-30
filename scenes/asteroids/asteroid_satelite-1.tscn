@@ -49,7 +49,8 @@ mass = 71.966
 physics_material_override = SubResource("PhysicsMaterial_akfqu")
 gravity_scale = 0.0
 script = ExtResource("1_2h0cg")
-speed = 5
+speed = 4
+health = 2
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="."]
 visible = false

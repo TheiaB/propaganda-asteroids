@@ -26,3 +26,4 @@ func set_displayed_mission(missions: Array[Mission]):
 		vbox.add_child(get_button(mission))
 	add_child(vbox)
 	vbox.position -= vbox.size / 2
+	vbox.position.y -= 50
