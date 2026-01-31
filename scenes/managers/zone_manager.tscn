@@ -20,3 +20,6 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 14.6973, 0, -66.9267)
 
 [node name="ZoneHome" parent="." instance=ExtResource("3_f8inv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, -16.683)
+
+[node name="ArrowPos" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75583, 0, -10.2263)

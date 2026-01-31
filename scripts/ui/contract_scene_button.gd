@@ -3,12 +3,23 @@ extends Node2D
 @onready var scroll_container: ScrollContainer = $VBoxContainer/ScrollContainer
 #@onready var contract_text: RichTextLabel = $VBoxContainer/ScrollContainer/ContractText
 @onready var contract_text : Label = $VBoxContainer/ScrollContainer/Contract
+@onready var time: Timer = $Timer
 
 var last_scroll_value := -1
 signal accept_contract
 
 func _ready():
 	show_contract()
+	time.start()
+	time.timeout.connect(_on_timeout)
+	
+func _on_timeout() -> void:
+	if $Ad1.visible == false:
+		$Ad1.visible = true
+		$Ad2.visible = false
+	elif $Ad1.visible == true:
+		$Ad1.visible = false
+		$Ad2.visible = true
 
 func show_contract() -> void:
 	contract_text.text = """

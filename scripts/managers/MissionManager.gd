@@ -44,7 +44,7 @@ func init(_arrow:Arrow3D) -> void:
 	zone_home.player_entered.connect(on_home_zone_player_entered)
 	# guide to home at first
 	arrow.ship = ship
-	arrow.destination_position = zone_home.zone_area.global_position
+	arrow.destination_position = Vector3(-3.0, 0.0, -10.22)
 	
 	for zone_planet in zone_planets:
 		zone_planet.player_entered.connect(player_entered_planet_zone)

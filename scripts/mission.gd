@@ -23,18 +23,32 @@ func init(_arrow: Arrow3D) -> void:
 
 func reset() -> void:
 	mission_progress = 0
-	arrow.destination_position = ZoneManager.get_home_planet().global_position
+	arrow.destination_position = Vector3(-3.0, 0.0, -10.22)
 	ZoneManager.get_home_planet().get_node("Indicator_node").visible = true
-
+	ZoneManager.get_planet_by_enum(ZoneManager.Planets.PLANET_ANT).get_node("ant_planet_indic").visible = false
+	ZoneManager.get_planet_by_enum(ZoneManager.Planets.PLANET_CRYSTAL).get_node("crystal_planet_indic").visible = false
+	ZoneManager.get_planet_by_enum(ZoneManager.Planets.PLANET_WATER).get_node("water_planet_indic").visible = false
 
 func update_cargo_start_is_home_mission(_ship: Ship, _planet: Zone) -> GlobalStatesManager.MissionState:
 	if _planet == get_cargo_start_planet() and mission_progress == 0:
 		_ship.equip_cargo()
 		_planet.get_node("Indicator_node").visible = false
+		if get_cargo_dest_planet() == ZoneManager.get_planet_by_enum(ZoneManager.Planets.PLANET_ANT):
+			ZoneManager.get_planet_by_enum(cargo_dest).get_node("ant_planet_indic").visible = true
+		if get_cargo_dest_planet() == ZoneManager.get_planet_by_enum(ZoneManager.Planets.PLANET_CRYSTAL):
+			ZoneManager.get_planet_by_enum(cargo_dest).get_node("crystal_planet_indic").visible = true
+		if get_cargo_dest_planet() == ZoneManager.get_planet_by_enum(ZoneManager.Planets.PLANET_WATER):
+			ZoneManager.get_planet_by_enum(cargo_dest).get_node("water_planet_indic").visible = true
 		return update_progress_and_arrow(GlobalStatesManager.MissionState.RUNNING, get_cargo_dest_planet())
 	elif _planet == get_cargo_dest_planet() and mission_progress == 1:
 		_ship.unequip_cargo()
 		ZoneManager.get_home_planet().get_node("Indicator_node").visible = true
+		if get_cargo_dest_planet() == ZoneManager.get_planet_by_enum(ZoneManager.Planets.PLANET_ANT):
+			ZoneManager.get_planet_by_enum(cargo_dest).get_node("ant_planet_indic").visible = false
+		if get_cargo_dest_planet() == ZoneManager.get_planet_by_enum(ZoneManager.Planets.PLANET_CRYSTAL):
+			ZoneManager.get_planet_by_enum(cargo_dest).get_node("crystal_planet_indic").visible = false
+		if get_cargo_dest_planet() == ZoneManager.get_planet_by_enum(ZoneManager.Planets.PLANET_WATER):
+			ZoneManager.get_planet_by_enum(cargo_dest).get_node("water_planet_indic").visible = false
 		return update_progress_and_arrow(GlobalStatesManager.MissionState.DELIVERED)
 	elif _planet == ZoneManager.get_home_planet() and mission_progress == 2:
 		return update_progress_and_arrow(GlobalStatesManager.MissionState.FINISHED)
@@ -44,9 +58,24 @@ func update_cargo_start_is_home_mission(_ship: Ship, _planet: Zone) -> GlobalSta
 
 func update_cargo_dest_is_home_mission(_ship: Ship, _planet: Zone) -> GlobalStatesManager.MissionState:
 	if _planet == ZoneManager.get_home_planet() and mission_progress == 0:
+		_planet.get_node("Indicator_node").visible = false
+		print(get_cargo_start_planet())
+		if get_cargo_start_planet() == ZoneManager.get_planet_by_enum(ZoneManager.Planets.PLANET_ANT):
+			ZoneManager.get_planet_by_enum(cargo_start).get_node("ant_planet_indic").visible = true
+		if get_cargo_start_planet() == ZoneManager.get_planet_by_enum(ZoneManager.Planets.PLANET_CRYSTAL):
+			ZoneManager.get_planet_by_enum(cargo_start).get_node("crystal_planet_indic").visible = true
+		if get_cargo_start_planet() == ZoneManager.get_planet_by_enum(ZoneManager.Planets.PLANET_WATER):
+			ZoneManager.get_planet_by_enum(cargo_start).get_node("water_planet_indic").visible = true
 		return update_progress_and_arrow(GlobalStatesManager.MissionState.RUNNING, get_cargo_start_planet())
 	elif _planet == get_cargo_start_planet() and mission_progress == 1:
 		_ship.equip_cargo()
+		ZoneManager.get_home_planet().get_node("Indicator_node").visible = true
+		if get_cargo_start_planet() == ZoneManager.get_planet_by_enum(ZoneManager.Planets.PLANET_ANT):
+			ZoneManager.get_planet_by_enum(cargo_start).get_node("ant_planet_indic").visible = false
+		if get_cargo_start_planet() == ZoneManager.get_planet_by_enum(ZoneManager.Planets.PLANET_CRYSTAL):
+			ZoneManager.get_planet_by_enum(cargo_start).get_node("crystal_planet_indic").visible = false
+		if get_cargo_start_planet() == ZoneManager.get_planet_by_enum(ZoneManager.Planets.PLANET_WATER):
+			ZoneManager.get_planet_by_enum(cargo_start).get_node("water_planet_indic").visible = false
 		return update_progress_and_arrow(GlobalStatesManager.MissionState.RUNNING)
 	elif _planet == get_cargo_dest_planet() and mission_progress == 2:
 		_ship.unequip_cargo()
@@ -81,6 +110,8 @@ func update_mission_state(_ship: Ship, _planet: Zone) -> GlobalStatesManager.Mis
 func update_progress_and_arrow(ret_val:GlobalStatesManager.MissionState, _zone: Zone = ZoneManager.get_home_planet()) -> GlobalStatesManager.MissionState:
 	mission_progress += 1
 	arrow.destination_position = _zone.global_position
+	if _zone == ZoneManager.get_home_planet():
+		arrow.destination_position = Vector3(-3.0, 0.0, -10.22)
 	return ret_val
 
 func get_cargo_start_planet() -> ZonePlanet:
