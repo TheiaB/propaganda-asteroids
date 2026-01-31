@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bc7jaqjp0f7tn"]
+[gd_scene load_steps=10 format=3 uid="uid://bc7jaqjp0f7tn"]
 
 [ext_resource type="PackedScene" uid="uid://dlotxfarbs74i" path="res://scenes/zones/zone_planet.tscn" id="1_s1150"]
 [ext_resource type="PackedScene" uid="uid://c8af05cuyt4dq" path="res://assets/planets/planet_water_iteration_0/planet_ocean_iteration_0.gltf" id="2_o7a0i"]
 [ext_resource type="PackedScene" uid="uid://b6ptk2wrnj86k" path="res://assets/planets/planet_water_iteration_1/planet_ocean_iteration_1.gltf" id="3_wk4n5"]
 [ext_resource type="PackedScene" uid="uid://i6quiqsyh7d5" path="res://assets/planets/planet_water_iteration_2/planet_ocean_iteration_2.gltf" id="4_sbtva"]
 [ext_resource type="PackedScene" uid="uid://d1dcadsevoqir" path="res://assets/planets/planet_water_iteration_3/planet_ocean_iteration_3.gltf" id="5_xnumu"]
+[ext_resource type="Texture2D" uid="uid://b5jinfu8ruvu5" path="res://assets/Indicators/Planet_pickup_indicator2.png" id="6_wk4n5"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7mx2p"]
 radius = 7.04245
@@ -46,5 +47,32 @@ visible = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
 transform = Transform3D(14, 0, 0, 0, 14, 0, 0, 0, 14, 0, 0, 0)
 shape = SubResource("CylinderShape3D_o7a0i")
+
+[node name="water_planet_indic" type="Node3D" parent="." index="7"]
+transform = Transform3D(0.146178, 0.063885, 2.7925e-09, 0, -6.97322e-09, 0.159529, 0.063885, -0.146178, -6.38966e-09, -2.87037, -3.54896, 6.60082)
+
+[node name="water_planet_indic_1" type="Sprite3D" parent="water_planet_indic" index="0"]
+transform = Transform3D(1.25974, 0, 0, 0, 1.25974, -3.55271e-15, -1.77636e-15, 7.10543e-15, 1.25974, -0.206701, -1.74355, 2.33149)
+texture = ExtResource("6_wk4n5")
+
+[node name="water_planet_indic_2" type="Sprite3D" parent="water_planet_indic" index="1"]
+transform = Transform3D(-1.25974, -5.96046e-08, 0, 5.96046e-08, -1.25974, -1.10129e-07, 5.32907e-15, -1.10129e-07, 1.25974, -0.0142498, 91.2992, 2.33149)
+texture = ExtResource("6_wk4n5")
+
+[node name="water_planet_indic_3" type="Sprite3D" parent="water_planet_indic" index="2"]
+transform = Transform3D(0.704856, 1.04409, 4.56386e-08, -1.04409, 0.704856, -2.42547e-08, -4.56385e-08, -2.42548e-08, 1.25974, -38.7218, 18.8277, 2.33149)
+texture = ExtResource("6_wk4n5")
+
+[node name="water_planet_indic_4" type="Sprite3D" parent="water_planet_indic" index="3"]
+transform = Transform3D(-0.704856, -1.04409, -4.56385e-08, 1.04409, -0.704856, -8.58752e-08, 4.56385e-08, -8.58752e-08, 1.25974, 38.5008, 70.728, 2.33148)
+texture = ExtResource("6_wk4n5")
+
+[node name="water_planet_indic_5" type="Sprite3D" parent="water_planet_indic" index="4"]
+transform = Transform3D(-0.529476, 1.14306, 4.9965e-08, -1.14306, -0.529476, -7.82091e-08, -4.9965e-08, -7.82091e-08, 1.25974, -42.2827, 64.4184, 2.33149)
+texture = ExtResource("6_wk4n5")
+
+[node name="water_planet_indic_6" type="Sprite3D" parent="water_planet_indic" index="5"]
+transform = Transform3D(0.529477, -1.14306, -4.9965e-08, 1.14306, 0.529477, -3.19207e-08, 4.99649e-08, -3.19208e-08, 1.25974, 42.0617, 25.1372, 2.33148)
+texture = ExtResource("6_wk4n5")
 
 [connection signal="body_entered" from="ZoneArea" to="." method="_on_player_enter_zone"]

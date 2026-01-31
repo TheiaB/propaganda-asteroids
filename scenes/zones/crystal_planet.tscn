@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://c0ko72djajciq"]
+[gd_scene load_steps=9 format=3 uid="uid://c0ko72djajciq"]
 
 [ext_resource type="PackedScene" uid="uid://dlotxfarbs74i" path="res://scenes/zones/zone_planet.tscn" id="1_eug5a"]
 [ext_resource type="PackedScene" uid="uid://j0puguffsn11" path="res://assets/planets/planet_crystal_iteration_1/planet_Crystal_surface_iteration_1.gltf" id="2_6oi87"]
 [ext_resource type="PackedScene" uid="uid://umhoqng6nnln" path="res://assets/planets/planet_crystal_iteration_2/planet_Crystal_surface_iteration_2.gltf" id="3_m22fk"]
 [ext_resource type="PackedScene" uid="uid://vv8fdwl15cvm" path="res://assets/planets/planet_crystal_iteration_3/planet_Crystal_surface_iteration_3.gltf" id="4_txngk"]
+[ext_resource type="Texture2D" uid="uid://b5jinfu8ruvu5" path="res://assets/Indicators/Planet_pickup_indicator2.png" id="5_m22fk"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7mx2p"]
 radius = 6.28529
@@ -41,6 +42,33 @@ visible = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
 transform = Transform3D(14, 0, 0, 0, 14, 0, 0, 0, 14, 0, 0, 0)
 shape = SubResource("CylinderShape3D_o7a0i")
+
+[node name="crystal_planet_indic" type="Node3D" parent="." index="6"]
+transform = Transform3D(0.146178, 0.063885, 2.7925e-09, 0, -6.97322e-09, 0.159529, 0.063885, -0.146178, -6.38966e-09, -2.87037, -3.54896, 6.60082)
+
+[node name="crystal_planet_indic_1" type="Sprite3D" parent="crystal_planet_indic" index="0"]
+transform = Transform3D(1.03598, 0, 3.55271e-15, 0, 1.03598, 0, 0, 7.10543e-15, 1.03598, 0.0125256, 6.05703, -2.50064)
+texture = ExtResource("5_m22fk")
+
+[node name="crystal_planet_indic_2" type="Sprite3D" parent="crystal_planet_indic" index="1"]
+transform = Transform3D(-1.03598, 0, 1.77636e-15, 0, -1.03598, -9.05683e-08, 3.55271e-15, -9.05683e-08, 1.03598, 0.170792, 82.5736, -2.50064)
+texture = ExtResource("5_m22fk")
+
+[node name="crystal_planet_indic_3" type="Sprite3D" parent="crystal_planet_indic" index="2"]
+transform = Transform3D(0.579659, 0.858636, 3.75323e-08, -0.858636, 0.579659, -1.99466e-08, -3.75322e-08, -1.99467e-08, 1.03598, -31.6615, 22.9744, -2.50064)
+texture = ExtResource("5_m22fk")
+
+[node name="crystal_planet_indic_4" type="Sprite3D" parent="crystal_planet_indic" index="3"]
+transform = Transform3D(-0.579659, -0.858636, -3.75322e-08, 0.858636, -0.579659, -7.0622e-08, 3.75322e-08, -7.06221e-08, 1.03598, 31.8449, 65.6562, -2.50064)
+texture = ExtResource("5_m22fk")
+
+[node name="crystal_planet_indic_5" type="Sprite3D" parent="crystal_planet_indic" index="4"]
+transform = Transform3D(-0.435431, 0.940034, 4.10902e-08, -0.940034, -0.435431, -6.43176e-08, -4.10902e-08, -6.43177e-08, 1.03598, -34.5899, 60.4673, -2.50064)
+texture = ExtResource("5_m22fk")
+
+[node name="crystal_planet_indic_6" type="Sprite3D" parent="crystal_planet_indic" index="5"]
+transform = Transform3D(0.435432, -0.940034, -4.10902e-08, 0.940034, 0.435432, -2.6251e-08, 4.10901e-08, -2.62511e-08, 1.03598, 34.7732, 28.1633, -2.50065)
+texture = ExtResource("5_m22fk")
 
 [connection signal="body_entered" from="ZoneArea" to="." method="_on_player_enter_zone"]
 
