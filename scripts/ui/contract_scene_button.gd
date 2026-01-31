@@ -93,7 +93,6 @@ func _on_scroll_check(value: float) -> void:
 
 
 func _on_accept_contract_pressed() -> void:
-	print("accepted contract")
 	SoundManager5000.basic_button_sfx.play_one_shot()
 	SoundManager5000.music_contract.stop()
 	SoundManager5000.music_gamestart.stop()

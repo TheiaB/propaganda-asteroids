@@ -11,6 +11,8 @@ class_name Mission
 @export var cargo_dest  : ZoneManager.Planets
 #@export var planets_to_damage  : Array[ZoneManager.Planets]
 
+@export var prerequisites : Array[Mission]
+
 var arrow : Arrow3D
 
 var mission_progress = 0

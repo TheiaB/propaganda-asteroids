@@ -4,5 +4,4 @@
 
 [node name="GenericActiveItem" type="Node"]
 script = ExtResource("1_2bbr8")
-title = "1DEFAULT ITEM TITLE"
 in_stock = false

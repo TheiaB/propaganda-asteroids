@@ -45,6 +45,8 @@ GlobalCameraManager="*res://scripts/managers/CameraManager.gd"
 GlobalStatesManager="*res://scripts/managers/GlobalStates.gd"
 GlobalMenu="*res://scenes/ui/menu_ui.tscn"
 GlobalMoneyManager="*res://scenes/managers/global_money_manager.tscn"
+GlobalAsteroidManager="*res://scripts/asteroids/asteroid_manager.gd"
+GlobalShipManager="*res://scripts/managers/ShipManager.gd"
 
 [display]
 

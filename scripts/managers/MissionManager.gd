@@ -7,7 +7,8 @@ var zone_planets : Array[ZonePlanet]
 enum DeliveryStates {EMPTY,DELIVERING}
 var current_delivery_state: DeliveryStates = DeliveryStates.EMPTY
 
-@onready var missions : Array[Mission] = []
+@onready var available_missions : Array[Mission] = []
+@onready var all_missions : Array[Mission] = []
 var finished_missions : Array[Mission] = []
 
 var current_mission: Mission
@@ -21,7 +22,14 @@ signal finish_mission
 func _ready() -> void:
 	for child in get_children():
 		if child is Mission:
-			missions.append(child)
+			all_missions.append(child)
+			
+	available_missions = all_missions.filter(func(x):
+		for p in x.prerequisites:
+			if p not in finished_missions:
+					return false
+		return true
+	)
 	zone_home = preload("res://scenes/zones/zone_home.tscn").instantiate()
 
 func reset_current_mission():
@@ -41,7 +49,7 @@ func init(_arrow:Arrow3D) -> void:
 	for zone_planet in zone_planets:
 		zone_planet.player_entered.connect(player_entered_planet_zone)
 
-	for mission in missions:
+	for mission in all_missions:
 		mission.init(arrow)
 	
 func on_home_zone_player_entered(_zone):
@@ -80,11 +88,20 @@ func start_mission(mission: Mission) -> void:
 			pass
 	
 func get_random_mission() -> Mission:
-	return missions.pick_random()
+	return all_missions.pick_random()
 
 
 func add_mission_to_finished_missions(mission: Mission):
 	finished_missions.append(mission)
 
 func get_remaining_missions() -> Array[Mission]:
-	return missions.filter(func(x): return x not in finished_missions)
+	available_missions = all_missions.filter(func(x): 
+		if x in finished_missions:
+			return false
+		#return x not in finished_missions
+		for p in x.prerequisites:
+			if p not in finished_missions:
+				return false
+		return true
+	)
+	return available_missions

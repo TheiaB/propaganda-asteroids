@@ -27,12 +27,10 @@ func _ready():
 	
 
 func _on_button_play_pressed() -> void:
-	print("play!")
 	close_menu()
 	emit_signal("menu_close")
 	SoundManager5000.music_gamestart.stop()
 	SoundManager5000.music_contract.play()
-	pass # Replace with function body.
 
 func _on_button_debug_pressed() -> void:
 	animation_player.play("fade_to_black")
@@ -41,10 +39,9 @@ func _on_button_debug_pressed() -> void:
 
 func _on_button_credits_pressed() -> void:
 	credits.show()
-	pass # Replace with function body.
+	
 func _on_button_exit_credits_pressed() -> void:
 	credits.hide()
-	pass # Replace with function body.
 
 
 
@@ -56,7 +53,6 @@ func open_menu():
 	print("open menu")
 	show()
 	menu_3d.show()
-	pass
 
 func close_menu():
 	hide()

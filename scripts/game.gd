@@ -31,9 +31,9 @@ func _ready():
 	ui_manager.init(self, mission_manager)
 	firstTime = true
 
-	ui_manager.set_displayed_missions(mission_manager.missions)
+	ui_manager.set_displayed_missions(mission_manager.available_missions)
 	asteroid_manager.set_difficulty(1)
-	asteroid_manager.spawn_asteroids()
+	#asteroid_manager.spawn_asteroids()
 	
 	GlobalMenu.connect("menu_open",pause)
 	GlobalMenu.connect("menu_close",unpause)
@@ -91,11 +91,12 @@ func _on_ui_manager_on_contract_accept() -> void:
 	ship_manager.spawn_ship()
 	ui_manager.setUI()
 	SoundManager5000.music_ambience.play()
-	GlobalMoneyManager.resource_money = 50
+	GlobalMoneyManager.resource_money = 50000
 	mission_manager.reset_current_mission()
 	refuel()
 	timer_manager.startFuel()
 	asteroid_manager.spawn_asteroids()
+	GlobalItemManager.reset_stock()
 	if !firstTime:
 		ship_manager.update_loadout(GlobalItemManager.find("protect_y"))
 		print("current shield", ship_manager.ship.shield)
@@ -126,9 +127,9 @@ func _on_ui_manager_purchased_item(item_title: String) -> void:
 	if (item.price <= GlobalMoneyManager.resource_money):
 		GlobalMoneyManager.resource_money -= item.price
 		ship_manager.update_loadout(item)
-		item.in_stock = false
+		GlobalItemManager.bought_item(item)
 		SoundManager5000.buy_button_sfx.play_one_shot()
-		ui_manager.update_shop()
+		ui_manager.update_shop(ship)
 	else:
 		ui_manager.no_money_popup.show_popup()
 		SoundManager5000.error_button.play_one_shot()
@@ -148,7 +149,7 @@ func _on_mission_manager_enter_base() -> void:
 	refuel()
 	asteroid_manager.stop_asteroids()
 	asteroid_manager.despawn_all_asteroids()
-	ui_manager.update_shop()
+	ui_manager.update_shop(ship)
 	if ship:
 		ship.activate_docking_behaviour()
 	ui_manager.setUI("open_missions")

@@ -59,3 +59,6 @@ func on_unequip():
 
 func buyable():
 	return true
+	
+func load_attributes(_ship: Ship):
+	pass

@@ -10,6 +10,7 @@ var shields = [
 ]
 
 func _ready() -> void:
+	print("active shield texture")
 	print(shield_sprite.texture)
 	
 func _process(_delta: float) -> void:

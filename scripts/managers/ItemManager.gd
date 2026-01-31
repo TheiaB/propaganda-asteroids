@@ -53,7 +53,6 @@ func get_all_items()-> Array[Item]:
 	all_items.append_array(weapons)
 	all_items.append_array(generic_items)
 	all_items.append_array(active_items)
-	#maybe sort by price???
 	return all_items
 	
 func sort_by_prize(items : Array[Item]) -> void:
@@ -67,4 +66,15 @@ func get_item(title : String):
 	
 func get_rand_item() -> Item:
 	return get_all_items().pick_random()
+	
+func bought_item(item : Item) -> void:
+	print("bought item")
+	if item is not Shield:
+		print('bought non shield')
+		item.in_stock = false
+
+func reset_stock() -> void:
+	for item in get_all_items():
+		if item.title != "DEFAULT ITEM TITLE":
+			item.in_stock = true
 	

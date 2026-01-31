@@ -14,6 +14,8 @@ class_name ItemPanel
 @onready var video_stream_player: VideoStreamPlayer = $VBoxContainer/VideoStreamPlayer
 @onready var description_box : Panel = $Description
 @onready var description_label : Label = $Description/DescriptionBox/ScrollContainer/Description
+@onready var unique_name : String
+@onready var in_stock : bool
 
 signal buy_button_pressed
 

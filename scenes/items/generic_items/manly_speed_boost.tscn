@@ -10,6 +10,7 @@ title = "Speed Boost"
 price = 220
 description = "Improves your ships thrusters, allowing you to go faster."
 video = ExtResource("2_l5l1k")
+unique_name = "speed_boost_boy"
 legal_text = "[center][b][color=#8FBCBB]SpeedBurst™ Standard Edition: Terms of Accelerated Existence (TAE)[/color][/b][/center]
 
 Congratulations on equipping the [b]SpeedBurst™ Standard Edition[/b] — the baseline, regulation-compliant, no-frills tactical locomotion enhancer for [i]persons of neutral interest[/i].

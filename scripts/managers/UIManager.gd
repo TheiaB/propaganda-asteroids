@@ -16,7 +16,7 @@ class_name UIManager
 @onready var mission_interface: MissionInterface = $ShopMissionInterfaces/TabContainer/Mission
 @onready var mission_popup: PanelContainer = $ShopMissionInterfaces/MissionPopup
 
-@onready var notification: Notification = $notification
+@onready var news : Notification = $news
 
 @onready var shop_grid: ShopGrid = %GridContainer
 
@@ -56,6 +56,7 @@ func setUI(ui_name: String = ""):
 	
 	if ui_name == "start_scene":
 		start_scene.visible = true
+		hide_ingame_interface()
 	
 	if ui_name == "contract_scene":
 		contract_scene.visible = true
@@ -73,8 +74,8 @@ func setUI(ui_name: String = ""):
 		show_ingame_interface()
 		
 
-func update_shop():
-	shop_grid.init_grid()
+func update_shop(ship: Ship):
+	shop_grid.init_grid(ship)
 	
 func hide_ingame_interface() -> void:
 	ingame_interface.visible = false
@@ -87,7 +88,6 @@ func _on_start_run() -> void:
 
 
 func _on_death_scene_next_run() -> void:
-	print("death scene next")
 	emit_signal("on_death_scene_next_run")
 
 
@@ -110,7 +110,6 @@ func _on_shop_mission_interfaces_mission_open_pressed(mission: Mission) -> void:
 	popup_mission(mission)
 	
 func set_displayed_missions(missions : Array[Mission]):
-	print("displaying missions")
 	mission_interface.set_displayed_mission(missions)
 
 func clear_missions():
@@ -144,8 +143,8 @@ func _on_mission_popup_on_finish_mission_popup_button_pressed(mission: Mission) 
 	if start_zone is ZonePlanet:
 		print(start_zone)
 		texture = start_zone.current_news
-	notification.texture_rect.texture = texture
-	notification.show()
+	news.texture_rect.texture = texture
+	news.show()
 	emit_signal("on_mission_finished_popup_button_pressed", mission)
 
 

@@ -10,6 +10,7 @@ title = "Speed Boost"
 price = 280
 description = "Improves your ships thrusters, allowing you to go faster."
 video = ExtResource("2_4i14b")
+unique_name = "speed_boost_girl"
 legal_text = "[center][b][color=#D08770]SPEEDBURST™ GIRL EDITION™[/color][/b][/center]
 [center][i]Comprehensive License of Empowerment, Subjection, Monetization, and Gendered Acceleration (CL-ESMGA) v47.113b[/i][/center]
 ------------

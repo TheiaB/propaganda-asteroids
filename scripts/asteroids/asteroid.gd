@@ -4,6 +4,12 @@ class_name Asteroid
 var move_dir : Vector3 = Vector3.ZERO
 var screen_size = DisplayServer.screen_get_size()
 
+var _outside_timer := 0.0
+
+@export var despawn_time := 5.0
+@export var outer_margin := 30.0
+@export var despawn_margin := 25.0
+
 @export var speed = 100
 @export var health = 3
 @export var damage = 1
@@ -22,7 +28,6 @@ func _ready() -> void:
 		if(overlapping_area.collision_layer == 5): # if its a zone
 			print('Asteroid spawned within illegal zone.')
 			queue_free()
-			pass
 
 # bound fource is e.g. value between 0.7-0.8
 # target = ship
@@ -53,7 +58,7 @@ func get_random_screen_offset_point() -> Vector3:
 		0,
 		randf_range(-max_offset_y, max_offset_y)
 	)
-	print(offset)
+	#print(offset)
 	return offset
 	#return Vector3(screen_center.x,0,screen_center.y) + offset
 
@@ -61,6 +66,7 @@ func get_random_screen_offset_point() -> Vector3:
 func _on_area_3d_area_entered(area : Area3D) -> void:
 	if area is ActiveShield:
 		queue_free()
+		GlobalAsteroidManager.decrease_asteroid_count()
 	if area is Projectile:
 		SoundManager5000.asteroid_hit_sfx.play_one_shot()
 		var bullet := area as Projectile
@@ -73,6 +79,7 @@ func _on_area_3d_area_entered(area : Area3D) -> void:
 			impact_sprite.play("normal_hit")
 			await impact_sprite.animation_finished
 			queue_free()
+			GlobalAsteroidManager.decrease_asteroid_count()
 			impact_sprite.show()
 			impact_sprite.play("normal_hit")
 			await impact_sprite.animation_finished
@@ -85,6 +92,7 @@ func _on_area_3d_body_entered(ship) -> void:
 		ship.on_collision_with_asteroid(ship.weapon.weapon_damage)
 		SoundManager5000.asteroid_destroyed_sfx.play_one_shot()
 		queue_free()
+		GlobalAsteroidManager.decrease_asteroid_count()
 	else:
 		pass
 		
@@ -100,6 +108,7 @@ func enable():
 func destroy_me():
 	if !is_spawn_invincible:
 		queue_free()
+		GlobalAsteroidManager.decrease_asteroid_count()
 
 func _process(_delta: float) -> void:
 	if(linear_velocity.length() > speed * 2.0):
@@ -111,4 +120,25 @@ func _process(_delta: float) -> void:
 		angular_velocity = angular_velocity.normalized() * speed * rotational_speed_modif
 	elif(angular_velocity.length() < speed * rotational_speed_modif * 1.1):
 		angular_velocity = angular_velocity.normalized() * speed * rotational_speed_modif
+		
+	var inside_outer := GlobalCameraManager.is_point_inside_despawn_area(
+		global_position,
+		outer_margin
+	)
+	if !inside_outer:
+		destroy_me()
+		print("asteroid outside outer bound")
+	
+	var inside := GlobalCameraManager.is_point_inside_despawn_area(
+		global_position,
+		despawn_margin
+	)
+
+	if inside:
+		_outside_timer = 0.0
+	else:
+		_outside_timer += _delta
+		if _outside_timer >= despawn_time:
+			destroy_me()
+			print("asteroid outside for too long")
 	

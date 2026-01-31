@@ -34,23 +34,26 @@ func update_loadout(item : Item) -> void:
 		ship.weapon.in_stock = true
 		if ship.weapon != null:
 			ship.weapon.on_unequip()
+			ship.items.erase(ship.weapon)
 		ship.weapon = item
 		item.on_equip()
 	elif item is Shield:
-		ship.shield.in_stock = true
 		if ship.shield != null:
+			ship.shield.in_stock = true
 			ship.shield.on_unequip()
+			ship.items.erase(ship.shield)
 		ship.shield = item
 		item.on_equip()
 	elif item is Generic_Active_Item:
 		if ship.active_item:
 			ship.active_item.in_stock = true
 			ship.active_item.on_unequip()
+			ship.items.erase(ship.active_item)
 		ship.active_item = item
 		item.on_equip()
 	else:
-		ship.items.append(item)
 		item.on_equip()
+	ship.items.append(item)
 	#ship.load_item_attributes()
 	
 

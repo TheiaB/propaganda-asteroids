@@ -11,7 +11,7 @@ signal deactivate_active_item
 @export var weapon : Weapon
 @export var shield : Shield
 @export var active_item : Generic_Active_Item
-@export var items : Array[Generic_Item]
+@export var items : Array[Item]
 @export var isInvinsible : bool = false
 var projectiles_node : Node
 var active_item_node : Node
@@ -54,6 +54,7 @@ func _on_invincibility_timer_timeout() -> void:
 
 func createBasic(camera: Player_Camera, _projectiles_node : Node):
 	var _weapon = GlobalItemManager.find("basic_weapon")
+	items.append(_weapon)
 	var _shield = GlobalItemManager.find("radiation_shield")
 	var _stats = preload("res://scenes/basic_start_stats.tscn").instantiate()
 	return create(camera, _projectiles_node, _weapon, _shield, _stats)
@@ -62,9 +63,14 @@ func createBasic(camera: Player_Camera, _projectiles_node : Node):
 func create(camera: Player_Camera, _projectiles_node: Node, _weapon: Weapon, _shield: Shield, _stats: CharacterStats):
 	var ship: Ship = preload("res://scenes/ship.tscn").instantiate()
 	ship.weapon = _weapon
+	print("eaeasea: ", ship.weapon)
+	ship.items.append(_weapon)
 	ship.shield = _shield
+	#items.append_array([weapon, shield])
+	print("ship created with these items: ", ship.items)
 	_weapon.on_equip()
-	_shield.on_equip()
+	if _shield != null:
+		_shield.on_equip()
 	ship.stats = _stats
 	ship.add_child(ship.stats)
 	ship.transform = ship.transform.scaled(Vector3(0.5, 0.5, 0.5))
@@ -100,6 +106,8 @@ func on_collision_with_asteroid(damage):
 			SoundManager5000.music_gameend.play()
 			shield.shield_health = shield.start_health
 		if shield.shield_health == 1:
+			items.erase(shield)
+			shield = GlobalItemManager.find("radiation_shield")
 			SoundManager5000.shield_dest_sfx.play_one_shot()
 		if shield.shield_health >= 2:
 			SoundManager5000.shield_crack_sfx.play_one_shot()
@@ -141,7 +149,6 @@ func _process(_delta):
 				laser_shoot_sprite.play('laser_impact')
 	else:
 		if Input.is_action_just_pressed("shoot"):
-			print("shooting")
 			SoundManager5000.laser_basic_sfx.play_one_shot()
 			weapon.shoot_projectile(self)
 			laser_shoot_sprite.play('laser_impact')
