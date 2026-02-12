@@ -91,8 +91,8 @@ func _on_death_scene_next_run() -> void:
 	emit_signal("on_death_scene_next_run")
 
 
-func _on_confirmation_popup_terms_accepted(item_title: String) -> void:
-	emit_signal('purchased_item', item_title)
+func _on_confirmation_popup_terms_accepted(item_unique_name: String) -> void:
+	emit_signal('purchased_item', item_unique_name)
 
 func _on_contract_scene_accept_contract() -> void:
 	emit_signal("on_contract_accept")

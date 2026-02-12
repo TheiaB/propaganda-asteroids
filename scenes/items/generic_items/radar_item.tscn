@@ -9,6 +9,7 @@ title = "Radar"
 price = 399
 description = "Solar link radar system (BETADAR)  Infinite Perspective. Harness the power of the stars with Solar Link, the ultra-wide radar and zoom-out camera system designed for deep-space navigation and threat detection.  Track everything from debris clouds to distant fleets — in real time, with zero power loss, powered entirely by stellar energy."
 video = ExtResource("2_cul7q")
+unique_name = "radar"
 legal_text = "[center][b][color=#FFD700]PanOptiRadar™ User Advisory and Strategic Liability Offset (SLO)[/color][/b][/center]
 
 [i]Congratulations on activating the [b]PanOptiRadar™ Perceptual Expansion Module[/b] (\"The Device\").[/i]

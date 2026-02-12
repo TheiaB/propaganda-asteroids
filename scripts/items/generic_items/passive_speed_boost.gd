@@ -6,5 +6,7 @@ extends Generic_Item
 #func _ready() -> void:
 	
 func load_attributes(ship: Ship):
+	print("loaded boost attributes")
 	ship.stats.MAX_SPEED = MAX_SPEED
+	ship.stats.ACCELERATION = acc
 	ship.stats.ROTATION_SPEED = 6.0

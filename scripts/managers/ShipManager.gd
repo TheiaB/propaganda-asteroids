@@ -54,7 +54,7 @@ func update_loadout(item : Item) -> void:
 	else:
 		item.on_equip()
 	ship.items.append(item)
-	#ship.load_item_attributes()
+	ship.load_item_attributes()
 	
 
 func send_ship_died():

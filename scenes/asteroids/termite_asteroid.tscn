@@ -13,7 +13,7 @@ friction = 0.5
 bounce = 1.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_t0pqt"]
-radius = 2.26236
+radius = 1.85372
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_54ewc"]
 radius = 2.08236
@@ -54,19 +54,17 @@ metadata/_custom_type_script = "uid://bxh6oltf5uiv6"
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="."]
 visible = false
-radius = 0.8
-
-[node name="asteroid_ant2" parent="." instance=ExtResource("2_t0pqt")]
+radius = 0.9
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.0219519, 0, 0)
 shape = SubResource("SphereShape3D_t0pqt")
 
 [node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
 visible = false
 
 [node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00307751)
+transform = Transform3D(0.865, 0, 0, 0, 0.865, 0, 0, 0, 0.865, -0.0170736, 0, -0.00307751)
 collision_layer = 32
 collision_mask = 26
 
@@ -74,11 +72,16 @@ collision_mask = 26
 transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, 0, 0, 0)
 shape = SubResource("SphereShape3D_54ewc")
 
+[node name="asteroid_ant2" parent="." instance=ExtResource("2_t0pqt")]
+
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(1.07605, 0, 0, 0, 1, 0, 0, 0, 2.33866, 0, 0, -1.64653)
+transform = Transform3D(1.07605, 0, 0, 0, 1, 0, 0, 0, 2.33866, 0, 0, -2.2065)
 visible = false
 axis = 1
 sprite_frames = SubResource("SpriteFrames_3bse6")
 animation = &"normal_hit"
 frame = 4
 frame_progress = 1.0
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

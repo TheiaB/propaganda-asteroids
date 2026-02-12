@@ -17,19 +17,14 @@ enum EnemyTier { COMMON, UNCOMMON, RARE, SPECIAL }
 var spawn_weights := []  
 var asteroid_speed_factor_range : Vector2
 var bound_force_range : Vector2
-var water_asteroids = false
-var desert_asteroids = false
-var crystal_asteroids = false
+var t : float
 #TODO Fix rarity and reconfigure special asteroid types
 var asteroid_types = [
 	{ "scene": preload("res://scenes/asteroids/small_asteroid.tscn"), "tier": EnemyTier.RARE },
 	{ "scene": preload("res://scenes/asteroids/asteroid.tscn"), "tier": EnemyTier.COMMON},
-	{ "scene": preload("res://scenes/asteroids/asteroid_satelite-1.tscn"), "tier": EnemyTier.RARE},
-	{ "scene": preload("res://scenes/asteroids/asteroid_satelite-2.tscn"), "tier": EnemyTier.RARE},
+	{ "scene": preload("res://scenes/asteroids/asteroid_satelite-1.tscn"), "tier": EnemyTier.COMMON},
+	{ "scene": preload("res://scenes/asteroids/asteroid_satelite-2.tscn"), "tier": EnemyTier.UNCOMMON},
 	{ "scene": preload("res://scenes/asteroids/big_asteroid.tscn"), "tier": EnemyTier.UNCOMMON},
-	{ "scene": preload("res://scenes/asteroids/water_asteroid.tscn"), "tier": EnemyTier.SPECIAL, "name" : "waterplanet"},
-	{ "scene": preload("res://scenes/asteroids/termite_asteroid.tscn"), "tier": EnemyTier.SPECIAL, "name" : "antplanet"},
-	{ "scene": preload("res://scenes/asteroids/crystal_asteroid.tscn"), "tier": EnemyTier.SPECIAL, "name" : "crystalplanet"}
 ]
 var planet_asteroids = []
 
@@ -77,13 +72,13 @@ func increase_difficulty(levels:int=1):
 func set_difficulty(level: int):
 	level = clamp(level, 1, 10)
 	current_difficulty_level = level
-	var t = float(level - 1) / 9.0
+	t = float(level - 1) / 9.0
 	asteroid_timer.wait_time = lerp(1.0, 0.1, t)
 	spawn_weights.clear()
-	bound_force_range.x = lerp(0.501, 0.9, t)
-	bound_force_range.y = lerp(0.7, 1.0, t)
+	bound_force_range.x = lerp(0.501, 0.85, t)
+	bound_force_range.y = lerp(0.7, 0.95, t)
 	asteroid_speed_factor_range.x = lerp(0.3, 0.9, t)
-	asteroid_speed_factor_range.y = lerp(0.5, 1.1, t)
+	asteroid_speed_factor_range.y = lerp(0.5, 1.0, t)
 	if current_difficulty_level <= 2:
 		FmodServer.set_global_parameter_by_name("Space Decay", 0)
 	if current_difficulty_level == 3:  
@@ -96,7 +91,10 @@ func set_difficulty(level: int):
 		FmodServer.set_global_parameter_by_name("Space Decay", 4)
 	for i in range(asteroid_types.size()):
 		var tier = asteroid_types[i].tier
-		match tier:
+		add_spawn_weight(tier)
+
+func add_spawn_weight(tier: EnemyTier):
+	match tier:
 			EnemyTier.COMMON:
 				spawn_weights.append(lerp(0.6, 0.1, t))
 			EnemyTier.UNCOMMON:
@@ -105,6 +103,7 @@ func set_difficulty(level: int):
 				spawn_weights.append(lerp(0.1, 0.4, t))
 			EnemyTier.SPECIAL:
 				spawn_weights.append(0.0)
+
 
 
 func pick_weighted(items: Array, weights: Array) -> Variant:
@@ -144,18 +143,43 @@ func player_entered_planet_proximity(zone : ZonePlanet):
 		if zone.unique_name == "waterplanet":
 			SoundManager5000.music_ocean_planet.set_parameter("OceanDecay", 2)
 			print("OceanDecay 2")
-			planet_asteroids.append({ "scene": preload("res://scenes/asteroids/water_asteroid.tscn"), "tier": EnemyTier.SPECIAL, "name" : "waterplanet"})
+			asteroid_types.append({ "scene": preload("res://scenes/asteroids/water_asteroid.tscn"), "tier": EnemyTier.UNCOMMON})
+			add_spawn_weight(EnemyTier.UNCOMMON)
+			#planet_asteroids.append({ "scene": preload("res://scenes/asteroids/water_asteroid.tscn"), "tier": EnemyTier.SPECIAL, "name" : "waterplanet"})
 		elif zone.unique_name == "antplanet":
 			SoundManager5000.music_ant_planet.set_parameter("AntDecay", 2)
 			print("AntDecay 2")
-			planet_asteroids.append(	{ "scene": preload("res://scenes/asteroids/termite_asteroid.tscn"), "tier": EnemyTier.SPECIAL, "name" : "antplanet"})
+			asteroid_types.append({ "scene": preload("res://scenes/asteroids/termite_asteroid.tscn"), "tier": EnemyTier.COMMON})
+			add_spawn_weight(EnemyTier.COMMON)
+			#planet_asteroids.append(	{ "scene": preload("res://scenes/asteroids/termite_asteroid.tscn"), "tier": EnemyTier.SPECIAL, "name" : "antplanet"})
 		elif zone.unique_name == "crystalplanet":
 			SoundManager5000.music_ant_planet.set_parameter("CrystalDecay", 2)
 			print("CrystalDecay 2")
-			planet_asteroids.append(	{ "scene": preload("res://scenes/asteroids/crystal_asteroid.tscn"), "tier": EnemyTier.SPECIAL, "name" : "crystalplanet"})
+			asteroid_types.append({ "scene": preload("res://scenes/asteroids/crystal_asteroid.tscn"), "tier": EnemyTier.RARE})
+			add_spawn_weight(EnemyTier.RARE)
+			#planet_asteroids.append(	{ "scene": preload("res://scenes/asteroids/crystal_asteroid.tscn"), "tier": EnemyTier.SPECIAL, "name" : "crystalplanet"})
 		#proximity_planet = zone
 		#planet_as_timer.start()
 		
+		
+func spawn_dead_ship(ship_position : Vector3, ship_direction:Vector3):
+	#get current ship location
+	#get current ship move direction
+	var scene = preload("res://scenes/asteroids/ship_asteroid.tscn")
+	var asteroid_instance:Asteroid = scene.instantiate()
+	asteroid_instance.position = ship_position
+	var direction = Node3D.new()
+	var distance = 5.0
+	asteroid_instance.speed = 0.7
+	direction.global_position = ship_position + ship_direction * distance
+	#what if i dont move?
+	asteroid_instance.set_move_dir(1, direction)
+	add_sibling(asteroid_instance)
+	
+
+func add_ship_asteroids():
+	asteroid_types.append({ "scene": preload("res://scenes/asteroids/ship_asteroid.tscn"), "tier": EnemyTier.RARE})
+	add_spawn_weight(EnemyTier.RARE)
 
 func player_exited_planet_proximity():
 	proximity_planet = null
@@ -169,16 +193,7 @@ func player_exited_planet_proximity():
 
 func set_rand_asteroid_position() -> Vector3:
 	return GlobalCameraManager.get_spawn_point_outside_view()
-	#var camera = get_node("../Camera3D") as Camera3D
-	#if not camera:
-		#push_error("Camera3D not found!")
-		#return Vector3.ZERO
-	#var rand_ang: float = randf_range(0, 2 * PI)
-	## Use cosine and sine to get direction on the XZ-plane
-	#var spawn_offset: Vector3 = Vector3(cos(rand_ang), 0, sin(rand_ang)) * spawn_distance_offset
-	#var center: Vector3 = camera.global_transform.origin
-	#var spawn_location: Vector3 = Vector3(center.x,0,center.z) + spawn_offset
-	#return spawn_location
+	
 
 func get_box_radius(area: Area3D) -> float:
 	var collision = area.get_node("CollisionShape3D")  # Adjust the path
@@ -190,11 +205,6 @@ func get_box_radius(area: Area3D) -> float:
 		push_warning("Shape is not a BoxShape3D!")
 		return 0.0	
 
-#func set_planet_asteroid_position(planet : ZonePlanet):
-	#var random_dir = Vector3(randf_range(-1, 1), randf_range(-1, 1), randf_range(-1, 1)).normalized()
-	#return planet.global_position + random_dir
-
-	#return planet.global_position + random_dir * get_box_radius(planet.get_node('ZoneArea'))
 
 func create_asteroid(_ship, _bound_force : Vector2):
 	if target == null and _ship != null:
@@ -205,26 +215,17 @@ func create_asteroid(_ship, _bound_force : Vector2):
 	spawn_random_asteroid(bound_force_fin)
 	
 	
-func create_planet_asteroid(_ship, _bound_force : Vector2):
-	if target == null and _ship != null:
-		target = _ship
-	elif target == null and _ship == null:
-		return
-	var bound_force_fin = randf_range(_bound_force.x, _bound_force.y)
-	spawn_planet_asteroid(bound_force_fin)
-	
-	
 func spawn_random_asteroid(_bound_force : float):
 	if target == null:
 		return
-	var valid_enemies = []
-	var valid_weights = []
-	for i in range(asteroid_types.size()):
-		if spawn_weights[i] > 0.0:
-			valid_enemies.append(asteroid_types[i])
-			valid_weights.append(spawn_weights[i])
+	#var valid_enemies = []
+	#var valid_weights = []
+	#for i in range(asteroid_types.size()):
+		#if spawn_weights[i] > 0.0:
+			#valid_enemies.append(asteroid_types[i])
+			#valid_weights.append(spawn_weights[i])
 
-	var chosen = pick_weighted(valid_enemies, valid_weights)
+	var chosen = pick_weighted(asteroid_types, spawn_weights)
 	var asteroid_instance:Asteroid = chosen.scene.instantiate()
 	var inherent_speed = asteroid_instance.speed
 	asteroid_instance.position = set_rand_asteroid_position()
@@ -232,39 +233,7 @@ func spawn_random_asteroid(_bound_force : float):
 	asteroid_instance.set_move_dir(_bound_force, target)
 	add_sibling(asteroid_instance)
 	
-	
-func spawn_planet_asteroid(_bound_force : float):
-	var rand = randi_range(0, planet_asteroids.size() - 1)
-	var asteroid_instance:Asteroid = planet_asteroids[rand].scene.instantiate()
-	var inherent_speed = asteroid_instance.speed
-	asteroid_instance.position = set_rand_asteroid_position()
-	asteroid_instance.speed = inherent_speed * randf_range(asteroid_speed_factor_range.x, asteroid_speed_factor_range.y)
-	asteroid_instance.set_move_dir(_bound_force, target)
-	add_sibling(asteroid_instance)
-	#if target == null || proximity_planet == null:
-		#return
-	#var asteroid_instance
-	#for i in range(asteroid_types.size()):
-		#if asteroid_types[i].tier == EnemyTier.SPECIAL:
-			#@warning_ignore("shadowed_variable_base_class")
-			#var name = asteroid_types[i].name
-			#print(name)
-			#if name == planet.unique_name:
-				#var planet_asteroid = asteroid_types[i].scene
-				#asteroid_instance = planet_asteroid.instantiate()
-				#break
-	#if asteroid_instance:
-		#asteroid_instance.position = planet.position
-		#asteroid_instance.set_move_dir(-1,target)
-		#asteroid_instance.disable()
-		#print(asteroid_instance)
-		#add_sibling(asteroid_instance)
 
-
-#func _on_area_3d_body_exited(body: Node3D) -> void:
-	#if body.is_in_group("Asteroids"):
-		#print("despawning cause area exited")
-		#body.queue_free()
 func increase_asteroid_count():
 	GlobalAsteroidManager.asteroid_count += 1
 	#print(GlobalAsteroidManager.asteroid_count)
@@ -280,9 +249,3 @@ func _on_asteroid_timer_timeout() -> void:
 	#TODO maybe number of max asteroids per level?
 	create_asteroid(ship, bound_force_range)
 	increase_asteroid_count()
-	if (planet_asteroids.size() > 0):
-		increase_asteroid_count()
-		create_planet_asteroid(ship, bound_force_range)
-
-#func _on_planet_timer_timeout() -> void:
-	#spawn_planet_asteroid(proximity_planet)

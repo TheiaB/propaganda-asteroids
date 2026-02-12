@@ -5,9 +5,6 @@ extends Node2D
 @onready var contract_text : Label = $VBoxContainer/ScrollContainer/Contract
 
 var last_scroll_value := -1
-
-signal terms_accepted(item_title : String)
-
 signal accept_contract
 
 func _ready():

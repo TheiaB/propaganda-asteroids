@@ -6,11 +6,12 @@
 [node name="triple_weapon" type="Node"]
 script = ExtResource("1_h26tm")
 amount = 3
-delay_between = 0.05
+delay_between = 0.07
 title = "Triple Laser"
 price = 369
 description = "Shoot three times as many bullets with the same amount of effort."
 video = ExtResource("2_o77i0")
+unique_name = "triple_laser"
 legal_text = "[center][b][color=#A3BE8C]THE TRIPLETAP™[/color][/b][/center]
 [center][i]Multishot Usage, Licensing, and Overkill Authorization Protocol (MULAP) v4.2.7[/i][/center]
 -------------------

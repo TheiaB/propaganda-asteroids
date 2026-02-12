@@ -63,11 +63,8 @@ func createBasic(camera: Player_Camera, _projectiles_node : Node):
 func create(camera: Player_Camera, _projectiles_node: Node, _weapon: Weapon, _shield: Shield, _stats: CharacterStats):
 	var ship: Ship = preload("res://scenes/ship.tscn").instantiate()
 	ship.weapon = _weapon
-	print("eaeasea: ", ship.weapon)
 	ship.items.append(_weapon)
 	ship.shield = _shield
-	#items.append_array([weapon, shield])
-	print("ship created with these items: ", ship.items)
 	_weapon.on_equip()
 	if _shield != null:
 		_shield.on_equip()
@@ -83,8 +80,8 @@ var restricted_rotation_multiplier = -1
 var restricted_movement_multiplier = -1
 
 func load_item_attributes():
+	print("called load_item_attributes()")
 	stats = preload("res://scenes/basic_start_stats.tscn").instantiate()
-	
 	stats.load_attributes(self)
 	for item in items:
 		item.load_attributes(self)

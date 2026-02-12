@@ -71,12 +71,13 @@ shape = SubResource("SphereShape3D_0md28")
 transform = Transform3D(0.98, 0, 0, 0, 0.98, 0, 0, 0, 0.98, 0, -0.0542719, -0.0452216)
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(1.46889, 0, 0, 0, 2.29049, 0, 0, 0, 1.89318, 0, 0, -1.3967)
+transform = Transform3D(1.46889, 0, 0, 0, 2.29049, 0, 0, 0, 1.89318, -0.0502737, 0.605819, -1.80665)
 visible = false
 axis = 1
 sprite_frames = SubResource("SpriteFrames_13ndv")
 animation = &"normal_hit"
 frame = 4
+frame_progress = 1.0
 
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

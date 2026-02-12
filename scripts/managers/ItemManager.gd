@@ -58,9 +58,9 @@ func get_all_items()-> Array[Item]:
 func sort_by_prize(items : Array[Item]) -> void:
 	items.sort_custom(func(a, b): return a.price < b.price)
 	
-func get_item(title : String):
+func get_item(unique_name : String):
 	for item in get_all_items():
-		if item.title == title:
+		if item.unique_name == unique_name:
 			return item
 	push_error("Item not found!")
 	

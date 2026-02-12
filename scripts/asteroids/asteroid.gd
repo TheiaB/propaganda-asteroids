@@ -141,4 +141,3 @@ func _process(_delta: float) -> void:
 		if _outside_timer >= despawn_time:
 			destroy_me()
 			print("asteroid outside for too long")
-	

@@ -70,11 +70,15 @@ func updateShip():
 
 func _on_ship_manager_ship_died() -> void:
 	timer_manager.stopFuel()
+	asteroid_manager.spawn_dead_ship(ship.global_position, ship.velocity)
 	ui_manager.setUI("death_scene")
+	asteroid_manager.add_ship_asteroids()
 
 func _on_fuel_timer_timeout() -> void:
 	if self.resource_fuel <= 0:
 		ui_manager.setUI("death_scene")
+		asteroid_manager.add_ship_asteroids()
+		asteroid_manager.spawn_dead_ship(ship.global_position, ship.velocity.normalized())
 	else:
 		self.resource_fuel -= 3
 	
@@ -122,8 +126,8 @@ func _on_mission_manager_finish_mission(mission : Mission) -> void:
 func refuel() -> void:
 	self.resource_fuel = 100
 
-func _on_ui_manager_purchased_item(item_title: String) -> void:
-	var item = GlobalItemManager.get_item(item_title)
+func _on_ui_manager_purchased_item(unique_name: String) -> void:
+	var item = GlobalItemManager.get_item(unique_name)
 	if (item.price <= GlobalMoneyManager.resource_money):
 		GlobalMoneyManager.resource_money -= item.price
 		ship_manager.update_loadout(item)
