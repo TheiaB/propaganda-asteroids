@@ -24,8 +24,8 @@ texture = ExtResource("2_5t2tq")
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 offset_left = 229.01
 offset_top = 63.29
-offset_right = 987.01
-offset_bottom = 623.29
+offset_right = 992.01
+offset_bottom = 622.29
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
 layout_mode = 2

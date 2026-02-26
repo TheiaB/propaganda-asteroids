@@ -18,6 +18,7 @@
 [ext_resource type="Theme" uid="uid://btsae8mdw2sik" path="res://assets/ui/theme/FlatUI4/kenneyUI-custom3.tres" id="13_8t74x"]
 [ext_resource type="PackedScene" uid="uid://c63ewp0wfu3g5" path="res://scenes/ui/confirmation_popup.tscn" id="13_a7j1f"]
 [ext_resource type="Script" uid="uid://dgrnw5eysolw8" path="res://scripts/no_money_popup.gd" id="14_dgnm4"]
+[ext_resource type="Theme" uid="uid://6shp5ck1tnja" path="res://assets/ui/theme/FlatUI4/kenneyUI.tres" id="16_8t74x"]
 [ext_resource type="Script" uid="uid://b53blbfibsubs" path="res://scripts/ui/mission_popup.gd" id="16_m2gsp"]
 [ext_resource type="Theme" uid="uid://bb6vwl0h1flws" path="res://assets/ui/theme/FlatUI4/kenneyUI-blue.tres" id="17_8t74x"]
 
