@@ -183,8 +183,10 @@ func _on_ship_manager_deactivate_active_item() -> void:
 
 
 func _on_active_item_money_timer_timeout() -> void:
-	GlobalMoneyManager.resource_money -= ship.active_item.activation_cost
-	if GlobalMoneyManager.resource_money < ship.active_item.activation_cost:
-		print("Deactivating due to insufficient funds")
-		ship_manager.ship.active_item.deactivate_item(ship_manager.ship)
-		timer_manager.active_item_money_timer.stop()
+	if ship:
+		if ship.active_item:
+			GlobalMoneyManager.resource_money -= ship.active_item.activation_cost
+			if GlobalMoneyManager.resource_money < ship.active_item.activation_cost:
+				print("Deactivating due to insufficient funds")
+				ship_manager.ship.active_item.deactivate_item(ship_manager.ship)
+				timer_manager.active_item_money_timer.stop()

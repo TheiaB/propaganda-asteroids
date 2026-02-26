@@ -23,4 +23,5 @@ func deactivate_item(ship : Ship):
 			shield.ship = null
 			ship.projectiles_node.remove_child(shield)
 			shield.queue_free()
+			print("free shield!")
 			shield = null

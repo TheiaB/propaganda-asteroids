@@ -65,9 +65,10 @@ func get_random_screen_offset_point() -> Vector3:
 	
 func _on_area_3d_area_entered(area : Area3D) -> void:
 	if area is ActiveShield:
+		SoundManager5000.asteroid_destroyed_sfx.play_one_shot()
 		queue_free()
 		GlobalAsteroidManager.decrease_asteroid_count()
-	if area is Projectile:
+	elif area is Projectile:
 		SoundManager5000.asteroid_hit_sfx.play_one_shot()
 		var bullet := area as Projectile
 		health -= bullet.damage
