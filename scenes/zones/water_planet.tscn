@@ -49,29 +49,30 @@ shape = SubResource("CylinderShape3D_o7a0i")
 
 [node name="water_planet_indic" type="Node3D" parent="." index="7"]
 transform = Transform3D(0.146178, 0.063885, 2.7925e-09, 0, -6.97322e-09, 0.159529, 0.063885, -0.146178, -6.38966e-09, -2.87037, -3.54896, 6.60082)
+visible = false
 
 [node name="water_planet_indic_1" type="Sprite3D" parent="water_planet_indic" index="0"]
-transform = Transform3D(1.25974, 0, 0, 0, 1.25974, -3.55271e-15, -1.77636e-15, 7.10543e-15, 1.25974, -0.206701, -1.74355, 2.33149)
+transform = Transform3D(1.23647, 8.9407e-08, 1.77636e-15, -8.9407e-08, 1.23647, -1.06581e-14, -1.77636e-15, 1.42109e-14, 1.23647, -0.206841, -1.8114, 2.33149)
 texture = ExtResource("6_wk4n5")
 
 [node name="water_planet_indic_2" type="Sprite3D" parent="water_planet_indic" index="1"]
-transform = Transform3D(-1.25974, -5.96046e-08, 0, 5.96046e-08, -1.25974, -1.10129e-07, 5.32907e-15, -1.10129e-07, 1.25974, -0.0142498, 91.2992, 2.33149)
+transform = Transform3D(-1.23679, -2.98023e-08, -3.55271e-15, 2.98023e-08, -1.23679, -1.08123e-07, 5.32907e-15, -1.08123e-07, 1.23679, -0.0141182, 91.3671, 2.33149)
 texture = ExtResource("6_wk4n5")
 
 [node name="water_planet_indic_3" type="Sprite3D" parent="water_planet_indic" index="2"]
-transform = Transform3D(0.704856, 1.04409, 4.56386e-08, -1.04409, 0.704856, -2.42547e-08, -4.56385e-08, -2.42548e-08, 1.25974, -38.7218, 18.8277, 2.33149)
+transform = Transform3D(0.691004, 1.02357, 4.47417e-08, -1.02357, 0.691004, -2.37781e-08, -4.47416e-08, -2.37782e-08, 1.23498, -38.7781, 18.7898, 2.33149)
 texture = ExtResource("6_wk4n5")
 
 [node name="water_planet_indic_4" type="Sprite3D" parent="water_planet_indic" index="3"]
-transform = Transform3D(-0.704856, -1.04409, -4.56385e-08, 1.04409, -0.704856, -8.58752e-08, 4.56385e-08, -8.58752e-08, 1.25974, 38.5008, 70.728, 2.33148)
+transform = Transform3D(-0.692028, -1.02509, -4.48079e-08, 1.02509, -0.692028, -8.43123e-08, 4.48079e-08, -8.43123e-08, 1.23681, 38.5571, 70.7658, 2.33146)
 texture = ExtResource("6_wk4n5")
 
 [node name="water_planet_indic_5" type="Sprite3D" parent="water_planet_indic" index="4"]
-transform = Transform3D(-0.529476, 1.14306, 4.9965e-08, -1.14306, -0.529476, -7.82091e-08, -4.9965e-08, -7.82091e-08, 1.25974, -42.2827, 64.4184, 2.33149)
+transform = Transform3D(-0.519419, 1.12135, 4.9016e-08, -1.12135, -0.519419, -7.67236e-08, -4.9016e-08, -7.67236e-08, 1.23581, -42.3442, 64.4471, 2.33149)
 texture = ExtResource("6_wk4n5")
 
 [node name="water_planet_indic_6" type="Sprite3D" parent="water_planet_indic" index="5"]
-transform = Transform3D(0.529477, -1.14306, -4.9965e-08, 1.14306, 0.529477, -3.19207e-08, 4.99649e-08, -3.19208e-08, 1.25974, 42.0617, 25.1372, 2.33148)
+transform = Transform3D(0.519503, -1.12153, -4.90238e-08, 1.12153, 0.519503, -3.13194e-08, 4.90238e-08, -3.13195e-08, 1.23601, 42.1232, 25.1086, 2.33147)
 texture = ExtResource("6_wk4n5")
 
 [connection signal="body_entered" from="ZoneArea" to="." method="_on_player_enter_zone"]

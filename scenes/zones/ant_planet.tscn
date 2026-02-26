@@ -46,27 +46,27 @@ transform = Transform3D(0.146178, 0.063885, 2.7925e-09, 0, -6.97322e-09, 0.15952
 visible = false
 
 [node name="ant_planet_indic_1" type="Sprite3D" parent="ant_planet_indic" index="0"]
-transform = Transform3D(1.2, 7.57307e-30, 2.13163e-15, 0, 1.2, -4.26325e-15, -2.13163e-15, 4.26325e-15, 1.2, 0, 0, 0)
+transform = Transform3D(1.24144, -8.9407e-08, 5.32907e-15, 8.9407e-08, 1.24144, -1.06581e-14, 0, 1.06581e-14, 1.24144, -0.00317001, -1.53052, 0)
 texture = ExtResource("5_t6d8a")
 
 [node name="ant_planet_indic_2" type="Sprite3D" parent="ant_planet_indic" index="1"]
-transform = Transform3D(-1.2, -1.04907e-07, 9.94851e-16, 1.04907e-07, -1.2, -1.04907e-07, 1.01662e-14, -1.04907e-07, 1.2, 0.183323, 88.6306, 3.8147e-06)
+transform = Transform3D(-1.24144, 0, 5.32907e-15, 0, -1.24144, -1.0853e-07, 7.10543e-15, -1.0853e-07, 1.24144, 0.186485, 90.1611, 3.8147e-06)
 texture = ExtResource("5_t6d8a")
 
 [node name="ant_planet_indic_3" type="Sprite3D" parent="ant_planet_indic" index="2"]
-transform = Transform3D(0.671431, 0.994575, 4.34744e-08, -0.994575, 0.671431, -2.31045e-08, -4.34743e-08, -2.31046e-08, 1.2, -36.6887, 19.5957, 1.90735e-06)
+transform = Transform3D(0.69462, 1.02892, 4.49759e-08, -1.02892, 0.69462, -2.39025e-08, -4.49758e-08, -2.39026e-08, 1.24144, -37.959, 18.742, 1.90735e-06)
 texture = ExtResource("5_t6d8a")
 
 [node name="ant_planet_indic_4" type="Sprite3D" parent="ant_planet_indic" index="3"]
-transform = Transform3D(-0.671431, -0.994575, -4.34743e-08, 0.994575, -0.671431, -8.18029e-08, 4.34743e-08, -8.18029e-08, 1.2, 36.872, 69.0349, 1.90735e-06)
+transform = Transform3D(-0.69462, -1.02892, -4.49758e-08, 1.02892, -0.69462, -8.46281e-08, 4.49758e-08, -8.46282e-08, 1.24144, 38.1423, 69.8886, -5.72205e-06)
 texture = ExtResource("5_t6d8a")
 
 [node name="ant_planet_indic_5" type="Sprite3D" parent="ant_planet_indic" index="4"]
-transform = Transform3D(-0.504368, 1.08886, 4.75956e-08, -1.08886, -0.504368, -7.45004e-08, -4.75956e-08, -7.45004e-08, 1.2, -40.0807, 63.0245, 3.8147e-06)
+transform = Transform3D(-0.521787, 1.12647, 4.92394e-08, -1.12647, -0.521787, -7.70734e-08, -4.92394e-08, -7.70734e-08, 1.24144, -41.4681, 63.6707, 3.8147e-06)
 texture = ExtResource("5_t6d8a")
 
 [node name="ant_planet_indic_6" type="Sprite3D" parent="ant_planet_indic" index="5"]
-transform = Transform3D(0.504369, -1.08886, -4.75956e-08, 1.08886, 0.504369, -3.0407e-08, 4.75955e-08, -3.04071e-08, 1.2, 40.264, 25.6061, 0)
+transform = Transform3D(0.521788, -1.12647, -4.92394e-08, 1.12647, 0.521788, -3.14572e-08, 4.92393e-08, -3.14573e-08, 1.24144, 41.6514, 24.9599, -7.62939e-06)
 texture = ExtResource("5_t6d8a")
 
 [connection signal="body_entered" from="ZoneArea" to="." method="_on_player_enter_zone"]

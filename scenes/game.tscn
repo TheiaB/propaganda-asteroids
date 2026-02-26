@@ -2,9 +2,10 @@
 
 [ext_resource type="Script" uid="uid://dxicgx2v6rcda" path="res://scripts/game.gd" id="1_lnu2h"]
 [ext_resource type="Script" uid="uid://c3nebth5qx3wg" path="res://scripts/camera_3d.gd" id="1_yqjtg"]
-[ext_resource type="ArrayMesh" uid="uid://ntp7v0mg3pja" path="res://assets/models/arrow.obj" id="3_0tnpc"]
+[ext_resource type="Texture2D" uid="uid://dhvh141ccc8r7" path="res://assets/ship/arrow_2.png" id="4_kvuet"]
 [ext_resource type="Script" uid="uid://hp28h00nhtj6" path="res://scripts/arrow.gd" id="4_vtaks"]
 [ext_resource type="PackedScene" uid="uid://cyg2e5xslvje3" path="res://scenes/asteroids/asteroid_manager.tscn" id="5_p57ef"]
+[ext_resource type="Texture2D" uid="uid://xagh4dywrilb" path="res://assets/ship/navigation_1.png" id="5_trtic"]
 [ext_resource type="Script" uid="uid://dti8u68m46th2" path="res://scripts/managers/timer_manager.gd" id="6_ca42v"]
 [ext_resource type="PackedScene" uid="uid://cdbqn35l6oxha" path="res://scenes/managers/ui_manager.tscn" id="7_kvpfn"]
 [ext_resource type="Shader" uid="uid://diyt4cx0hnlnl" path="res://assets/shader/space-visual-shader.tres" id="13_kvuet"]
@@ -13,11 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://2kf05jtnku8b" path="res://assets/space/t-space-03.png" id="15_ca42v"]
 [ext_resource type="Texture2D" uid="uid://bprqkumf86jbq" path="res://assets/space/t-space-02.png" id="15_ir15t"]
 [ext_resource type="PackedScene" uid="uid://b2w72cu2g8cky" path="res://scenes/managers/ship_manager.tscn" id="19_264po"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vtaks"]
-transparency = 1
-depth_draw_mode = 1
-albedo_color = Color(0.329412, 1, 0.564706, 0.290196)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_80nbo"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -68,10 +64,16 @@ smooth_speed = 3.5
 
 [node name="Arrow" type="MeshInstance3D" parent="Camera3D"]
 transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.025, -1.13372, 0.528067, -1)
-mesh = ExtResource("3_0tnpc")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_vtaks")
 script = ExtResource("4_vtaks")
+
+[node name="Sprite3D" type="Sprite3D" parent="Camera3D/Arrow"]
+transform = Transform3D(1.36274, 0, 0, 0, 1.36274, 5.32907e-15, 0, -2.13163e-14, 1.36274, 0, 0, 0)
+texture = ExtResource("4_kvuet")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Camera3D"]
+transform = Transform3D(0.0782599, 0, 0, 0, 0.0782599, 0, 0, 0, 0.03913, -1.13372, 0.528067, -1)
+texture = ExtResource("5_trtic")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 2.12011, 5.03893, -4.67931)
@@ -84,6 +86,7 @@ environment = SubResource("Environment_feb5d")
 
 [node name="AsteroidManager" parent="." instance=ExtResource("5_p57ef")]
 unique_name_in_owner = true
+target_path = null
 
 [node name="TimerManager" type="Node" parent="."]
 script = ExtResource("6_ca42v")
