@@ -10,7 +10,7 @@
 radius = 7.04245
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vmpea"]
-radius = 7.64095
+radius = 12.5
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_o7a0i"]
 
@@ -22,7 +22,6 @@ planet_iterations = [NodePath("planet_ant_iteration_1"), NodePath("planet_ant_it
 shape = SubResource("SphereShape3D_7mx2p")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="ZoneProximity" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 shape = SubResource("SphereShape3D_vmpea")
 
 [node name="planet_ant_iteration_1" parent="." index="2" instance=ExtResource("3_7rq7q")]
