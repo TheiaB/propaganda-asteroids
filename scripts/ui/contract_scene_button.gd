@@ -14,12 +14,15 @@ func _ready():
 	time.timeout.connect(_on_timeout)
 	
 func _on_timeout() -> void:
-	if $Ad1.visible == false:
+	if $Ad1.visible == false and $Ad3.visible == false:
 		$Ad1.visible = true
 		$Ad2.visible = false
-	elif $Ad1.visible == true:
-		$Ad1.visible = false
+	elif $Ad1.visible == false and $Ad2.visible == false:
+		$Ad3.visible = false
 		$Ad2.visible = true
+	elif $Ad2.visible == false and $Ad3.visible == false:
+		$Ad3.visible = true
+		$Ad1.visible = false
 
 func show_contract() -> void:
 	contract_text.text = """
