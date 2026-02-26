@@ -24,7 +24,7 @@ cache/0/10/0/scale = 1.0
 
 [sub_resource type="StyleBoxTexture" id="1"]
 texture = ExtResource("1")
-texture_margin_left = 12.5436
+texture_margin_left = 21.0
 texture_margin_top = 10.0349
 texture_margin_right = 8.78053
 texture_margin_bottom = 14.2161
@@ -39,6 +39,7 @@ texture_margin_top = 10.0349
 texture_margin_right = 8.78053
 texture_margin_bottom = 14.2161
 region_rect = Rect2(1, 240, 190, 49)
+modulate_color = Color(0.5073, 0.89, 0.845352, 0.905882)
 
 [sub_resource type="StyleBoxTexture" id="4"]
 texture = ExtResource("1")
@@ -47,6 +48,7 @@ texture_margin_top = 10.0349
 texture_margin_right = 8.78053
 texture_margin_bottom = 14.2161
 region_rect = Rect2(211, 240, 190, 49)
+modulate_color = Color(0.2958, 0.87, 0.70731, 0.862745)
 
 [sub_resource type="StyleBoxTexture" id="5"]
 texture = ExtResource("1")
@@ -55,6 +57,7 @@ texture_margin_top = 10.0349
 texture_margin_right = 8.78053
 texture_margin_bottom = 14.2161
 region_rect = Rect2(421, 244, 190, 45)
+modulate_color = Color(0.66, 1, 0.903667, 0.937255)
 
 [sub_resource type="AtlasTexture" id="6"]
 atlas = ExtResource("1")

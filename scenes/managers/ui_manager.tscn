@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cdbqn35l6oxha"]
+[gd_scene load_steps=27 format=3 uid="uid://cdbqn35l6oxha"]
 
 [ext_resource type="Script" uid="uid://v3yhkitng47m" path="res://scripts/managers/UIManager.gd" id="1_mpd4i"]
 [ext_resource type="PackedScene" uid="uid://bc51efbyjg2sg" path="res://scenes/death_scene.tscn" id="2_id3g5"]
@@ -13,12 +13,13 @@
 [ext_resource type="Script" uid="uid://1w7kefe1b4ai" path="res://scripts/ui/item_purchase_interface.gd" id="8_tu02a"]
 [ext_resource type="PackedScene" uid="uid://w4nlxci4ykha" path="res://scenes/ui/item_sub_viewport.tscn" id="9_2whxp"]
 [ext_resource type="Texture2D" uid="uid://b30g40cinouoo" path="res://assets/ui/T_mission.png" id="10_0d6jp"]
+[ext_resource type="Theme" uid="uid://btnidv84fopb1" path="res://assets/ui/theme/FlatUI4/kenneyUI-custom2.tres" id="12_0d6jp"]
 [ext_resource type="Script" uid="uid://df7nyjxol6syj" path="res://scripts/ui/mission_interface.gd" id="12_ytsje"]
 [ext_resource type="PackedScene" uid="uid://c63ewp0wfu3g5" path="res://scenes/ui/confirmation_popup.tscn" id="13_a7j1f"]
 [ext_resource type="Script" uid="uid://dgrnw5eysolw8" path="res://scripts/no_money_popup.gd" id="14_dgnm4"]
-[ext_resource type="Theme" uid="uid://mbsg4xqnedxi" path="res://assets/ui/theme/FlatUI4/kenneyUI-red.tres" id="15_0d6jp"]
 [ext_resource type="Theme" uid="uid://6shp5ck1tnja" path="res://assets/ui/theme/FlatUI4/kenneyUI.tres" id="16_8t74x"]
 [ext_resource type="Script" uid="uid://b53blbfibsubs" path="res://scripts/ui/mission_popup.gd" id="16_m2gsp"]
+[ext_resource type="Theme" uid="uid://bb6vwl0h1flws" path="res://assets/ui/theme/FlatUI4/kenneyUI-blue.tres" id="17_8t74x"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_5newe"]
 
@@ -33,7 +34,7 @@ viewport_path = NodePath(".")
 thickness = 12
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8t74x"]
-bg_color = Color(0.117647, 0.654902, 0.882353, 1)
+bg_color = Color(0, 0.741176, 0.0745098, 0.807843)
 
 [node name="UIManager" type="Node"]
 script = ExtResource("1_mpd4i")
@@ -57,11 +58,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 tab_alignment = 1
-current_tab = 1
+current_tab = 0
 tabs_visible = false
 
 [node name="Shop" type="TabBar" parent="ShopMissionInterfaces/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -210,6 +210,7 @@ theme_override_font_sizes/font_size = 10
 text = "(read through the full product description)"
 
 [node name="Mission" type="TabBar" parent="ShopMissionInterfaces/TabContainer"]
+visible = false
 layout_mode = 2
 script = ExtResource("12_ytsje")
 metadata/_tab_index = 1
@@ -236,7 +237,7 @@ alignment = 1
 
 [node name="ExitButton" type="Button" parent="ShopMissionInterfaces/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("15_0d6jp")
+theme = ExtResource("12_0d6jp")
 text = "BACK"
 
 [node name="ShopTabButton" type="Button" parent="ShopMissionInterfaces/MarginContainer/VBoxContainer"]
@@ -311,6 +312,7 @@ tab_size = 2
 
 [node name="Button" type="Button" parent="ShopMissionInterfaces/MissionPopup/ScrollContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("17_8t74x")
 text = "I want to start this Mission
 "
 

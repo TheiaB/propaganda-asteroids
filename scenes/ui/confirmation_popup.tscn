@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://c63ewp0wfu3g5"]
+[gd_scene load_steps=4 format=3 uid="uid://c63ewp0wfu3g5"]
 
 [ext_resource type="Script" uid="uid://vx83kyg6nr3t" path="res://confirmation_popup.gd" id="1_wu7md"]
+[ext_resource type="Theme" uid="uid://mc648a0extw1" path="res://assets/ui/theme/FlatUI4/kenneyUI-custom.tres" id="2_htqjn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wu7md"]
 bg_color = Color(0, 0, 0, 1)
@@ -30,6 +31,7 @@ text_direction = 1
 
 [node name="AcceptButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_htqjn")
 disabled = true
 text = "Accept"
 
