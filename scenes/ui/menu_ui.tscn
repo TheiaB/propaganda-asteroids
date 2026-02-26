@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://bi2fkkpnm4xeo" path="res://scenes/menu_3d.tscn" id="1_c7ajr"]
 [ext_resource type="Script" uid="uid://d3cqd6y1glryc" path="res://scripts/ui/menu_ui.gd" id="1_h8mjf"]
 [ext_resource type="Texture2D" uid="uid://wjh6v2krcy4" path="res://assets/ui/logo/occupational_hazard_new.png" id="3_de0uw"]
-[ext_resource type="Theme" uid="uid://bnhngmri4tfgr" path="res://assets/ui/theme/FlatUI4/kenneyUI-green.tres" id="4_de0uw"]
-[ext_resource type="Theme" uid="uid://bb6vwl0h1flws" path="res://assets/ui/theme/FlatUI4/kenneyUI-blue.tres" id="5_de0uw"]
+[ext_resource type="Theme" uid="uid://btsae8mdw2sik" path="res://assets/ui/theme/FlatUI4/kenneyUI-custom3.tres" id="4_kbk5f"]
+[ext_resource type="Theme" uid="uid://h1f7iqhh7ycb" path="res://assets/ui/theme/FlatUI4/kenneyUI-yellow.tres" id="5_de0uw"]
 [ext_resource type="Theme" uid="uid://mbsg4xqnedxi" path="res://assets/ui/theme/FlatUI4/kenneyUI-red.tres" id="5_w735g"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_c7ajr"]
@@ -125,20 +125,20 @@ size_flags_horizontal = 4
 theme_override_constants/separation = 16
 alignment = 1
 
+[node name="ButtonReset" type="Button" parent="CenterContainer/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_kbk5f")
+text = "New Game"
+
 [node name="ButtonPlay" type="Button" parent="CenterContainer/VBoxContainer2/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("4_de0uw")
-text = "Play"
+theme = ExtResource("4_kbk5f")
+text = "Continue"
 
 [node name="ButtonCredits" type="Button" parent="CenterContainer/VBoxContainer2/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("4_de0uw")
-text = "Credits"
-
-[node name="ButtonReset" type="Button" parent="CenterContainer/VBoxContainer2/VBoxContainer"]
-layout_mode = 2
 theme = ExtResource("5_de0uw")
-text = "Reset Game"
+text = "Credits"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
@@ -246,9 +246,9 @@ grow_vertical = 2
 theme = ExtResource("5_w735g")
 text = "BACK"
 
+[connection signal="pressed" from="CenterContainer/VBoxContainer2/VBoxContainer/ButtonReset" to="." method="_on_button_debug_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer2/VBoxContainer/ButtonPlay" to="." method="_on_button_play_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer2/VBoxContainer/ButtonCredits" to="." method="_on_button_credits_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer2/VBoxContainer/ButtonReset" to="." method="_on_button_debug_pressed"]
 [connection signal="pressed" from="Credits/ButtonExitCredits" to="." method="_on_button_exit_credits_pressed"]
 
 [editable path="Menu3D"]

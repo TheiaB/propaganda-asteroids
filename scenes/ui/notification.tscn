@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cshvo4cd408sm"]
+[gd_scene load_steps=3 format=3 uid="uid://cshvo4cd408sm"]
 
 [ext_resource type="Script" uid="uid://cxq3lmhs36op7" path="res://scripts/ui/notification.gd" id="1_u4fg0"]
+[ext_resource type="Theme" uid="uid://mc648a0extw1" path="res://assets/ui/theme/FlatUI4/kenneyUI-custom.tres" id="2_5bafy"]
 
 [node name="Notification" type="CanvasLayer"]
 layer = 2
@@ -25,4 +26,5 @@ offset_left = 970.0
 offset_top = 552.0
 offset_right = 1058.32
 offset_bottom = 594.251
+theme = ExtResource("2_5bafy")
 text = "close"
