@@ -48,7 +48,6 @@ visible = false
 
 [node name="ShopMissionInterfaces" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
-visible = false
 script = ExtResource("5_dgnm4")
 
 [node name="TabContainer" type="TabContainer" parent="ShopMissionInterfaces"]
@@ -58,10 +57,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 tab_alignment = 1
-current_tab = 0
+current_tab = 1
 tabs_visible = false
 
 [node name="Shop" type="TabBar" parent="ShopMissionInterfaces/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -210,7 +210,6 @@ theme_override_font_sizes/font_size = 10
 text = "(read through the full product description)"
 
 [node name="Mission" type="TabBar" parent="ShopMissionInterfaces/TabContainer"]
-visible = false
 layout_mode = 2
 script = ExtResource("12_ytsje")
 metadata/_tab_index = 1
@@ -282,9 +281,8 @@ uppercase = true
 wait_time = 5.0
 
 [node name="MissionPopup" type="PanelContainer" parent="ShopMissionInterfaces"]
-visible = false
-offset_right = 1028.0
-offset_bottom = 525.0
+offset_right = 487.0
+offset_bottom = 134.0
 script = ExtResource("16_m2gsp")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="ShopMissionInterfaces/MissionPopup"]
@@ -293,11 +291,23 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="ShopMissionInterfaces/MissionPopup/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 alignment = 1
 
-[node name="Title" type="Label" parent="ShopMissionInterfaces/MissionPopup/ScrollContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ShopMissionInterfaces/MissionPopup/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-text = "Title"
+
+[node name="Title" type="Label" parent="ShopMissionInterfaces/MissionPopup/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Title of the mission"
+
+[node name="Control" type="Control" parent="ShopMissionInterfaces/MissionPopup/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Exit" type="Button" parent="ShopMissionInterfaces/MissionPopup/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Exit"
 
 [node name="TextureRect" type="TextureRect" parent="ShopMissionInterfaces/MissionPopup/ScrollContainer/VBoxContainer"]
 visible = false
@@ -306,7 +316,7 @@ stretch_mode = 3
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ShopMissionInterfaces/MissionPopup/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-text = "flajksföljksdfökl"
+text = "Description of the mission"
 fit_content = true
 tab_size = 2
 
@@ -390,7 +400,9 @@ script = ExtResource("5_id3g5")
 [connection signal="start_run" from="start_scene" to="." method="_on_start_run"]
 [connection signal="accept_contract" from="contract_scene" to="." method="_on_contract_scene_accept_contract"]
 [connection signal="mission_open_pressed" from="ShopMissionInterfaces" to="." method="_on_shop_mission_interfaces_mission_open_pressed"]
+[connection signal="missions_tab" from="ShopMissionInterfaces" to="." method="_on_shop_mission_interfaces_missions_tab"]
 [connection signal="ship_fly" from="ShopMissionInterfaces" to="." method="_on_shop_mission_interfaces_ship_fly"]
+[connection signal="shop_tab" from="ShopMissionInterfaces" to="." method="_on_shop_mission_interfaces_shop_tab"]
 [connection signal="panel_buy_pressed" from="ShopMissionInterfaces/TabContainer/Shop/ShopInterface/ScrollContainer/GridContainer" to="." method="_on_grid_container_panel_buy_pressed"]
 [connection signal="open_mission_button" from="ShopMissionInterfaces/TabContainer/Mission" to="ShopMissionInterfaces" method="_on_mission_open_mission_button"]
 [connection signal="pressed" from="ShopMissionInterfaces/MarginContainer/VBoxContainer/ExitButton" to="ShopMissionInterfaces" method="_on_exit_button_pressed"]
@@ -400,6 +412,7 @@ script = ExtResource("5_id3g5")
 [connection signal="timeout" from="ShopMissionInterfaces/NoMoneyPopup/CloseTimer" to="ShopMissionInterfaces/NoMoneyPopup" method="_on_close_timer_timeout"]
 [connection signal="on_finish_mission_popup_button_pressed" from="ShopMissionInterfaces/MissionPopup" to="." method="_on_mission_popup_on_finish_mission_popup_button_pressed"]
 [connection signal="on_mission_popup_button_pressed" from="ShopMissionInterfaces/MissionPopup" to="." method="_on_mission_popup_on_mission_popup_button_pressed"]
+[connection signal="pressed" from="ShopMissionInterfaces/MissionPopup/ScrollContainer/VBoxContainer/HBoxContainer/Exit" to="ShopMissionInterfaces/MissionPopup" method="_on_exit_pressed"]
 [connection signal="pressed" from="ShopMissionInterfaces/MissionPopup/ScrollContainer/VBoxContainer/Button" to="ShopMissionInterfaces/MissionPopup" method="_on_button_pressed"]
 
 [editable path="ShopMissionInterfaces/TabContainer/Shop/PurchaseInterface/HBoxContainer/ItemPreview/ItemSubViewport"]

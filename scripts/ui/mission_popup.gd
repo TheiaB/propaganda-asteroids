@@ -8,9 +8,10 @@ var is_finish: bool
 signal on_mission_popup_button_pressed
 signal on_finish_mission_popup_button_pressed
 
-@onready var mission_title: Label = $ScrollContainer/VBoxContainer/Title
+@onready var mission_title: Label = $ScrollContainer/VBoxContainer/HBoxContainer/Title
 @onready var rich_text_label: RichTextLabel = $ScrollContainer/VBoxContainer/RichTextLabel
 @onready var button: Button = $ScrollContainer/VBoxContainer/Button
+@onready var exit: Button = $ScrollContainer/VBoxContainer/HBoxContainer/Exit
 
 
 
@@ -37,6 +38,7 @@ func popup_mission_finish(mission: Mission):
 	rich_text_label.text = mission.text
 	button.text = "I want to finish this mission"
 	is_finish = true
+	exit.hide()
 	self.show_centered()
 	
 
@@ -50,3 +52,8 @@ func show_centered():
 
 	# Position the panel at the center of the viewport
 	self.position = (viewport_size - panel_size) / 2
+	self.position.y -= 200
+
+
+func _on_exit_pressed() -> void:
+	self.hide()

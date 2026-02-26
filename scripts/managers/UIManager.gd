@@ -152,3 +152,11 @@ func _on_mission_popup_on_finish_mission_popup_button_pressed(mission: Mission) 
 func _on_grid_container_panel_buy_pressed(item: Item) -> void:
 	confirmation_popup.show_popup(item)
 	
+
+
+func _on_shop_mission_interfaces_missions_tab() -> void:
+	ingame_interface.visible = false
+
+
+func _on_shop_mission_interfaces_shop_tab() -> void:
+	ingame_interface.visible = true
