@@ -15,10 +15,9 @@
 [ext_resource type="Texture2D" uid="uid://b30g40cinouoo" path="res://assets/ui/T_mission.png" id="10_0d6jp"]
 [ext_resource type="Theme" uid="uid://btnidv84fopb1" path="res://assets/ui/theme/FlatUI4/kenneyUI-custom2.tres" id="12_0d6jp"]
 [ext_resource type="Script" uid="uid://df7nyjxol6syj" path="res://scripts/ui/mission_interface.gd" id="12_ytsje"]
+[ext_resource type="Theme" uid="uid://btsae8mdw2sik" path="res://assets/ui/theme/FlatUI4/kenneyUI-custom3.tres" id="13_8t74x"]
 [ext_resource type="PackedScene" uid="uid://c63ewp0wfu3g5" path="res://scenes/ui/confirmation_popup.tscn" id="13_a7j1f"]
-[ext_resource type="Theme" uid="uid://bnhngmri4tfgr" path="res://assets/ui/theme/FlatUI4/kenneyUI-green.tres" id="14_8t74x"]
 [ext_resource type="Script" uid="uid://dgrnw5eysolw8" path="res://scripts/no_money_popup.gd" id="14_dgnm4"]
-[ext_resource type="Theme" uid="uid://6shp5ck1tnja" path="res://assets/ui/theme/FlatUI4/kenneyUI.tres" id="16_8t74x"]
 [ext_resource type="Script" uid="uid://b53blbfibsubs" path="res://scripts/ui/mission_popup.gd" id="16_m2gsp"]
 [ext_resource type="Theme" uid="uid://bb6vwl0h1flws" path="res://assets/ui/theme/FlatUI4/kenneyUI-blue.tres" id="17_8t74x"]
 
@@ -244,13 +243,13 @@ text = "BACK"
 [node name="ShopTabButton" type="Button" parent="ShopMissionInterfaces/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
-theme = ExtResource("14_8t74x")
+theme = ExtResource("13_8t74x")
 text = "Shop"
 
 [node name="MissionTabButton" type="Button" parent="ShopMissionInterfaces/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
-theme = ExtResource("14_8t74x")
+theme = ExtResource("13_8t74x")
 text = "Mission"
 
 [node name="ConfirmationPopup" parent="ShopMissionInterfaces" instance=ExtResource("13_a7j1f")]
