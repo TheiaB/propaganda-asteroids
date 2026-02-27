@@ -67,7 +67,7 @@ func setUI(ui_name: String = ""):
 		
 	if ui_name == "open_missions":
 		shop_mission_interface.open_missions()
-		#hide_ingame_interface()
+		hide_ingame_interface()
 		
 	if ui_name == "close_all":
 		shop_mission_interface.close_all()
@@ -85,6 +85,7 @@ func show_ingame_interface() -> void:
 
 func _on_start_run() -> void:
 	emit_signal("on_start_run")
+	hide_ingame_interface()
 
 
 func _on_death_scene_next_run() -> void:
@@ -155,8 +156,8 @@ func _on_grid_container_panel_buy_pressed(item: Item) -> void:
 
 
 func _on_shop_mission_interfaces_missions_tab() -> void:
-	ingame_interface.visible = false
+	hide_ingame_interface()
 
 
 func _on_shop_mission_interfaces_shop_tab() -> void:
-	ingame_interface.visible = true
+	show_ingame_interface()

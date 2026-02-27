@@ -48,6 +48,7 @@ visible = false
 
 [node name="ShopMissionInterfaces" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
+visible = false
 script = ExtResource("5_dgnm4")
 
 [node name="TabContainer" type="TabContainer" parent="ShopMissionInterfaces"]
@@ -281,6 +282,7 @@ uppercase = true
 wait_time = 5.0
 
 [node name="MissionPopup" type="PanelContainer" parent="ShopMissionInterfaces"]
+visible = false
 offset_right = 487.0
 offset_bottom = 134.0
 script = ExtResource("16_m2gsp")

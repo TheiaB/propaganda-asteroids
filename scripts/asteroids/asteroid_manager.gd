@@ -9,7 +9,7 @@ var target : Node = null
 
 var asteroid_scene : PackedScene = preload("res://scenes/asteroids/asteroid.tscn")
 var spawn_distance_offset : float = 14
-
+var died : bool = false
 var asteroid_count : int = 0
 
 
@@ -18,12 +18,11 @@ var spawn_weights := []
 var asteroid_speed_factor_range : Vector2
 var bound_force_range : Vector2
 var t : float
-#TODO Fix rarity and reconfigure special asteroid types
 var asteroid_types = [
 	{ "scene": preload("res://scenes/asteroids/small_asteroid.tscn"), "tier": EnemyTier.RARE },
 	{ "scene": preload("res://scenes/asteroids/asteroid.tscn"), "tier": EnemyTier.COMMON},
-	{ "scene": preload("res://scenes/asteroids/asteroid_satelite-1.tscn"), "tier": EnemyTier.COMMON},
-	{ "scene": preload("res://scenes/asteroids/asteroid_satelite-2.tscn"), "tier": EnemyTier.UNCOMMON},
+	{ "scene": preload("res://scenes/asteroids/asteroid_satelite-1.tscn"), "tier": EnemyTier.RARE},
+	{ "scene": preload("res://scenes/asteroids/asteroid_satelite-2.tscn"), "tier": EnemyTier.RARE},
 	{ "scene": preload("res://scenes/asteroids/big_asteroid.tscn"), "tier": EnemyTier.UNCOMMON},
 ]
 var planet_asteroids = []
@@ -96,13 +95,16 @@ func set_difficulty(level: int):
 func add_spawn_weight(tier: EnemyTier):
 	match tier:
 			EnemyTier.COMMON:
-				spawn_weights.append(lerp(0.6, 0.1, t))
+				if died:
+					spawn_weights.append(lerp(0.64, 0.09, t))
+				else:
+					spawn_weights.append(lerp(0.65, 0.1, t))
 			EnemyTier.UNCOMMON:
 				spawn_weights.append(lerp(0.3, 0.5, t))
 			EnemyTier.RARE:
-				spawn_weights.append(lerp(0.1, 0.4, t))
+				spawn_weights.append(lerp(0.05, 0.4, t))
 			EnemyTier.SPECIAL:
-				spawn_weights.append(0.0)
+				spawn_weights.append(0.01)
 
 
 
@@ -179,7 +181,8 @@ func spawn_dead_ship(ship_position : Vector3, ship_direction:Vector3):
 
 func add_ship_asteroids():
 	asteroid_types.append({ "scene": preload("res://scenes/asteroids/ship_asteroid.tscn"), "tier": EnemyTier.RARE})
-	add_spawn_weight(EnemyTier.RARE)
+	add_spawn_weight(EnemyTier.SPECIAL)
+	died = true
 
 func player_exited_planet_proximity():
 	proximity_planet = null
