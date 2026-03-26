@@ -1,6 +1,6 @@
 [gd_resource type="VisualShader" load_steps=12 format=3 uid="uid://diyt4cx0hnlnl"]
 
-[ext_resource type="Texture2D" uid="uid://crpds5lcilmo" path="res://assets/shader/backgroud 1.jpg" id="1_kstrl"]
+[ext_resource type="Texture2D" uid="uid://bpmgmfohdcgeh" path="res://assets/shader/backgroud 2.jpg" id="1_ocra4"]
 
 [sub_resource type="VisualShaderNodeVaryingGetter" id="VisualShaderNodeVaryingGetter_b8jt7"]
 varying_name = "WorldPos"
@@ -11,8 +11,8 @@ varying_type = 4
 [sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_ocra4"]
 op_type = 0
 
-[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_ocra4"]
-texture = ExtResource("1_kstrl")
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_uyc38"]
+texture = ExtResource("1_ocra4")
 
 [sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_kstrl"]
 parameter_name = "Scale"
@@ -45,7 +45,7 @@ render_mode blend_add, depth_draw_opaque, cull_back, diffuse_lambert, specular_s
 varying vec3 var_WorldPos;
 
 uniform float Scale = 1000.0;
-uniform sampler2D tex_frg_2;
+uniform sampler2D tex_frg_15;
 
 
 
@@ -91,18 +91,18 @@ void fragment() {
 	vec2 n_out6p0 = n_out14p0 / vec2(n_out5p0);
 
 
-// Texture2D:2
-	vec4 n_out2p0 = texture(tex_frg_2, n_out6p0);
+// Texture2D:15
+	vec4 n_out15p0 = texture(tex_frg_15, n_out6p0);
 
 
 // Output:0
-	ALBEDO = vec3(n_out2p0.xyz);
-	SPECULAR = n_out2p0.x;
+	ALBEDO = vec3(n_out15p0.xyz);
+	SPECULAR = n_out15p0.x;
 
 
 }
 "
-graph_offset = Vector2(-712.596, 40.4237)
+graph_offset = Vector2(118.651, -116.991)
 modes/blend = 1
 varyings/WorldPos = "0,4"
 nodes/vertex/2/node = SubResource("VisualShaderNodeInput_uyc38")
@@ -115,8 +115,6 @@ nodes/vertex/5/node = SubResource("VisualShaderNodeVaryingSetter_moc6i")
 nodes/vertex/5/position = Vector2(-160, 100)
 nodes/vertex/connections = PackedInt32Array(4, 0, 5, 0, 2, 0, 4, 0, 3, 0, 4, 1)
 nodes/fragment/0/position = Vector2(1480, -20)
-nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_ocra4")
-nodes/fragment/2/position = Vector2(780, -160)
 nodes/fragment/5/node = SubResource("VisualShaderNodeFloatParameter_kstrl")
 nodes/fragment/5/position = Vector2(-940, 300)
 nodes/fragment/6/node = SubResource("VisualShaderNodeVectorOp_ocra4")
@@ -127,4 +125,6 @@ nodes/fragment/13/node = SubResource("VisualShaderNodeVectorDecompose_kstrl")
 nodes/fragment/13/position = Vector2(-940, -120)
 nodes/fragment/14/node = SubResource("VisualShaderNodeVectorCompose_ocra4")
 nodes/fragment/14/position = Vector2(-560, -120)
-nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0, 2, 0, 0, 4, 14, 0, 6, 0, 13, 0, 14, 0, 13, 2, 14, 1, 5, 0, 6, 1, 6, 0, 2, 0, 12, 0, 13, 0)
+nodes/fragment/15/node = SubResource("VisualShaderNodeTexture_uyc38")
+nodes/fragment/15/position = Vector2(760, 140)
+nodes/fragment/connections = PackedInt32Array(14, 0, 6, 0, 13, 0, 14, 0, 13, 2, 14, 1, 5, 0, 6, 1, 12, 0, 13, 0, 6, 0, 15, 0, 15, 0, 0, 0, 15, 0, 0, 4)

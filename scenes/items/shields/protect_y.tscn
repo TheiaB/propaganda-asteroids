@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b0y7va5psqlst"]
 
 [ext_resource type="Script" uid="uid://b2jwtio5e2xm" path="res://scripts/items/shields/basic_shield.gd" id="1_tgiec"]
-[ext_resource type="VideoStream" uid="uid://cgubui5kqcuhj" path="res://assets/itemvideos/basic_shield_gif.ogv" id="2_p4awr"]
+[ext_resource type="VideoStream" uid="uid://cmjpnut2j7k7t" path="res://assets/itemvideos/basicshield 3.ogv" id="2_tgiec"]
 
 [node name="Protect_y" type="Node"]
 script = ExtResource("1_tgiec")
@@ -10,7 +10,7 @@ start_health = 2
 title = "Protect-Y"
 price = 79
 description = "Step into the future of space travel with cutting-edge spatial shielding technology. Designed to safeguard your spacecraft from the unpredictable dangers of deep space, our shield offers seamless protection against micrometeoroids, radiation bursts, and debris.Experience enhanced safety with an adaptive energy barrier that responds in real-time to threats, maintaining optimal performance while minimizing power consumption. Lightweight and fully integrated, the Spatial Shield lets you focus on exploration, not defense."
-video = ExtResource("2_p4awr")
+video = ExtResource("2_tgiec")
 unique_name = "protect_y"
 legal_text = "→ Please note: 
 

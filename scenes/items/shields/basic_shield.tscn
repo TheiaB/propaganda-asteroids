@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dfri2flh1jp1g"]
 
 [ext_resource type="Script" uid="uid://b2jwtio5e2xm" path="res://scripts/items/shields/basic_shield.gd" id="1_7uk2p"]
-[ext_resource type="VideoStream" uid="uid://cgubui5kqcuhj" path="res://assets/itemvideos/basic_shield_gif.ogv" id="2_wjqgk"]
+[ext_resource type="VideoStream" path="res://assets/itemvideos/basic_shield_2_gif.ogv" id="2_wjqgk"]
 
 [node name="basic_shield" type="Node"]
 script = ExtResource("1_7uk2p")

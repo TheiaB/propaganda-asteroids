@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dp10bwd1otbub"
-path.s3tc="res://.godot/imported/arrow_1.png-3db057fdfeb91aaf04e8c399254e977c.s3tc.ctex"
+uid="uid://bpmgmfohdcgeh"
+path.s3tc="res://.godot/imported/backgroud 2.jpg-5cf5148487268118d51b239240571795.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/ship/arrow_1.png"
-dest_files=["res://.godot/imported/arrow_1.png-3db057fdfeb91aaf04e8c399254e977c.s3tc.ctex"]
+source_file="res://assets/shader/backgroud 2.jpg"
+dest_files=["res://.godot/imported/backgroud 2.jpg-5cf5148487268118d51b239240571795.s3tc.ctex"]
 
 [params]
 
