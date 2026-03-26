@@ -1,36 +1,27 @@
-[gd_scene load_steps=19 format=3 uid="uid://bi2fkkpnm4xeo"]
+[gd_scene load_steps=16 format=3 uid="uid://bi2fkkpnm4xeo"]
 
 [ext_resource type="Script" uid="uid://hmwg36qp2itx" path="res://scripts/menu_3d.gd" id="1_ef5vu"]
 [ext_resource type="PackedScene" uid="uid://cu5hdltnm5jj2" path="res://assets/ship/ship.gltf" id="1_u34p7"]
 [ext_resource type="PackedScene" uid="uid://c67duphyjlojt" path="res://assets/ship/cargo/cargo.gltf" id="2_ef5vu"]
 [ext_resource type="Shader" uid="uid://diyt4cx0hnlnl" path="res://assets/shader/space-visual-shader.tres" id="3_24y7d"]
-[ext_resource type="Texture2D" uid="uid://x563xgobc7qq" path="res://assets/space/t-space-01.png" id="4_7f5ux"]
 [ext_resource type="SpriteFrames" uid="uid://cpgsbsb6jjowj" path="res://assets/ship/ship_spritesheet.tres" id="4_24y7d"]
-[ext_resource type="Texture2D" uid="uid://2kf05jtnku8b" path="res://assets/space/t-space-03.png" id="5_w5jwr"]
-[ext_resource type="Texture2D" uid="uid://bprqkumf86jbq" path="res://assets/space/t-space-02.png" id="6_kfcwb"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_snkhy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3lj46"]
 render_priority = 0
 shader = ExtResource("3_24y7d")
-shader_parameter/Speed = 0.001
 shader_parameter/Scale = 128.0
-shader_parameter/Texture2DParameter2 = ExtResource("4_7f5ux")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_chh5i"]
 render_priority = 0
 shader = ExtResource("3_24y7d")
-shader_parameter/Speed = 0.01
 shader_parameter/Scale = 128.0
-shader_parameter/Texture2DParameter2 = ExtResource("5_w5jwr")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6nvu6"]
 render_priority = 0
 shader = ExtResource("3_24y7d")
-shader_parameter/Speed = 0.05
 shader_parameter/Scale = 128.0
-shader_parameter/Texture2DParameter2 = ExtResource("6_kfcwb")
 
 [sub_resource type="Animation" id="Animation_24y7d"]
 length = 0.001

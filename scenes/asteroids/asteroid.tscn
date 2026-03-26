@@ -74,6 +74,7 @@ shape = SubResource("SphereShape3D_0md28")
 transform = Transform3D(0.698772, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.998706)
 visible = false
 axis = 1
+texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_8vt2t")
 animation = &"normal_hit"
 frame = 4

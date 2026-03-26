@@ -1,7 +1,7 @@
 shader_type spatial;
 uniform sampler2D tiling_texture;
 render_mode unshaded;
-uniform float tiling_scale = 4.0;
+uniform float tiling_scale = 100.0;
 void vertex() {
 	// Called for every vertex the material is visible on.
 }

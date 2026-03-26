@@ -75,6 +75,7 @@ transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, -0.0242423, -0.04
 transform = Transform3D(0.392699, 0, 0, 0, 0.45, 0, 0, 0, 0.612458, 0, 0, -0.491976)
 visible = false
 axis = 1
+texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_2mj22")
 animation = &"normal_hit"
 frame = 4

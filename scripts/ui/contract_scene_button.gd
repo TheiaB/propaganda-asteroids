@@ -36,15 +36,12 @@ We are sure you will adjust quickly to your wonderful new job opportunity and be
 
 We strive to create a culture where you feel seen, safe, connected, and to make sure you feel comfortable aligning with our core values. We seek qualified candidates from a broad pool and are focused on building and maintaining resources and networks so you can reach your maximum potential.
 
-A new state of the art Cargo ship equipped with all necessary safety and support systems will be ready for you in Port bay 4 to get comfortable in!
-
-We are looking forward to seeing what you are capable of!
+A new state of the art Cargo ship equipped with all necessary safety and support systems will be ready in the Construction Bay for you to get comfortable in!
 
 And don't forget, MarsK Inc.™ means family!
 
 Sincerely, 
 MarsK Inc.™ HR department. 
-
 
 
 Legal terms:
@@ -58,7 +55,6 @@ The Cargo ship provides all necessary maneuverability and safety features includ
 The Company will not in any circumstances provide any additional systems.
 The employee is free to personally acquire and install any systems to their ship.
 Ownership of all systems installed in the ship will be transferred to the company's holdings. 
-
 
 §3 Permanent supervision
 The employee agrees to the implementation of systems in the ship, personal apartment as well as their body which includes audio and video technology as well as vital signs tracker to supervise work efforts and ensure maximum efficiency for everyone.

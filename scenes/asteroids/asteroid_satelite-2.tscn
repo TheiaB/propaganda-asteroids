@@ -78,6 +78,7 @@ shape = SubResource("BoxShape3D_afu5r")
 transform = Transform3D(-0.0371485, 0, -0.989348, 0, 1, 0, 1.38268, 0, -0.0265809, 0.86955, 0, 0.274687)
 visible = false
 axis = 1
+texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_fon2c")
 animation = &"normal_hit"
 frame = 4

@@ -40,8 +40,8 @@ custom_minimum_size = Vector2(750, 50)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.910885, 0.952303, 0.914133, 1)
 theme_override_fonts/font = ExtResource("3_0nywc")
-theme_override_font_sizes/font_size = 16
-autowrap_mode = 1
+theme_override_font_sizes/font_size = 17
+autowrap_mode = 2
 
 [node name="AcceptContract" type="Button" parent="VBoxContainer"]
 unique_name_in_owner = true

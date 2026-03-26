@@ -52,7 +52,7 @@ animations = [{
 }]
 
 [node name="Ship" type="CharacterBody3D"]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+transform = Transform3D(-0.00275062, 0, 0.799995, 0, 0.8, 0, -0.799995, 0, -0.00275062, -19.0767, 0, -33.369)
 collision_layer = 2
 collision_mask = 49
 script = ExtResource("1_2gnfn")
@@ -131,6 +131,7 @@ transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 2, 1.715, -0.175, 0.35)
 offset = Vector2(0, -128)
 flip_v = true
 axis = 1
+texture_filter = 0
 sprite_frames = ExtResource("4_tfsc7")
 animation = &"thruster"
 
@@ -139,6 +140,7 @@ transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 2, -1.715, -0.175, 0.35)
 offset = Vector2(0, -128)
 flip_v = true
 axis = 1
+texture_filter = 0
 sprite_frames = ExtResource("4_tfsc7")
 animation = &"thruster"
 
@@ -147,6 +149,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.067)
 offset = Vector2(0, 128)
 pixel_size = 0.0075
 axis = 1
+texture_filter = 0
 sprite_frames = ExtResource("4_tfsc7")
 animation = &"laser_impact"
 frame = 6

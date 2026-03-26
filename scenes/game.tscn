@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cnotxnjbhrj4a"]
+[gd_scene load_steps=17 format=3 uid="uid://cnotxnjbhrj4a"]
 
 [ext_resource type="Script" uid="uid://dxicgx2v6rcda" path="res://scripts/game.gd" id="1_lnu2h"]
 [ext_resource type="Script" uid="uid://c3nebth5qx3wg" path="res://scripts/camera_3d.gd" id="1_yqjtg"]
@@ -9,10 +9,7 @@
 [ext_resource type="Script" uid="uid://dti8u68m46th2" path="res://scripts/managers/timer_manager.gd" id="6_ca42v"]
 [ext_resource type="PackedScene" uid="uid://cdbqn35l6oxha" path="res://scenes/managers/ui_manager.tscn" id="7_kvpfn"]
 [ext_resource type="Shader" uid="uid://diyt4cx0hnlnl" path="res://assets/shader/space-visual-shader.tres" id="13_kvuet"]
-[ext_resource type="Texture2D" uid="uid://x563xgobc7qq" path="res://assets/space/t-space-01.png" id="14_ir15t"]
 [ext_resource type="PackedScene" uid="uid://bn6hjlre2x7cy" path="res://scenes/managers/mission_manager.tscn" id="14_trtic"]
-[ext_resource type="Texture2D" uid="uid://2kf05jtnku8b" path="res://assets/space/t-space-03.png" id="15_ca42v"]
-[ext_resource type="Texture2D" uid="uid://bprqkumf86jbq" path="res://assets/space/t-space-02.png" id="15_ir15t"]
 [ext_resource type="PackedScene" uid="uid://b2w72cu2g8cky" path="res://scenes/managers/ship_manager.tscn" id="19_264po"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_80nbo"]
@@ -34,23 +31,7 @@ glow_enabled = true
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_trtic"]
 render_priority = 0
 shader = ExtResource("13_kvuet")
-shader_parameter/Speed = -0.005
-shader_parameter/Scale = 256.0
-shader_parameter/Texture2DParameter2 = ExtResource("14_ir15t")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rysoc"]
-render_priority = 0
-shader = ExtResource("13_kvuet")
-shader_parameter/Speed = 0.005
-shader_parameter/Scale = 256.0
-shader_parameter/Texture2DParameter2 = ExtResource("15_ca42v")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ca42v"]
-render_priority = 0
-shader = ExtResource("13_kvuet")
-shader_parameter/Speed = 0.005
-shader_parameter/Scale = 256.0
-shader_parameter/Texture2DParameter2 = ExtResource("15_ir15t")
+shader_parameter/Scale = 450.0
 
 [node name="Game" type="Node"]
 script = ExtResource("1_lnu2h")

@@ -1,9 +1,6 @@
-[gd_resource type="VisualShader" load_steps=19 format=3 uid="uid://diyt4cx0hnlnl"]
+[gd_resource type="VisualShader" load_steps=12 format=3 uid="uid://diyt4cx0hnlnl"]
 
-[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_b8jt7"]
-constant = 1.0
-
-[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_kstrl"]
+[ext_resource type="Texture2D" uid="uid://crpds5lcilmo" path="res://assets/shader/backgroud 1.jpg" id="1_kstrl"]
 
 [sub_resource type="VisualShaderNodeVaryingGetter" id="VisualShaderNodeVaryingGetter_b8jt7"]
 varying_name = "WorldPos"
@@ -14,40 +11,18 @@ varying_type = 4
 [sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_ocra4"]
 op_type = 0
 
-[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_b8jt7"]
-default_input_values = [0, Vector2(0.1, 0), 1, Vector2(0, 0)]
-op_type = 0
-
-[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_kstrl"]
-input_name = "time"
-
-[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_ocra4"]
-operator = 2
-
-[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_uyc38"]
-parameter_name = "Speed"
-default_value_enabled = true
-default_value = 0.05
-
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_ocra4"]
-source = 5
+texture = ExtResource("1_kstrl")
 
 [sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_kstrl"]
 parameter_name = "Scale"
 default_value_enabled = true
-default_value = 256.0
+default_value = 1000.0
 
 [sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_ocra4"]
 default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
 op_type = 0
 operator = 3
-
-[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_b8jt7"]
-parameter_name = "Texture2DParameter2"
-color_default = 1
-
-[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_ocra4"]
-constant = 1.0
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_uyc38"]
 input_name = "model_matrix"
@@ -69,9 +44,8 @@ render_mode blend_add, depth_draw_opaque, cull_back, diffuse_lambert, specular_s
 // Varyings
 varying vec3 var_WorldPos;
 
-uniform float Speed = 0.05000000074506;
-uniform float Scale = 256.0;
-uniform sampler2D Texture2DParameter2 : hint_default_black;
+uniform float Scale = 1000.0;
+uniform sampler2D tex_frg_2;
 
 
 
@@ -95,18 +69,6 @@ void vertex() {
 }
 
 void fragment() {
-// Input:16
-	float n_out16p0 = TIME;
-
-
-// FloatParameter:18
-	float n_out18p0 = Speed;
-
-
-// FloatOp:17
-	float n_out17p0 = n_out16p0 * n_out18p0;
-
-
 // VaryingGetter:12
 	vec3 n_out12p0 = var_WorldPos;
 
@@ -129,36 +91,18 @@ void fragment() {
 	vec2 n_out6p0 = n_out14p0 / vec2(n_out5p0);
 
 
-// VectorOp:15
-	vec2 n_out15p0 = vec2(n_out17p0) + n_out6p0;
-
-
-	vec4 n_out2p0;
 // Texture2D:2
-	n_out2p0 = texture(Texture2DParameter2, n_out15p0);
-
-
-// FloatConstant:9
-	float n_out9p0 = 1.000000;
-
-
-// FloatConstant:10
-	float n_out10p0 = 1.000000;
-
-
-// FloatConstant:11
-	float n_out11p0 = 0.000000;
+	vec4 n_out2p0 = texture(tex_frg_2, n_out6p0);
 
 
 // Output:0
 	ALBEDO = vec3(n_out2p0.xyz);
-	METALLIC = n_out9p0;
-	ROUGHNESS = n_out10p0;
-	SPECULAR = n_out11p0;
+	SPECULAR = n_out2p0.x;
 
 
 }
 "
+graph_offset = Vector2(-712.596, 40.4237)
 modes/blend = 1
 varyings/WorldPos = "0,4"
 nodes/vertex/2/node = SubResource("VisualShaderNodeInput_uyc38")
@@ -177,26 +121,10 @@ nodes/fragment/5/node = SubResource("VisualShaderNodeFloatParameter_kstrl")
 nodes/fragment/5/position = Vector2(-940, 300)
 nodes/fragment/6/node = SubResource("VisualShaderNodeVectorOp_ocra4")
 nodes/fragment/6/position = Vector2(-160, -100)
-nodes/fragment/8/node = SubResource("VisualShaderNodeTexture2DParameter_b8jt7")
-nodes/fragment/8/position = Vector2(-800, 920)
-nodes/fragment/9/node = SubResource("VisualShaderNodeFloatConstant_ocra4")
-nodes/fragment/9/position = Vector2(0, 600)
-nodes/fragment/10/node = SubResource("VisualShaderNodeFloatConstant_b8jt7")
-nodes/fragment/10/position = Vector2(0, 700)
-nodes/fragment/11/node = SubResource("VisualShaderNodeFloatConstant_kstrl")
-nodes/fragment/11/position = Vector2(0, 800)
 nodes/fragment/12/node = SubResource("VisualShaderNodeVaryingGetter_b8jt7")
 nodes/fragment/12/position = Vector2(-1300, -120)
 nodes/fragment/13/node = SubResource("VisualShaderNodeVectorDecompose_kstrl")
 nodes/fragment/13/position = Vector2(-940, -120)
 nodes/fragment/14/node = SubResource("VisualShaderNodeVectorCompose_ocra4")
 nodes/fragment/14/position = Vector2(-560, -120)
-nodes/fragment/15/node = SubResource("VisualShaderNodeVectorOp_b8jt7")
-nodes/fragment/15/position = Vector2(300, -400)
-nodes/fragment/16/node = SubResource("VisualShaderNodeInput_kstrl")
-nodes/fragment/16/position = Vector2(-1140, -860)
-nodes/fragment/17/node = SubResource("VisualShaderNodeFloatOp_ocra4")
-nodes/fragment/17/position = Vector2(-160, -560)
-nodes/fragment/18/node = SubResource("VisualShaderNodeFloatParameter_uyc38")
-nodes/fragment/18/position = Vector2(-1160, -680)
-nodes/fragment/connections = PackedInt32Array(5, 0, 6, 1, 8, 0, 2, 2, 12, 0, 13, 0, 14, 0, 6, 0, 13, 0, 14, 0, 13, 2, 14, 1, 18, 0, 17, 1, 9, 0, 0, 2, 10, 0, 0, 3, 11, 0, 0, 4, 2, 0, 0, 0, 16, 0, 17, 0, 6, 0, 15, 1, 15, 0, 2, 0, 17, 0, 15, 0)
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0, 2, 0, 0, 4, 14, 0, 6, 0, 13, 0, 14, 0, 13, 2, 14, 1, 5, 0, 6, 1, 6, 0, 2, 0, 12, 0, 13, 0)

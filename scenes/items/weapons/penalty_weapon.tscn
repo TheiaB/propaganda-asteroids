@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://dmej1muf1nxbe"]
+[gd_scene load_steps=3 format=3 uid="uid://bnwsljinrui4o"]
 
 [ext_resource type="Script" uid="uid://yit734t8t3ho" path="res://scripts/items/weapons/basic_weapon.gd" id="1_mg88y"]
 [ext_resource type="VideoStream" uid="uid://ccvarnkb72nkc" path="res://assets/itemvideos/0001_2.ogv" id="2_5kpu5"]
@@ -6,6 +6,7 @@
 [node name="penalty_weapon" type="Node"]
 script = ExtResource("1_mg88y")
 speed = 5
+delay_between = 1.0
 title = "Organic Weapon"
 price = 99
 description = "Marketed as the “streamlined choice,” the Economy Blaster™ pares down your arsenal to essentials — mostly by reducing effectiveness and comfort.  Although objectively weaker than the Basic Blaster™, its “minimalist design philosophy” and “budget-conscious pricing” make it a must-have for savvy players who love marketing spin more than killing enemies."

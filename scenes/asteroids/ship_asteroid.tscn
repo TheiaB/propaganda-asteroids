@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://e58rhcffb7xo"]
+[gd_scene load_steps=15 format=3 uid="uid://bye1wmnuybl6"]
 
 [ext_resource type="Script" uid="uid://bxh6oltf5uiv6" path="res://scripts/asteroids/asteroid.gd" id="1_27unb"]
 [ext_resource type="Texture2D" uid="uid://bpn515yuntvu7" path="res://assets/ship/Image_Sequence_Lazer_Explosion/resized_Chronologie 1_0000.png" id="2_48krd"]
@@ -101,6 +101,7 @@ shape = SubResource("BoxShape3D_yekev")
 transform = Transform3D(0.000680641, 0, 1, 0, 1, 0, -1, 0, 0.000680641, -1.088, 0, 0)
 visible = false
 axis = 1
+texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_ok8k4")
 animation = &"normal_hit"
 frame = 4
