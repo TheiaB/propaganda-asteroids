@@ -123,8 +123,7 @@ func _process(_delta):
 			shield_sprite.hide()
 			shield_sprite.stop()
 	if weapon.chargeable:
-		if Input.is_action_pressed("shoot") and weapon.charging == false:
-			shooting_delay()
+		if Input.is_action_pressed("shoot") and weapon.charging == false and !has_shooting_delay():
 			weapon.charging = true
 			charge_start_time = Time.get_ticks_msec()
 			if weapon.unique_name == "laser_railgun":
@@ -147,8 +146,7 @@ func _process(_delta):
 				weapon.shoot_projectile(self)
 				laser_shoot_sprite.play('laser_impact')
 	else:
-		if Input.is_action_just_pressed("shoot"):
-			shooting_delay()
+		if Input.is_action_just_pressed("shoot") and !has_shooting_delay():
 			SoundManager5000.laser_basic_sfx.play_one_shot()
 			weapon.shoot_projectile(self)
 			laser_shoot_sprite.play('laser_impact')
@@ -194,11 +192,12 @@ func start_restrict_movement(_restricted_movement_multiplier):
 func stop_restricted_movement():
 	self.restricted_movement_multiplier = -1
 
-func shooting_delay() -> void:
+func has_shooting_delay() -> bool:
 	var time_diff = Time.get_unix_time_from_system()-last_shot
 	if weapon.shooting_delay > 0.0 and time_diff < weapon.shooting_delay:
-			return
+		return true
 	last_shot = Time.get_unix_time_from_system()
+	return false
 
 
 func _physics_process(delta):
