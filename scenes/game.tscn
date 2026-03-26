@@ -94,7 +94,6 @@ bank_paths = ["res://PropGames/Build/Desktop/Master.strings.bank", "res://PropGa
 
 [node name="SpaceLowest" type="MeshInstance3D" parent="."]
 transform = Transform3D(2048, 0, 0, 0, 2048, 0, 0, 0, 2048, 0, -256, 0)
-visible = false
 mesh = SubResource("PlaneMesh_dinhu")
 surface_material_override/0 = SubResource("ShaderMaterial_trtic")
 
@@ -102,13 +101,11 @@ surface_material_override/0 = SubResource("ShaderMaterial_trtic")
 transform = Transform3D(2048, 0, 0, 0, 2048, 0, 0, 0, 2048, 0, -96, 0)
 visible = false
 mesh = SubResource("PlaneMesh_dinhu")
-surface_material_override/0 = SubResource("ShaderMaterial_rysoc")
 
 [node name="SpaceUpper" type="MeshInstance3D" parent="."]
 transform = Transform3D(2048, 0, 0, 0, 2048, 0, 0, 0, 2048, 0, -48, 0)
 visible = false
 mesh = SubResource("PlaneMesh_dinhu")
-surface_material_override/0 = SubResource("ShaderMaterial_ca42v")
 
 [connection signal="timeout" from="TimerManager/FuelTimer" to="." method="_on_fuel_timer_timeout"]
 [connection signal="timeout" from="TimerManager/ActiveItemMoneyTimer" to="." method="_on_active_item_money_timer_timeout"]

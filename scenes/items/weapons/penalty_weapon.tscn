@@ -7,6 +7,7 @@
 script = ExtResource("1_mg88y")
 speed = 5
 delay_between = 1.0
+shooting_delay = 1.0
 title = "Organic Weapon"
 price = 99
 description = "Marketed as the “streamlined choice,” the Economy Blaster™ pares down your arsenal to essentials — mostly by reducing effectiveness and comfort.  Although objectively weaker than the Basic Blaster™, its “minimalist design philosophy” and “budget-conscious pricing” make it a must-have for savvy players who love marketing spin more than killing enemies."

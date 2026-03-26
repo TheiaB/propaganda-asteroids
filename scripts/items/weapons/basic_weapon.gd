@@ -6,6 +6,7 @@ extends Weapon
 @export var delay_between = 0.0
 @export var restricted_rotation_multiplier = -1.0
 @export var restricted_movement_multiplier = -1.0
+@export var shooting_delay = 0.0
 
 #@export var price : int
 
