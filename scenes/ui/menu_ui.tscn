@@ -6,7 +6,7 @@
 [ext_resource type="Theme" uid="uid://btsae8mdw2sik" path="res://assets/ui/theme/FlatUI4/kenneyUI-custom3.tres" id="4_kbk5f"]
 [ext_resource type="Theme" uid="uid://h1f7iqhh7ycb" path="res://assets/ui/theme/FlatUI4/kenneyUI-yellow.tres" id="5_de0uw"]
 [ext_resource type="Theme" uid="uid://mbsg4xqnedxi" path="res://assets/ui/theme/FlatUI4/kenneyUI-red.tres" id="5_w735g"]
-[ext_resource type="Script" uid="uid://cmgyn5nftpxl1" path="res://scenes/ui/volume_control.gd" id="7_kbk5f"]
+[ext_resource type="Script" path="res://scenes/ui/volume_control.gd" id="7_kbk5f"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_c7ajr"]
 viewport_path = NodePath("SubViewport")

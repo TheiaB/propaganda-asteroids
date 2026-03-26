@@ -50,10 +50,12 @@ script = ExtResource("4_vtaks")
 
 [node name="Sprite3D" type="Sprite3D" parent="Camera3D/Arrow"]
 transform = Transform3D(1.36274, 0, 0, 0, 1.36274, 5.32907e-15, 0, -2.13163e-14, 1.36274, 0, 0, 0)
+texture_filter = 0
 texture = ExtResource("4_kvuet")
 
 [node name="Sprite3D2" type="Sprite3D" parent="Camera3D"]
 transform = Transform3D(0.0782599, 0, 0, 0, 0.0782599, 0, 0, 0, 0.03913, -1.13372, 0.528067, -1)
+texture_filter = 0
 texture = ExtResource("5_trtic")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]

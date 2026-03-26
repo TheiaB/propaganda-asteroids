@@ -7,6 +7,7 @@ extends Weapon
 @export var charge_timer = 200
 @export var restricted_rotation_multiplier = -0.5
 @export var restricted_movement_multiplier = -0.5
+@export var shooting_delay = 0.0
 
 
 func _ready() -> void:

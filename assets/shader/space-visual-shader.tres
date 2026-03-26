@@ -102,7 +102,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(118.651, -116.991)
 modes/blend = 1
 varyings/WorldPos = "0,4"
 nodes/vertex/2/node = SubResource("VisualShaderNodeInput_uyc38")
