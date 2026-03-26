@@ -5,7 +5,7 @@
 
 [node name="basic_weapon" type="Node"]
 script = ExtResource("1_qlgc1")
-title = "Basic Weapon"
+title = "Basic Blaster"
 price = 90
 description = "Basic Blaster™: Your inaugural weapon, the Basic Blaster™, is the epitome of dependable simplicity.  While this trusty firearm ensures foundational offense capability, its exorbitant cost is the direct result of industry-wide “Artificial Scarcity Events” and “Strategic Price Stabilization Initiatives.”  Purchase now—if you can afford it—and prepare for basic but steadfast service on your battlefield journey."
 video = ExtResource("2_8gh2c")

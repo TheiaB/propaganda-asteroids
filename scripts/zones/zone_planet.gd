@@ -30,6 +30,12 @@ var news = [
 func hurt() -> void:
 	modify_health(-1)
 	
+func reset_health() -> void:
+	if self.unique_name == 'waterplanet':
+		health = 4
+	else:
+		health = 3
+	
 func get_news_ind() -> Vector2:
 	if self.unique_name == 'antplanet':
 		return Vector2(0,2)

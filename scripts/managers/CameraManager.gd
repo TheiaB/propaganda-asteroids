@@ -21,6 +21,10 @@ func init(_camera: Player_Camera) -> void:
 	camera = _camera
 	camera.offset.y += 2.5
 	
+func reset() -> void:
+	#woooo magic number 0_0
+	camera.offset.y = 7.5
+	
 	
 func get_visible_rect_xz() -> Rect2:
 	if not camera:

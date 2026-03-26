@@ -90,6 +90,9 @@ func start_mission(mission: Mission) -> void:
 func get_random_mission() -> Mission:
 	return all_missions.pick_random()
 
+func reset_missions() -> void:
+	finished_missions.clear()
+	_ready()
 
 func add_mission_to_finished_missions(mission: Mission):
 	finished_missions.append(mission)

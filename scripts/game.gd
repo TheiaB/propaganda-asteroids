@@ -35,9 +35,27 @@ func _ready():
 	asteroid_manager.set_difficulty(1)
 	#asteroid_manager.spawn_asteroids()
 	
-	GlobalMenu.connect("menu_open",pause)
-	GlobalMenu.connect("menu_close",unpause)
-	GlobalMenu.connect("esc",esc)
+	for pair in [["menu_open", pause], ["menu_close", unpause], ["esc", esc], ["new_game", new_game]]:
+		if not GlobalMenu.is_connected(pair[0], pair[1]):
+			GlobalMenu.connect(pair[0], pair[1])
+	
+	#GlobalMenu.connect("menu_open",pause)
+	#GlobalMenu.connect("menu_close",unpause)
+	#GlobalMenu.connect("esc",esc)
+	#GlobalMenu.connect("new_game", new_game)
+	
+func new_game():
+	print("heyooooo")
+	asteroid_manager.despawn_all_asteroids()
+	mission_manager.reset_missions()
+	ZoneManager.reset_planets()
+	if ship:
+		ship.queue_free()
+	GlobalCameraManager.reset()
+	_ready()
+	ui_manager.setUI("contract_scene")
+	print("ready")
+	#unpause()
 
 func esc():
 	if(ui_manager.shop_mission_interface.visible):
@@ -56,7 +74,6 @@ func pause():
 	process_mode = Node.PROCESS_MODE_DISABLED
 	print("pause")
 	FmodServer.set_global_parameter_by_name("PauseScreen", 1.0)
-	pass
 
 func unpause():
 	process_mode = Node.PROCESS_MODE_ALWAYS

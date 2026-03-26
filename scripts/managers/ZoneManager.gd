@@ -16,6 +16,10 @@ func get_home_planet() -> ZoneHome:
 func get_planets() -> Array[ZonePlanet]:
 	return planets
 	
+func reset_planets() -> void:
+	for planet in get_planets():
+		planet.reset_health()
+	
 func get_planet_by_enum(planet: Planets) -> Zone:
 	match planet:
 		Planets.HOME:

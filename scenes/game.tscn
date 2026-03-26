@@ -110,16 +110,19 @@ bank_paths = ["res://PropGames/Build/Desktop/Master.strings.bank", "res://PropGa
 
 [node name="SpaceLowest" type="MeshInstance3D" parent="."]
 transform = Transform3D(2048, 0, 0, 0, 2048, 0, 0, 0, 2048, 0, -256, 0)
+visible = false
 mesh = SubResource("PlaneMesh_dinhu")
 surface_material_override/0 = SubResource("ShaderMaterial_trtic")
 
 [node name="SpaceMiddle" type="MeshInstance3D" parent="."]
 transform = Transform3D(2048, 0, 0, 0, 2048, 0, 0, 0, 2048, 0, -96, 0)
+visible = false
 mesh = SubResource("PlaneMesh_dinhu")
 surface_material_override/0 = SubResource("ShaderMaterial_rysoc")
 
 [node name="SpaceUpper" type="MeshInstance3D" parent="."]
 transform = Transform3D(2048, 0, 0, 0, 2048, 0, 0, 0, 2048, 0, -48, 0)
+visible = false
 mesh = SubResource("PlaneMesh_dinhu")
 surface_material_override/0 = SubResource("ShaderMaterial_ca42v")
 

@@ -5,8 +5,8 @@ class_name Menu_Control
 
 signal menu_open
 signal menu_close
-signal menu_restart
 signal esc
+signal new_game
 
 @onready var menu_3d: Menu3D = $Menu3D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -24,7 +24,6 @@ func _ready():
 	SoundManager5000.music_gamestart.play()
 	#fmod loop is wrong
 	
-	
 
 func _on_button_play_pressed() -> void:
 	close_menu()
@@ -32,20 +31,11 @@ func _on_button_play_pressed() -> void:
 	SoundManager5000.music_gamestart.stop()
 	SoundManager5000.music_contract.play()
 
-func _on_button_debug_pressed() -> void:
-	animation_player.play("fade_to_black")
-	await get_tree().create_timer(transition_timer.wait_time).timeout; menu_restart.emit()
-	get_tree().quit()
-
 func _on_button_credits_pressed() -> void:
 	credits.show()
 	
 func _on_button_exit_credits_pressed() -> void:
 	credits.hide()
-
-
-
-
 
 
 func open_menu():
@@ -62,3 +52,14 @@ func _input(event):
 	if event.is_action_pressed("menu"):
 		print("Menu: Esc!")
 		emit_signal("esc")
+
+
+func _on_new_game_pressed() -> void:
+	emit_signal("new_game")
+	close_menu()
+	emit_signal("menu_close")
+	SoundManager5000.music_gamestart.stop()
+	SoundManager5000.music_contract.play()
+	#animation_player.play("fade_to_black")
+	#await get_tree().create_timer(transition_timer.wait_time).timeout; menu_restart.emit()
+	#get_tree().quit()
