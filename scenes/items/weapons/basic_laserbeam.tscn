@@ -1,14 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://cvfnlpcbd4v07"]
 
 [ext_resource type="Script" uid="uid://7etrgc1yilu8" path="res://scripts/items/weapons/basic_laserbeam.gd" id="1_hoi5b"]
-[ext_resource type="VideoStream" uid="uid://bx7h0dh1i7iwd" path="res://assets/itemvideos/railgun_gif.ogv" id="2_6fnip"]
+[ext_resource type="VideoStream" uid="uid://b4tjmygj7a6f" path="res://assets/itemvideos/laserbeam_1.ogv" id="2_hoi5b"]
 
 [node name="basic_laserbeam" type="Node"]
 script = ExtResource("1_hoi5b")
 title = "Laserbeam"
 price = 299
 description = "The LazeRazor™ fires a sustained laser beam after a mandatory charge, delivering continuous damage over time.  Stay perfectly still, focus, and watch your enemies melt — just remember, immobility comes at a cost."
-video = ExtResource("2_6fnip")
+video = ExtResource("2_hoi5b")
 unique_name = "laser_railgun"
 legal_text = "[center][b][color=#88C0D0]THE LAZERAZOR™[/color][/b][/center]
 [center][i]Continuous Beam Weapon Usage, Charge, and Liability Framework (CBWULF) v9.01[/i][/center]
@@ -16,7 +16,7 @@ legal_text = "[center][b][color=#88C0D0]THE LAZERAZOR™[/color][/b][/center]
 [color=#777777][i]User acknowledges inherent risks associated with prolonged charge and sustained beam operation.[/i][/color]
 ---------------
 [b]1. EQUIPMENT SUMMARY:[/b]  
-The LazeRazor™ emits a continuous energy beam after mandatory charge, persisting for several seconds post-discharge.
+The LazeRazor™ emits a continuous energy beam after short charge, persisting for several seconds post-discharge.
 ---------------
 [b]2. CHARGE AND VULNERABILITY:[/b]  
 User is fully immobilized during charge, with elevated exposure risk to hostile entities and environmental hazards.
