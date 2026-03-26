@@ -5,7 +5,8 @@
 
 [node name="passive_speed_boost" type="Node"]
 script = ExtResource("1_pfo7v")
-MAX_SPEED = 10
+MAX_SPEED = 10.0
+ACCELERATION = 9.0
 title = "Speed Boost"
 price = 280
 description = "Improves your ships thrusters, allowing you to go faster."

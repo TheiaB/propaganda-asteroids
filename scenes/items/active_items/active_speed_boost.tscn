@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhelw50bro7h8"]
+
+[ext_resource type="Script" uid="uid://brigp5hmy88xn" path="res://scripts/items/active_items/active_speed_boost.gd" id="1_gq2ql"]
+
+[node name="ActiveSpeedBoost" type="Node"]
+script = ExtResource("1_gq2ql")

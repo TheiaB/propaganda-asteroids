@@ -1,17 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://b3gptuxi7o4ay"]
+[gd_scene load_steps=3 format=3 uid="uid://biy4ll6q7pnd0"]
 
-[ext_resource type="Script" uid="uid://bdsn3msak3gh1" path="res://scripts/items/generic_items/passive_speed_boost.gd" id="1_3sbx2"]
-[ext_resource type="VideoStream" uid="uid://bx5vetatm8x8w" path="res://assets/itemvideos/thruster_boys_gif.ogv" id="2_l5l1k"]
+[ext_resource type="Script" uid="uid://bdsn3msak3gh1" path="res://scripts/items/generic_items/passive_speed_boost.gd" id="1_b6w0f"]
+[ext_resource type="VideoStream" uid="uid://bx5vetatm8x8w" path="res://assets/itemvideos/thruster_boys_gif.ogv" id="2_oqscb"]
 
-[node name="passive_speed_boost" type="Node"]
-script = ExtResource("1_3sbx2")
-MAX_SPEED = 10.0
-ACCELERATION = 9.0
-title = "Speed Boost"
-price = 220
-description = "Improves your ships thrusters, allowing you to go faster."
-video = ExtResource("2_l5l1k")
-unique_name = "speed_boost_boy"
+[node name="beyblade" type="Node"]
+script = ExtResource("1_b6w0f")
+ROTATION_SPEED = 15.0
+title = "Beyblade"
+price = 360
+description = "Improves your spinning, allowing you to change direction quicker and be nimble."
+video = ExtResource("2_oqscb")
+unique_name = "beyblade"
 legal_text = "[center][b][color=#8FBCBB]SpeedBurst™ Standard Edition: Terms of Accelerated Existence (TAE)[/color][/b][/center]
 
 Congratulations on equipping the [b]SpeedBurst™ Standard Edition[/b] — the baseline, regulation-compliant, no-frills tactical locomotion enhancer for [i]persons of neutral interest[/i].
