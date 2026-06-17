@@ -194,7 +194,7 @@ func stop_restricted_movement():
 
 func has_shooting_delay() -> bool:
 	var time_diff = Time.get_unix_time_from_system()-last_shot
-	if weapon.shooting_delay > 0.0 and time_diff < weapon.shooting_delay:
+	if weapon.delay_between > 0.0 and time_diff < weapon.delay_between:
 		return true
 	last_shot = Time.get_unix_time_from_system()
 	return false

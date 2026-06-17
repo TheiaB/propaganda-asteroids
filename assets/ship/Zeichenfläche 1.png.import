@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://diuplp2icxgs3"
-path.s3tc="res://.godot/imported/Zeichenfläche 1.png-44689ce4fa6f500943647ff8751785a2.s3tc.ctex"
+path.s3tc="res://.godot/imported/Zeichenfläche 1.png-0ae3a14f9376ca5101d622cc2ee656a7.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/ship/Zeichenfläche 1.png"
-dest_files=["res://.godot/imported/Zeichenfläche 1.png-44689ce4fa6f500943647ff8751785a2.s3tc.ctex"]
+source_file="res://assets/ship/Zeichenfläche 1.png"
+dest_files=["res://.godot/imported/Zeichenfläche 1.png-0ae3a14f9376ca5101d622cc2ee656a7.s3tc.ctex"]
 
 [params]
 
